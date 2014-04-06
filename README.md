@@ -19,3 +19,6 @@ and therefore if you call an unsupported gl function, an undefined reference err
 
 Same happens, if you call a function before initializing an OpenGL context.
 
+# Credit
+Credits go certainly to the OpenGL package, where I have all the OpenGL definitions from. 
+Also, I have to thank for the constructive discussion on Juli-Users, where I got a good solution for the function pointer loading (final solution is from Jameson Nash). 
