@@ -1,6 +1,7 @@
 # ModernGL
 
-Should work without any binary dependencies.
+Binary dependencies should be available on every platform. 
+I couldn't test this on a mac yet, but chances are, that older macs don't have OpenGL >2.1 anyways.
 
 getProcAddress can be changed like this:
 ```
@@ -8,6 +9,7 @@ using ModernGL
 import ModernGL.getprocaddress
 
 function getprocaddress(name::ASCIIString)
+	# for example change it to GLUT 
 	glutGetProcAddress(name)
 end
 ```
