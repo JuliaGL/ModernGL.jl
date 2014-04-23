@@ -1,16 +1,21 @@
 module ModernGL
 
 function getprocaddress(glFuncName::String)
+    push!(Sys.DL_LOAD_PATH, "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/")
+    const OpenGLLib = find_library(["libGL", "opengl32", "/System/Library/Frameworks/OpenGL.framework/OpenGL"])
     @linux? (
-        ccall((:glXGetProcAddress, "libGL"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
+        ccall((:glXGetProcAddress, OpenGLLib), Ptr{Void}, (Ptr{Uint8},), glFuncName)
         :
         @windows? (
-            ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
+            ccall((:wglGetProcAddress, OpenGLLib), Ptr{Void}, (Ptr{Uint8},), glFuncName)
             :
             @macos? (
-                ccall((:MyNSGLGetProcAddress, "/System/Library/Frameworks/OpenGL.framework/OpenGL"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
+                ccall((:MyNSGLGetProcAddress, OpenGLLib), Ptr{Void}, (Ptr{Uint8},), glFuncName)
                 :
-                error("platform not supported")
+                @unix? (
+                    ccall((:glXGetProcAddress, OpenGLLib), Ptr{Void}, (Ptr{Uint8},), glFuncName)
+                    :
+                    error("platform not supported")
             )
         )
     )
