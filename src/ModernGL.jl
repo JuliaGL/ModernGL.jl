@@ -7,7 +7,7 @@ function getprocaddress(glFuncName::String)
         @windows? (
             ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
             :
-            @macos? (
+            @osx? (
                 ccall((:MyNSGLGetProcAddress, "/System/Library/Frameworks/OpenGL.framework/OpenGL"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
                 :
                 error("platform not supported")
