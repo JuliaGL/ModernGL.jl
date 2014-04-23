@@ -2,7 +2,7 @@ module ModernGL
 
 function getprocaddress(glFuncName::String)
     push!(Sys.DL_LOAD_PATH, "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/")
-    const OpenGLLib = find_library("libGL", "opengl32", "/System/Library/Frameworks/OpenGL.framework/OpenGL")
+    const OpenGLLib = find_library(["libGL", "opengl32", "/System/Library/Frameworks/OpenGL.framework/OpenGL"])
     @linux? (
         ccall((:glXGetProcAddress, OpenGLLib), Ptr{Void}, (Ptr{Uint8},), glFuncName)
         :
