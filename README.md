@@ -1,7 +1,9 @@
 # ModernGL
 
 Binary dependencies should be available on every platform. 
+
 I couldn't test this on a mac yet, ~~but chances are, that older macs don't have OpenGL >2.1 anyways.~~
+
 https://developer.apple.com/graphicsimaging/opengl/capabilities/index.html
 
 getProcAddress can be changed like this:
