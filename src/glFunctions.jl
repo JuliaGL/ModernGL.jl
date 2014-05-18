@@ -6,7 +6,7 @@ function glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type_, indic
 	ccall(@getFuncPointer("glDrawElementsInstancedBaseVertexBaseInstance"), Void, (GLenum, GLsizei, GLenum, Ptr{Void}, GLsizei, GLint, GLuint), mode, count, type_, indices, instancecount, basevertex, baseinstance)
 end
 function glReadBuffer(mode)
-	ccall(@getFuncPointer("glReadBuffer"), Void, (GLenum,), mode)
+	ccall((@windows? (:glReadBuffer, "opengl32"): @getFuncPointer("glReadBuffer")) , Void, (GLenum,), mode)
 end
 function glBindBufferBase(target, index, buffer)
 	ccall(@getFuncPointer("glBindBufferBase"), Void, (GLenum, GLuint, GLuint), target, index, buffer)
@@ -51,13 +51,13 @@ function glUniformMatrix2x4dv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix2x4dv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 function glFinish()
-	ccall(@getFuncPointer("glFinish"), Void, (), )
+	ccall((@windows? (:glFinish, "opengl32"): @getFuncPointer("glFinish")) , Void, (), )
 end
 function glProgramUniformMatrix2x3fv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix2x3fv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 function glClear(mask)
-	ccall(@getFuncPointer("glClear"), Void, (GLbitfield,), mask)
+	ccall((@windows? (:glClear, "opengl32"): @getFuncPointer("glClear")) , Void, (GLbitfield,), mask)
 end
 function glBindTransformFeedback(target, id)
 	ccall(@getFuncPointer("glBindTransformFeedback"), Void, (GLenum, GLuint), target, id)
@@ -69,7 +69,7 @@ function glUniform2iv(location, count, value)
 	ccall(@getFuncPointer("glUniform2iv"), Void, (GLint, GLsizei, Ptr{GLint}), location, count, value)
 end
 function glBindTexture(target, texture)
-	ccall(@getFuncPointer("glBindTexture"), Void, (GLenum, GLuint), target, texture)
+	ccall((@windows? (:glBindTexture, "opengl32"): @getFuncPointer("glBindTexture")) , Void, (GLenum, GLuint), target, texture)
 end
 function glDrawElementsIndirect(mode, type_, indirect)
 	ccall(@getFuncPointer("glDrawElementsIndirect"), Void, (GLenum, GLenum, Ptr{Void}), mode, type_, indirect)
@@ -81,7 +81,7 @@ function glGetSamplerParameterIiv(sampler, pname, params)
 	ccall(@getFuncPointer("glGetSamplerParameterIiv"), Void, (GLuint, GLenum, Ptr{GLint}), sampler, pname, params)
 end
 function glGetPointerv(pname, params)
-	ccall(@getFuncPointer("glGetPointerv"), Void, (GLenum, Ptr{Ptr{Void}}), pname, params)
+	ccall((@windows? (:glGetPointerv, "opengl32"): @getFuncPointer("glGetPointerv")) , Void, (GLenum, Ptr{Ptr{Void}}), pname, params)
 end
 function glReleaseShaderCompiler()
 	ccall(@getFuncPointer("glReleaseShaderCompiler"), Void, (), )
@@ -171,13 +171,13 @@ function glProgramUniform4f(program, location, v0, v1, v2, v3)
 	ccall(@getFuncPointer("glProgramUniform4f"), Void, (GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2, v3)
 end
 function glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data)
-	ccall(@getFuncPointer("glCompressedTexSubImage1D"), Void, (GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Void}), target, level, xoffset, width, format, imageSize, data)
+	ccall((@windows? (:glCompressedTexSubImage1D, "opengl32"): @getFuncPointer("glCompressedTexSubImage1D")) , Void, (GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Void}), target, level, xoffset, width, format, imageSize, data)
 end
 function glProgramUniformMatrix2dv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix2dv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 function glTexParameterf(target, pname, param)
-	ccall(@getFuncPointer("glTexParameterf"), Void, (GLenum, GLenum, GLfloat), target, pname, param)
+	ccall((@windows? (:glTexParameterf, "opengl32"): @getFuncPointer("glTexParameterf")) , Void, (GLenum, GLenum, GLfloat), target, pname, param)
 end
 function glShaderBinary(count, shaders, binaryformat, binary, length)
 	ccall(@getFuncPointer("glShaderBinary"), Void, (GLsizei, Ptr{GLuint}, GLenum, Ptr{Void}, GLsizei), count, shaders, binaryformat, binary, length)
@@ -201,7 +201,7 @@ function glEndConditionalRender()
 	ccall(@getFuncPointer("glEndConditionalRender"), Void, (), )
 end
 function glFlush()
-	ccall(@getFuncPointer("glFlush"), Void, (), )
+	ccall((@windows? (:glFlush, "opengl32"): @getFuncPointer("glFlush")) , Void, (), )
 end
 function glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
 	ccall(@getFuncPointer("glBlendFuncSeparatei"), Void, (GLuint, GLenum, GLenum, GLenum, GLenum), buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
@@ -213,7 +213,7 @@ function glProgramUniform2ui(program, location, v0, v1)
 	ccall(@getFuncPointer("glProgramUniform2ui"), Void, (GLuint, GLint, GLuint, GLuint), program, location, v0, v1)
 end
 function glActiveTexture(texture)
-	ccall(@getFuncPointer("glActiveTexture"), Void, (GLenum,), texture)
+	ccall((@windows? (:glActiveTexture, "opengl32"): @getFuncPointer("glActiveTexture")) , Void, (GLenum,), texture)
 end
 function glSecondaryColorP3ui(type_, color)
 	ccall(@getFuncPointer("glSecondaryColorP3ui"), Void, (GLenum, GLuint), type_, color)
@@ -225,7 +225,7 @@ function glBlendEquationi(buf, mode)
 	ccall(@getFuncPointer("glBlendEquationi"), Void, (GLuint, GLenum), buf, mode)
 end
 function glPolygonOffset(factor, units)
-	ccall(@getFuncPointer("glPolygonOffset"), Void, (GLfloat, GLfloat), factor, units)
+	ccall((@windows? (:glPolygonOffset, "opengl32"): @getFuncPointer("glPolygonOffset")) , Void, (GLfloat, GLfloat), factor, units)
 end
 function glDetachShader(program, shader)
 	ccall(@getFuncPointer("glDetachShader"), Void, (GLuint, GLuint), program, shader)
@@ -234,13 +234,13 @@ function glUniform4uiv(location, count, value)
 	ccall(@getFuncPointer("glUniform4uiv"), Void, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
 end
 function glTexParameteriv(target, pname, params)
-	ccall(@getFuncPointer("glTexParameteriv"), Void, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+	ccall((@windows? (:glTexParameteriv, "opengl32"): @getFuncPointer("glTexParameteriv")) , Void, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 function glGetIntegerv(pname, params)
-	ccall(@getFuncPointer("glGetIntegerv"), Void, (GLenum, Ptr{GLint}), pname, params)
+	ccall((@windows? (:glGetIntegerv, "opengl32"): @getFuncPointer("glGetIntegerv")) , Void, (GLenum, Ptr{GLint}), pname, params)
 end
 function glEnable(cap)
-	ccall(@getFuncPointer("glEnable"), Void, (GLenum,), cap)
+	ccall((@windows? (:glEnable, "opengl32"): @getFuncPointer("glEnable")) , Void, (GLenum,), cap)
 end
 function glClearBufferData(target, internalformat, format, type_, data)
 	ccall(@getFuncPointer("glClearBufferData"), Void, (GLenum, GLenum, GLenum, GLenum, Ptr{Void}), target, internalformat, format, type_, data)
@@ -255,7 +255,7 @@ function glDepthRangeArrayv(first, count, v)
 	ccall(@getFuncPointer("glDepthRangeArrayv"), Void, (GLuint, GLsizei, Ptr{GLdouble}), first, count, v)
 end
 function glGetCompressedTexImage(target, level, img)
-	ccall(@getFuncPointer("glGetCompressedTexImage"), Void, (GLenum, GLint, Ptr{Void}), target, level, img)
+	ccall((@windows? (:glGetCompressedTexImage, "opengl32"): @getFuncPointer("glGetCompressedTexImage")) , Void, (GLenum, GLint, Ptr{Void}), target, level, img)
 end
 function glProgramUniformMatrix4x2fv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix4x2fv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
@@ -276,7 +276,7 @@ function glUniform4dv(location, count, value)
 	ccall(@getFuncPointer("glUniform4dv"), Void, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
 end
 function glGetDoublev(pname, params)
-	ccall(@getFuncPointer("glGetDoublev"), Void, (GLenum, Ptr{GLdouble}), pname, params)
+	ccall((@windows? (:glGetDoublev, "opengl32"): @getFuncPointer("glGetDoublev")) , Void, (GLenum, Ptr{GLdouble}), pname, params)
 end
 function glTexCoordP1uiv(type_, coords)
 	ccall(@getFuncPointer("glTexCoordP1uiv"), Void, (GLenum, Ptr{GLuint}), type_, coords)
@@ -291,7 +291,7 @@ function glUniformMatrix2x3dv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix2x3dv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 function glPixelStorei(pname, param)
-	ccall(@getFuncPointer("glPixelStorei"), Void, (GLenum, GLint), pname, param)
+	ccall((@windows? (:glPixelStorei, "opengl32"): @getFuncPointer("glPixelStorei")) , Void, (GLenum, GLint), pname, param)
 end
 function glUniform3ui(location, v0, v1, v2)
 	ccall(@getFuncPointer("glUniform3ui"), Void, (GLint, GLuint, GLuint, GLuint), location, v0, v1, v2)
@@ -333,7 +333,7 @@ function glLinkProgram(program)
 	ccall(@getFuncPointer("glLinkProgram"), Void, (GLuint,), program)
 end
 function glReadPixels(x, y, width, height, format, type_, pixels)
-	ccall(@getFuncPointer("glReadPixels"), Void, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), x, y, width, height, format, type_, pixels)
+	ccall((@windows? (:glReadPixels, "opengl32"): @getFuncPointer("glReadPixels")) , Void, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), x, y, width, height, format, type_, pixels)
 end
 function glCreateShaderProgramv(type_, count, strings)
 	ccall(@getFuncPointer("glCreateShaderProgramv"), Cuint, (GLenum, GLsizei, Ptr{Cuchar}), type_, count, strings)
@@ -354,7 +354,7 @@ function glUniform2dv(location, count, value)
 	ccall(@getFuncPointer("glUniform2dv"), Void, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
 end
 function glTexSubImage1D(target, level, xoffset, width, format, type_, pixels)
-	ccall(@getFuncPointer("glTexSubImage1D"), Void, (GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, width, format, type_, pixels)
+	ccall((@windows? (:glTexSubImage1D, "opengl32"): @getFuncPointer("glTexSubImage1D")) , Void, (GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, width, format, type_, pixels)
 end
 function glDispatchCompute(num_groups_x, num_groups_y, num_groups_z)
 	ccall(@getFuncPointer("glDispatchCompute"), Void, (GLuint, GLuint, GLuint), num_groups_x, num_groups_y, num_groups_z)
@@ -408,7 +408,7 @@ function glVertexP4ui(type_, value)
 	ccall(@getFuncPointer("glVertexP4ui"), Void, (GLenum, GLuint), type_, value)
 end
 function glFrontFace(mode)
-	ccall(@getFuncPointer("glFrontFace"), Void, (GLenum,), mode)
+	ccall((@windows? (:glFrontFace, "opengl32"): @getFuncPointer("glFrontFace")) , Void, (GLenum,), mode)
 end
 function glProgramUniform4i(program, location, v0, v1, v2, v3)
 	ccall(@getFuncPointer("glProgramUniform4i"), Void, (GLuint, GLint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2, v3)
@@ -420,10 +420,10 @@ function glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBin
 	ccall(@getFuncPointer("glShaderStorageBlockBinding"), Void, (GLuint, GLuint, GLuint), program, storageBlockIndex, storageBlockBinding)
 end
 function glClearStencil(s)
-	ccall(@getFuncPointer("glClearStencil"), Void, (GLint,), s)
+	ccall((@windows? (:glClearStencil, "opengl32"): @getFuncPointer("glClearStencil")) , Void, (GLint,), s)
 end
 function glBlendEquation(mode)
-	ccall(@getFuncPointer("glBlendEquation"), Void, (GLenum,), mode)
+	ccall((@windows? (:glBlendEquation, "opengl32"): @getFuncPointer("glBlendEquation")) , Void, (GLenum,), mode)
 end
 function glIsProgramPipeline(pipeline)
 	ccall(@getFuncPointer("glIsProgramPipeline"), Bool, (GLuint,), pipeline)
@@ -444,7 +444,7 @@ function glUniformMatrix4fv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix4fv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 function glBlendColor(red, green, blue, alpha)
-	ccall(@getFuncPointer("glBlendColor"), Void, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
+	ccall((@windows? (:glBlendColor, "opengl32"): @getFuncPointer("glBlendColor")) , Void, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
 end
 function glInvalidateTexImage(texture, level)
 	ccall(@getFuncPointer("glInvalidateTexImage"), Void, (GLuint, GLint), texture, level)
@@ -462,7 +462,7 @@ function glDrawElementsInstancedBaseInstance(mode, count, type_, indices, instan
 	ccall(@getFuncPointer("glDrawElementsInstancedBaseInstance"), Void, (GLenum, GLsizei, GLenum, Ptr{Void}, GLsizei, GLuint), mode, count, type_, indices, instancecount, baseinstance)
 end
 function glIndexub(c)
-	ccall(@getFuncPointer("glIndexub"), Void, (GLubyte,), c)
+	ccall((@windows? (:glIndexub, "opengl32"): @getFuncPointer("glIndexub")) , Void, (GLubyte,), c)
 end
 function glGenRenderbuffers(n, renderbuffers)
 	ccall(@getFuncPointer("glGenRenderbuffers"), Void, (GLsizei, Ptr{GLuint}), n, renderbuffers)
@@ -474,7 +474,7 @@ function glProgramUniformMatrix2x3dv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix2x3dv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 function glTexImage3D(target, level, internalformat, width, height, depth, border, format, type_, pixels)
-	ccall(@getFuncPointer("glTexImage3D"), Void, (GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, height, depth, border, format, type_, pixels)
+	ccall((@windows? (:glTexImage3D, "opengl32"): @getFuncPointer("glTexImage3D")) , Void, (GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, height, depth, border, format, type_, pixels)
 end
 function glGetVertexAttribfv(index, pname, params)
 	ccall(@getFuncPointer("glGetVertexAttribfv"), Void, (GLuint, GLenum, Ptr{GLfloat}), index, pname, params)
@@ -525,7 +525,7 @@ function glDrawArraysInstanced(mode, first, count, instancecount)
 	ccall(@getFuncPointer("glDrawArraysInstanced"), Void, (GLenum, GLint, GLsizei, GLsizei), mode, first, count, instancecount)
 end
 function glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data)
-	ccall(@getFuncPointer("glCompressedTexImage2D"), Void, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Void}), target, level, internalformat, width, height, border, imageSize, data)
+	ccall((@windows? (:glCompressedTexImage2D, "opengl32"): @getFuncPointer("glCompressedTexImage2D")) , Void, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Void}), target, level, internalformat, width, height, border, imageSize, data)
 end
 function glPushDebugGroup(source, id, length, message)
 	ccall(@getFuncPointer("glPushDebugGroup"), Void, (GLenum, GLuint, GLsizei, Ptr{GLchar}), source, id, length, message)
@@ -546,13 +546,13 @@ function glVertexAttribP2ui(index, type_, normalized, value)
 	ccall(@getFuncPointer("glVertexAttribP2ui"), Void, (GLuint, GLenum, GLboolean, GLuint), index, type_, normalized, value)
 end
 function glDrawArrays(mode, first, count)
-	ccall(@getFuncPointer("glDrawArrays"), Void, (GLenum, GLint, GLsizei), mode, first, count)
+	ccall((@windows? (:glDrawArrays, "opengl32"): @getFuncPointer("glDrawArrays")) , Void, (GLenum, GLint, GLsizei), mode, first, count)
 end
 function glGetActiveAttrib(program, index, bufSize, length, size, type_, name)
 	ccall(@getFuncPointer("glGetActiveAttrib"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type_, name)
 end
 function glCopyTexImage1D(target, level, internalformat, x, y, width, border)
-	ccall(@getFuncPointer("glCopyTexImage1D"), Void, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), target, level, internalformat, x, y, width, border)
+	ccall((@windows? (:glCopyTexImage1D, "opengl32"): @getFuncPointer("glCopyTexImage1D")) , Void, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), target, level, internalformat, x, y, width, border)
 end
 function glProgramUniform2f(program, location, v0, v1)
 	ccall(@getFuncPointer("glProgramUniform2f"), Void, (GLuint, GLint, GLfloat, GLfloat), program, location, v0, v1)
@@ -561,7 +561,7 @@ function glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstN
 	ccall(@getFuncPointer("glCopyImageSubData"), Void, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei), srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth)
 end
 function glGetError()
-	ccall(@getFuncPointer("glGetError"), Cint, (), )
+	ccall((@windows? (:glGetError, "opengl32"): @getFuncPointer("glGetError")) , Cint, (), )
 end
 function glNormalP3uiv(type_, coords)
 	ccall(@getFuncPointer("glNormalP3uiv"), Void, (GLenum, Ptr{GLuint}), type_, coords)
@@ -597,7 +597,7 @@ function glGenBuffers(n, buffers)
 	ccall(@getFuncPointer("glGenBuffers"), Void, (GLsizei, Ptr{GLuint}), n, buffers)
 end
 function glTexParameterfv(target, pname, params)
-	ccall(@getFuncPointer("glTexParameterfv"), Void, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
+	ccall((@windows? (:glTexParameterfv, "opengl32"): @getFuncPointer("glTexParameterfv")) , Void, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
 end
 function glGetSamplerParameteriv(sampler, pname, params)
 	ccall(@getFuncPointer("glGetSamplerParameteriv"), Void, (GLuint, GLenum, Ptr{GLint}), sampler, pname, params)
@@ -630,7 +630,7 @@ function glScissorIndexedv(index, v)
 	ccall(@getFuncPointer("glScissorIndexedv"), Void, (GLuint, Ptr{GLint}), index, v)
 end
 function glIsTexture(texture)
-	ccall(@getFuncPointer("glIsTexture"), Bool, (GLuint,), texture)
+	ccall((@windows? (:glIsTexture, "opengl32"): @getFuncPointer("glIsTexture")) , Bool, (GLuint,), texture)
 end
 function glDrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance)
 	ccall(@getFuncPointer("glDrawArraysInstancedBaseInstance"), Void, (GLenum, GLint, GLsizei, GLsizei, GLuint), mode, first, count, instancecount, baseinstance)
@@ -678,7 +678,7 @@ function glPointParameterf(pname, param)
 	ccall(@getFuncPointer("glPointParameterf"), Void, (GLenum, GLfloat), pname, param)
 end
 function glIndexubv(c)
-	ccall(@getFuncPointer("glIndexubv"), Void, (Ptr{GLubyte},), c)
+	ccall((@windows? (:glIndexubv, "opengl32"): @getFuncPointer("glIndexubv")) , Void, (Ptr{GLubyte},), c)
 end
 function glClearBufferiv(buffer, drawbuffer, value)
 	ccall(@getFuncPointer("glClearBufferiv"), Void, (GLenum, GLint, Ptr{GLint}), buffer, drawbuffer, value)
@@ -699,10 +699,10 @@ function glGetProgramResourceiv(program, programInterface, index, propCount, pro
 	ccall(@getFuncPointer("glGetProgramResourceiv"), Void, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLenum}, GLsizei, Ptr{GLsizei}, Ptr{GLint}), program, programInterface, index, propCount, props, bufSize, length, params)
 end
 function glViewport(x, y, width, height)
-	ccall(@getFuncPointer("glViewport"), Void, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
+	ccall((@windows? (:glViewport, "opengl32"): @getFuncPointer("glViewport")) , Void, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
 end
 function glTexImage1D(target, level, internalformat, width, border, format, type_, pixels)
-	ccall(@getFuncPointer("glTexImage1D"), Void, (GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, border, format, type_, pixels)
+	ccall((@windows? (:glTexImage1D, "opengl32"): @getFuncPointer("glTexImage1D")) , Void, (GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, border, format, type_, pixels)
 end
 function glUniform1uiv(location, count, value)
 	ccall(@getFuncPointer("glUniform1uiv"), Void, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
@@ -723,10 +723,10 @@ function glMultiDrawArrays(mode, first, count, drawcount)
 	ccall(@getFuncPointer("glMultiDrawArrays"), Void, (GLenum, Ptr{GLint}, Ptr{GLsizei}, GLsizei), mode, first, count, drawcount)
 end
 function glDrawBuffer(mode)
-	ccall(@getFuncPointer("glDrawBuffer"), Void, (GLenum,), mode)
+	ccall((@windows? (:glDrawBuffer, "opengl32"): @getFuncPointer("glDrawBuffer")) , Void, (GLenum,), mode)
 end
 function glLogicOp(opcode)
-	ccall(@getFuncPointer("glLogicOp"), Void, (GLenum,), opcode)
+	ccall((@windows? (:glLogicOp, "opengl32"): @getFuncPointer("glLogicOp")) , Void, (GLenum,), opcode)
 end
 function glObjectLabel(identifier, name, length, label)
 	ccall(@getFuncPointer("glObjectLabel"), Void, (GLenum, GLuint, GLsizei, Ptr{GLchar}), identifier, name, length, label)
@@ -744,7 +744,7 @@ function glGetProgramBinary(program, bufSize, length, binaryFormat, binary)
 	ccall(@getFuncPointer("glGetProgramBinary"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLenum}, Ptr{Void}), program, bufSize, length, binaryFormat, binary)
 end
 function glPointSize(size)
-	ccall(@getFuncPointer("glPointSize"), Void, (GLfloat,), size)
+	ccall((@windows? (:glPointSize, "opengl32"): @getFuncPointer("glPointSize")) , Void, (GLfloat,), size)
 end
 function glGetUniformfv(program, location, params)
 	ccall(@getFuncPointer("glGetUniformfv"), Void, (GLuint, GLint, Ptr{GLfloat}), program, location, params)
@@ -753,10 +753,10 @@ function glClearBufferfv(buffer, drawbuffer, value)
 	ccall(@getFuncPointer("glClearBufferfv"), Void, (GLenum, GLint, Ptr{GLfloat}), buffer, drawbuffer, value)
 end
 function glCopyTexSubImage1D(target, level, xoffset, x, y, width)
-	ccall(@getFuncPointer("glCopyTexSubImage1D"), Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei), target, level, xoffset, x, y, width)
+	ccall((@windows? (:glCopyTexSubImage1D, "opengl32"): @getFuncPointer("glCopyTexSubImage1D")) , Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei), target, level, xoffset, x, y, width)
 end
 function glIsEnabled(cap)
-	ccall(@getFuncPointer("glIsEnabled"), Bool, (GLenum,), cap)
+	ccall((@windows? (:glIsEnabled, "opengl32"): @getFuncPointer("glIsEnabled")) , Bool, (GLenum,), cap)
 end
 function glCreateShader(type_)
 	ccall(@getFuncPointer("glCreateShader"), Cuint, (GLenum,), type_)
@@ -765,7 +765,7 @@ function glTextureStorage2DEXT(texture, target, levels, internalformat, width, h
 	ccall(@getFuncPointer("glTextureStorage2DEXT"), Void, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei), texture, target, levels, internalformat, width, height)
 end
 function glPixelStoref(pname, param)
-	ccall(@getFuncPointer("glPixelStoref"), Void, (GLenum, GLfloat), pname, param)
+	ccall((@windows? (:glPixelStoref, "opengl32"): @getFuncPointer("glPixelStoref")) , Void, (GLenum, GLfloat), pname, param)
 end
 function glGetMultisamplefv(pname, index, val)
 	ccall(@getFuncPointer("glGetMultisamplefv"), Void, (GLenum, GLuint, Ptr{GLfloat}), pname, index, val)
@@ -786,7 +786,7 @@ function glMultiTexCoordP2ui(texture, type_, coords)
 	ccall(@getFuncPointer("glMultiTexCoordP2ui"), Void, (GLenum, GLenum, GLuint), texture, type_, coords)
 end
 function glDepthFunc(func_)
-	ccall(@getFuncPointer("glDepthFunc"), Void, (GLenum,), func_)
+	ccall((@windows? (:glDepthFunc, "opengl32"): @getFuncPointer("glDepthFunc")) , Void, (GLenum,), func_)
 end
 function glVertexAttribI4iv(index, v)
 	ccall(@getFuncPointer("glVertexAttribI4iv"), Void, (GLuint, Ptr{GLint}), index, v)
@@ -819,10 +819,10 @@ function glTexStorage1D(target, levels, internalformat, width)
 	ccall(@getFuncPointer("glTexStorage1D"), Void, (GLenum, GLsizei, GLenum, GLsizei), target, levels, internalformat, width)
 end
 function glBlendFunc(sfactor, dfactor)
-	ccall(@getFuncPointer("glBlendFunc"), Void, (GLenum, GLenum), sfactor, dfactor)
+	ccall((@windows? (:glBlendFunc, "opengl32"): @getFuncPointer("glBlendFunc")) , Void, (GLenum, GLenum), sfactor, dfactor)
 end
 function glGetBooleanv(pname, params)
-	ccall(@getFuncPointer("glGetBooleanv"), Void, (GLenum, Ptr{GLboolean}), pname, params)
+	ccall((@windows? (:glGetBooleanv, "opengl32"): @getFuncPointer("glGetBooleanv")) , Void, (GLenum, Ptr{GLboolean}), pname, params)
 end
 function glUniformMatrix3x4dv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix3x4dv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
@@ -831,7 +831,7 @@ function glGetObjectLabel(identifier, name, bufSize, length, label)
 	ccall(@getFuncPointer("glGetObjectLabel"), Void, (GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), identifier, name, bufSize, length, label)
 end
 function glSampleCoverage(value, invert)
-	ccall(@getFuncPointer("glSampleCoverage"), Void, (GLfloat, GLboolean), value, invert)
+	ccall((@windows? (:glSampleCoverage, "opengl32"): @getFuncPointer("glSampleCoverage")) , Void, (GLfloat, GLboolean), value, invert)
 end
 function glProgramUniformMatrix3x2fv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix3x2fv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
@@ -840,7 +840,7 @@ function glVertexAttribL2dv(index, v)
 	ccall(@getFuncPointer("glVertexAttribL2dv"), Void, (GLuint, Ptr{GLdouble}), index, v)
 end
 function glGetFloatv(pname, params)
-	ccall(@getFuncPointer("glGetFloatv"), Void, (GLenum, Ptr{GLfloat}), pname, params)
+	ccall((@windows? (:glGetFloatv, "opengl32"): @getFuncPointer("glGetFloatv")) , Void, (GLenum, Ptr{GLfloat}), pname, params)
 end
 function glProvokingVertex(mode)
 	ccall(@getFuncPointer("glProvokingVertex"), Void, (GLenum,), mode)
@@ -849,7 +849,7 @@ function glVertexAttribL3d(index, x, y, z)
 	ccall(@getFuncPointer("glVertexAttribL3d"), Void, (GLuint, GLdouble, GLdouble, GLdouble), index, x, y, z)
 end
 function glClearDepth(depth)
-	ccall(@getFuncPointer("glClearDepth"), Void, (GLdouble,), depth)
+	ccall((@windows? (:glClearDepth, "opengl32"): @getFuncPointer("glClearDepth")) , Void, (GLdouble,), depth)
 end
 function glInvalidateBufferData(buffer)
 	ccall(@getFuncPointer("glInvalidateBufferData"), Void, (GLuint,), buffer)
@@ -861,7 +861,7 @@ function glUniformMatrix3x2fv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix3x2fv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 function glDisable(cap)
-	ccall(@getFuncPointer("glDisable"), Void, (GLenum,), cap)
+	ccall((@windows? (:glDisable, "opengl32"): @getFuncPointer("glDisable")) , Void, (GLenum,), cap)
 end
 function glMultiDrawElementsIndirect(mode, type_, indirect, drawcount, stride)
 	ccall(@getFuncPointer("glMultiDrawElementsIndirect"), Void, (GLenum, GLenum, Ptr{Void}, GLsizei, GLsizei), mode, type_, indirect, drawcount, stride)
@@ -924,7 +924,7 @@ function glProgramUniform3ui(program, location, v0, v1, v2)
 	ccall(@getFuncPointer("glProgramUniform3ui"), Void, (GLuint, GLint, GLuint, GLuint, GLuint), program, location, v0, v1, v2)
 end
 function glTexParameteri(target, pname, param)
-	ccall(@getFuncPointer("glTexParameteri"), Void, (GLenum, GLenum, GLint), target, pname, param)
+	ccall((@windows? (:glTexParameteri, "opengl32"): @getFuncPointer("glTexParameteri")) , Void, (GLenum, GLenum, GLint), target, pname, param)
 end
 function glWaitSync(sync, flags, timeout)
 	ccall(@getFuncPointer("glWaitSync"), Void, (GLsync, GLbitfield, GLuint64), sync, flags, timeout)
@@ -945,7 +945,7 @@ function glProgramBinary(program, binaryFormat, binary, length)
 	ccall(@getFuncPointer("glProgramBinary"), Void, (GLuint, GLenum, Ptr{Void}, GLsizei), program, binaryFormat, binary, length)
 end
 function glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data)
-	ccall(@getFuncPointer("glCompressedTexImage1D"), Void, (GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Void}), target, level, internalformat, width, border, imageSize, data)
+	ccall((@windows? (:glCompressedTexImage1D, "opengl32"): @getFuncPointer("glCompressedTexImage1D")) , Void, (GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Void}), target, level, internalformat, width, border, imageSize, data)
 end
 function glTexCoordP2uiv(type_, coords)
 	ccall(@getFuncPointer("glTexCoordP2uiv"), Void, (GLenum, Ptr{GLuint}), type_, coords)
@@ -963,10 +963,10 @@ function glGetActiveSubroutineUniformiv(program, shadertype, index, pname, value
 	ccall(@getFuncPointer("glGetActiveSubroutineUniformiv"), Void, (GLuint, GLenum, GLuint, GLenum, Ptr{GLint}), program, shadertype, index, pname, values)
 end
 function glDepthMask(flag)
-	ccall(@getFuncPointer("glDepthMask"), Void, (GLboolean,), flag)
+	ccall((@windows? (:glDepthMask, "opengl32"): @getFuncPointer("glDepthMask")) , Void, (GLboolean,), flag)
 end
 function glPolygonMode(face, mode)
-	ccall(@getFuncPointer("glPolygonMode"), Void, (GLenum, GLenum), face, mode)
+	ccall((@windows? (:glPolygonMode, "opengl32"): @getFuncPointer("glPolygonMode")) , Void, (GLenum, GLenum), face, mode)
 end
 function glVertexAttribI3uiv(index, v)
 	ccall(@getFuncPointer("glVertexAttribI3uiv"), Void, (GLuint, Ptr{GLuint}), index, v)
@@ -987,10 +987,10 @@ function glViewportArrayv(first, count, v)
 	ccall(@getFuncPointer("glViewportArrayv"), Void, (GLuint, GLsizei, Ptr{GLfloat}), first, count, v)
 end
 function glDrawRangeElements(mode, start, END, count, type_, indices)
-	ccall(@getFuncPointer("glDrawRangeElements"), Void, (GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr{Void}), mode, start, END, count, type_, indices)
+	ccall((@windows? (:glDrawRangeElements, "opengl32"): @getFuncPointer("glDrawRangeElements")) , Void, (GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr{Void}), mode, start, END, count, type_, indices)
 end
 function glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height)
-	ccall(@getFuncPointer("glCopyTexSubImage3D"), Void, (GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, zoffset, x, y, width, height)
+	ccall((@windows? (:glCopyTexSubImage3D, "opengl32"): @getFuncPointer("glCopyTexSubImage3D")) , Void, (GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, zoffset, x, y, width, height)
 end
 function glStencilMaskSeparate(face, mask)
 	ccall(@getFuncPointer("glStencilMaskSeparate"), Void, (GLenum, GLuint), face, mask)
@@ -1071,10 +1071,10 @@ function glEndQuery(target)
 	ccall(@getFuncPointer("glEndQuery"), Void, (GLenum,), target)
 end
 function glStencilOp(fail, zfail, zpass)
-	ccall(@getFuncPointer("glStencilOp"), Void, (GLenum, GLenum, GLenum), fail, zfail, zpass)
+	ccall((@windows? (:glStencilOp, "opengl32"): @getFuncPointer("glStencilOp")) , Void, (GLenum, GLenum, GLenum), fail, zfail, zpass)
 end
 function glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data)
-	ccall(@getFuncPointer("glCompressedTexImage3D"), Void, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Void}), target, level, internalformat, width, height, depth, border, imageSize, data)
+	ccall((@windows? (:glCompressedTexImage3D, "opengl32"): @getFuncPointer("glCompressedTexImage3D")) , Void, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Void}), target, level, internalformat, width, height, depth, border, imageSize, data)
 end
 function glSampleMaski(index, mask)
 	ccall(@getFuncPointer("glSampleMaski"), Void, (GLuint, GLbitfield), index, mask)
@@ -1086,7 +1086,7 @@ function glVertexAttribI2i(index, x, y)
 	ccall(@getFuncPointer("glVertexAttribI2i"), Void, (GLuint, GLint, GLint), index, x, y)
 end
 function glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data)
-	ccall(@getFuncPointer("glCompressedTexSubImage2D"), Void, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Void}), target, level, xoffset, yoffset, width, height, format, imageSize, data)
+	ccall((@windows? (:glCompressedTexSubImage2D, "opengl32"): @getFuncPointer("glCompressedTexSubImage2D")) , Void, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Void}), target, level, xoffset, yoffset, width, height, format, imageSize, data)
 end
 function glGetVertexAttribPointerv(index, pname, pointer)
 	ccall(@getFuncPointer("glGetVertexAttribPointerv"), Void, (GLuint, GLenum, Ptr{Ptr{Void}}), index, pname, pointer)
@@ -1122,7 +1122,7 @@ function glSamplerParameterf(sampler, pname, param)
 	ccall(@getFuncPointer("glSamplerParameterf"), Void, (GLuint, GLenum, GLfloat), sampler, pname, param)
 end
 function glColorMask(red, green, blue, alpha)
-	ccall(@getFuncPointer("glColorMask"), Void, (GLboolean, GLboolean, GLboolean, GLboolean), red, green, blue, alpha)
+	ccall((@windows? (:glColorMask, "opengl32"): @getFuncPointer("glColorMask")) , Void, (GLboolean, GLboolean, GLboolean, GLboolean), red, green, blue, alpha)
 end
 function glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha)
 	ccall(@getFuncPointer("glBlendFuncSeparate"), Void, (GLenum, GLenum, GLenum, GLenum), sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha)
@@ -1158,19 +1158,19 @@ function glGetUniformiv(program, location, params)
 	ccall(@getFuncPointer("glGetUniformiv"), Void, (GLuint, GLint, Ptr{GLint}), program, location, params)
 end
 function glTexImage2D(target, level, internalformat, width, height, border, format, type_, pixels)
-	ccall(@getFuncPointer("glTexImage2D"), Void, (GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, height, border, format, type_, pixels)
+	ccall((@windows? (:glTexImage2D, "opengl32"): @getFuncPointer("glTexImage2D")) , Void, (GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, height, border, format, type_, pixels)
 end
 function glGetQueryObjecti64v(id, pname, params)
 	ccall(@getFuncPointer("glGetQueryObjecti64v"), Void, (GLuint, GLenum, Ptr{GLint64}), id, pname, params)
 end
 function glGetTexImage(target, level, format, type_, pixels)
-	ccall(@getFuncPointer("glGetTexImage"), Void, (GLenum, GLint, GLenum, GLenum, Ptr{Void}), target, level, format, type_, pixels)
+	ccall((@windows? (:glGetTexImage, "opengl32"): @getFuncPointer("glGetTexImage")) , Void, (GLenum, GLint, GLenum, GLenum, Ptr{Void}), target, level, format, type_, pixels)
 end
 function glGetTexLevelParameteriv(target, level, pname, params)
-	ccall(@getFuncPointer("glGetTexLevelParameteriv"), Void, (GLenum, GLint, GLenum, Ptr{GLint}), target, level, pname, params)
+	ccall((@windows? (:glGetTexLevelParameteriv, "opengl32"): @getFuncPointer("glGetTexLevelParameteriv")) , Void, (GLenum, GLint, GLenum, Ptr{GLint}), target, level, pname, params)
 end
 function glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type_, pixels)
-	ccall(@getFuncPointer("glTexSubImage2D"), Void, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, yoffset, width, height, format, type_, pixels)
+	ccall((@windows? (:glTexSubImage2D, "opengl32"): @getFuncPointer("glTexSubImage2D")) , Void, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, yoffset, width, height, format, type_, pixels)
 end
 function glDeleteVertexArrays(n, arrays)
 	ccall(@getFuncPointer("glDeleteVertexArrays"), Void, (GLsizei, Ptr{GLuint}), n, arrays)
@@ -1236,7 +1236,7 @@ function glVertexAttribFormat(attribindex, size, type_, normalized, relativeoffs
 	ccall(@getFuncPointer("glVertexAttribFormat"), Void, (GLuint, GLint, GLenum, GLboolean, GLuint), attribindex, size, type_, normalized, relativeoffset)
 end
 function glClearColor(red, green, blue, alpha)
-	ccall(@getFuncPointer("glClearColor"), Void, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
+	ccall((@windows? (:glClearColor, "opengl32"): @getFuncPointer("glClearColor")) , Void, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
 end
 function glIsFramebuffer(framebuffer)
 	ccall(@getFuncPointer("glIsFramebuffer"), Bool, (GLuint,), framebuffer)
@@ -1248,10 +1248,10 @@ function glUniform3i(location, v0, v1, v2)
 	ccall(@getFuncPointer("glUniform3i"), Void, (GLint, GLint, GLint, GLint), location, v0, v1, v2)
 end
 function glGetString(name)
-	ccall(@getFuncPointer("glGetString"), Ptr{Cuchar}, (GLenum,), name)
+	ccall((@windows? (:glGetString, "opengl32"): @getFuncPointer("glGetString")) , Ptr{Cuchar}, (GLenum,), name)
 end
 function glGenTextures(n, textures)
-	ccall(@getFuncPointer("glGenTextures"), Void, (GLsizei, Ptr{GLuint}), n, textures)
+	ccall((@windows? (:glGenTextures, "opengl32"): @getFuncPointer("glGenTextures")) , Void, (GLsizei, Ptr{GLuint}), n, textures)
 end
 function glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer)
 	ccall(@getFuncPointer("glFramebufferRenderbuffer"), Void, (GLenum, GLenum, GLenum, GLuint), target, attachment, renderbuffertarget, renderbuffer)
@@ -1290,7 +1290,7 @@ function glProgramUniform4iv(program, location, count, value)
 	ccall(@getFuncPointer("glProgramUniform4iv"), Void, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 function glHint(target, mode)
-	ccall(@getFuncPointer("glHint"), Void, (GLenum, GLenum), target, mode)
+	ccall((@windows? (:glHint, "opengl32"): @getFuncPointer("glHint")) , Void, (GLenum, GLenum), target, mode)
 end
 function glVertexArrayVertexAttribBindingEXT(vaobj, attribindex, bindingindex)
 	ccall(@getFuncPointer("glVertexArrayVertexAttribBindingEXT"), Void, (GLuint, GLuint, GLuint), vaobj, attribindex, bindingindex)
@@ -1302,7 +1302,7 @@ function glUniform1ui(location, v0)
 	ccall(@getFuncPointer("glUniform1ui"), Void, (GLint, GLuint), location, v0)
 end
 function glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels)
-	ccall(@getFuncPointer("glTexSubImage3D"), Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels)
+	ccall((@windows? (:glTexSubImage3D, "opengl32"): @getFuncPointer("glTexSubImage3D")) , Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels)
 end
 function glBeginConditionalRender(id, mode)
 	ccall(@getFuncPointer("glBeginConditionalRender"), Void, (GLuint, GLenum), id, mode)
@@ -1317,7 +1317,7 @@ function glMultiDrawArraysIndirect(mode, indirect, drawcount, stride)
 	ccall(@getFuncPointer("glMultiDrawArraysIndirect"), Void, (GLenum, Ptr{Void}, GLsizei, GLsizei), mode, indirect, drawcount, stride)
 end
 function glDepthRange(near_, far_)
-	ccall(@getFuncPointer("glDepthRange"), Void, (GLdouble, GLdouble), near_, far_)
+	ccall((@windows? (:glDepthRange, "opengl32"): @getFuncPointer("glDepthRange")) , Void, (GLdouble, GLdouble), near_, far_)
 end
 function glUniform2ui(location, v0, v1)
 	ccall(@getFuncPointer("glUniform2ui"), Void, (GLint, GLuint, GLuint), location, v0, v1)
@@ -1332,13 +1332,13 @@ function glMultiTexCoordP4ui(texture, type_, coords)
 	ccall(@getFuncPointer("glMultiTexCoordP4ui"), Void, (GLenum, GLenum, GLuint), texture, type_, coords)
 end
 function glGetTexParameterfv(target, pname, params)
-	ccall(@getFuncPointer("glGetTexParameterfv"), Void, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
+	ccall((@windows? (:glGetTexParameterfv, "opengl32"): @getFuncPointer("glGetTexParameterfv")) , Void, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
 end
 function glVertexArrayBindVertexBufferEXT(vaobj, bindingindex, buffer, offset, stride)
 	ccall(@getFuncPointer("glVertexArrayBindVertexBufferEXT"), Void, (GLuint, GLuint, GLuint, GLintptr, GLsizei), vaobj, bindingindex, buffer, offset, stride)
 end
 function glScissor(x, y, width, height)
-	ccall(@getFuncPointer("glScissor"), Void, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
+	ccall((@windows? (:glScissor, "opengl32"): @getFuncPointer("glScissor")) , Void, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
 end
 function glClearDepthf(d)
 	ccall(@getFuncPointer("glClearDepthf"), Void, (GLfloat,), d)
@@ -1356,13 +1356,13 @@ function glProgramUniform2iv(program, location, count, value)
 	ccall(@getFuncPointer("glProgramUniform2iv"), Void, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 function glStencilMask(mask)
-	ccall(@getFuncPointer("glStencilMask"), Void, (GLuint,), mask)
+	ccall((@windows? (:glStencilMask, "opengl32"): @getFuncPointer("glStencilMask")) , Void, (GLuint,), mask)
 end
 function glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height)
-	ccall(@getFuncPointer("glCopyTexSubImage2D"), Void, (GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, x, y, width, height)
+	ccall((@windows? (:glCopyTexSubImage2D, "opengl32"): @getFuncPointer("glCopyTexSubImage2D")) , Void, (GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, x, y, width, height)
 end
 function glGetTexLevelParameterfv(target, level, pname, params)
-	ccall(@getFuncPointer("glGetTexLevelParameterfv"), Void, (GLenum, GLint, GLenum, Ptr{GLfloat}), target, level, pname, params)
+	ccall((@windows? (:glGetTexLevelParameterfv, "opengl32"): @getFuncPointer("glGetTexLevelParameterfv")) , Void, (GLenum, GLint, GLenum, Ptr{GLfloat}), target, level, pname, params)
 end
 function glColorMaski(index, r, g, b, a)
 	ccall(@getFuncPointer("glColorMaski"), Void, (GLuint, GLboolean, GLboolean, GLboolean, GLboolean), index, r, g, b, a)
@@ -1392,7 +1392,7 @@ function glGenVertexArrays(n, arrays)
 	ccall(@getFuncPointer("glGenVertexArrays"), Void, (GLsizei, Ptr{GLuint}), n, arrays)
 end
 function glStencilFunc(func_, ref, mask)
-	ccall(@getFuncPointer("glStencilFunc"), Void, (GLenum, GLint, GLuint), func_, ref, mask)
+	ccall((@windows? (:glStencilFunc, "opengl32"): @getFuncPointer("glStencilFunc")) , Void, (GLenum, GLint, GLuint), func_, ref, mask)
 end
 function glGetInternalformativ(target, internalformat, pname, bufSize, params)
 	ccall(@getFuncPointer("glGetInternalformativ"), Void, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLint}), target, internalformat, pname, bufSize, params)
@@ -1416,13 +1416,13 @@ function glUniformMatrix4x2fv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix4x2fv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 function glDeleteTextures(n, textures)
-	ccall(@getFuncPointer("glDeleteTextures"), Void, (GLsizei, Ptr{GLuint}), n, textures)
+	ccall((@windows? (:glDeleteTextures, "opengl32"): @getFuncPointer("glDeleteTextures")) , Void, (GLsizei, Ptr{GLuint}), n, textures)
 end
 function glProgramUniformMatrix4dv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix4dv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 function glCullFace(mode)
-	ccall(@getFuncPointer("glCullFace"), Void, (GLenum,), mode)
+	ccall((@windows? (:glCullFace, "opengl32"): @getFuncPointer("glCullFace")) , Void, (GLenum,), mode)
 end
 function glProgramUniformMatrix3x2dv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix3x2dv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
@@ -1434,10 +1434,10 @@ function glClearBufferSubData(target, internalformat, offset, size, format, type
 	ccall(@getFuncPointer("glClearBufferSubData"), Void, (GLenum, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, Ptr{Void}), target, internalformat, offset, size, format, type_, data)
 end
 function glLineWidth(width)
-	ccall(@getFuncPointer("glLineWidth"), Void, (GLfloat,), width)
+	ccall((@windows? (:glLineWidth, "opengl32"): @getFuncPointer("glLineWidth")) , Void, (GLfloat,), width)
 end
 function glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
-	ccall(@getFuncPointer("glCompressedTexSubImage3D"), Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Void}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
+	ccall((@windows? (:glCompressedTexSubImage3D, "opengl32"): @getFuncPointer("glCompressedTexSubImage3D")) , Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Void}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
 end
 function glVertexArrayVertexBindingDivisorEXT(vaobj, bindingindex, divisor)
 	ccall(@getFuncPointer("glVertexArrayVertexBindingDivisorEXT"), Void, (GLuint, GLuint, GLuint), vaobj, bindingindex, divisor)
@@ -1572,7 +1572,7 @@ function glViewportIndexedf(index, x, y, w, h)
 	ccall(@getFuncPointer("glViewportIndexedf"), Void, (GLuint, GLfloat, GLfloat, GLfloat, GLfloat), index, x, y, w, h)
 end
 function glDrawElements(mode, count, type_, indices)
-	ccall(@getFuncPointer("glDrawElements"), Void, (GLenum, GLsizei, GLenum, Ptr{Void}), mode, count, type_, indices)
+	ccall((@windows? (:glDrawElements, "opengl32"): @getFuncPointer("glDrawElements")) , Void, (GLenum, GLsizei, GLenum, Ptr{Void}), mode, count, type_, indices)
 end
 function glVertexAttribI1ui(index, x)
 	ccall(@getFuncPointer("glVertexAttribI1ui"), Void, (GLuint, GLuint), index, x)
@@ -1599,7 +1599,7 @@ function glVertexBindingDivisor(bindingindex, divisor)
 	ccall(@getFuncPointer("glVertexBindingDivisor"), Void, (GLuint, GLuint), bindingindex, divisor)
 end
 function glCopyTexImage2D(target, level, internalformat, x, y, width, height, border)
-	ccall(@getFuncPointer("glCopyTexImage2D"), Void, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), target, level, internalformat, x, y, width, height, border)
+	ccall((@windows? (:glCopyTexImage2D, "opengl32"): @getFuncPointer("glCopyTexImage2D")) , Void, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), target, level, internalformat, x, y, width, height, border)
 end
 function glDeleteSamplers(count, samplers)
 	ccall(@getFuncPointer("glDeleteSamplers"), Void, (GLsizei, Ptr{GLuint}), count, samplers)
@@ -1617,7 +1617,7 @@ function glGetSamplerParameterIuiv(sampler, pname, params)
 	ccall(@getFuncPointer("glGetSamplerParameterIuiv"), Void, (GLuint, GLenum, Ptr{GLuint}), sampler, pname, params)
 end
 function glGetTexParameteriv(target, pname, params)
-	ccall(@getFuncPointer("glGetTexParameteriv"), Void, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+	ccall((@windows? (:glGetTexParameteriv, "opengl32"): @getFuncPointer("glGetTexParameteriv")) , Void, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 function glVertexAttribIFormat(attribindex, size, type_, relativeoffset)
 	ccall(@getFuncPointer("glVertexAttribIFormat"), Void, (GLuint, GLint, GLenum, GLuint), attribindex, size, type_, relativeoffset)
