@@ -1,4 +1,3 @@
-using Enums
 @GenEnums begin
 GLENUM
 const GL_MAP1_GRID_SEGMENTS                                           = convert(GLenum, 0x0DD1)

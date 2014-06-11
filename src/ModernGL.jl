@@ -1,5 +1,4 @@
 module ModernGL
-using Enums
 
 function getprocaddress(glFuncName::String)
     @linux? (
@@ -49,8 +48,9 @@ macro GenEnums(list)
             end
         end
         $(enumName){T}(number::T) = $(enumName){T}(number)
+
     end
-    esc(Expr(:block, enumtype, tmp...))
+    esc(Expr(:block, enumtype, tmp..., Expr(:export, :($(enumName)))))
 end
 
 macro getFuncPointer(func)
