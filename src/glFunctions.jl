@@ -809,6 +809,10 @@ end
 function glDebugMessageCallback(callback, userParam)
 	ccall(@getFuncPointer("glDebugMessageCallback"), Void, (Ptr{Void}, Ptr{Void}), callback, userParam)
 end
+export glDebugMessageCallbackARB
+function glDebugMessageCallbackARB(callback, userParam)
+	ccall(@getFuncPointer("glDebugMessageCallback"), Void, (Ptr{Void}, Ptr{Void}), callback, userParam)
+end
 function glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth)
 	ccall(@getFuncPointer("glInvalidateTexSubImage"), Void, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei), texture, level, xoffset, yoffset, zoffset, width, height, depth)
 end
@@ -1089,7 +1093,7 @@ function glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, heigh
 	ccall((@windows? (:glCompressedTexSubImage2D, "opengl32"): @getFuncPointer("glCompressedTexSubImage2D")) , Void, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Void}), target, level, xoffset, yoffset, width, height, format, imageSize, data)
 end
 function glGetVertexAttribPointerv(index, pname, pointer)
-	ccall(@getFuncPointer("glGetVertexAttribPointerv"), Void, (GLuint, GLenum, Ptr{Ptr{Void}}), index, pname, pointer)
+	ccall(@getFuncPointer("glGetVertexAttribPointerv"), Void, (GLuint, GLenum, Ptr{Ptr{Void}}), index, pname, pointer)glFramebufferRenderbuffer
 end
 function glDeleteFramebuffers(n, framebuffers)
 	ccall(@getFuncPointer("glDeleteFramebuffers"), Void, (GLsizei, Ptr{GLuint}), n, framebuffers)

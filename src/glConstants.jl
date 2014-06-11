@@ -1,4 +1,6 @@
-#constants
+using Enums
+@GenEnums begin
+GLENUM
 const GL_MAP1_GRID_SEGMENTS                                           = convert(GLenum, 0x0DD1)
 const GL_COMPILE                                                      = convert(GLenum, 0x1300)
 const GL_SAMPLER_3D                                                   = convert(GLenum, 0x8B5F)
@@ -1691,6 +1693,8 @@ const GL_ORDER                                                        = convert(
 const GL_PIXEL_MAP_I_TO_I_SIZE                                        = convert(GLenum, 0x0CB0)
 const GL_DRAW_BUFFER8                                                 = convert(GLenum, 0x882D)
 const GL_PIXEL_MAP_I_TO_A                                             = convert(GLenum, 0x0C75)
+end #Enum macro end
+
 export GL_MAP1_GRID_SEGMENTS
 export GL_COMPILE
 export GL_SAMPLER_3D
