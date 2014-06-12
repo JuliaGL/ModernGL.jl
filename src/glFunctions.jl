@@ -213,7 +213,7 @@ function glProgramUniform2ui(program, location, v0, v1)
 	ccall(@getFuncPointer("glProgramUniform2ui"), Void, (GLuint, GLint, GLuint, GLuint), program, location, v0, v1)
 end
 function glActiveTexture(texture)
-	ccall((@windows? (:glActiveTexture, "opengl32"): @getFuncPointer("glActiveTexture")) , Void, (GLenum,), texture)
+	ccall( @getFuncPointer("glActiveTexture") , Void, (GLenum,), texture)
 end
 function glSecondaryColorP3ui(type_, color)
 	ccall(@getFuncPointer("glSecondaryColorP3ui"), Void, (GLenum, GLuint), type_, color)
@@ -474,7 +474,7 @@ function glProgramUniformMatrix2x3dv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix2x3dv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 function glTexImage3D(target, level, internalformat, width, height, depth, border, format, type_, pixels)
-	ccall((@windows? (:glTexImage3D, "opengl32"): @getFuncPointer("glTexImage3D")) , Void, (GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, height, depth, border, format, type_, pixels)
+	ccall(@getFuncPointer("glTexImage3D") , Void, (GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Void}), target, level, internalformat, width, height, depth, border, format, type_, pixels)
 end
 function glGetVertexAttribfv(index, pname, params)
 	ccall(@getFuncPointer("glGetVertexAttribfv"), Void, (GLuint, GLenum, Ptr{GLfloat}), index, pname, params)
