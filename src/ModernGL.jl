@@ -93,7 +93,41 @@ macro getFuncPointer(func)
 end
 
 include("glTypes.jl")
-include("glFunctions.jl")
 include("glConstants.jl")
+
+function glErrorString(err)
+    if err == GL_NO_ERROR
+        return "No error has been recorded. The value of this symbolic constant is guaranteed to be 0."
+    elseif err == GL_INVALID_ENUM
+        return "An unacceptable value is specified for an enumerated argument."
+    elseif err == GL_INVALID_VALUE
+        return "A numeric argument is out of range."
+    elseif err == GL_INVALID_OPERATION
+        return "The specified operation is not allowed in the current state."
+    elseif err == GL_INVALID_FRAMEBUFFER_OPERATION
+        return "The framebuffer object is not complete."
+    elseif err == GL_OUT_OF_MEMORY
+        return "There is not enough memory left to execute the command."
+    elseif err == GL_STACK_UNDERFLOW
+        return "An attempt has been made to perform an operation that would cause an internal stack to underflow."
+    elseif err == GL_STACK_OVERFLOW
+        return "An attempt has been made to perform an operation that would cause an internal stack to overflow."
+    else
+        return "Unknown Error!"
+    end
+end
+
+macro glCheckError(expr)
+    quote
+        r = $expr
+        if r == C_NULL
+            error(glErrorString(glGetError()))
+        end
+        r
+    end
+end
+
+include("glFunctions.jl")
+
 
 end # module

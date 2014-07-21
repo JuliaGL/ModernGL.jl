@@ -1252,7 +1252,7 @@ function glUniform3i(location, v0, v1, v2)
 	ccall(@getFuncPointer("glUniform3i"), Void, (GLint, GLint, GLint, GLint), location, v0, v1, v2)
 end
 function glGetString(name)
-	ccall((@windows? (:glGetString, "opengl32"): @getFuncPointer("glGetString")) , Ptr{Cuchar}, (GLenum,), name)
+	@glCheckError ccall((@windows? (:glGetString, "opengl32"): @getFuncPointer("glGetString")) , Ptr{Cuchar}, (GLenum,), name)
 end
 function glGenTextures(n, textures)
 	ccall((@windows? (:glGenTextures, "opengl32"): @getFuncPointer("glGenTextures")) , Void, (GLsizei, Ptr{GLuint}), n, textures)
@@ -1315,7 +1315,7 @@ function glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, par
 	ccall(@getFuncPointer("glGetActiveUniformsiv"), Void, (GLuint, GLsizei, Ptr{GLuint}, GLenum, Ptr{GLint}), program, uniformCount, uniformIndices, pname, params)
 end
 function glGetStringi(name, index)
-	ccall(@getFuncPointer("glGetStringi"), Ptr{Cuchar}, (GLenum, GLuint), name, index)
+	@glCheckError ccall(@getFuncPointer("glGetStringi"), Ptr{Cuchar}, (GLenum, GLuint), name, index)
 end
 function glMultiDrawArraysIndirect(mode, indirect, drawcount, stride)
 	ccall(@getFuncPointer("glMultiDrawArraysIndirect"), Void, (GLenum, Ptr{Void}, GLsizei, GLsizei), mode, indirect, drawcount, stride)
