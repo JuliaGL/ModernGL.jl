@@ -19,7 +19,7 @@ typealias GLhalf                                                      Cushort
 typealias GLenum                                                      Cuint
 typealias GLboolean                                                   Cuchar
 typealias GLclampf                                                    Cfloat
-typealias GLsizei                                                     Csize_t
+typealias GLsizei                                                     Cint
 typealias GLsync                                                      Ptr{Void}
 typealias GLuint64                                                    Culonglong
 typealias GLclampd                                                    Cdouble
