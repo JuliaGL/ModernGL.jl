@@ -1158,6 +1158,10 @@ end
 function glDrawElementsInstanced(mode, count, type_, indices, instancecount)
 	ccall(@getFuncPointer("glDrawElementsInstanced"), Void, (GLenum, GLsizei, GLenum, Ptr{Void}, GLsizei), mode, count, type_, indices, instancecount)
 end
+function glDrawElementsInstancedEXT(mode, count, type_, indices, instancecount)
+	ccall(@getFuncPointer("glDrawElementsInstancedEXT"), Void, (GLenum, GLsizei, GLenum, Ptr{Void}, GLsizei), mode, count, type_, indices, instancecount)
+end
+export glDrawElementsInstancedEXT
 function glGetUniformiv(program, location, params)
 	ccall(@getFuncPointer("glGetUniformiv"), Void, (GLuint, GLint, Ptr{GLint}), program, location, params)
 end
