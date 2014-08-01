@@ -47,6 +47,40 @@ function getprocaddress(glFuncName::ASCIIString)
         )
     )
 end
+
+# Test, if an opengl function is available.
+# Sadly, this doesn't work for Linux, as glxGetProcAddress 
+# always returns a non null function pointer, as the function pointers are not depending on an active context.
+#
+
+function isavailable(name::Symbol)
+    ptr = ModernGL.getprocaddress(ascii(string(name)))
+    return isavailable(ptr)
+end
+function isavailable(ptr::Ptr{Void})
+    return !(
+        ptr == C_NULL || 
+        ptr == convert(Ptr{Void}, -1) || 
+        ptr == convert(Ptr{Void},  1) || 
+        ptr == convert(Ptr{Void},  2) || 
+        ptr == convert(Ptr{Void},  3))
+end
+
+macro getFuncPointer(func)
+    z = gensym(func)
+    @eval global $z = C_NULL
+    quote begin
+        global $z
+        if $z::Ptr{Void} == C_NULL
+            $z::Ptr{Void} = getprocaddress($(func))
+            if !isavailable($z)
+               error($(func), " not available for your driver, or OpenGL no valid OpenGL context available")
+            end
+        end
+        $z::Ptr{Void}
+    end end
+end
+
 abstract Enum
 macro GenEnums(list)
     tmp = list.args
@@ -77,20 +111,6 @@ macro GenEnums(list)
     esc(Expr(:block, enumtype, tmp..., Expr(:export, :($(enumName)))))
 end
 
-macro getFuncPointer(func)
-    z = gensym(func)
-    @eval global $z = C_NULL
-    quote begin
-        global $z
-        if $z::Ptr{Void} == C_NULL
-            $z::Ptr{Void} = getprocaddress($(func))
-            if $z::Ptr{Void} == C_NULL
-                println("warning: ", $(func), "not available for your driver, or OpenGL context not initialized")
-            end
-        end
-        $z::Ptr{Void}
-    end end
-end
 
 include("glTypes.jl")
 include("glFunctions.jl")
