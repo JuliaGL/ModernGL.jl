@@ -74,7 +74,7 @@ macro getFuncPointer(func)
         if $z::Ptr{Void} == C_NULL
             $z::Ptr{Void} = getprocaddress($(func))
             if !isavailable($z)
-               error($(func), " not available for your driver, or OpenGL no valid OpenGL context available")
+               error($(func), " not available for your driver, or no valid OpenGL context available")
             end
         end
         $z::Ptr{Void}
