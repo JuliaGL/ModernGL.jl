@@ -121,14 +121,14 @@ function createcontextinfo()
 		glsl = VersionNumber(int(glsl[1]), int(glsl[2])) 
 		GLSL_VERSION = string(glsl.major) * rpad(string(glsl.minor),2,"0")
 	else
-		error("Unexpected version number string. Please report this bug! Version string: $(glsl)")
+		error("Unexpected version number string. Please report this bug! GLSL version string: $(glsl)")
 	end
 
 	glv = split(bytestring(glGetString(GL_VERSION)), ['.', ' '])
 	if length(glv) >= 2
 		glv = VersionNumber(int(glv[1]), int(glv[2])) 
 	else
-		error("Unexpected version number string. Please report this bug! Version string: $(glsl)")
+		error("Unexpected version number string. Please report this bug! OpenGL version string: $(glv)")
 	end
 	dict = (Symbol => Any)[]
 	dict[:glsl_version] 	= glsl
