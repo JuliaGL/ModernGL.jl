@@ -175,7 +175,7 @@ glEnableVertexAttribArray(positionAttribute)
 glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, 0)
 t = 0
 # Loop until the user closes the window
-while !GLFW.WindowShouldClose(window)
+for i=1:100
 # Pulse the background blue
 t += 1
 glClearColor(0.0, 0.0, 0.5 * (1 + sin(t * 0.02)), 1.0)
