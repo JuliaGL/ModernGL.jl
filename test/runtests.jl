@@ -121,14 +121,14 @@ function createcontextinfo()
 		glsl = VersionNumber(int(glsl[1]), int(glsl[2])) 
 		GLSL_VERSION = string(glsl.major) * rpad(string(glsl.minor),2,"0")
 	else
-		error("Unexpected version number string. Please report this bug! Version string: $(glsl)")
+		error("Unexpected version number string. Please report this bug! GLSL version string: $(glsl)")
 	end
 
 	glv = split(bytestring(glGetString(GL_VERSION)), ['.', ' '])
 	if length(glv) >= 2
 		glv = VersionNumber(int(glv[1]), int(glv[2])) 
 	else
-		error("Unexpected version number string. Please report this bug! Version string: $(glsl)")
+		error("Unexpected version number string. Please report this bug! OpenGL version string: $(glv)")
 	end
 	dict = (Symbol => Any)[]
 	dict[:glsl_version] 	= glsl
@@ -148,11 +148,13 @@ end
 GLFW.Init()
  
 # OS X-specific GLFW hints to initialize the correct version of OpenGL
+@osx_only begin
     GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3)
     GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2)
     GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE)
     GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, GL_TRUE)
- 
+end
+
 # Create a windowed mode window and its OpenGL context
 window = GLFW.CreateWindow(600, 600, "OpenGL Example")
  
