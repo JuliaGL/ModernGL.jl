@@ -12,6 +12,11 @@ before_install:
   - sudo add-apt-repository ppa:staticfloat/${JULIAVERSION} -y
   - sudo apt-get update -qq -y
   - sudo apt-get install libpcre3-dev julia -y
+  - sudo apt-get install libXxf86vm-dev # GLFW dependencies
+  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+before_script:
+ - "export DISPLAY=:99.0"
+ - "sh -e /etc/init.d/xvfb start"
 script:
   - julia -e 'Pkg.init(); Pkg.clone(pwd()); Pkg.test("ModernGL",coverage=true)'
 after_success:
