@@ -57,11 +57,7 @@ function glCheckError(actionName="")
 	end
 end
 function createShader(source, typ)
-	if "TRAVIS" in keys(ENV)
-		warn("Shader test not enabled on Travis!")
-		return
-	end
-# Create the shader
+	# Create the shader
 	shader = glCreateShader(typ)::GLuint
 	if shader == 0
 		error("Error creating shader: ", glErrorMessage())
@@ -170,13 +166,18 @@ void main() {
 outColor = vec4(1.0, 1.0, 1.0, 1.0);
 }
 """
-vertexShader = createShader(vsh, GL_VERTEX_SHADER)
-fragmentShader = createShader(fsh, GL_FRAGMENT_SHADER)
-program = createShaderProgram(vertexShader, fragmentShader)
-glUseProgram(program)
-positionAttribute = glGetAttribLocation(program, "position");
-glEnableVertexAttribArray(positionAttribute)
-glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, 0)
+if "TRAVIS" in keys(ENV)
+	warn("Shader test not enabled on Travis!")
+	return
+else
+	vertexShader = createShader(vsh, GL_VERTEX_SHADER)
+	fragmentShader = createShader(fsh, GL_FRAGMENT_SHADER)
+	program = createShaderProgram(vertexShader, fragmentShader)
+	glUseProgram(program)
+	positionAttribute = glGetAttribLocation(program, "position");
+	glEnableVertexAttribArray(positionAttribute)
+	glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, 0)
+end
 t = 0
 # Loop until the user closes the window
 for i=1:100
