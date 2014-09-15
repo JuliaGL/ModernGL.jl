@@ -12,8 +12,8 @@ before_install:
   - sudo add-apt-repository ppa:staticfloat/${JULIAVERSION} -y
   - sudo apt-get update -qq -y
   - sudo apt-get install libpcre3-dev julia -y
-  - sudo apt-get install xorg-dev libglu1-mesa-dev
-  - sudo apt-get install xvfb -y
+  - sudo apt-get install libXxf86vm-dev # GLFW dependencies
+  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
 before_script:
  - "export DISPLAY=:99.0"
  - "sh -e /etc/init.d/xvfb start"
