@@ -13,4 +13,6 @@ before_install:
   - sudo apt-get update -qq -y
   - sudo apt-get install libpcre3-dev julia -y
 script:
-  - julia -e 'Pkg.init(); Pkg.clone(pwd()); Pkg.test("ModernGL")'
+  - julia -e 'Pkg.init(); Pkg.clone(pwd()); Pkg.test("ModernGL",coverage=true)'
+after_success:
+  - julia -e 'cd(Pkg.dir("ModernGL")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
