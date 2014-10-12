@@ -60,7 +60,6 @@ end
 function isavailable(ptr::Ptr{Void})
     return !(
         ptr == C_NULL || 
-        ptr == convert(Ptr{Void}, -1) || 
         ptr == convert(Ptr{Void},  1) || 
         ptr == convert(Ptr{Void},  2) || 
         ptr == convert(Ptr{Void},  3))
