@@ -423,7 +423,7 @@ function glClearStencil(s)
 	ccall((@windows? (:glClearStencil, "opengl32"): @getFuncPointer("glClearStencil")) , Void, (GLint,), s)
 end
 function glBlendEquation(mode)
-	ccall((@windows? (:glBlendEquation, "opengl32"): @getFuncPointer("glBlendEquation")) , Void, (GLenum,), mode)
+	ccall(@getFuncPointer("glBlendEquation"), Void, (GLenum,), mode)
 end
 function glIsProgramPipeline(pipeline)
 	ccall(@getFuncPointer("glIsProgramPipeline"), Bool, (GLuint,), pipeline)
