@@ -1310,7 +1310,7 @@ function glUniform1ui(location, v0)
 	ccall(@getFuncPointer("glUniform1ui"), Void, (GLint, GLuint), location, v0)
 end
 function glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels)
-	ccall((@windows? (:glTexSubImage3D, "opengl32"): @getFuncPointer("glTexSubImage3D")) , Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels)
+	ccall(@getFuncPointer("glTexSubImage3D"), Void, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, type_, pixels)
 end
 function glBeginConditionalRender(id, mode)
 	ccall(@getFuncPointer("glBeginConditionalRender"), Void, (GLuint, GLenum), id, mode)
