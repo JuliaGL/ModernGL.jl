@@ -63,7 +63,7 @@ function glBindTransformFeedback(target, id)
 	ccall(@getFuncPointer("glBindTransformFeedback"), Void, (GLenum, GLuint), target, id)
 end
 function glShaderSource(shader, count, string_, length)
-	ccall(@getFuncPointer("glShaderSource"), Void, (GLuint, GLsizei, Ptr{Uint8}, Ptr{GLint}), shader, count, string_, length)
+	ccall(@getFuncPointer("glShaderSource"), Void, (GLuint, GLsizei, Ptr{Ptr{Cuchar}}, Ptr{GLint}), shader, count, string_, length)
 end
 function glUniform2iv(location, count, value)
 	ccall(@getFuncPointer("glUniform2iv"), Void, (GLint, GLsizei, Ptr{GLint}), location, count, value)
@@ -132,7 +132,7 @@ function glPopDebugGroup()
 	ccall(@getFuncPointer("glPopDebugGroup"), Void, (), )
 end
 function glGetShaderSource(shader, bufSize, length, source)
-	ccall(@getFuncPointer("glGetShaderSource"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), shader, bufSize, length, source)
+	ccall(@getFuncPointer("glGetShaderSource"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), shader, bufSize, length, source)
 end
 function glIsBuffer(buffer)
 	ccall(@getFuncPointer("glIsBuffer"), Bool, (GLuint,), buffer)
@@ -324,7 +324,7 @@ function glVertexAttribI4sv(index, v)
 	ccall(@getFuncPointer("glVertexAttribI4sv"), Void, (GLuint, Ptr{GLshort}), index, v)
 end
 function glGetActiveSubroutineName(program, shadertype, index, bufsize, length, name)
-	ccall(@getFuncPointer("glGetActiveSubroutineName"), Void, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, shadertype, index, bufsize, length, name)
+	ccall(@getFuncPointer("glGetActiveSubroutineName"), Void, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), program, shadertype, index, bufsize, length, name)
 end
 function glCompileShader(shader)
 	ccall(@getFuncPointer("glCompileShader"), Void, (GLuint,), shader)
@@ -369,7 +369,7 @@ function glUniform4fv(location, count, value)
 	ccall(@getFuncPointer("glUniform4fv"), Void, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
 end
 function glGetProgramResourceLocation(program, programCinterface, name)
-	ccall(@getFuncPointer("glGetProgramResourceLocation"), Cint, (GLuint, GLenum, Ptr{GLchar}), program, programCinterface, name)
+	ccall(@getFuncPointer("glGetProgramResourceLocation"), Cint, (GLuint, GLenum, Ptr{Cuchar}), program, programCinterface, name)
 end
 function glVertexArrayVertexAttribLFormatEXT(vaobj, attribindex, size, type_, relativeoffset)
 	ccall(@getFuncPointer("glVertexArrayVertexAttribLFormatEXT"), Void, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type_, relativeoffset)
@@ -402,7 +402,7 @@ function glMultiTexCoordP3uiv(texture, type_, coords)
 	ccall(@getFuncPointer("glMultiTexCoordP3uiv"), Void, (GLenum, GLenum, Ptr{GLuint}), texture, type_, coords)
 end
 function glGetProgramResourceName(program, programInterface, index, bufSize, length, name)
-	ccall(@getFuncPointer("glGetProgramResourceName"), Void, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, programInterface, index, bufSize, length, name)
+	ccall(@getFuncPointer("glGetProgramResourceName"), Void, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), program, programInterface, index, bufSize, length, name)
 end
 function glVertexP4ui(type_, value)
 	ccall(@getFuncPointer("glVertexP4ui"), Void, (GLenum, GLuint), type_, value)
@@ -450,7 +450,7 @@ function glInvalidateTexImage(texture, level)
 	ccall(@getFuncPointer("glInvalidateTexImage"), Void, (GLuint, GLint), texture, level)
 end
 function glGetSubroutineIndex(program, shadertype, name)
-	ccall(@getFuncPointer("glGetSubroutineIndex"), Cuint, (GLuint, GLenum, Ptr{GLchar}), program, shadertype, name)
+	ccall(@getFuncPointer("glGetSubroutineIndex"), Cuint, (GLuint, GLenum, Ptr{Cuchar}), program, shadertype, name)
 end
 function glVertexAttribL3dv(index, v)
 	ccall(@getFuncPointer("glVertexAttribL3dv"), Void, (GLuint, Ptr{GLdouble}), index, v)
@@ -510,13 +510,13 @@ function glProgramUniformMatrix3x4fv(program, location, count, transpose, value)
 	ccall(@getFuncPointer("glProgramUniformMatrix3x4fv"), Void, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 function glGetDebugMessageLog(count, bufsize, sources, types, ids, severities, lengths, messageLog)
-	ccall(@getFuncPointer("glGetDebugMessageLog"), Cuint, (GLuint, GLsizei, Ptr{GLenum}, Ptr{GLenum}, Ptr{GLuint}, Ptr{GLenum}, Ptr{GLsizei}, Ptr{GLchar}), count, bufsize, sources, types, ids, severities, lengths, messageLog)
+	ccall(@getFuncPointer("glGetDebugMessageLog"), Cuint, (GLuint, GLsizei, Ptr{GLenum}, Ptr{GLenum}, Ptr{GLuint}, Ptr{GLenum}, Ptr{GLsizei}, Ptr{Cuchar}), count, bufsize, sources, types, ids, severities, lengths, messageLog)
 end
 function glGetVertexAttribiv(index, pname, params)
 	ccall(@getFuncPointer("glGetVertexAttribiv"), Void, (GLuint, GLenum, Ptr{GLint}), index, pname, params)
 end
 function glDebugMessageInsert(source, type_, id, severity, length, buf)
-	ccall(@getFuncPointer("glDebugMessageInsert"), Void, (GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr{GLchar}), source, type_, id, severity, length, buf)
+	ccall(@getFuncPointer("glDebugMessageInsert"), Void, (GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr{Cuchar}), source, type_, id, severity, length, buf)
 end
 function glNormalP3ui(type_, coords)
 	ccall(@getFuncPointer("glNormalP3ui"), Void, (GLenum, GLuint), type_, coords)
@@ -528,10 +528,10 @@ function glCompressedTexImage2D(target, level, internalformat, width, height, bo
 	ccall((@windows? (:glCompressedTexImage2D, "opengl32"): @getFuncPointer("glCompressedTexImage2D")) , Void, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Void}), target, level, internalformat, width, height, border, imageSize, data)
 end
 function glPushDebugGroup(source, id, length, message)
-	ccall(@getFuncPointer("glPushDebugGroup"), Void, (GLenum, GLuint, GLsizei, Ptr{GLchar}), source, id, length, message)
+	ccall(@getFuncPointer("glPushDebugGroup"), Void, (GLenum, GLuint, GLsizei, Ptr{Cuchar}), source, id, length, message)
 end
 function glGetUniformBlockIndex(program, uniformBlockName)
-	ccall(@getFuncPointer("glGetUniformBlockIndex"), Cuint, (GLuint, Ptr{GLchar}), program, uniformBlockName)
+	ccall(@getFuncPointer("glGetUniformBlockIndex"), Cuint, (GLuint, Ptr{Cuchar}), program, uniformBlockName)
 end
 function glInvalidateFramebuffer(target, numAttachments, attachments)
 	ccall(@getFuncPointer("glInvalidateFramebuffer"), Void, (GLenum, GLsizei, Ptr{GLenum}), target, numAttachments, attachments)
@@ -549,7 +549,7 @@ function glDrawArrays(mode, first, count)
 	ccall((@windows? (:glDrawArrays, "opengl32"): @getFuncPointer("glDrawArrays")) , Void, (GLenum, GLint, GLsizei), mode, first, count)
 end
 function glGetActiveAttrib(program, index, bufSize, length, size, type_, name)
-	ccall(@getFuncPointer("glGetActiveAttrib"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type_, name)
+	ccall(@getFuncPointer("glGetActiveAttrib"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{Cuchar}), program, index, bufSize, length, size, type_, name)
 end
 function glCopyTexImage1D(target, level, internalformat, x, y, width, border)
 	ccall((@windows? (:glCopyTexImage1D, "opengl32"): @getFuncPointer("glCopyTexImage1D")) , Void, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), target, level, internalformat, x, y, width, border)
@@ -729,7 +729,7 @@ function glLogicOp(opcode)
 	ccall((@windows? (:glLogicOp, "opengl32"): @getFuncPointer("glLogicOp")) , Void, (GLenum,), opcode)
 end
 function glObjectLabel(identifier, name, length, label)
-	ccall(@getFuncPointer("glObjectLabel"), Void, (GLenum, GLuint, GLsizei, Ptr{GLchar}), identifier, name, length, label)
+	ccall(@getFuncPointer("glObjectLabel"), Void, (GLenum, GLuint, GLsizei, Ptr{Cuchar}), identifier, name, length, label)
 end
 function glUniformMatrix3x2dv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix3x2dv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
@@ -771,16 +771,16 @@ function glGetMultisamplefv(pname, index, val)
 	ccall(@getFuncPointer("glGetMultisamplefv"), Void, (GLenum, GLuint, Ptr{GLfloat}), pname, index, val)
 end
 function glGetFragDataIndex(program, name)
-	ccall(@getFuncPointer("glGetFragDataIndex"), Cint, (GLuint, Ptr{GLchar}), program, name)
+	ccall(@getFuncPointer("glGetFragDataIndex"), Cint, (GLuint, Ptr{Cuchar}), program, name)
 end
 function glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices)
-	ccall(@getFuncPointer("glGetUniformIndices"), Void, (GLuint, GLsizei, Ptr{Uint8}, Ptr{GLuint}), program, uniformCount, uniformNames, uniformIndices)
+	ccall(@getFuncPointer("glGetUniformIndices"), Void, (GLuint, GLsizei, Ptr{Ptr{Cuchar}}, Ptr{GLuint}), program, uniformCount, uniformNames, uniformIndices)
 end
 function glUniform1dv(location, count, value)
 	ccall(@getFuncPointer("glUniform1dv"), Void, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
 end
 function glGetFragDataLocation(program, name)
-	ccall(@getFuncPointer("glGetFragDataLocation"), Cint, (GLuint, Ptr{GLchar}), program, name)
+	ccall(@getFuncPointer("glGetFragDataLocation"), Cint, (GLuint, Ptr{Cuchar}), program, name)
 end
 function glMultiTexCoordP2ui(texture, type_, coords)
 	ccall(@getFuncPointer("glMultiTexCoordP2ui"), Void, (GLenum, GLenum, GLuint), texture, type_, coords)
@@ -832,7 +832,7 @@ function glUniformMatrix3x4dv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix3x4dv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 function glGetObjectLabel(identifier, name, bufSize, length, label)
-	ccall(@getFuncPointer("glGetObjectLabel"), Void, (GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), identifier, name, bufSize, length, label)
+	ccall(@getFuncPointer("glGetObjectLabel"), Void, (GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), identifier, name, bufSize, length, label)
 end
 function glSampleCoverage(value, invert)
 	ccall((@windows? (:glSampleCoverage, "opengl32"): @getFuncPointer("glSampleCoverage")) , Void, (GLfloat, GLboolean), value, invert)
@@ -883,13 +883,13 @@ function glGetProgramInterfaceiv(program, programInterface, pname, params)
 	ccall(@getFuncPointer("glGetProgramInterfaceiv"), Void, (GLuint, GLenum, GLenum, Ptr{GLint}), program, programInterface, pname, params)
 end
 function glTransformFeedbackVaryings(program, count, varyings, bufferMode)
-	ccall(@getFuncPointer("glTransformFeedbackVaryings"), Void, (GLuint, GLsizei, Ptr{Uint8}, GLenum), program, count, varyings, bufferMode)
+	ccall(@getFuncPointer("glTransformFeedbackVaryings"), Void, (GLuint, GLsizei, Ptr{Ptr{Cuchar}}, GLenum), program, count, varyings, bufferMode)
 end
 function glGetVertexAttribIuiv(index, pname, params)
 	ccall(@getFuncPointer("glGetVertexAttribIuiv"), Void, (GLuint, GLenum, Ptr{GLuint}), index, pname, params)
 end
 function glGetShaderInfoLog(shader, bufSize, length, infoLog)
-	ccall(@getFuncPointer("glGetShaderInfoLog"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), shader, bufSize, length, infoLog)
+	ccall(@getFuncPointer("glGetShaderInfoLog"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), shader, bufSize, length, infoLog)
 end
 function glRenderbufferStorageMultisample(target, samples, internalformat, width, height)
 	ccall(@getFuncPointer("glRenderbufferStorageMultisample"), Void, (GLenum, GLsizei, GLenum, GLsizei, GLsizei), target, samples, internalformat, width, height)
@@ -922,7 +922,7 @@ function glBindBuffer(target, buffer)
 	ccall(@getFuncPointer("glBindBuffer"), Void, (GLenum, GLuint), target, buffer)
 end
 function glGetAttribLocation(program, name)
-	ccall(@getFuncPointer("glGetAttribLocation"), Cint, (GLuint, Ptr{GLchar}), program, name)
+	ccall(@getFuncPointer("glGetAttribLocation"), Cint, (GLuint, Ptr{Cuchar}), program, name)
 end
 function glProgramUniform3ui(program, location, v0, v1, v2)
 	ccall(@getFuncPointer("glProgramUniform3ui"), Void, (GLuint, GLint, GLuint, GLuint, GLuint), program, location, v0, v1, v2)
@@ -943,7 +943,7 @@ function glEnableVertexAttribArray(index)
 	ccall(@getFuncPointer("glEnableVertexAttribArray"), Void, (GLuint,), index)
 end
 function glObjectPtrLabel(ptr, length, label)
-	ccall(@getFuncPointer("glObjectPtrLabel"), Void, (Ptr{Void}, GLsizei, Ptr{GLchar}), ptr, length, label)
+	ccall(@getFuncPointer("glObjectPtrLabel"), Void, (Ptr{Void}, GLsizei, Ptr{Cuchar}), ptr, length, label)
 end
 function glProgramBinary(program, binaryFormat, binary, length)
 	ccall(@getFuncPointer("glProgramBinary"), Void, (GLuint, GLenum, Ptr{Void}, GLsizei), program, binaryFormat, binary, length)
@@ -979,7 +979,7 @@ function glFramebufferTexture1D(target, attachment, textarget, texture, level)
 	ccall(@getFuncPointer("glFramebufferTexture1D"), Void, (GLenum, GLenum, GLenum, GLuint, GLint), target, attachment, textarget, texture, level)
 end
 function glGetActiveSubroutineUniformName(program, shadertype, index, bufsize, length, name)
-	ccall(@getFuncPointer("glGetActiveSubroutineUniformName"), Void, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, shadertype, index, bufsize, length, name)
+	ccall(@getFuncPointer("glGetActiveSubroutineUniformName"), Void, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), program, shadertype, index, bufsize, length, name)
 end
 function glGenFramebuffers(n, framebuffers)
 	ccall(@getFuncPointer("glGenFramebuffers"), Void, (GLsizei, Ptr{GLuint}), n, framebuffers)
@@ -1000,10 +1000,10 @@ function glStencilMaskSeparate(face, mask)
 	ccall(@getFuncPointer("glStencilMaskSeparate"), Void, (GLenum, GLuint), face, mask)
 end
 function glGetProgramInfoLog(program, bufSize, length, infoLog)
-	ccall(@getFuncPointer("glGetProgramInfoLog"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, bufSize, length, infoLog)
+	ccall(@getFuncPointer("glGetProgramInfoLog"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), program, bufSize, length, infoLog)
 end
 function glGetProgramResourceIndex(program, programCinterface, name)
-	ccall(@getFuncPointer("glGetProgramResourceIndex"), Cuint, (GLuint, GLenum, Ptr{GLchar}), program, programCinterface, name)
+	ccall(@getFuncPointer("glGetProgramResourceIndex"), Cuint, (GLuint, GLenum, Ptr{Cuchar}), program, programCinterface, name)
 end
 function glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
 	ccall(@getFuncPointer("glBlitFramebuffer"), Void, (GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum), srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
@@ -1039,7 +1039,7 @@ function glDeleteTransformFeedbacks(n, ids)
 	ccall(@getFuncPointer("glDeleteTransformFeedbacks"), Void, (GLsizei, Ptr{GLuint}), n, ids)
 end
 function glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName)
-	ccall(@getFuncPointer("glGetActiveUniformName"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, uniformIndex, bufSize, length, uniformName)
+	ccall(@getFuncPointer("glGetActiveUniformName"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), program, uniformIndex, bufSize, length, uniformName)
 end
 function glPatchParameterfv(pname, values)
 	ccall(@getFuncPointer("glPatchParameterfv"), Void, (GLenum, Ptr{GLfloat}), pname, values)
@@ -1187,7 +1187,7 @@ function glIsRenderbuffer(renderbuffer)
 	ccall(@getFuncPointer("glIsRenderbuffer"), Bool, (GLuint,), renderbuffer)
 end
 function glGetProgramResourceLocationIndex(program, programCinterface, name)
-	ccall(@getFuncPointer("glGetProgramResourceLocationIndex"), Cint, (GLuint, GLenum, Ptr{GLchar}), program, programCinterface, name)
+	ccall(@getFuncPointer("glGetProgramResourceLocationIndex"), Cint, (GLuint, GLenum, Ptr{Cuchar}), program, programCinterface, name)
 end
 function glGetInteger64i_v(target, index, data)
 	ccall(@getFuncPointer("glGetInteger64i_v"), Void, (GLenum, GLuint, Ptr{GLint64}), target, index, data)
@@ -1271,7 +1271,7 @@ function glBindProgramPipeline(pipeline)
 	ccall(@getFuncPointer("glBindProgramPipeline"), Void, (GLuint,), pipeline)
 end
 function glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName)
-	ccall(@getFuncPointer("glGetActiveUniformBlockName"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, uniformBlockIndex, bufSize, length, uniformBlockName)
+	ccall(@getFuncPointer("glGetActiveUniformBlockName"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), program, uniformBlockIndex, bufSize, length, uniformBlockName)
 end
 function glUniformMatrix2fv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix2fv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
@@ -1286,7 +1286,7 @@ function glDeleteSync(sync)
 	ccall(@getFuncPointer("glDeleteSync"), Void, (GLsync,), sync)
 end
 function glBindFragDataLocation(program, color, name)
-	ccall(@getFuncPointer("glBindFragDataLocation"), Void, (GLuint, GLuint, Ptr{GLchar}), program, color, name)
+	ccall(@getFuncPointer("glBindFragDataLocation"), Void, (GLuint, GLuint, Ptr{Cuchar}), program, color, name)
 end
 function glGetShaderPrecisionFormat(shadertype, precisiontype, range_, precision)
 	ccall(@getFuncPointer("glGetShaderPrecisionFormat"), Void, (GLenum, GLenum, Ptr{GLint}, Ptr{GLint}), shadertype, precisiontype, range_, precision)
@@ -1331,7 +1331,7 @@ function glUniform2ui(location, v0, v1)
 	ccall(@getFuncPointer("glUniform2ui"), Void, (GLint, GLuint, GLuint), location, v0, v1)
 end
 function glBindFragDataLocationIndexed(program, colorNumber, index, name)
-	ccall(@getFuncPointer("glBindFragDataLocationIndexed"), Void, (GLuint, GLuint, GLuint, Ptr{GLchar}), program, colorNumber, index, name)
+	ccall(@getFuncPointer("glBindFragDataLocationIndexed"), Void, (GLuint, GLuint, GLuint, Ptr{Cuchar}), program, colorNumber, index, name)
 end
 function glDrawElementsBaseVertex(mode, count, type_, indices, basevertex)
 	ccall(@getFuncPointer("glDrawElementsBaseVertex"), Void, (GLenum, GLsizei, GLenum, Ptr{Void}, GLint), mode, count, type_, indices, basevertex)
@@ -1382,7 +1382,7 @@ function glUniformMatrix2dv(location, count, transpose, value)
 	ccall(@getFuncPointer("glUniformMatrix2dv"), Void, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 function glGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog)
-	ccall(@getFuncPointer("glGetProgramPipelineInfoLog"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), pipeline, bufSize, length, infoLog)
+	ccall(@getFuncPointer("glGetProgramPipelineInfoLog"), Void, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), pipeline, bufSize, length, infoLog)
 end
 function glVertexAttribP1ui(index, type_, normalized, value)
 	ccall(@getFuncPointer("glVertexAttribP1ui"), Void, (GLuint, GLenum, GLboolean, GLuint), index, type_, normalized, value)
@@ -1412,7 +1412,7 @@ function glProgramUniform2uiv(program, location, count, value)
 	ccall(@getFuncPointer("glProgramUniform2uiv"), Void, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 function glGetActiveUniform(program, index, bufSize, length, size, type_, name)
-	ccall(@getFuncPointer("glGetActiveUniform"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type_, name)
+	ccall(@getFuncPointer("glGetActiveUniform"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{Cuchar}), program, index, bufSize, length, size, type_, name)
 end
 function glVertexAttribI4i(index, x, y, z, w)
 	ccall(@getFuncPointer("glVertexAttribI4i"), Void, (GLuint, GLint, GLint, GLint, GLint), index, x, y, z, w)
@@ -1460,7 +1460,7 @@ function glGetVertexAttribIiv(index, pname, params)
 	ccall(@getFuncPointer("glGetVertexAttribIiv"), Void, (GLuint, GLenum, Ptr{GLint}), index, pname, params)
 end
 function glGetTransformFeedbackVarying(program, index, bufSize, length, size, type_, name)
-	ccall(@getFuncPointer("glGetTransformFeedbackVarying"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLsizei}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type_, name)
+	ccall(@getFuncPointer("glGetTransformFeedbackVarying"), Void, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLsizei}, Ptr{GLenum}, Ptr{Cuchar}), program, index, bufSize, length, size, type_, name)
 end
 function glVertexAttribLPointer(index, size, type_, stride, pointer)
 	ccall(@getFuncPointer("glVertexAttribLPointer"), Void, (GLuint, GLint, GLenum, GLsizei, Ptr{Void}), index, size, type_, stride, pointer)
@@ -1502,7 +1502,7 @@ function glVertexAttribP3ui(index, type_, normalized, value)
 	ccall(@getFuncPointer("glVertexAttribP3ui"), Void, (GLuint, GLenum, GLboolean, GLuint), index, type_, normalized, value)
 end
 function glBindAttribLocation(program, index, name)
-	ccall(@getFuncPointer("glBindAttribLocation"), Void, (GLuint, GLuint, Ptr{GLchar}), program, index, name)
+	ccall(@getFuncPointer("glBindAttribLocation"), Void, (GLuint, GLuint, Ptr{Cuchar}), program, index, name)
 end
 function glBindVertexBuffer(bindingindex, buffer, offset, stride)
 	ccall(@getFuncPointer("glBindVertexBuffer"), Void, (GLuint, GLuint, GLintptr, GLsizei), bindingindex, buffer, offset, stride)
@@ -1526,7 +1526,7 @@ function glEndTransformFeedback()
 	ccall(@getFuncPointer("glEndTransformFeedback"), Void, (), )
 end
 function glGetSubroutineUniformLocation(program, shadertype, name)
-	ccall(@getFuncPointer("glGetSubroutineUniformLocation"), Cint, (GLuint, GLenum, Ptr{GLchar}), program, shadertype, name)
+	ccall(@getFuncPointer("glGetSubroutineUniformLocation"), Cint, (GLuint, GLenum, Ptr{Cuchar}), program, shadertype, name)
 end
 function glGetQueryiv(target, pname, params)
 	ccall(@getFuncPointer("glGetQueryiv"), Void, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
@@ -1544,7 +1544,7 @@ function glGetTexParameterIiv(target, pname, params)
 	ccall(@getFuncPointer("glGetTexParameterIiv"), Void, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 function glGetObjectPtrLabel(ptr, bufSize, length, label)
-	ccall(@getFuncPointer("glGetObjectPtrLabel"), Void, (Ptr{Void}, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), ptr, bufSize, length, label)
+	ccall(@getFuncPointer("glGetObjectPtrLabel"), Void, (Ptr{Void}, GLsizei, Ptr{GLsizei}, Ptr{Cuchar}), ptr, bufSize, length, label)
 end
 function glGetUniformSubroutineuiv(shadertype, location, params)
 	ccall(@getFuncPointer("glGetUniformSubroutineuiv"), Void, (GLenum, GLint, Ptr{GLuint}), shadertype, location, params)
@@ -1562,7 +1562,7 @@ function glNamedFramebufferParameteriEXT(framebuffer, pname, param)
 	ccall(@getFuncPointer("glNamedFramebufferParameteriEXT"), Void, (GLuint, GLenum, GLint), framebuffer, pname, param)
 end
 function glGetUniformLocation(program, name)
-	ccall(@getFuncPointer("glGetUniformLocation"), Cint, (GLuint, Ptr{GLchar}), program, name)
+	ccall(@getFuncPointer("glGetUniformLocation"), Cint, (GLuint, Ptr{Cuchar}), program, name)
 end
 function glMemoryBarrier(barriers)
 	ccall(@getFuncPointer("glMemoryBarrier"), Void, (GLbitfield,), barriers)
