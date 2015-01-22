@@ -63,7 +63,7 @@ function glBindTransformFeedback(target, id)
 	ccall(@getFuncPointer("glBindTransformFeedback"), Void, (GLenum, GLuint), target, id)
 end
 function glShaderSource(shader, count, string_, length)
-	ccall(@getFuncPointer("glShaderSource"), Void, (GLuint, GLsizei, Ptr{Uint8}, Ptr{GLint}), shader, count, string_, length)
+	ccall(@getFuncPointer("glShaderSource"), Void, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLint}), shader, count, string_, length)
 end
 function glUniform2iv(location, count, value)
 	ccall(@getFuncPointer("glUniform2iv"), Void, (GLint, GLsizei, Ptr{GLint}), location, count, value)
@@ -336,7 +336,7 @@ function glReadPixels(x, y, width, height, format, type_, pixels)
 	ccall((@windows? (:glReadPixels, "opengl32"): @getFuncPointer("glReadPixels")) , Void, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Void}), x, y, width, height, format, type_, pixels)
 end
 function glCreateShaderProgramv(type_, count, strings)
-	ccall(@getFuncPointer("glCreateShaderProgramv"), Cuint, (GLenum, GLsizei, Ptr{Cuchar}), type_, count, strings)
+	ccall(@getFuncPointer("glCreateShaderProgramv"), Cuint, (GLenum, GLsizei, Ptr{GLchar}), type_, count, strings)
 end
 function glBufferData(target, size, data, usage)
 	ccall(@getFuncPointer("glBufferData"), Void, (GLenum, GLsizeiptr, Ptr{Void}, GLenum), target, size, data, usage)
@@ -774,7 +774,7 @@ function glGetFragDataIndex(program, name)
 	ccall(@getFuncPointer("glGetFragDataIndex"), Cint, (GLuint, Ptr{GLchar}), program, name)
 end
 function glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices)
-	ccall(@getFuncPointer("glGetUniformIndices"), Void, (GLuint, GLsizei, Ptr{Uint8}, Ptr{GLuint}), program, uniformCount, uniformNames, uniformIndices)
+	ccall(@getFuncPointer("glGetUniformIndices"), Void, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLuint}), program, uniformCount, uniformNames, uniformIndices)
 end
 function glUniform1dv(location, count, value)
 	ccall(@getFuncPointer("glUniform1dv"), Void, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
@@ -883,7 +883,7 @@ function glGetProgramInterfaceiv(program, programInterface, pname, params)
 	ccall(@getFuncPointer("glGetProgramInterfaceiv"), Void, (GLuint, GLenum, GLenum, Ptr{GLint}), program, programInterface, pname, params)
 end
 function glTransformFeedbackVaryings(program, count, varyings, bufferMode)
-	ccall(@getFuncPointer("glTransformFeedbackVaryings"), Void, (GLuint, GLsizei, Ptr{Uint8}, GLenum), program, count, varyings, bufferMode)
+	ccall(@getFuncPointer("glTransformFeedbackVaryings"), Void, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, GLenum), program, count, varyings, bufferMode)
 end
 function glGetVertexAttribIuiv(index, pname, params)
 	ccall(@getFuncPointer("glGetVertexAttribIuiv"), Void, (GLuint, GLenum, Ptr{GLuint}), index, pname, params)
@@ -1256,7 +1256,7 @@ function glUniform3i(location, v0, v1, v2)
 	ccall(@getFuncPointer("glUniform3i"), Void, (GLint, GLint, GLint, GLint), location, v0, v1, v2)
 end
 function glGetString(name)
-	ccall((@windows? (:glGetString, "opengl32"): @getFuncPointer("glGetString")) , Ptr{Cuchar}, (GLenum,), name)
+	ccall((@windows? (:glGetString, "opengl32"): @getFuncPointer("glGetString")) , Ptr{GLchar}, (GLenum,), name)
 end
 function glGenTextures(n, textures)
 	ccall((@windows? (:glGenTextures, "opengl32"): @getFuncPointer("glGenTextures")) , Void, (GLsizei, Ptr{GLuint}), n, textures)
@@ -1319,7 +1319,7 @@ function glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, par
 	ccall(@getFuncPointer("glGetActiveUniformsiv"), Void, (GLuint, GLsizei, Ptr{GLuint}, GLenum, Ptr{GLint}), program, uniformCount, uniformIndices, pname, params)
 end
 function glGetStringi(name, index)
-	ccall(@getFuncPointer("glGetStringi"), Ptr{Cuchar}, (GLenum, GLuint), name, index)
+	ccall(@getFuncPointer("glGetStringi"), Ptr{GLchar}, (GLenum, GLuint), name, index)
 end
 function glMultiDrawArraysIndirect(mode, indirect, drawcount, stride)
 	ccall(@getFuncPointer("glMultiDrawArraysIndirect"), Void, (GLenum, Ptr{Void}, GLsizei, GLsizei), mode, indirect, drawcount, stride)

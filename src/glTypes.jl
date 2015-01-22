@@ -10,7 +10,7 @@ typealias GLushort                                                    Cushort
 typealias GLuint                                                      Cuint
 typealias GLint64                                                     Clonglong
 typealias GLbyte                                                      Cchar
-typealias GLchar                                                      Cchar
+typealias GLchar                                                      Cuchar
 typealias GLubyte                                                     Cuchar
 typealias GLintptr                                                    Cptrdiff_t
 typealias GLfloat                                                     Cfloat
