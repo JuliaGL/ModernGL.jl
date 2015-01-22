@@ -71,18 +71,21 @@ function isavailable(ptr::Ptr{Void})
         ptr == convert(Ptr{Void},  3))
 end
 
+type GLFunc
+    p::Ptr{Void}
+end
+
 macro getFuncPointer(func)
     z = gensym(func)
-    @eval global $z = C_NULL
+    @eval const $z = GLFunc(C_NULL)
     quote begin
-        global $z
-        if $z::Ptr{Void} == C_NULL
-            $z::Ptr{Void} = getprocaddress($(func))
-            if !isavailable($z)
-               error($(func), " not available for your driver, or no valid OpenGL context available")
+        if $z.p == C_NULL
+            $z.p = getprocaddress($(func))
+            if !isavailable($z.p)
+                error($(func), " not available for your driver, or no valid OpenGL context available")
             end
         end
-        $z::Ptr{Void}
+        $z.p
     end end
 end
 
