@@ -32,13 +32,7 @@ function NSGetProcAddress(glFuncName::ASCIIString)
 end
 
 function wglGetProcAddress(glFuncName::ASCIIString)
-    p = ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
-    if p == C_NULL
-        lib = dlopen_e("opengl32")
-        p = dlsym_e(lib, glFuncName)
-        dlclose(lib)
-    end
-    p
+    ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
 end
 
 
@@ -55,7 +49,7 @@ function getprocaddress(glFuncName::ASCIIString)
 end
 
 # Test, if an opengl function is available.
-# Sadly, this doesn't work for Linux, as glxGetProcAddress 
+# Sadly, this doesn't work for Linux, as glxGetProcAddress
 # always returns a non null function pointer, as the function pointers are not depending on an active context.
 #
 
@@ -65,9 +59,9 @@ function isavailable(name::Symbol)
 end
 function isavailable(ptr::Ptr{Void})
     return !(
-        ptr == C_NULL || 
-        ptr == convert(Ptr{Void},  1) || 
-        ptr == convert(Ptr{Void},  2) || 
+        ptr == C_NULL ||
+        ptr == convert(Ptr{Void},  1) ||
+        ptr == convert(Ptr{Void},  2) ||
         ptr == convert(Ptr{Void},  3))
 end
 
@@ -91,6 +85,17 @@ type GLFunc
     p::Ptr{Void}
 end
 
+const glLibName = "opengl32"
+global glLib = C_NULL
+
+function glfunc_begin()
+    @windows_only global glLib = dlopen(glLibName)
+end
+
+function glfunc_end()
+    @windows_only dlclose(glLib)
+end
+
 const __ofTypeSym = symbol("::")
 
 # based on getCFun macro
@@ -107,26 +112,42 @@ macro glfunc(cFun)
     returnType    = cFun.args[2]
     inputTypes    = map(arg->arg.args[2], arguments)
     fnName        = cFun.args[1].args[1]
+    fnNameStr     = string(fnName)
 
     varName       = symbol("$(fnName)_ptr")
+    isStaticFunc  = glLib != C_NULL && dlsym_e(glLib, fnNameStr) != C_NULL
+    fnSource      = isStaticFunc? Expr(:tuple, fnNameStr, glLibName) : :($varName.p)
+#=
+    if !isStaticFunc
+        fnSource      = macroexpand(:(@getFuncPointer $fnNameStr))
+        isStaticFunc  = true
+    end
+=#
+    ccallExpr     = Expr(:ccall, fnSource, returnType, Expr(:tuple, inputTypes...), argumentNames...)
+    ccallFun      = Expr(:function, Expr(:call, fnName, argumentNames...), ccallExpr)
+    exportExpr    = Expr(:export, fnName)
 
-    ccallExpr = Expr(:ccall, :($varName.p), returnType, Expr(:tuple, inputTypes...), argumentNames...)
-    ccallFun  = Expr(:function, Expr(:call, fnName, argumentNames...), ccallExpr)
-    typedCcall = returnType == :Void? ccallExpr : :($ccallExpr::$returnType)
-
-    initName = symbol("init_$fnName")
-    ret = quote
-        const $varName = GLFunc(C_NULL)
-        function $initName($(argumentNames...))
-            $varName.p = getprocaddress($(string(fnName)))
-            if $varName.p == C_NULL
-                error($(string(fnName)), " not available for your driver, or no valid OpenGL context available")
-            end
-            $typedCcall
+    if isStaticFunc
+        ret = quote
+            $ccallFun
+            $exportExpr
         end
-        $varName.p = cfunction($initName, $returnType, $(Expr(:tuple, inputTypes...)))
-        $ccallFun
-        $(Expr(:export, fnName))
+    else
+        typedCcall = returnType == :Void? ccallExpr : :($ccallExpr::$returnType)
+        initName = symbol("init_"*fnNameStr)
+        ret = quote
+            const $varName = GLFunc(C_NULL)
+            function $initName($(argumentNames...))
+                $varName.p = getprocaddress($fnNameStr)
+                if !isavailable($varName.p)
+                    error($fnNameStr, " not available for your driver, or no valid OpenGL context available")
+                end
+                $typedCcall
+            end
+            $varName.p = cfunction($initName, $returnType, $(Expr(:tuple, inputTypes...)))
+            $ccallFun
+            $exportExpr
+        end
     end
 
     return esc(ret)
@@ -151,7 +172,7 @@ macro GenEnums(list)
             name::Symbol
         end
         $(dictname) = $enumdict1
-        function $(enumName){T}(number::T) 
+        function $(enumName){T}(number::T)
             if !haskey($(dictname), number)
                 error("x is not a GLenum")
             end
