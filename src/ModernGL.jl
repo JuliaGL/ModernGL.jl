@@ -48,6 +48,14 @@ function getprocaddress(glFuncName::ASCIIString)
     )
 end
 
+function getprocaddress_e(glFuncName)
+    p = getprocaddress(glFuncName)
+    if !isavailable(p)
+        error(glFuncName, " not available for your driver, or no valid OpenGL context available")
+    end
+    p
+end
+
 # Test, if an opengl function is available.
 # Sadly, this doesn't work for Linux, as glxGetProcAddress
 # always returns a non null function pointer, as the function pointers are not depending on an active context.
@@ -71,10 +79,7 @@ macro getFuncPointer(func)
     quote begin
         global $z
         if $z::Ptr{Void} == C_NULL
-            $z::Ptr{Void} = getprocaddress($(func))
-            if !isavailable($z)
-               error($(func), " not available for your driver, or no valid OpenGL context available")
-            end
+            $z::Ptr{Void} = getprocaddress_e($(func))
         end
         $z::Ptr{Void}
     end end
@@ -97,6 +102,8 @@ function glfunc_end()
 end
 
 const __ofTypeSym = symbol("::")
+const __dotSym = symbol(".")
+const __eqSym = symbol("=")
 
 # based on getCFun macro
 macro glfunc(cFun)
@@ -114,43 +121,35 @@ macro glfunc(cFun)
     fnName        = cFun.args[1].args[1]
     fnNameStr     = string(fnName)
 
-    varName       = symbol("$(fnName)_ptr")
+    varName       = symbol(fnNameStr*"_ptr")
+    ptrExpr       = Expr(__dotSym, varName, QuoteNode(:p))
     isStaticFunc  = glLib != C_NULL && dlsym_e(glLib, fnNameStr) != C_NULL
-    fnSource      = isStaticFunc? Expr(:tuple, fnNameStr, glLibName) : :($varName.p)
+    fnSource      = isStaticFunc? Expr(:tuple, fnNameStr, glLibName) : ptrExpr
+    inTypesExpr   = Expr(:tuple, inputTypes...)
 #=
+    # upstream equivalent
     if !isStaticFunc
-        fnSource      = macroexpand(:(@getFuncPointer $fnNameStr))
+        fnSource      = macroexpand(:(@ModernGL.getFuncPointer $fnNameStr))
         isStaticFunc  = true
     end
 =#
-    ccallExpr     = Expr(:ccall, fnSource, returnType, Expr(:tuple, inputTypes...), argumentNames...)
+    ccallExpr     = Expr(:ccall, fnSource, returnType, inTypesExpr, argumentNames...)
     ccallFun      = Expr(:function, Expr(:call, fnName, argumentNames...), ccallExpr)
     exportExpr    = Expr(:export, fnName)
 
     if isStaticFunc
-        ret = quote
-            $ccallFun
-            $exportExpr
-        end
+        ret = Expr(:block, ccallFun, exportExpr)
     else
-        typedCcall = returnType == :Void? ccallExpr : :($ccallExpr::$returnType)
         initName = symbol("init_"*fnNameStr)
-        ret = quote
-            const $varName = GLFunc(C_NULL)
-            function $initName($(argumentNames...))
-                $varName.p = getprocaddress($fnNameStr)
-                if !isavailable($varName.p)
-                    error($fnNameStr, " not available for your driver, or no valid OpenGL context available")
-                end
-                $typedCcall
-            end
-            $varName.p = cfunction($initName, $returnType, $(Expr(:tuple, inputTypes...)))
-            $ccallFun
-            $exportExpr
-        end
+        varDecl  = Expr(:const, Expr(__eqSym, varName, Expr(:call, :GLFunc, :C_NULL)))
+        initBody = Expr(:block, Expr(__eqSym, ptrExpr, Expr(:call, :getprocaddress_e, fnNameStr)), ccallExpr)
+        varInit  = Expr(__eqSym, ptrExpr, Expr(:call, :cfunction, initName, returnType, inTypesExpr))
+        initFun  = Expr(:function, Expr(:call, initName, argumentNames...), initBody)
+
+        ret = Expr(:block, varDecl, initFun, varInit, ccallFun, exportExpr)
     end
 
-    return esc(ret)
+    return ret
 end
 
 abstract Enum
