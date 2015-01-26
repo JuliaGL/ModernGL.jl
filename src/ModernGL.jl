@@ -102,7 +102,6 @@ function glfunc_end()
 end
 
 const __ofTypeSym = symbol("::")
-const __dotSym = symbol(".")
 const __eqSym = symbol("=")
 
 # based on getCFun macro
@@ -122,7 +121,7 @@ macro glfunc(cFun)
     fnNameStr     = string(fnName)
 
     varName       = symbol(fnNameStr*"_ptr")
-    ptrExpr       = Expr(__dotSym, varName, QuoteNode(:p))
+    ptrExpr       = Expr(:., varName, QuoteNode(:p))
     isStaticFunc  = glLib != C_NULL && dlsym_e(glLib, fnNameStr) != C_NULL
     fnSource      = isStaticFunc? Expr(:tuple, fnNameStr, glLibName) : ptrExpr
     inTypesExpr   = Expr(:tuple, inputTypes...)
@@ -149,7 +148,7 @@ macro glfunc(cFun)
         ret = Expr(:block, varDecl, initFun, varInit, ccallFun, exportExpr)
     end
 
-    return ret
+    return esc(ret)
 end
 
 abstract Enum
