@@ -101,14 +101,11 @@ function glfunc_end()
     @windows_only dlclose(glLib)
 end
 
-const __ofTypeSym = symbol("::")
-const __eqSym = symbol("=")
-
 # based on getCFun macro
 macro glfunc(cFun)
     arguments = map(function (arg)
                         if isa(arg, Symbol)
-                            arg = Expr(__ofTypeSym, arg)
+                            arg = Expr(:(::), arg)
                         end
                         return arg
                     end, cFun.args[1].args[2:end])
@@ -140,10 +137,10 @@ macro glfunc(cFun)
         ret = Expr(:block, ccallFun, exportExpr)
     else
         initName = symbol("init_"*fnNameStr)
-        varDecl  = Expr(:const, Expr(__eqSym, varName, Expr(:call, :GLFunc, :C_NULL)))
-        initBody = Expr(:block, Expr(__eqSym, ptrExpr, Expr(:call, :getprocaddress_e, fnNameStr)), ccallExpr)
-        varInit  = Expr(__eqSym, ptrExpr, Expr(:call, :cfunction, initName, returnType, inTypesExpr))
+        varDecl  = Expr(:const, Expr(:(=), varName, Expr(:call, :GLFunc, :C_NULL)))
+        initBody = Expr(:block, Expr(:(=), ptrExpr, Expr(:call, :getprocaddress_e, fnNameStr)), ccallExpr)
         initFun  = Expr(:function, Expr(:call, initName, argumentNames...), initBody)
+        varInit  = Expr(:(=), ptrExpr, Expr(:call, :cfunction, initName, returnType, inTypesExpr))
 
         ret = Expr(:block, varDecl, initFun, varInit, ccallFun, exportExpr)
     end
