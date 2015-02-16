@@ -99,7 +99,7 @@ function createcontextinfo()
 	global GLSL_VERSION
 	glsl = split(bytestring(glGetString(GL_SHADING_LANGUAGE_VERSION)), ['.', ' '])
 	if length(glsl) >= 2
-		glsl = VersionNumber(int(glsl[1]), int(glsl[2])) 
+		glsl = VersionNumber(int(glsl[1]), int(glsl[2]))
 		GLSL_VERSION = string(glsl.major) * rpad(string(glsl.minor),2,"0")
 	else
 		error("Unexpected version number string. Please report this bug! GLSL version string: $(glsl)")
@@ -107,17 +107,17 @@ function createcontextinfo()
 
 	glv = split(bytestring(glGetString(GL_VERSION)), ['.', ' '])
 	if length(glv) >= 2
-		glv = VersionNumber(int(glv[1]), int(glv[2])) 
+		glv = VersionNumber(int(glv[1]), int(glv[2]))
 	else
 		error("Unexpected version number string. Please report this bug! OpenGL version string: $(glv)")
 	end
-	dict = (Symbol => Any)[]
-	dict[:glsl_version] 	= glsl
-	dict[:gl_version] 		= glv
-	dict[:gl_vendor] 		= bytestring(glGetString(GL_VENDOR))
-	dict[:gl_renderer] 		= bytestring(glGetString(GL_RENDERER))
-	#dict[:gl_extensions] 	= split(bytestring(glGetString(GL_EXTENSIONS)))
-	dict
+	dict = Dict{Symbol,Any}(
+	    :glsl_version   => glsl,
+	    :gl_version     => glv,
+	    :gl_vendor	    => bytestring(glGetString(GL_VENDOR)),
+	    :gl_renderer	=> bytestring(glGetString(GL_RENDERER)),
+	    #:gl_extensions => split(bytestring(glGetString(GL_EXTENSIONS))),
+	)
 end
 function get_glsl_version_string()
 if isempty(GLSL_VERSION)
