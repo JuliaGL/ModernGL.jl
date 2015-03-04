@@ -1,5 +1,5 @@
 import GLFW
-using ModernGL
+using ModernGL, Compat
 function glGenOne(glGenFn)
 	id::Ptr{GLuint} = GLuint[0]
 	glGenFn(1, id)
@@ -99,7 +99,7 @@ function createcontextinfo()
 	global GLSL_VERSION
 	glsl = split(bytestring(glGetString(GL_SHADING_LANGUAGE_VERSION)), ['.', ' '])
 	if length(glsl) >= 2
-		glsl = VersionNumber(int(glsl[1]), int(glsl[2])) 
+		glsl = VersionNumber(int(glsl[1]), int(glsl[2]))
 		GLSL_VERSION = string(glsl.major) * rpad(string(glsl.minor),2,"0")
 	else
 		error("Unexpected version number string. Please report this bug! GLSL version string: $(glsl)")
@@ -107,17 +107,17 @@ function createcontextinfo()
 
 	glv = split(bytestring(glGetString(GL_VERSION)), ['.', ' '])
 	if length(glv) >= 2
-		glv = VersionNumber(int(glv[1]), int(glv[2])) 
+		glv = VersionNumber(int(glv[1]), int(glv[2]))
 	else
 		error("Unexpected version number string. Please report this bug! OpenGL version string: $(glv)")
 	end
-	dict = (Symbol => Any)[]
-	dict[:glsl_version] 	= glsl
-	dict[:gl_version] 		= glv
-	dict[:gl_vendor] 		= bytestring(glGetString(GL_VENDOR))
-	dict[:gl_renderer] 		= bytestring(glGetString(GL_RENDERER))
-	#dict[:gl_extensions] 	= split(bytestring(glGetString(GL_EXTENSIONS)))
-	dict
+	dict = @compat(Dict{Symbol,Any}(
+	    :glsl_version   => glsl,
+	    :gl_version     => glv,
+	    :gl_vendor	    => bytestring(glGetString(GL_VENDOR)),
+	    :gl_renderer	=> bytestring(glGetString(GL_RENDERER)),
+	    #:gl_extensions => split(bytestring(glGetString(GL_EXTENSIONS))),
+	))
 end
 function get_glsl_version_string()
 if isempty(GLSL_VERSION)
@@ -133,11 +133,16 @@ GLFW.Init()
     GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE)
     GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, GL_TRUE)
 end
-
+wh = 600
 # Create a windowed mode window and its OpenGL context
-window = GLFW.CreateWindow(600, 600, "OpenGL Example")
+window = GLFW.CreateWindow(wh, wh, "OpenGL Example")
 # Make the window's context current
 GLFW.MakeContextCurrent(window)
+GLFW.ShowWindow(window)
+GLFW.SetWindowSize(window, wh, wh) # Seems to be necessary to guarantee that window > 0
+
+glViewport(0, 0, wh, wh)
+
 println(createcontextinfo())
 # The data for our triangle
 data = GLfloat[
@@ -174,17 +179,18 @@ positionAttribute = glGetAttribLocation(program, "position");
 glEnableVertexAttribArray(positionAttribute)
 glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, 0)
 t = 0
+println(versioninfo())
 # Loop until the user closes the window
-for i=1:100
-# Pulse the background blue
-t += 1
-glClearColor(0.0, 0.0, 0.5 * (1 + sin(t * 0.02)), 1.0)
-glClear(GL_COLOR_BUFFER_BIT)
-# Draw our triangle
-glDrawArrays(GL_TRIANGLES, 0, 3)
-# Swap front and back buffers
-GLFW.SwapBuffers(window)
-# Poll for and process events
-GLFW.PollEvents()
+while !GLFW.WindowShouldClose(window)
+	# Pulse the background blue
+	t += 1
+	glClearColor(0.0, 0.0, 0.5 * (1 + sin(t * 0.02)), 1.0)
+	glClear(GL_COLOR_BUFFER_BIT)
+	# Draw our triangle
+	glDrawArrays(GL_TRIANGLES, 0, 3)
+	# Swap front and back buffers
+	GLFW.SwapBuffers(window)
+	# Poll for and process events
+	GLFW.PollEvents()
 end
 GLFW.Terminate()
