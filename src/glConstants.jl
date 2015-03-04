@@ -965,8 +965,16 @@ const GL_PIXEL_UNPACK_BUFFER                                          = convert(
 const GL_UNIFORM_BARRIER_BIT                                          = convert(GLbitfield, 0x00000004)
 const GL_MAP2_TEXTURE_COORD_3                                         = convert(GLenum, 0x0DB5)
 const GL_BLEND                                                        = convert(GLenum, 0x0BE2)
-const GL_MIN 														  = convert(GLenum, 0x8007)
-const GL_MAX 														  = convert(GLenum, 0x8008)
+const GL_CONSTANT_COLOR                                               = convert(GLenum, 0x8001)
+const GL_ONE_MINUS_CONSTANT_COLOR                                     = convert(GLenum, 0x8002)
+const GL_CONSTANT_ALPHA                                               = convert(GLenum, 0x8003)
+const GL_ONE_MINUS_CONSTANT_ALPHA                                     = convert(GLenum, 0x8004)
+const GL_BLEND_COLOR                                                  = convert(GLenum, 0x8005)
+const GL_FUNC_ADD                                                     = convert(GLenum, 0x8006)
+const GL_MIN                                                          = convert(GLenum, 0x8007)
+const GL_MAX                                                          = convert(GLenum, 0x8008)
+const GL_FUNC_SUBTRACT                                                = convert(GLenum, 0x800A)
+const GL_FUNC_REVERSE_SUBTRACT                                        = convert(GLenum, 0x800B)
 const GL_IMAGE_BINDING_ACCESS                                         = convert(GLenum, 0x8F3E)
 const GL_GREEN                                                        = convert(GLenum, 0x1904)
 const GL_IMAGE_BINDING_LAYERED                                        = convert(GLenum, 0x8F3C)
@@ -3388,5 +3396,13 @@ export GL_ORDER
 export GL_PIXEL_MAP_I_TO_I_SIZE
 export GL_DRAW_BUFFER8
 export GL_PIXEL_MAP_I_TO_A
-export GL_MAX
+export GL_CONSTANT_COLOR
+export GL_ONE_MINUS_CONSTANT_COLOR
+export GL_CONSTANT_ALPHA
+export GL_ONE_MINUS_CONSTANT_ALPHA
+export GL_BLEND_COLOR
+export GL_FUNC_ADD
 export GL_MIN
+export GL_MAX
+export GL_FUNC_SUBTRACT
+export GL_FUNC_REVERSE_SUBTRACT
