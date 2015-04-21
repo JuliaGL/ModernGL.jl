@@ -53,4 +53,4 @@ Maybe one can try to find the OpenGL driver library, and then try to figure it o
 Credits go certainly to the OpenGL.jl ([rennis250](https://github.com/rennis250) && [o-jasper](https://github.com/o-jasper)) package, where I have all the OpenGL definitions from.
 Special thanks to rennis250 for all the support! :)
 
-Also, I have to thank for the constructive discussion on Juli-Users, where I got a good solution for the function pointer loading (final solution is from [vtjnash](https://github.com/vtjnash)). 
+Also, I have to thank for the constructive discussion on Julia-Users, where I got a good solution for the function pointer loading (final solution is from [vtjnash](https://github.com/vtjnash)). 
