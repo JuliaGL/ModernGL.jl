@@ -1,14 +1,17 @@
 import GLFW
 using ModernGL, Compat
 function glGenOne(glGenFn)
-	id::Ptr{GLuint} = GLuint[0]
+	id = GLuint[0]
 	glGenFn(1, id)
 	glCheckError("generating a buffer, array, or texture")
-	unsafe_load(id)
+	id[]
 end
-glGenBuffer() = glGenOne(glGenBuffers)
-glGenVertexArray() = glGenOne(glGenVertexArrays)
-glGenTexture() = glGenOne(glGenTextures)
+
+glGenBuffer() 		= glGenOne(glGenBuffers)
+glGenVertexArray() 	= glGenOne(glGenVertexArrays)
+glGenTexture() 		= glGenOne(glGenTextures)
+
+
 function getInfoLog(obj::GLuint)
 	# Return the info log for obj, whether it be a shader or a program.
 	isShader = glIsShader(obj)
@@ -31,21 +34,24 @@ function getInfoLog(obj::GLuint)
 	""
 	end
 end
+
 function validateShader(shader)
-success::Ptr{GLint} = GLint[0]
-glGetShaderiv(shader, GL_COMPILE_STATUS, success)
-unsafe_load(success) == GL_TRUE
+	success = GLint[0]
+	glGetShaderiv(shader, GL_COMPILE_STATUS, success)
+	success[] == GL_TRUE
 end
+
 function glErrorMessage()
 # Return a string representing the current OpenGL error flag, or the empty string if there's no error.
 	err = glGetError()
 	err == GL_NO_ERROR ? "" :
-	err == GL_INVALID_ENUM ? "GL_INVALID_ENUM: An unacceptable value is specified for an enumerated argument. The offending command is ignored and has no other side effect than to set the error flag." :
-	err == GL_INVALID_VALUE ? "GL_INVALID_VALUE: A numeric argument is out of range. The offending command is ignored and has no other side effect than to set the error flag." :
-	err == GL_INVALID_OPERATION ? "GL_INVALID_OPERATION: The specified operation is not allowed in the current state. The offending command is ignored and has no other side effect than to set the error flag." :
-	err == GL_INVALID_FRAMEBUFFER_OPERATION ? "GL_INVALID_FRAMEBUFFER_OPERATION: The framebuffer object is not complete. The offending command is ignored and has no other side effect than to set the error flag." :
-	err == GL_OUT_OF_MEMORY ? "GL_OUT_OF_MEMORY: There is not enough memory left to execute the command. The state of the GL is undefined, except for the state of the error flags, after this error is recorded." : "Unknown OpenGL error with error code $err."
+	err == GL_INVALID_ENUM ? 					"GL_INVALID_ENUM: An unacceptable value is specified for an enumerated argument. The offending command is ignored and has no other side effect than to set the error flag." :
+	err == GL_INVALID_VALUE ? 					"GL_INVALID_VALUE: A numeric argument is out of range. The offending command is ignored and has no other side effect than to set the error flag." :
+	err == GL_INVALID_OPERATION ? 				"GL_INVALID_OPERATION: The specified operation is not allowed in the current state. The offending command is ignored and has no other side effect than to set the error flag." :
+	err == GL_INVALID_FRAMEBUFFER_OPERATION ? 	"GL_INVALID_FRAMEBUFFER_OPERATION: The framebuffer object is not complete. The offending command is ignored and has no other side effect than to set the error flag." :
+	err == GL_OUT_OF_MEMORY ? 					"GL_OUT_OF_MEMORY: There is not enough memory left to execute the command. The state of the GL is undefined, except for the state of the error flags, after this error is recorded." : "Unknown OpenGL error with error code $err."
 end
+
 function glCheckError(actionName="")
 	message = glErrorMessage()
 	if length(message) > 0
@@ -56,15 +62,19 @@ function glCheckError(actionName="")
 		end
 	end
 end
+
 function createShader(source, typ)
-# Create the shader
+	
+	# Create the shader
 	shader = glCreateShader(typ)::GLuint
 	if shader == 0
 		error("Error creating shader: ", glErrorMessage())
 	end
+
 	# Compile the shader
 	glShaderSource(shader, 1, convert(Ptr{Uint8}, pointer([convert(Ptr{GLchar}, pointer(source))])), C_NULL)
 	glCompileShader(shader)
+	
 	# Check for errors
 	!validateShader(shader) && error("Shader creation error: ", getInfoLog(shader))
 	shader
@@ -85,9 +95,9 @@ function createShaderProgram(f, vertexShader, fragmentShader)
 	f(prog)
 	# Finally, link the program and check for errors.
 	glLinkProgram(prog)
-	status::Ptr{GLint} = GLint[0]
+	status = GLint[0]
 	glGetProgramiv(prog, GL_LINK_STATUS, status)
-	if unsafe_load(status) == GL_FALSE then
+	if status[] == GL_FALSE then
 		glDeleteProgram(prog)
 		error("Error linking shader: ", glGetInfoLog(prog))
 	end
@@ -99,7 +109,7 @@ function createcontextinfo()
 	global GLSL_VERSION
 	glsl = split(bytestring(glGetString(GL_SHADING_LANGUAGE_VERSION)), ['.', ' '])
 	if length(glsl) >= 2
-		glsl = VersionNumber(int(glsl[1]), int(glsl[2]))
+		glsl = VersionNumber(parse(Int, glsl[1]), parse(Int, glsl[2]))
 		GLSL_VERSION = string(glsl.major) * rpad(string(glsl.minor),2,"0")
 	else
 		error("Unexpected version number string. Please report this bug! GLSL version string: $(glsl)")
@@ -107,7 +117,7 @@ function createcontextinfo()
 
 	glv = split(bytestring(glGetString(GL_VERSION)), ['.', ' '])
 	if length(glv) >= 2
-		glv = VersionNumber(int(glv[1]), int(glv[2]))
+		glv = VersionNumber(parse(Int, glv[1]), parse(Int, glv[2]))
 	else
 		error("Unexpected version number string. Please report this bug! OpenGL version string: $(glv)")
 	end
@@ -120,10 +130,10 @@ function createcontextinfo()
 	))
 end
 function get_glsl_version_string()
-if isempty(GLSL_VERSION)
-error("couldn't get GLSL version, GLUTils not initialized, or context not created?")
-end
-return "#version $(GLSL_VERSION)\n"
+	if isempty(GLSL_VERSION)
+	error("couldn't get GLSL version, GLUTils not initialized, or context not created?")
+	end
+	return "#version $(GLSL_VERSION)\n"
 end
 GLFW.Init()
 # OS X-specific GLFW hints to initialize the correct version of OpenGL
@@ -142,21 +152,8 @@ GLFW.ShowWindow(window)
 GLFW.SetWindowSize(window, wh, wh) # Seems to be necessary to guarantee that window > 0
 
 glViewport(0, 0, wh, wh)
-
-println(createcontextinfo())
-# The data for our triangle
-data = GLfloat[
-0.0, 0.5,
-0.5, -0.5,
--0.5,-0.5
-]
-# Generate a vertex array and array buffer for our data
-vao = glGenVertexArray()
-glBindVertexArray(vao)
-vbo = glGenBuffer()
-glBindBuffer(GL_ARRAY_BUFFER, vbo)
-glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW)
-# Create and initialize shaders
+versioninfo()
+createcontextinfo()
 const vsh = """
 $(get_glsl_version_string())
 in vec2 position;
@@ -170,24 +167,63 @@ out vec4 outColor;
 void main() {
 outColor = vec4(1.0, 1.0, 1.0, 1.0);
 }
-"""
-vertexShader = createShader(vsh, GL_VERTEX_SHADER)
-fragmentShader = createShader(fsh, GL_FRAGMENT_SHADER)
-program = createShaderProgram(vertexShader, fragmentShader)
-glUseProgram(program)
-positionAttribute = glGetAttribLocation(program, "position");
-glEnableVertexAttribArray(positionAttribute)
-glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, 0)
-t = 0
-println(versioninfo())
+	"""
+function create_data(t)
+	# The data for our triangle
+
+	# Create and initialize shaders
+
+	vertexShader 	= createShader(vsh, GL_VERTEX_SHADER)
+	fragmentShader 	= createShader(fsh, GL_FRAGMENT_SHADER)
+	program 		= createShaderProgram(vertexShader, fragmentShader)
+	glUseProgram(0)
+	
+	data = GLfloat[
+	0.0+t, 0.5+t,
+	0.5, -0.5,
+	-0.5+t,-0.5
+	]
+	indexes = GLuint[0, 1, 2]
+	# Generate a vertex array and array buffer for our data
+	vao = glGenVertexArray()
+	glBindVertexArray(vao)
+
+	vbo = glGenBuffer()
+	glBindBuffer(GL_ARRAY_BUFFER, vbo)
+	glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW)
+
+	ibo = glGenBuffer()
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo)
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indexes), indexes, GL_STATIC_DRAW)
+
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo)
+	glBindBuffer(GL_ARRAY_BUFFER, vbo)
+	positionAttribute = glGetAttribLocation(program, "position");
+	glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, GL_FALSE, 0, C_NULL)
+	glEnableVertexAttribArray(positionAttribute)
+	glBindVertexArray(0)
+	glCheckError("lol ey")
+	return vao, program
+end
+
+
+const vertex_arrays = Any[]
+t = 0.0f0
 # Loop until the user closes the window
 while !GLFW.WindowShouldClose(window)
+	push!(vertex_arrays, create_data(t))
+	t += 0.001f0
 	# Pulse the background blue
-	t += 1
-	glClearColor(0.0, 0.0, 0.5 * (1 + sin(t * 0.02)), 1.0)
+	glClearColor(0.0, 0.0, 0.5 , 1.0)
 	glClear(GL_COLOR_BUFFER_BIT)
+
 	# Draw our triangle
-	glDrawArrays(GL_TRIANGLES, 0, 3)
+	for (vao, program) in vertex_arrays
+		glUseProgram(program)
+		glBindVertexArray(vao)
+		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, C_NULL)
+	end
 	# Swap front and back buffers
 	GLFW.SwapBuffers(window)
 	# Poll for and process events

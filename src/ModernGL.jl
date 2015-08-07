@@ -1,6 +1,5 @@
 module ModernGL
 
-
 function glXGetProcAddress(glFuncName::ASCIIString)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
 end
@@ -73,32 +72,14 @@ function isavailable(ptr::Ptr{Void})
         ptr == convert(Ptr{Void},  3))
 end
 
-macro getFuncPointer(func)
-    z = gensym(func)
-    @eval global $z = C_NULL
-    quote begin
-        global $z
-        if $z::Ptr{Void} == C_NULL
-            $z::Ptr{Void} = getprocaddress_e($(func))
-        end
-        $z::Ptr{Void}
-    end end
-end
 
-
-type GLFunc
-    p::Ptr{Void}
-end
-
-const glLibName = "opengl32"
-global glLib = C_NULL
 
 function glfunc_begin()
-    @windows_only global glLib = dlopen(glLibName)
+    @windows_only global glLib = Libdl.dlopen(glLibName)
 end
 
 function glfunc_end()
-    @windows_only dlclose(glLib)
+    @windows_only Libdl.dlclose(glLib)
 end
 
 # based on getCFun macro
@@ -117,34 +98,13 @@ macro glfunc(cFun)
     fnName        = cFun.args[1].args[1]
     fnNameStr     = string(fnName)
 
-    varName       = symbol(fnNameStr*"_ptr")
-    ptrExpr       = Expr(:., varName, QuoteNode(:p))
-    isStaticFunc  = glLib != C_NULL && dlsym_e(glLib, fnNameStr) != C_NULL
-    fnSource      = isStaticFunc? Expr(:tuple, fnNameStr, glLibName) : ptrExpr
-    inTypesExpr   = Expr(:tuple, inputTypes...)
-#=
-    # upstream equivalent
-    if !isStaticFunc
-        fnSource      = macroexpand(:(@ModernGL.getFuncPointer $fnNameStr))
-        isStaticFunc  = true
+
+    ret = quote
+        @generated function $fnName($(argumentNames...))
+            $(Expr(:quote, :(ccall(getprocaddress_e($fnNameStr), $returnType, ($(inputTypes...),), $(argumentNames...)))))
+        end
+        $(Expr(:export,  fnName))
     end
-=#
-    ccallExpr     = Expr(:ccall, fnSource, returnType, inTypesExpr, argumentNames...)
-    ccallFun      = Expr(:function, Expr(:call, fnName, argumentNames...), ccallExpr)
-    exportExpr    = Expr(:export, fnName)
-
-    if isStaticFunc
-        ret = Expr(:block, ccallFun, exportExpr)
-    else
-        initName = symbol("init_"*fnNameStr)
-        varDecl  = Expr(:const, Expr(:(=), varName, Expr(:call, :GLFunc, :C_NULL)))
-        initBody = Expr(:block, Expr(:(=), ptrExpr, Expr(:call, :getprocaddress_e, fnNameStr)), ccallExpr)
-        initFun  = Expr(:function, Expr(:call, initName, argumentNames...), initBody)
-        varInit  = Expr(:(=), ptrExpr, Expr(:call, :cfunction, initName, returnType, inTypesExpr))
-
-        ret = Expr(:block, varDecl, initFun, varInit, ccallFun, exportExpr)
-    end
-
     return esc(ret)
 end
 
@@ -177,8 +137,6 @@ macro GenEnums(list)
     end
     esc(Expr(:block, enumtype, tmp..., Expr(:export, :($(enumName)))))
 end
-
-
 include("glTypes.jl")
 include("glFunctions.jl")
 include("glConstants.jl")
