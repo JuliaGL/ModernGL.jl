@@ -136,13 +136,11 @@ function get_glsl_version_string()
 	return "#version $(GLSL_VERSION)\n"
 end
 GLFW.Init()
-# OS X-specific GLFW hints to initialize the correct version of OpenGL
-@osx_only begin
-    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3)
-    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2)
-    GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE)
-    GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, GL_TRUE)
-end
+#
+GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3)
+GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2)
+GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE)
+GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, GL_TRUE)
 wh = 600
 # Create a windowed mode window and its OpenGL context
 window = GLFW.CreateWindow(wh, wh, "OpenGL Example")
