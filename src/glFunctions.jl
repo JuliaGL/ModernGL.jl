@@ -1,5 +1,3 @@
-glfunc_begin()
-
 @glfunc glGetNamedFramebufferParameterivEXT(framebuffer::GLuint, pname::GLenum, params::Ptr{GLint})::Void
 @glfunc glDrawElementsInstancedBaseVertexBaseInstance(mode::GLenum, count::GLsizei, type_::GLenum, indices::Ptr{Void}, instancecount::GLsizei, basevertex::GLint, baseinstance::GLuint)::Void
 @glfunc glReadBuffer(mode::GLenum)::Void
@@ -548,5 +546,3 @@ glfunc_begin()
 @glfunc glDepthRangef(n::GLfloat, f::GLfloat)::Void
 @glfunc glUniform4f(location::GLint, v0::GLfloat, v1::GLfloat, v2::GLfloat, v3::GLfloat)::Void
 @glfunc glMapBuffer(target::GLenum, access::GLenum)::Ptr{Void}
-
-glfunc_end()
