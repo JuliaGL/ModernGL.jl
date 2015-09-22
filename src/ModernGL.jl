@@ -2,20 +2,20 @@ VERSION >= v"0.4.0-dev+6521" && __precompile__(true)
 module ModernGL
 
 function glXGetProcAddress(glFuncName::ASCIIString)
-    ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
+    ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
 end
 function NSGetProcAddress(glFuncName::ASCIIString)
     tmp = "_"*glFuncName
-    if ccall(:NSIsSymbolNameDefined, Cint, (Ptr{Uint8},), tmp) == 0
+    if ccall(:NSIsSymbolNameDefined, Cint, (Ptr{UInt8},), tmp) == 0
         return convert(Ptr{Void}, 0)
     else
-        symbol = ccall(:NSLookupAndBindSymbol, Ptr{Void}, (Ptr{Uint8},), tmp)
+        symbol = ccall(:NSLookupAndBindSymbol, Ptr{Void}, (Ptr{UInt8},), tmp)
         return ccall(:NSAddressOfSymbol, Ptr{Void}, (Ptr{Void},), symbol)
     end
 end
 
 function wglGetProcAddress(glFuncName::ASCIIString)
-    ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{Uint8},), glFuncName)
+    ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
 end
 
 function getprocaddress(glFuncName::ASCIIString)
