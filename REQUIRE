@@ -1,8 +1,2 @@
 julia 0.3
 Compat
- for elem in a
-           cd(Pkg.dir(elem))
-           run(`git add .`)
-           run(`git commit -m "support julia 0.4"`)
-           run(`git push origin master`)
-           end
