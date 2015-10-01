@@ -2,11 +2,7 @@ import GLFW
 using ModernGL, Compat
 include("util.jl")
 
-travis = get(ENV, "TRAVIS", "") == "true"
-if travis
-	#that's it... OpenGL is too annoying on a VM to do any further tests, so we just see if it's able to load ModernGL successfully for now
-else
-
+if isinteractive() # only do test if called from REPL... this is for automated testing environments which fail for OpenGL stuff, but I'd like to test if at least including works
 
 GLFW.Init()
 # OS X-specific GLFW hints to initialize the correct version of OpenGL
