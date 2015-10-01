@@ -2,7 +2,11 @@ import GLFW
 using ModernGL, Compat
 include("util.jl")
 
-if isinteractive() # only do test if called from REPL... this is for automated testing environments which fail for OpenGL stuff, but I'd like to test if at least including works
+function is_ci()
+	get(ENV, "TRAVIS", "") == "true" || get(ENV, "APPVEYOR", "") == "true" || get(ENV, "CI", "") == "true"
+end
+
+if !is_ci() # only do test if not CI... this is for automated testing environments which fail for OpenGL stuff, but I'd like to test if at least including works
 
 GLFW.Init()
 # OS X-specific GLFW hints to initialize the correct version of OpenGL
