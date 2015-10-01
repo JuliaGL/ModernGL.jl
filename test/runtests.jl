@@ -1,10 +1,10 @@
 import GLFW
 using ModernGL, Compat
 function glGenOne(glGenFn)
-	id::Ptr{GLuint} = GLuint[0]
+	id = GLuint[0]
 	glGenFn(1, id)
 	glCheckError("generating a buffer, array, or texture")
-	unsafe_load(id)
+	id[]
 end
 glGenBuffer() = glGenOne(glGenBuffers)
 glGenVertexArray() = glGenOne(glGenVertexArrays)
@@ -15,26 +15,26 @@ function getInfoLog(obj::GLuint)
 	getiv = isShader == GL_TRUE ? glGetShaderiv : glGetProgramiv
 	getInfo = isShader == GL_TRUE ? glGetShaderInfoLog : glGetProgramInfoLog
 	# Get the maximum possible length for the descriptive error message
-	int::Ptr{GLint} = GLint[0]
-	getiv(obj, GL_INFO_LOG_LENGTH, int)
-	maxlength = unsafe_load(int)
+	len = GLint[0]
+	getiv(obj, GL_INFO_LOG_LENGTH, len)
+	maxlength = len[]
 	# TODO: Create a macro that turns the following into the above:
 	# maxlength = @glPointer getiv(obj, GL_INFO_LOG_LENGTH, GLint)
 	# Return the text of the message if there is any
 	if maxlength > 0
-	buffer = zeros(GLchar, maxlength)
-	sizei::Ptr{GLsizei} = GLsizei[0]
-	getInfo(obj, maxlength, sizei, buffer)
-	length = unsafe_load(sizei)
-	bytestring(pointer(buffer), length)
+		buffer = zeros(GLchar, maxlength)
+		sizei = GLsizei[0]
+		getInfo(obj, maxlength, sizei, buffer)
+		len = sizei[]
+		bytestring(pointer(buffer), len)
 	else
-	""
+		""
 	end
 end
 function validateShader(shader)
-success::Ptr{GLint} = GLint[0]
-glGetShaderiv(shader, GL_COMPILE_STATUS, success)
-unsafe_load(success) == GL_TRUE
+	success = GLint[0]
+	glGetShaderiv(shader, GL_COMPILE_STATUS, success)
+	success[] == GL_TRUE
 end
 function glErrorMessage()
 # Return a string representing the current OpenGL error flag, or the empty string if there's no error.
@@ -85,9 +85,9 @@ function createShaderProgram(f, vertexShader, fragmentShader)
 	f(prog)
 	# Finally, link the program and check for errors.
 	glLinkProgram(prog)
-	status::Ptr{GLint} = GLint[0]
+	status = GLint[0]
 	glGetProgramiv(prog, GL_LINK_STATUS, status)
-	if unsafe_load(status) == GL_FALSE then
+	if status[] == GL_FALSE then
 		glDeleteProgram(prog)
 		error("Error linking shader: ", glGetInfoLog(prog))
 	end
@@ -99,7 +99,7 @@ function createcontextinfo()
 	global GLSL_VERSION
 	glsl = split(bytestring(glGetString(GL_SHADING_LANGUAGE_VERSION)), ['.', ' '])
 	if length(glsl) >= 2
-		glsl = VersionNumber(int(glsl[1]), int(glsl[2]))
+		glsl = VersionNumber(parse(Int, glsl[1]), parse(Int, glsl[2]))
 		GLSL_VERSION = string(glsl.major) * rpad(string(glsl.minor),2,"0")
 	else
 		error("Unexpected version number string. Please report this bug! GLSL version string: $(glsl)")
@@ -107,7 +107,7 @@ function createcontextinfo()
 
 	glv = split(bytestring(glGetString(GL_VERSION)), ['.', ' '])
 	if length(glv) >= 2
-		glv = VersionNumber(int(glv[1]), int(glv[2]))
+		glv = VersionNumber(parse(Int, glv[1]), parse(Int, glv[2]))
 	else
 		error("Unexpected version number string. Please report this bug! OpenGL version string: $(glv)")
 	end
@@ -120,19 +120,13 @@ function createcontextinfo()
 	))
 end
 function get_glsl_version_string()
-if isempty(GLSL_VERSION)
-error("couldn't get GLSL version, GLUTils not initialized, or context not created?")
-end
-return "#version $(GLSL_VERSION)\n"
+	if isempty(GLSL_VERSION)
+		error("couldn't get GLSL version, GLUTils not initialized, or context not created?")
+	end
+	return "#version $(GLSL_VERSION)\n"
 end
 GLFW.Init()
 # OS X-specific GLFW hints to initialize the correct version of OpenGL
-@osx_only begin
-    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3)
-    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2)
-    GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE)
-    GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, GL_TRUE)
-end
 wh = 600
 # Create a windowed mode window and its OpenGL context
 window = GLFW.CreateWindow(wh, wh, "OpenGL Example")
@@ -177,14 +171,12 @@ program = createShaderProgram(vertexShader, fragmentShader)
 glUseProgram(program)
 positionAttribute = glGetAttribLocation(program, "position");
 glEnableVertexAttribArray(positionAttribute)
-glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, 0)
-t = 0
+glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, C_NULL)
 println(versioninfo())
 # Loop until the user closes the window
-while !GLFW.WindowShouldClose(window)
+for i=1:10
 	# Pulse the background blue
-	t += 1
-	glClearColor(0.0, 0.0, 0.5 * (1 + sin(t * 0.02)), 1.0)
+	glClearColor(0.0, 0.0, 0.5 * (1 + sin(i * 0.02)), 1.0)
 	glClear(GL_COLOR_BUFFER_BIT)
 	# Draw our triangle
 	glDrawArrays(GL_TRIANGLES, 0, 3)
