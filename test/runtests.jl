@@ -55,7 +55,6 @@ glUseProgram(program)
 positionAttribute = glGetAttribLocation(program, "position");
 glEnableVertexAttribArray(positionAttribute)
 glVertexAttribPointer(positionAttribute, 2, GL_FLOAT, false, 0, C_NULL)
-println(versioninfo())
 # Loop until the user closes the window
 for i=1:500
 	# Pulse the background blue
