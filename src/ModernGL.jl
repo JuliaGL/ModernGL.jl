@@ -1,6 +1,8 @@
 VERSION >= v"0.4.0-dev+6521" && __precompile__(true)
 module ModernGL
 
+using Compat
+
 function glXGetProcAddress(glFuncName::ASCIIString)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
 end
