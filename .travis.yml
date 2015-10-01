@@ -6,9 +6,6 @@ julia:
   - 0.3
   - 0.4
   - nightly
-matrix:
-  allow_failures:
-    - os: osx
 addons:
   apt:
     packages:
@@ -16,6 +13,3 @@ addons:
     - libxxf86vm-dev
     sources:
     - kalakris-cmake
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start" # X virtual framebuffer
