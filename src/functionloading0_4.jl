@@ -23,6 +23,7 @@ macro glfunc(opengl_func)
             $(Expr(:quote, :(ccall($ptr_expr, $return_type, ($(input_types...),), $(arg_names...)))))
         end
         $(Expr(:export,  func_name))
+        precompile($func_name, ($(input_types...),))
     end
     return esc(ret)
 end
