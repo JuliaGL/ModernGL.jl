@@ -23,7 +23,7 @@ end
 function getprocaddress(glFuncName::ASCIIString)
     @linux? ( glXGetProcAddress(glFuncName) :
         @windows? (wglGetProcAddress(glFuncName) :
-            @osx? (NSGetProcAddress(glFuncName) : 
+            @osx? (NSGetProcAddress(glFuncName) :
                 error("platform not supported")
             )
         )
@@ -41,9 +41,9 @@ end
 # Test, if an opengl function is available.
 # Sadly, this doesn't work for Linux, as glxGetProcAddress
 # always returns a non null function pointer, as the function pointers are not depending on an active context.
-isavailable(name::Symbol) = 
+isavailable(name::Symbol) =
     isavailable(ModernGL.getprocaddress(ascii(string(name))))
-    
+
 isavailable(ptr::Ptr{Void}) = !(
     ptr == C_NULL ||
     ptr == convert(Ptr{Void},  1) ||
@@ -72,7 +72,7 @@ macro GenEnums(list)
         $(dictname) = $enumdict1
         function $(enumName){T}(number::T)
             if !haskey($(dictname), number)
-                error("x is not a GLenum")
+                error("$number is not a GLenum")
             end
             $(enumName){$(dictname)[number], T}(number, $(dictname)[number])
         end
@@ -82,11 +82,7 @@ macro GenEnums(list)
 end
 
 include("glTypes.jl")
-if VERSION >= v"0.4.0-dev+6521"
-    include("functionloading0_4.jl") 
-else
-    include("functionloading0_3.jl") 
-end
+include("functionloading.jl")
 include("glConstants.jl")
 
 end # module
