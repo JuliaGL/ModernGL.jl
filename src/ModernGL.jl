@@ -30,10 +30,16 @@ function getprocaddress(glFuncName::ASCIIString)
     )
 end
 
+immutable ContextNotAvailable <: Exception
+    message::UTF8String
+end
+export ContextNotAvailable
 function getprocaddress_e(glFuncName)
     p = getprocaddress(glFuncName)
     if !isavailable(p)
-        error(glFuncName, " not available for your driver, or no valid OpenGL context available")
+        throw(ContextNotAvailable(
+            "$glFuncName, not available for your driver, or no valid OpenGL context available"
+        ))
     end
     p
 end
