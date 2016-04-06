@@ -1,7 +1,7 @@
 #ModernGL
 OpenGL bindings for OpenGL 3.0 and upwards. As OpenGL 3.0 has a lot of overlaps with OpenGL 2.1, OpenGL 2.1 is partly supported as well.
 
-My philosophy is to keep this library strictly a low-level wrapper, so you won't find any error handling (besides for the function loading itself) or abstractions in this package.
+The philosophy is to keep this library strictly a low-level wrapper, so you won't find any error handling (besides for the function loading itself) or abstractions in this package.
 
 ### Installation notes
 There are no dependencies, besides the graphic driver. If you have any problems, you should consider updating the driver first.
