@@ -18,7 +18,7 @@ macro glfunc(opengl_func)
 
     @windows_only begin # windows has some function pointers statically available and some not, this is how we deal with it:
         ptr = Libdl.dlsym_e(gl_lib, func_name)
-        if (ptr != C_NULL) 
+        if (ptr != C_NULL)
             ptr_expr = :(($func_name_sym, "opengl32"))
             ret = quote
                 function $func_name($(arg_names...))
@@ -30,11 +30,15 @@ macro glfunc(opengl_func)
         end
     end
     ptr_sym = gensym("$(func_name)_func_pointer")
+    error_str = "Function loading for $func_name went wrong. Expr: $(ptr_expr)"
     ret = quote
         const $ptr_sym = GLFunc(C_NULL)
         function $func_name($(arg_names...))
             if $ptr_sym.p::Ptr{Void} == C_NULL
                 $ptr_sym.p::Ptr{Void} = $ptr_expr
+                if $ptr_sym.p::Ptr{Void} == C_NULL
+                    error($error_str)
+                end
             end
             ccall($ptr_sym.p::Ptr{Void}, $return_type, ($(input_types...),), $(arg_names...))
         end
