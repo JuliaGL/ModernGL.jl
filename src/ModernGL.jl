@@ -3,10 +3,10 @@ module ModernGL
 
 using Compat
 
-function glXGetProcAddress(glFuncName::ASCIIString)
+function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
 end
-function NSGetProcAddress(glFuncName::ASCIIString)
+function NSGetProcAddress(glFuncName)
     tmp = "_"*glFuncName
     if ccall(:NSIsSymbolNameDefined, Cint, (Ptr{UInt8},), tmp) == 0
         return convert(Ptr{Void}, 0)
@@ -16,11 +16,11 @@ function NSGetProcAddress(glFuncName::ASCIIString)
     end
 end
 
-function wglGetProcAddress(glFuncName::ASCIIString)
+function wglGetProcAddress(glFuncName)
     ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
 end
 
-function getprocaddress(glFuncName::ASCIIString)
+function getprocaddress(glFuncName)
     @linux? ( glXGetProcAddress(glFuncName) :
         @windows? (wglGetProcAddress(glFuncName) :
             @osx? (NSGetProcAddress(glFuncName) :
@@ -31,7 +31,7 @@ function getprocaddress(glFuncName::ASCIIString)
 end
 
 immutable ContextNotAvailable <: Exception
-    message::UTF8String
+    message::Compat.UTF8String
 end
 export ContextNotAvailable
 function getprocaddress_e(glFuncName)
