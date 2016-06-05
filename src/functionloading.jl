@@ -16,9 +16,9 @@ macro glfunc(opengl_func)
     func_name_str   = string(func_name)
     ptr_expr        = :(getprocaddress_e($func_name_str))
 
-    @windows_only begin # windows has some function pointers statically available and some not, this is how we deal with it:
+    if is_windows() # windows has some function pointers statically available and some not, this is how we deal with it:
         ptr = Libdl.dlsym_e(gl_lib, func_name)
-        if (ptr != C_NULL) 
+        if (ptr != C_NULL)
             ptr_expr = :(($func_name_sym, "opengl32"))
             ret = quote
                 function $func_name($(arg_names...))
@@ -42,6 +42,10 @@ macro glfunc(opengl_func)
         end
     return esc(ret)
 end
-@windows_only const gl_lib = Libdl.dlopen("opengl32")
+@static if is_windows()
+    const gl_lib = Libdl.dlopen("opengl32")
+end
 include("glFunctions.jl")
-@windows_only Libdl.dlclose(gl_lib)
+@static if is_windows()
+    Libdl.dlclose(gl_lib)
+end
