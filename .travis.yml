@@ -1,11 +1,14 @@
 language: julia
 os:
   - linux
+  - osx
 julia:
   - 0.3
   - 0.4
   - 0.5
- addons:
+notifications:
+  email: false
+addons:
   apt:
     packages:
     - cmake
