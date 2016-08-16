@@ -68,4 +68,5 @@ for i=1:500
 	GLFW.PollEvents()
 end
 GLFW.Terminate()
+
 end

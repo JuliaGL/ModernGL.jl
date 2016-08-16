@@ -21,13 +21,15 @@ function wglGetProcAddress(glFuncName)
 end
 
 function getprocaddress(glFuncName)
-    @linux? ( glXGetProcAddress(glFuncName) :
-        @windows? (wglGetProcAddress(glFuncName) :
-            @osx? (NSGetProcAddress(glFuncName) :
-                error("platform not supported")
-            )
-        )
-    )
+    @static if is_linux()
+        glXGetProcAddress(glFuncName)
+    elseif is_windows()
+        wglGetProcAddress(glFuncName)
+    elseif is_apple()
+        NSGetProcAddress(glFuncName)
+    else
+        error("platform not supported")
+    end
 end
 
 immutable ContextNotAvailable <: Exception
