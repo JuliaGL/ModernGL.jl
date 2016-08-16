@@ -42,10 +42,10 @@ macro glfunc(opengl_func)
         end
     return esc(ret)
 end
-@static if is_windows()
+if is_windows()
     const gl_lib = Libdl.dlopen("opengl32")
 end
 include("glFunctions.jl")
-@static if is_windows()
+if is_windows()
     Libdl.dlclose(gl_lib)
 end
