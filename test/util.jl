@@ -24,7 +24,7 @@ function getInfoLog(obj::GLuint)
 		sizei = GLsizei[0]
 		getInfo(obj, maxlength, sizei, buffer)
 		len = sizei[]
-		Compat.String(pointer(buffer), len)
+		unsafe_string(pointer(buffer), len)
 	else
 		""
 	end
@@ -95,7 +95,7 @@ createShaderProgram(vertexShader, fragmentShader) = createShaderProgram(prog->0,
 global GLSL_VERSION = ""
 function createcontextinfo()
 	global GLSL_VERSION
-	glsl = split(Compat.String(glGetString(GL_SHADING_LANGUAGE_VERSION)), ['.', ' '])
+	glsl = split(unsafe_string(glGetString(GL_SHADING_LANGUAGE_VERSION)), ['.', ' '])
 	if length(glsl) >= 2
 		glsl = VersionNumber(parse(Int, glsl[1]), parse(Int, glsl[2]))
 		GLSL_VERSION = string(glsl.major) * rpad(string(glsl.minor),2,"0")
@@ -103,7 +103,7 @@ function createcontextinfo()
 		error("Unexpected version number string. Please report this bug! GLSL version string: $(glsl)")
 	end
 
-	glv = split(Compat.String(glGetString(GL_VERSION)), ['.', ' '])
+	glv = split(unsafe_string(glGetString(GL_VERSION)), ['.', ' '])
 	if length(glv) >= 2
 		glv = VersionNumber(parse(Int, glv[1]), parse(Int, glv[2]))
 	else
@@ -112,9 +112,9 @@ function createcontextinfo()
 	dict = @compat(Dict{Symbol,Any}(
 	    :glsl_version   => glsl,
 	    :gl_version     => glv,
-	    :gl_vendor	    => Compat.String(glGetString(GL_VENDOR)),
-	    :gl_renderer	=> Compat.String(glGetString(GL_RENDERER)),
-	    #:gl_extensions => split(Compat.String(glGetString(GL_EXTENSIONS))),
+	    :gl_vendor	    => unsafe_string(glGetString(GL_VENDOR)),
+	    :gl_renderer	=> unsafe_string(glGetString(GL_RENDERER)),
+	    #:gl_extensions => split(unsafe_string(glGetString(GL_EXTENSIONS))),
 	))
 end
 function get_glsl_version_string()
