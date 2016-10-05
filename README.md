@@ -1,4 +1,10 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/j9qrhqi2jjhst383?svg=true)](https://ci.appveyor.com/project/SimonDanisch/moderngl-jl)
+[![Build Status](https://travis-ci.org/JuliaGL/ModernGL.jl.svg?branch=master)](https://travis-ci.org/JuliaGL/ModernGL.jl)
+
+
 #ModernGL
+
+
 OpenGL bindings for OpenGL 3.0 and upwards. As OpenGL 3.0 has a lot of overlaps with OpenGL 2.1, OpenGL 2.1 is partly supported as well.
 
 The philosophy is to keep this library strictly a low-level wrapper, so you won't find any error handling (besides for the function loading itself) or abstractions in this package.
