@@ -1,17 +1,22 @@
 environment:
   matrix:
-  - JULIAVERSION: "julialang/bin/winnt/x86/0.3/julia-0.3-latest-win32.exe"
-  - JULIAVERSION: "julialang/bin/winnt/x64/0.3/julia-0.3-latest-win64.exe"
+  - JULIAVERSION: "julialang/bin/winnt/x86/0.4/julia-0.4-latest-win32.exe"
+  - JULIAVERSION: "julialang/bin/winnt/x64/0.5/julia-0.5-latest-win64.exe"
   - JULIAVERSION: "julianightlies/bin/winnt/x86/julia-latest-win32.exe"
-  - JULIAVERSION: "julianightlies/bin/winnt/x64/julia-latest-win64.exe"
 
 branches:
   only:
     - master
     - /release-.*/
+
+notifications:
+  - provider: Email
+    on_build_success: false
+    on_build_failure: false
+    on_build_status_changed: false
+
 install:
 # Download most recent Julia Windows binary
-
   - ps: (new-object net.webclient).DownloadFile(
         $("http://s3.amazonaws.com/"+$env:JULIAVERSION),
         "C:\projects\julia-binary.exe")
@@ -20,8 +25,9 @@ install:
 
 build_script:
 # Need to convert from shallow to complete for Pkg.clone to work
-#  - git fetch --unshallow
-  - C:\projects\julia\bin\julia-debug -e "versioninfo(); Pkg.init(); Pkg.clone(pwd(), \"ModernGL\")"
+  - IF EXIST .git\shallow (git fetch --unshallow)
+  - C:\projects\julia\bin\julia -e "versioninfo();
+      Pkg.clone(pwd(), \"ModernGL\"); Pkg.build(\"ModernGL\")"
 
 test_script:
-  - C:\projects\julia\bin\julia-debug -e "Pkg.test(\"ModernGL\")"
+- C:\projects\julia\bin\julia -e "Pkg.test(\"ModernGL\")"
