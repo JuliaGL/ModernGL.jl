@@ -20,16 +20,14 @@ function wglGetProcAddress(glFuncName)
     ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
 end
 
-function getprocaddress(glFuncName)
-    @static if is_linux()
-        glXGetProcAddress(glFuncName)
-    elseif is_windows()
-        wglGetProcAddress(glFuncName)
-    elseif is_apple()
-        NSGetProcAddress(glFuncName)
-    else
-        error("platform not supported")
-    end
+if is_apple()
+    getprocaddress(glFuncName) = NSGetProcAddress(glFuncName)
+end
+if is_windows()
+    getprocaddress(glFuncName) = wglGetProcAddress(glFuncName)
+end
+if is_linux()
+    getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
 end
 
 immutable ContextNotAvailable <: Exception
