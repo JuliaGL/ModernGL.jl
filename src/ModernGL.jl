@@ -22,13 +22,13 @@ end
 
 if is_apple()
     getprocaddress(glFuncName) = NSGetProcAddress(glFuncName)
+elseif is_unix()
+    getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
 end
 if is_windows()
     getprocaddress(glFuncName) = wglGetProcAddress(glFuncName)
 end
-if is_linux()
-    getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
-end
+
 
 immutable ContextNotAvailable <: Exception
     message::Compat.UTF8String
