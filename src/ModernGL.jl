@@ -57,7 +57,8 @@ isavailable(ptr::Ptr{Void}) = !(
     ptr == convert(Ptr{Void},  3)
 )
 
-abstract Enum
+@compat abstract type Enum end
+
 macro GenEnums(list)
     tmp = list.args
     enumName = tmp[2]
