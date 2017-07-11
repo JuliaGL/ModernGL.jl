@@ -1,4 +1,4 @@
-type GLFunc
+mutable struct GLFunc
     p::Ptr{Void}
 end
 # based on getCFun macro

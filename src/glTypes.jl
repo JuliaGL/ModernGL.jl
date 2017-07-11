@@ -1,29 +1,30 @@
 #all OpenGL Types
-@compat const GLvoid = Void
-@compat const GLint = Cint
-@compat const GLsizeiptr = Cint
-@compat const Pointer = Ptr{Void}
-@compat const GLhalfNV = Cushort
-@compat const GLshort = Cshort
-@compat const GLdouble = Cdouble
-@compat const GLushort = Cushort
-@compat const GLuint = Cuint
-@compat const GLint64 = Clonglong
-@compat const GLbyte = Cchar
-@compat const GLchar = Cuchar
-@compat const GLubyte = Cuchar
-@compat const GLintptr = Cptrdiff_t
-@compat const GLfloat = Cfloat
-@compat const GLhalfARB = Cushort
-@compat const GLhalf = Cushort
-@compat const GLenum = Cuint
-@compat const GLboolean = Cuchar
-@compat const GLclampf = Cfloat
-@compat const GLsizei = Cint
-@compat const GLsync = Ptr{Void}
-@compat const GLuint64 = Culonglong
-@compat const GLclampd = Cdouble
-@compat const GLbitfield = Cuint
+const GLvoid = Void
+const GLint = Cint
+const GLsizeiptr = Cint
+const Pointer = Ptr{Void}
+const GLhalfNV = Cushort
+const GLshort = Cshort
+const GLdouble = Cdouble
+const GLushort = Cushort
+const GLuint = Cuint
+const GLint64 = Clonglong
+const GLbyte = Cchar
+const GLchar = Cuchar
+const GLubyte = Cuchar
+const GLintptr = Cptrdiff_t
+const GLfloat = Cfloat
+const GLhalfARB = Cushort
+const GLhalf = Cushort
+const GLenum = Cuint
+const GLboolean = Cuchar
+const GLclampf = Cfloat
+const GLsizei = Cint
+const GLsync = Ptr{Void}
+const GLuint64 = Culonglong
+const GLclampd = Cdouble
+const GLbitfield = Cuint
+
 export GLvoid
 export GLint
 export GLsizeiptr
