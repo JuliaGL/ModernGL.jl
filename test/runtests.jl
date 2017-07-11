@@ -1,5 +1,5 @@
 import GLFW
-using ModernGL, Compat
+using ModernGL
 include("util.jl")
 
 function is_ci()

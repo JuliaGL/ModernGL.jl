@@ -109,13 +109,13 @@ function createcontextinfo()
 	else
 		error("Unexpected version number string. Please report this bug! OpenGL version string: $(glv)")
 	end
-	dict = @compat(Dict{Symbol,Any}(
+	dict = Dict{Symbol,Any}(
 	    :glsl_version   => glsl,
 	    :gl_version     => glv,
 	    :gl_vendor	    => unsafe_string(glGetString(GL_VENDOR)),
 	    :gl_renderer	=> unsafe_string(glGetString(GL_RENDERER)),
 	    #:gl_extensions => split(unsafe_string(glGetString(GL_EXTENSIONS))),
-	))
+	)
 end
 function get_glsl_version_string()
 	if isempty(GLSL_VERSION)
