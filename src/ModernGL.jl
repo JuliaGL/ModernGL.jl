@@ -1,7 +1,5 @@
-VERSION >= v"0.4.0-dev+6521" && __precompile__(true)
+__precompile__(true)
 module ModernGL
-
-using Compat
 
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
@@ -30,9 +28,10 @@ if is_windows()
 end
 
 
-immutable ContextNotAvailable <: Exception
-    message::Compat.UTF8String
+struct ContextNotAvailable <: Exception
+    message::String
 end
+
 export ContextNotAvailable
 function getprocaddress_e(glFuncName)
     p = getprocaddress(glFuncName)
@@ -57,7 +56,8 @@ isavailable(ptr::Ptr{Void}) = !(
     ptr == convert(Ptr{Void},  3)
 )
 
-abstract Enum
+abstract type Enum end
+
 macro GenEnums(list)
     tmp = list.args
     enumName = tmp[2]

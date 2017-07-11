@@ -1,29 +1,30 @@
 #all OpenGL Types
-typealias GLvoid                                                      Void
-typealias GLint                                                       Cint
-typealias GLsizeiptr                                                  Cint
-typealias Pointer                                                     Ptr{Void}
-typealias GLhalfNV                                                    Cushort
-typealias GLshort                                                     Cshort
-typealias GLdouble                                                    Cdouble
-typealias GLushort                                                    Cushort
-typealias GLuint                                                      Cuint
-typealias GLint64                                                     Clonglong
-typealias GLbyte                                                      Cchar
-typealias GLchar                                                      Cuchar
-typealias GLubyte                                                     Cuchar
-typealias GLintptr                                                    Cptrdiff_t
-typealias GLfloat                                                     Cfloat
-typealias GLhalfARB                                                   Cushort
-typealias GLhalf                                                      Cushort
-typealias GLenum                                                      Cuint
-typealias GLboolean                                                   Cuchar
-typealias GLclampf                                                    Cfloat
-typealias GLsizei                                                     Cint
-typealias GLsync                                                      Ptr{Void}
-typealias GLuint64                                                    Culonglong
-typealias GLclampd                                                    Cdouble
-typealias GLbitfield                                                  Cuint
+const GLvoid = Void
+const GLint = Cint
+const GLsizeiptr = Cint
+const Pointer = Ptr{Void}
+const GLhalfNV = Cushort
+const GLshort = Cshort
+const GLdouble = Cdouble
+const GLushort = Cushort
+const GLuint = Cuint
+const GLint64 = Clonglong
+const GLbyte = Cchar
+const GLchar = Cuchar
+const GLubyte = Cuchar
+const GLintptr = Cptrdiff_t
+const GLfloat = Cfloat
+const GLhalfARB = Cushort
+const GLhalf = Cushort
+const GLenum = Cuint
+const GLboolean = Cuchar
+const GLclampf = Cfloat
+const GLsizei = Cint
+const GLsync = Ptr{Void}
+const GLuint64 = Culonglong
+const GLclampd = Cdouble
+const GLbitfield = Cuint
+
 export GLvoid
 export GLint
 export GLsizeiptr
