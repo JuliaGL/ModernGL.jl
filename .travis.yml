@@ -12,7 +12,7 @@ addons:
     packages:
     - cmake
     - libxxf86vm-dev
-    - xrandr-dev
+    - libxrandr-dev
     sources:
     - kubuntu-backports
 before_script:
