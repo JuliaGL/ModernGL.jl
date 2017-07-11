@@ -10,10 +10,6 @@ notifications:
 addons:
   apt:
     packages:
-    - cmake
-    - libxxf86vm-dev
-    - libxrandr-dev
-    sources:
-    - kubuntu-backports
+    - xorg-dev
 before_script:
   - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; fi
