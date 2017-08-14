@@ -71,7 +71,7 @@ macro GenEnums(list)
     end
     dictname = gensym()
     enumtype =  quote
-        immutable $(enumName){Sym, T} <: Enum
+        struct $(enumName){Sym, T} <: Enum
             number::T
             name::Symbol
         end
