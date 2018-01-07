@@ -64,7 +64,7 @@ macro GenEnums(list)
     splice!(tmp, 1:2)
     enumType    = typeof(eval(tmp[4].args[1].args[2]))
     enumdict1   = Dict{enumType, Symbol}()
-    for elem in tmp
+    for elem in filter(x-> !(typeof(x) <: LineNumberNode), tmp)
         if elem.head == :const
             enumdict1[eval(elem.args[1].args[2])] = elem.args[1].args[1]
         end
