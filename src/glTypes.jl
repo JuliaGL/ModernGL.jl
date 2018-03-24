@@ -1,8 +1,8 @@
 #all OpenGL Types
-const GLvoid = Void
+const GLvoid = Nothing
 const GLint = Cint
 const GLsizeiptr = Cint
-const Pointer = Ptr{Void}
+const Pointer = Ptr{Nothing}
 const GLhalfNV = Cushort
 const GLshort = Cshort
 const GLdouble = Cdouble
@@ -20,7 +20,7 @@ const GLenum = Cuint
 const GLboolean = Cuchar
 const GLclampf = Cfloat
 const GLsizei = Cint
-const GLsync = Ptr{Void}
+const GLsync = Ptr{Nothing}
 const GLuint64 = Culonglong
 const GLclampd = Cdouble
 const GLbitfield = Cuint

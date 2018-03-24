@@ -1,5 +1,7 @@
+import Libdl
+
 mutable struct GLFunc
-    p::Ptr{Void}
+    p::Ptr{Nothing}
 end
 # based on getCFun macro
 macro glfunc(opengl_func)
@@ -16,7 +18,7 @@ macro glfunc(opengl_func)
     func_name_str   = string(func_name)
     ptr_expr        = :(getprocaddress_e($func_name_str))
 
-    if is_windows() # windows has some function pointers statically available and some not, this is how we deal with it:
+    if Sys.iswindows() # windows has some function pointers statically available and some not, this is how we deal with it:
         ptr = Libdl.dlsym_e(gl_lib, func_name)
         if (ptr != C_NULL)
             ptr_expr = :(($func_name_sym, "opengl32"))
@@ -33,19 +35,19 @@ macro glfunc(opengl_func)
     ret = quote
         const $ptr_sym = GLFunc(C_NULL)
         function $func_name($(arg_names...))
-            if $ptr_sym.p::Ptr{Void} == C_NULL
-                $ptr_sym.p::Ptr{Void} = $ptr_expr
+            if $ptr_sym.p::Ptr{Nothing} == C_NULL
+                $ptr_sym.p::Ptr{Nothing} = $ptr_expr
             end
-            ccall($ptr_sym.p::Ptr{Void}, $return_type, ($(input_types...),), $(arg_names...))
+            ccall($ptr_sym.p::Ptr{Nothing}, $return_type, ($(input_types...),), $(arg_names...))
         end
         $(Expr(:export, func_name))
         end
     return esc(ret)
 end
-if is_windows()
+if Sys.iswindows()
     const gl_lib = Libdl.dlopen("opengl32")
 end
 include("glFunctions.jl")
-if is_windows()
+if Sys.iswindows()
     Libdl.dlclose(gl_lib)
 end

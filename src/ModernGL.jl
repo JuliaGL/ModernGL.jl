@@ -2,28 +2,28 @@ __precompile__(true)
 module ModernGL
 
 function glXGetProcAddress(glFuncName)
-    ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
+    ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Nothing}, (Ptr{UInt8},), glFuncName)
 end
 function NSGetProcAddress(glFuncName)
     tmp = "_"*glFuncName
     if ccall(:NSIsSymbolNameDefined, Cint, (Ptr{UInt8},), tmp) == 0
-        return convert(Ptr{Void}, 0)
+        return convert(Ptr{Nothing}, 0)
     else
-        symbol = ccall(:NSLookupAndBindSymbol, Ptr{Void}, (Ptr{UInt8},), tmp)
-        return ccall(:NSAddressOfSymbol, Ptr{Void}, (Ptr{Void},), symbol)
+        symbol = ccall(:NSLookupAndBindSymbol, Ptr{Nothing}, (Ptr{UInt8},), tmp)
+        return ccall(:NSAddressOfSymbol, Ptr{Nothing}, (Ptr{Nothing},), symbol)
     end
 end
 
 function wglGetProcAddress(glFuncName)
-    ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
+    ccall((:wglGetProcAddress, "opengl32"), Ptr{Nothing}, (Ptr{UInt8},), glFuncName)
 end
 
-if is_apple()
+if Sys.isapple()
     getprocaddress(glFuncName) = NSGetProcAddress(glFuncName)
-elseif is_unix()
+elseif Sys.isunix()
     getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
 end
-if is_windows()
+if Sys.iswindows()
     getprocaddress(glFuncName) = wglGetProcAddress(glFuncName)
 end
 
@@ -49,11 +49,11 @@ end
 isavailable(name::Symbol) =
     isavailable(ModernGL.getprocaddress(ascii(string(name))))
 
-isavailable(ptr::Ptr{Void}) = !(
+isavailable(ptr::Ptr{Nothing}) = !(
     ptr == C_NULL ||
-    ptr == convert(Ptr{Void},  1) ||
-    ptr == convert(Ptr{Void},  2) ||
-    ptr == convert(Ptr{Void},  3)
+    ptr == convert(Ptr{Nothing},  1) ||
+    ptr == convert(Ptr{Nothing},  2) ||
+    ptr == convert(Ptr{Nothing},  3)
 )
 
 abstract type Enum end
@@ -65,7 +65,7 @@ macro GenEnums(list)
     enumType    = typeof(eval(tmp[4].args[1].args[2]))
     enumdict1   = Dict{enumType, Symbol}()
     for elem in tmp
-        if elem.head == :const
+        if !(elem isa LineNumberNode) && elem.head == :const
             enumdict1[eval(elem.args[1].args[2])] = elem.args[1].args[1]
         end
     end
@@ -76,7 +76,7 @@ macro GenEnums(list)
             name::Symbol
         end
         $(dictname) = $enumdict1
-        function $(enumName){T}(number::T)
+        function $(enumName)(number::T) where T
             if !haskey($(dictname), number)
                 error("$number is not a GLenum")
             end
