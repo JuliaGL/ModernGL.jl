@@ -9,7 +9,15 @@ end
 if !is_ci() # only do test if not CI... this is for automated testing environments which fail for OpenGL stuff, but I'd like to test if at least including works
 
     GLFW.Init()
+
     # OS X-specific GLFW hints to initialize the correct version of OpenGL
+    if Sys.isapple()
+        GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 4)
+        GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 1)
+        GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, GL_TRUE)
+        GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE)
+    end
+
     wh = 600
     # Create a windowed mode window and its OpenGL context
     window = GLFW.CreateWindow(wh, wh, "OpenGL Example")
