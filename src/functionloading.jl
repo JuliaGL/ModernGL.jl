@@ -1,5 +1,5 @@
 mutable struct GLFunc
-    p::Ptr{Void}
+    p::Ptr{Cvoid}
 end
 # based on getCFun macro
 macro glfunc(opengl_func)
@@ -33,10 +33,10 @@ macro glfunc(opengl_func)
     ret = quote
         const $ptr_sym = GLFunc(C_NULL)
         function $func_name($(arg_names...))
-            if $ptr_sym.p::Ptr{Void} == C_NULL
-                $ptr_sym.p::Ptr{Void} = $ptr_expr
+            if $ptr_sym.p::Ptr{Cvoid} == C_NULL
+                $ptr_sym.p::Ptr{Cvoid} = $ptr_expr
             end
-            ccall($ptr_sym.p::Ptr{Void}, $return_type, ($(input_types...),), $(arg_names...))
+            ccall($ptr_sym.p::Ptr{Cvoid}, $return_type, ($(input_types...),), $(arg_names...))
         end
         $(Expr(:export, func_name))
         end

@@ -37,14 +37,14 @@ if !is_ci() # only do test if not CI... this is for automated testing environmen
     const vsh = """
     $(get_glsl_version_string())
     in vec2 position;
-    void main() {
+    Cvoid main() {
     gl_Position = vec4(position, 0.0, 1.0);
     }
     """
     const fsh = """
     $(get_glsl_version_string())
     out vec4 outColor;
-    void main() {
+    Cvoid main() {
     outColor = vec4(1.0, 1.0, 1.0, 1.0);
     }
     """

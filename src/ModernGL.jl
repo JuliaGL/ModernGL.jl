@@ -2,20 +2,20 @@ __precompile__(true)
 module ModernGL
 
 function glXGetProcAddress(glFuncName)
-    ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
+    ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
 end
 function NSGetProcAddress(glFuncName)
     tmp = "_"*glFuncName
     if ccall(:NSIsSymbolNameDefined, Cint, (Ptr{UInt8},), tmp) == 0
-        return convert(Ptr{Void}, 0)
+        return convert(Ptr{Cvoid}, 0)
     else
-        symbol = ccall(:NSLookupAndBindSymbol, Ptr{Void}, (Ptr{UInt8},), tmp)
-        return ccall(:NSAddressOfSymbol, Ptr{Void}, (Ptr{Void},), symbol)
+        symbol = ccall(:NSLookupAndBindSymbol, Ptr{Cvoid}, (Ptr{UInt8},), tmp)
+        return ccall(:NSAddressOfSymbol, Ptr{Cvoid}, (Ptr{Cvoid},), symbol)
     end
 end
 
 function wglGetProcAddress(glFuncName)
-    ccall((:wglGetProcAddress, "opengl32"), Ptr{Void}, (Ptr{UInt8},), glFuncName)
+    ccall((:wglGetProcAddress, "opengl32"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
 end
 
 if is_apple()
@@ -49,11 +49,11 @@ end
 isavailable(name::Symbol) =
     isavailable(ModernGL.getprocaddress(ascii(string(name))))
 
-isavailable(ptr::Ptr{Void}) = !(
+isavailable(ptr::Ptr{Cvoid}) = !(
     ptr == C_NULL ||
-    ptr == convert(Ptr{Void},  1) ||
-    ptr == convert(Ptr{Void},  2) ||
-    ptr == convert(Ptr{Void},  3)
+    ptr == convert(Ptr{Cvoid},  1) ||
+    ptr == convert(Ptr{Cvoid},  2) ||
+    ptr == convert(Ptr{Cvoid},  3)
 )
 
 abstract type Enum end
@@ -65,7 +65,7 @@ macro GenEnums(list)
     enumType    = typeof(eval(tmp[4].args[1].args[2]))
     enumdict1   = Dict{enumType, Symbol}()
     for elem in tmp
-        if elem.head == :const
+        if Meta.isexpr(elem, :const)
             enumdict1[eval(elem.args[1].args[2])] = elem.args[1].args[1]
         end
     end
