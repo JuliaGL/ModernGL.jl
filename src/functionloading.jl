@@ -31,7 +31,7 @@ macro glfunc(opengl_func)
     end
     ptr_sym = gensym("$(func_name)_func_pointer")
     ret = quote
-        const $ptr_sym = GLFunc(C_NULL)
+        $ptr_sym = GLFunc(C_NULL)
         function $func_name($(arg_names...))
             if $ptr_sym.p::Ptr{Cvoid} == C_NULL
                 $ptr_sym.p::Ptr{Cvoid} = $ptr_expr
