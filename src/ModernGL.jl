@@ -1,6 +1,8 @@
 __precompile__(true)
 module ModernGL
 
+using Libdl
+
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
 end
@@ -18,12 +20,12 @@ function wglGetProcAddress(glFuncName)
     ccall((:wglGetProcAddress, "opengl32"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
 end
 
-if is_apple()
+if Sys.isapple()
     getprocaddress(glFuncName) = NSGetProcAddress(glFuncName)
-elseif is_unix()
+elseif Sys.isunix()
     getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
 end
-if is_windows()
+if Sys.iswindows()
     getprocaddress(glFuncName) = wglGetProcAddress(glFuncName)
 end
 
@@ -76,7 +78,7 @@ macro GenEnums(list)
             name::Symbol
         end
         $(dictname) = $enumdict1
-        function $(enumName){T}(number::T)
+        function $(enumName)(number::T) where T
             if !haskey($(dictname), number)
                 error("$number is not a GLenum")
             end

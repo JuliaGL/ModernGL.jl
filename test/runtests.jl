@@ -23,9 +23,9 @@ if !is_ci() # only do test if not CI... this is for automated testing environmen
     println(createcontextinfo())
     # The data for our triangle
     data = GLfloat[
-    0.0, 0.5,
-    0.5, -0.5,
-    -0.5,-0.5
+        0.0, 0.5,
+        0.5, -0.5,
+        -0.5,-0.5
     ]
     # Generate a vertex array and array buffer for our data
     vao = glGenVertexArray()
@@ -37,15 +37,15 @@ if !is_ci() # only do test if not CI... this is for automated testing environmen
     const vsh = """
     $(get_glsl_version_string())
     in vec2 position;
-    Cvoid main() {
-    gl_Position = vec4(position, 0.0, 1.0);
+    void main() {
+        gl_Position = vec4(position, 0.0, 1.0);
     }
     """
     const fsh = """
     $(get_glsl_version_string())
     out vec4 outColor;
-    Cvoid main() {
-    outColor = vec4(1.0, 1.0, 1.0, 1.0);
+    void main() {
+        outColor = vec4(1.0, 1.0, 1.0, 1.0);
     }
     """
     vertexShader = createShader(vsh, GL_VERTEX_SHADER)
