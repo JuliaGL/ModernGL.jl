@@ -1,7 +1,8 @@
 __precompile__(true)
 module ModernGL
 
-using Libdl
+using Compat
+import Compat: Libdl, Sys
 
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
