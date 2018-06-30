@@ -1,5 +1,5 @@
 #all OpenGL Types
-const GLvoid = Cvoid
+const GLCvoid = Cvoid
 const GLint = Cint
 const GLsizeiptr = Cint
 const Pointer = Ptr{Cvoid}
@@ -25,7 +25,7 @@ const GLuint64 = Culonglong
 const GLclampd = Cdouble
 const GLbitfield = Cuint
 
-export GLvoid
+export GLCvoid
 export GLint
 export GLsizeiptr
 export Pointer

@@ -68,8 +68,7 @@ macro GenEnums(list)
     enumType    = typeof(eval(tmp[4].args[1].args[2]))
     enumdict1   = Dict{enumType, Symbol}()
     for elem in tmp
-        isa(elem, LineNumberNode) && continue
-        if elem.head == :const
+        if Meta.isexpr(elem, :const)
             enumdict1[eval(elem.args[1].args[2])] = elem.args[1].args[1]
         end
     end
