@@ -9,6 +9,15 @@ OpenGL bindings for OpenGL 3.0 and upwards. As OpenGL 3.0 has a lot of overlaps 
 
 The philosophy is to keep this library strictly a low-level wrapper, so you won't find any error handling (besides for the function loading itself) or abstractions in this package.
 
+### Debugging
+
+You can rebuild ModernGL to include debug error checks:
+```Julia
+ENV["MODERNGL_DEBUGGING"] = "true"; Pkg.build("ModernGL")
+# or to get back the default behaviour:
+ENV["MODERNGL_DEBUGGING"] = "false"; Pkg.build("ModernGL")
+```
+
 ### Installation notes
 There are no dependencies, besides the graphic driver. If you have any problems, you should consider updating the driver first.
 
@@ -38,7 +47,7 @@ getProcAddress can be changed like this:
 using ModernGL
 
 function ModernGL.getprocaddress(name::ASCIIString)
-	# for example change it to GLUT 
+	# for example change it to GLUT
 	glutGetProcAddress(name)
 end
 ```
@@ -53,4 +62,4 @@ It seems, that there is actually no good way of testing if a function is support
 Credits go certainly to the OpenGL.jl ([rennis250](https://github.com/rennis250) && [o-jasper](https://github.com/o-jasper)) package, where I have all the OpenGL definitions from.
 Special thanks to rennis250 for all the support! :)
 
-Also, I have to thank for the constructive discussion on Julia-Users, where I got a good solution for the function pointer loading (final solution was from [vtjnash](https://github.com/vtjnash) and got replaced by [aaalexandrov's](https://github.com/aaalexandrov/) solution which doubled the speed). 
+Also, I have to thank for the constructive discussion on Julia-Users, where I got a good solution for the function pointer loading (final solution was from [vtjnash](https://github.com/vtjnash) and got replaced by [aaalexandrov's](https://github.com/aaalexandrov/) solution which doubled the speed).

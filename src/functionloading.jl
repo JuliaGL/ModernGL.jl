@@ -1,6 +1,22 @@
 mutable struct GLFunc
     p::Ptr{Void}
 end
+
+include(joinpath("..", "deps", "deps.jl"))
+
+macro debug_opengl(func_name)
+    if enable_opengl_debugging && func_name != :glGetError
+        quote
+            err = glGetError()
+            if err != GL_NO_ERROR
+                error("OpenGL call to $($func_name) failed with error: $(GLENUM(err).name).")
+            end
+        end
+    else
+        :()
+    end
+end
+
 # based on getCFun macro
 macro glfunc(opengl_func)
     arguments = map(opengl_func.args[1].args[2:end]) do arg
@@ -22,7 +38,9 @@ macro glfunc(opengl_func)
             ptr_expr = :(($func_name_sym, "opengl32"))
             ret = quote
                 function $func_name($(arg_names...))
-                    ccall($ptr_expr, $return_type, ($(input_types...),), $(arg_names...))
+                    result = ccall($ptr_expr, $return_type, ($(input_types...),), $(arg_names...))
+                    @debug_opengl($func_name)
+                    result
                 end
                 $(Expr(:export, func_name))
             end
@@ -36,12 +54,15 @@ macro glfunc(opengl_func)
             if $ptr_sym.p::Ptr{Void} == C_NULL
                 $ptr_sym.p::Ptr{Void} = $ptr_expr
             end
-            ccall($ptr_sym.p::Ptr{Void}, $return_type, ($(input_types...),), $(arg_names...))
+            result = ccall($ptr_sym.p::Ptr{Void}, $return_type, ($(input_types...),), $(arg_names...))
+            @debug_opengl($func_name)
+            result
         end
         $(Expr(:export, func_name))
         end
     return esc(ret)
 end
+
 if is_windows()
     const gl_lib = Libdl.dlopen("opengl32")
 end
