@@ -4,12 +4,17 @@ end
 
 include(joinpath("..", "deps", "deps.jl"))
 
-macro debug_opengl(func_name)
+gl_represent(x::GLenum) = GLENUM(x).name
+gl_represent(x) = repr(x)
+
+function debug_opengl_expr(func_name, args)
     if enable_opengl_debugging && func_name != :glGetError
         quote
             err = glGetError()
             if err != GL_NO_ERROR
-                error("OpenGL call to $($func_name) failed with error: $(GLENUM(err).name).")
+                arguments = gl_represent.(tuple($(args...)))
+                error("OpenGL call to $($func_name), with arguments: $(arguments)
+                Failed with error: $(GLENUM(err).name).")
             end
         end
     else
@@ -39,7 +44,7 @@ macro glfunc(opengl_func)
             ret = quote
                 function $func_name($(arg_names...))
                     result = ccall($ptr_expr, $return_type, ($(input_types...),), $(arg_names...))
-                    @debug_opengl($func_name)
+                    $(debug_opengl_expr(func_name, arg_names))
                     result
                 end
                 $(Expr(:export, func_name))
@@ -55,7 +60,7 @@ macro glfunc(opengl_func)
                 $ptr_sym.p::Ptr{Void} = $ptr_expr
             end
             result = ccall($ptr_sym.p::Ptr{Void}, $return_type, ($(input_types...),), $(arg_names...))
-            @debug_opengl($func_name)
+            $(debug_opengl_expr(func_name, arg_names))
             result
         end
         $(Expr(:export, func_name))
