@@ -1,5 +1,5 @@
 mutable struct GLFunc
-    p::Ptr{Void}
+    p::Ptr{Cvoid}
 end
 
 include(joinpath("..", "deps", "deps.jl"))
@@ -37,7 +37,7 @@ macro glfunc(opengl_func)
     func_name_str   = string(func_name)
     ptr_expr        = :(getprocaddress_e($func_name_str))
 
-    if is_windows() # windows has some function pointers statically available and some not, this is how we deal with it:
+    if Sys.iswindows() # windows has some function pointers statically available and some not, this is how we deal with it:
         ptr = Libdl.dlsym_e(gl_lib, func_name)
         if (ptr != C_NULL)
             ptr_expr = :(($func_name_sym, "opengl32"))
@@ -54,12 +54,12 @@ macro glfunc(opengl_func)
     end
     ptr_sym = gensym("$(func_name)_func_pointer")
     ret = quote
-        const $ptr_sym = GLFunc(C_NULL)
+        $ptr_sym = GLFunc(C_NULL)
         function $func_name($(arg_names...))
-            if $ptr_sym.p::Ptr{Void} == C_NULL
-                $ptr_sym.p::Ptr{Void} = $ptr_expr
+            if $ptr_sym.p::Ptr{Cvoid} == C_NULL
+                $ptr_sym.p::Ptr{Cvoid} = $ptr_expr
             end
-            result = ccall($ptr_sym.p::Ptr{Void}, $return_type, ($(input_types...),), $(arg_names...))
+            result = ccall($ptr_sym.p::Ptr{Cvoid}, $return_type, ($(input_types...),), $(arg_names...))
             $(debug_opengl_expr(func_name, arg_names))
             result
         end
@@ -68,10 +68,10 @@ macro glfunc(opengl_func)
     return esc(ret)
 end
 
-if is_windows()
+if Sys.iswindows()
     const gl_lib = Libdl.dlopen("opengl32")
 end
 include("glFunctions.jl")
-if is_windows()
+if Sys.iswindows()
     Libdl.dlclose(gl_lib)
 end
