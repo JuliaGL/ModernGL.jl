@@ -3,6 +3,7 @@ os:
   - linux
 dist: trusty
 julia:
+  - 0.6
   - 0.7
   - nightly
 matrix:
