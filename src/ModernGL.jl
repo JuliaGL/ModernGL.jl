@@ -1,7 +1,19 @@
 __precompile__(true)
 module ModernGL
 
-using Libdl
+if VERSION < v"0.7.0-"
+    const Cvoid = Void
+    const iswindows = is_windows
+    const isunix = is_unix
+    const isapple = is_apple
+else
+    using Libdl
+    const iswindows = Sys.iswindows
+    const isunix = Sys.isunix
+    const isapple = Sys.isapple
+end
+
+
 
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
@@ -20,12 +32,12 @@ function wglGetProcAddress(glFuncName)
     ccall((:wglGetProcAddress, "opengl32"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
 end
 
-if Sys.isapple()
+if isapple()
     getprocaddress(glFuncName) = NSGetProcAddress(glFuncName)
-elseif Sys.isunix()
+elseif isunix()
     getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
 end
-if Sys.iswindows()
+if iswindows()
     getprocaddress(glFuncName) = wglGetProcAddress(glFuncName)
 end
 
