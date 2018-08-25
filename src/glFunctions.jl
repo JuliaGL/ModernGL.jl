@@ -547,3 +547,4 @@
 @glfunc glUniform4f(location::GLint, v0::GLfloat, v1::GLfloat, v2::GLfloat, v3::GLfloat)::Cvoid
 @glfunc glMapBuffer(target::GLenum, access::GLenum)::Ptr{Cvoid}
 @glfunc glMapNamedBuffer(buffer::GLuint, access::GLenum)::Ptr{Cvoid}
+@glfunc glUnmapNamedBuffer(buffer::GLuint)::GLboolean
