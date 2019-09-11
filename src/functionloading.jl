@@ -13,7 +13,7 @@ function debug_opengl_expr(func_name, args)
             err = glGetError()
             if err != GL_NO_ERROR
                 arguments = gl_represent.(tuple($(args...)))
-                warn("OpenGL call to $($func_name), with arguments: $(arguments)
+                @warn("OpenGL call to $($func_name), with arguments: $(arguments)
                 Failed with error: $(GLENUM(err).name).")
             end
         end
