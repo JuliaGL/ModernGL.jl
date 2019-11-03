@@ -1,0 +1,14 @@
+name = "ModernGL"
+uuid = "66fc600b-dfda-50eb-8b99-91cfa97b1301"
+
+[deps]
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+
+[compat]
+julia = "≥ 1"
+
+[extras]
+GLFW = "f7f18e0c-5ee9-5ccd-a5bf-e8befd85ed98"
+
+[targets]
+test = ["GLFW"]
