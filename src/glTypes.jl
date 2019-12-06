@@ -1,7 +1,7 @@
 #all OpenGL Types
 const GLCvoid = Cvoid
 const GLint = Cint
-const GLsizeiptr = Cint
+const GLsizeiptr = Cssize_t
 const Pointer = Ptr{Cvoid}
 const GLhalfNV = Cushort
 const GLshort = Cshort
@@ -19,7 +19,7 @@ const GLhalf = Cushort
 const GLenum = Cuint
 const GLboolean = Cuchar
 const GLclampf = Cfloat
-const GLsizei = Cint
+const GLsizei = Cssize_t
 const GLsync = Ptr{Cvoid}
 const GLuint64 = Culonglong
 const GLclampd = Cdouble
