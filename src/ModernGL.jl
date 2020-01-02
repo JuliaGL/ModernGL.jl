@@ -1,23 +1,14 @@
-__precompile__(true)
 module ModernGL
 
-if VERSION < v"0.7.0-"
-    const Cvoid = Void
-    const iswindows = is_windows
-    const isunix = is_unix
-    const isapple = is_apple
-else
-    using Libdl
-    const iswindows = Sys.iswindows
-    const isunix = Sys.isunix
-    const isapple = Sys.isapple
-end
-
-
+using Libdl
+const iswindows = Sys.iswindows
+const isunix = Sys.isunix
+const isapple = Sys.isapple
 
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
 end
+
 function NSGetProcAddress(glFuncName)
     tmp = "_"*glFuncName
     if ccall(:NSIsSymbolNameDefined, Cint, (Ptr{UInt8},), tmp) == 0
@@ -37,16 +28,17 @@ if isapple()
 elseif isunix()
     getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
 end
+
 if iswindows()
     getprocaddress(glFuncName) = wglGetProcAddress(glFuncName)
 end
-
 
 struct ContextNotAvailable <: Exception
     message::String
 end
 
 export ContextNotAvailable
+
 function getprocaddress_e(glFuncName)
     p = getprocaddress(glFuncName)
     if !isavailable(p)

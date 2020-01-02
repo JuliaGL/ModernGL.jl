@@ -2,7 +2,13 @@ mutable struct GLFunc
     p::Ptr{Cvoid}
 end
 
-include(joinpath("..", "deps", "deps.jl"))
+const depsfile = joinpath("..", "deps", "deps.jl")
+
+if isfile(depsfile)
+    include(depsfile)
+else
+    const enable_opengl_debugging = get(ENV, "MODERNGL_DEBUGGING", "false") == "true"
+end
 
 gl_represent(x::GLenum) = GLENUM(x).name
 gl_represent(x) = repr(x)
