@@ -77,7 +77,9 @@ end
 if iswindows()
     const gl_lib = Libdl.dlopen("opengl32")
 end
+
 include("glFunctions.jl")
+
 if iswindows()
     Libdl.dlclose(gl_lib)
 end
