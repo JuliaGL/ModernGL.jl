@@ -1,7 +1,3 @@
-mutable struct GLFunc
-    p::Ptr{Cvoid}
-end
-
 const depsfile = joinpath("..", "deps", "deps.jl")
 
 if isfile(depsfile)
@@ -60,12 +56,12 @@ macro glfunc(opengl_func)
     end
     ptr_sym = gensym("$(func_name)_func_pointer")
     ret = quote
-        $ptr_sym = GLFunc(C_NULL)
+        const $ptr_sym = Ref{Ptr{Cvoid}}()
         function $func_name($(arg_names...))
-            if $ptr_sym.p::Ptr{Cvoid} == C_NULL
-                $ptr_sym.p::Ptr{Cvoid} = $ptr_expr
+            if $ptr_sym[]::Ptr{Cvoid} == C_NULL
+                $ptr_sym[]::Ptr{Cvoid} = $ptr_expr
             end
-            result = ccall($ptr_sym.p::Ptr{Cvoid}, $return_type, ($(input_types...),), $(arg_names...))
+            result = ccall($ptr_sym[]::Ptr{Cvoid}, $return_type, ($(input_types...),), $(arg_names...))
             $(debug_opengl_expr(func_name, arg_names))
             result
         end
