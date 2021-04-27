@@ -21,14 +21,6 @@ There are no dependencies, besides the graphic driver. If you have any problems,
 
 An OpenGL context is needed for OpenGL, which is created with [GLFW.jl](https://github.com/JuliaGL/GLFW.jl).
 
-You might be interested in some of the OpenGL abstraction packages, which make it a lot easier to get started with OpenGL:
-
-[GLAbstraction](https://github.com/SimonDanisch/GLAbstraction.jl) is a library, that offers Julian wrappers around often used OpenGL functions and types.
-
-[GLWindow](https://github.com/SimonDanisch/GLWindow.jl) essentially wraps GLFW (but might be extended to context creation methods) and gives you an easy way to create a window and access window events .
-
-[GLVisualize](https://github.com/JuliaGL/GLVisualize.jl) Offers a simple to use API to create 2D/3D visualization and animations.
-
 ### Known problems
 
 There might be a few problems with older platforms and video cards, since it's not heavily tested on them.
