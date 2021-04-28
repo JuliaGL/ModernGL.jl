@@ -23,7 +23,7 @@ An OpenGL context is needed for OpenGL, which is created with [GLFW.jl](https://
 
 Other OpenGL abstraction packages, which make it easier to get started with OpenGL, include:
 
-[GLAbstraction](https://github.com/JuliaGL/GLAbstraction.jl) is a library, that offers Julian wrappers around often used OpenGL functions and types.
+- [GLAbstraction](https://github.com/JuliaGL/GLAbstraction.jl) is a library, that offers Julian wrappers around often used OpenGL functions and types.
 
 ### Known problems
 
