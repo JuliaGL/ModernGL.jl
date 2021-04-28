@@ -2,9 +2,7 @@ import GLFW
 using ModernGL
 include("util.jl")
 
-function is_ci()
-	get(ENV, "TRAVIS", "") == "true" || get(ENV, "APPVEYOR", "") == "True" || get(ENV, "CI", "") == "True"
-end
+is_ci() = lowercase(get(ENV, "CI", "false")) == "true"
 
 if !is_ci() # only do test if not CI... this is for automated testing environments which fail for OpenGL stuff, but I'd like to test if at least including works
 
