@@ -90,14 +90,8 @@ macro GenEnums(list)
     esc(Expr(:block, enumtype, tmp..., Expr(:export, :($(enumName)))))
 end
 
-const enable_opengl_debugging = Ref(false)
-
 include("glTypes.jl")
 include("functionloading.jl")
 include("glConstants.jl")
-
-function __init__()
-    enable_opengl_debugging[] = lowercase(get(ENV, "MODERNGL_DEBUGGING", "false")) == "true"
-end
 
 end # module

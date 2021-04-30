@@ -1,8 +1,16 @@
+const depsfile = joinpath("..", "deps", "deps.jl")
+
+if isfile(depsfile)
+    include(depsfile)
+else
+    const enable_opengl_debugging = get(ENV, "MODERNGL_DEBUGGING", "false") == "true"
+end
+
 gl_represent(x::GLenum) = GLENUM(x).name
 gl_represent(x) = repr(x)
 
 function debug_opengl_expr(func_name, args)
-    if enable_opengl_debugging[] && func_name != :glGetError
+    if enable_opengl_debugging && func_name != :glGetError
         quote
             err = glGetError()
             if err != GL_NO_ERROR
