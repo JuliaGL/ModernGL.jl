@@ -1,9 +1,6 @@
 module ModernGL
 
 using Libdl
-const iswindows = Sys.iswindows
-const isunix = Sys.isunix
-const isapple = Sys.isapple
 
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
@@ -23,13 +20,13 @@ function wglGetProcAddress(glFuncName)
     ccall((:wglGetProcAddress, "opengl32"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
 end
 
-if isapple()
+if Sys.isapple()
     getprocaddress(glFuncName) = NSGetProcAddress(glFuncName)
-elseif isunix()
+elseif Sys.isunix()
     getprocaddress(glFuncName) = glXGetProcAddress(glFuncName)
 end
 
-if iswindows()
+if Sys.iswindows()
     getprocaddress(glFuncName) = wglGetProcAddress(glFuncName)
 end
 
