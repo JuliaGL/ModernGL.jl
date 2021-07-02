@@ -8,8 +8,12 @@ if !is_ci() # only do test if not CI... this is for automated testing environmen
 
     GLFW.Init()
     # OS X-specific GLFW hints to initialize the correct version of OpenGL
-    wh = 600
+    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3)
+    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 3)
+    GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE)
+    GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, true)
     # Create a windowed mode window and its OpenGL context
+    wh = 600
     window = GLFW.CreateWindow(wh, wh, "OpenGL Example")
     # Make the window's context current
     GLFW.MakeContextCurrent(window)
