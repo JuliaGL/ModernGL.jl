@@ -1717,7 +1717,7 @@ const GL_TEXTURE_TARGET                                               = convert(
 const GL_QUERY_TARGET                                                 = convert(GLenum, 0x82EA)
 const GL_GUILTY_CONTEXT_RESET                                         = convert(GLenum, 0x8253)
 const GL_INNOCENT_CONTEXT_RESET                                       = convert(GLenum, 0x8254)
-const GL_UNKNOWN_CONTEXT_RESET                                       = convert(GLenum, 0x8255)
+const GL_UNKNOWN_CONTEXT_RESET                                        = convert(GLenum, 0x8255)
 const GL_CONTEXT_ROBUST_ACCESS                                        = convert(GLenum, 0x90F3)
 const GL_RESET_NOTIFICATION_STRATEGY                                  = convert(GLenum, 0x8256)
 const GL_LOSE_CONTEXT_ON_RESET                                        = convert(GLenum, 0x8252)
@@ -1728,9 +1728,14 @@ const GL_LOCATION_COMPONENT                                           = convert(
 const GL_TRANSFORM_FEEDBACK_BUFFER_INDEX                              = convert(GLenum, 0x934B)
 const GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE                             = convert(GLenum, 0x934C)
 const GL_QUERY_RESULT_NO_WAIT                                         = convert(GLenum, 0x9194)
-const GL_QUERY_BUFFER_BINDING                                        = convert(GLenum, 0x9193)
-const GL_QUERY_BARRIER_BIT                                           = convert(GLbitfield, 0x00008000)
-const GL_MIRROR_CLAMP_TO_EDGE                                        = convert(GLenum, 0x8743)
+const GL_QUERY_BUFFER_BINDING                                         = convert(GLenum, 0x9193)
+const GL_QUERY_BARRIER_BIT                                            = convert(GLbitfield, 0x00008000)
+const GL_MIRROR_CLAMP_TO_EDGE                                         = convert(GLenum, 0x8743)
+const GL_SPIR_V_BINARY                                                = convert(GLenum, 0x9552)
+const GL_SPIR_V_EXTENSIONS                                            = convert(GLenum, 0x9553)
+const GL_NUM_SPIR_V_EXTENSIONS                                        = convert(GLenum, 0x9554)
+const GL_PARAMETER_BUFFER                                             = convert(GLenum, 0x80EE)
+const GL_PARAMETER_BUFFER_BINDING                                     = convert(GLenum, 0x80EF)
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
@@ -3458,3 +3463,5 @@ export GL_GUILTY_CONTEXT_RESET, GL_INNOCENT_CONTEXT_RESET, GL_UNKNOWN_CONTEXT_RE
        GL_CONTEXT_ROBUST_ACCESS, GL_RESET_NOTIFICATION_STRATEGY,
        GL_LOSE_CONTEXT_ON_RESET, GL_NO_RESET_NOTIFICATION,
        GL_CONTEXT_LOST
+
+export GL_SPIR_V_BINARY, GL_SPIR_V_EXTENSIONS, GL_NUM_SPIR_V_EXTENSIONS

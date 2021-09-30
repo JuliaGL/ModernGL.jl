@@ -657,3 +657,6 @@ fixedsamplelocations::GLboolean)::Cvoid
 @glfunc glGetnUniformiv(program::GLuint, location::GLint, bufSize::GLsizei, params::Ptr{GLint})::Cvoid
 @glfunc glGetnUniformuiv(program::GLuint, location::GLint, bufSize::GLsizei, params::Ptr{GLuint})::Cvoid
 @glfunc glTextureBarrier()::Cvoid
+@glfunc glSpecializeShader(shader::GLuint, pEntryPoint::Ptr{GLchar}, numSpecializationConstants::GLuint, pConstantIndex::Ptr{GLuint}, pConstantValue::Ptr{GLuint})::Cvoid
+@glfunc glMultiDrawArraysIndirectCount(mode::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
+@glfunc glMultiDrawElementsIndirectCount(mode::GLenum, type::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
