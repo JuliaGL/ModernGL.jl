@@ -1722,7 +1722,6 @@ const GL_RESET_NOTIFICATION_STRATEGY                                  = convert(
 const GL_LOSE_CONTEXT_ON_RESET                                        = convert(GLenum, 0x8252)
 const GL_NO_RESET_NOTIFICATION                                        = convert(GLenum, 0x8261)
 const GL_CONTEXT_LOST                                                 = convert(GLenum, 0x0507)
-#TODO: The below constants are new and must be exported below
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
@@ -3427,22 +3426,13 @@ export GL_MIN
 export GL_MAX
 export GL_FUNC_SUBTRACT
 export GL_FUNC_REVERSE_SUBTRACT
-
-# Added in OpenGL 4.5:
-#   from ARB_clip_control
 export GL_NEGATIVE_ONE_TO_ONE, GL_ZERO_TO_ONE,
        GL_CLIP_ORIGIN, GL_CLIP_DEPTH_MODE
-#   from ARB_cull_distance
 export GL_MAX_CULL_DISTANCES, GL_MAX_COMBINED_CLIP_AND_CULL_DISTANCES
-#   from ARB_conditional_render_inverted
 export GL_QUERY_WAIT_INVERTED, GL_QUERY_NO_WAIT_INVERTED,
        GL_QUERY_BY_REGION_WAIT_INVERTED, GL_QUERY_BY_REGION_NO_WAIT_INVERTED
-#   from ARB_direct_state_access
 export GL_TEXTURE_TARGET, GL_QUERY_TARGET
-#   from KHR_robustness
 export GL_GUILTY_CONTEXT_RESET, GL_INNOCENT_CONTEXT_RESET, GL_UNKNOWN_CONTEXT_RESET,
        GL_CONTEXT_ROBUST_ACCESS, GL_RESET_NOTIFICATION_STRATEGY,
        GL_LOSE_CONTEXT_ON_RESET, GL_NO_RESET_NOTIFICATION,
        GL_CONTEXT_LOST
-
-# Added in OpenGL 4.6:
