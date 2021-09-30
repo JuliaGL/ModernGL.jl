@@ -548,108 +548,108 @@
 @glfunc glMapBuffer(target::GLenum, access::GLenum)::Ptr{Cvoid}
 @glfunc glClipControl(origin::GLenum, depth::GLenum)::Cvoid
 @glfunc glMemoryBarrierByRegion(barriers::GLbitfield)::Cvoid
-@glfunc glCreateTransformFeedbacks(n::GLsizei, ids::Ptr{GLuint})::GLCvoid
-@glfunc glTransformFeedbackBufferBase(xfb::GLuint, index::GLuint, buffer::GLuint)::GLCvoid
-@glfunc glTransformFeedbackBufferRange(xfb::GLuint, index::GLuint, buffer::GLuint, offset::GLintptr, size::GLsizeiptr)::GLCvoid
-@glfunc glGetTransformFeedbackiv(xfb::GLuint, pname::GLenum, param::Ptr{GLint})::GLCvoid
-@glfunc glGetTransformFeedbacki_v(xfb::GLuint, pname::GLenum, index::GLuint, param::Ptr{GLint})::GLCvoid
-@glfunc glGetTransformFeedbacki64_v(xfb::GLuint, pname::GLenum, index::GLuint, param::Ptr{GLint64})::GLCvoid
-@glfunc glCreateBuffers(n::GLsizei, buffers::Ptr{GLuint})::GLCvoid
-@glfunc glNamedBufferStorage(buffer::GLuint, size::GLsizeiptr, void::GLconst, flags::GLbitfield)::GLCvoid
-@glfunc glNamedBufferData(buffer::GLuint, size::GLsizeiptr, void::GLconst, usage::GLenum)::GLCvoid
-@glfunc glNamedBufferSubData(buffer::GLuint, offset::GLintptr, size::GLsizeiptr, void::GLconst)::GLCvoid
-@glfunc glCopyNamedBufferSubData(readBuffer::GLuint, writeBuffer::GLuint, readOffset::GLintptr, writeOffset::GLintptr, size::GLsizeiptr)::GLCvoid 
-@glfunc glClearNamedBufferData(buffer::GLuint, internalformat::GLenum, format::GLenum, type::GLenum, void::GLconst)::GLCvoid
-@glfunc glClearNamedBufferSubData(buffer::GLuint, internalformat::GLenum, offset::GLintptr, size::GLsizeiptr, format::GLenum, type::GLenum, void::GLconst)::GLCvoid
-@glfunc glMapNamedBuffer(buffer::GLuint, access::GLenum)::Ptr{GLCvoid}
-@glfunc glMapNamedBufferRange(buffer::GLuint, offset::GLintptr, length::GLsizeiptr, access::GLbitfield)::Ptr{GLCvoid}
+@glfunc glCreateTransformFeedbacks(n::GLsizei, ids::Ptr{GLuint})::Cvoid
+@glfunc glTransformFeedbackBufferBase(xfb::GLuint, index::GLuint, buffer::GLuint)::Cvoid
+@glfunc glTransformFeedbackBufferRange(xfb::GLuint, index::GLuint, buffer::GLuint, offset::GLintptr, size::GLsizeiptr)::Cvoid
+@glfunc glGetTransformFeedbackiv(xfb::GLuint, pname::GLenum, param::Ptr{GLint})::Cvoid
+@glfunc glGetTransformFeedbacki_v(xfb::GLuint, pname::GLenum, index::GLuint, param::Ptr{GLint})::Cvoid
+@glfunc glGetTransformFeedbacki64_v(xfb::GLuint, pname::GLenum, index::GLuint, param::Ptr{GLint64})::Cvoid
+@glfunc glCreateBuffers(n::GLsizei, buffers::Ptr{GLuint})::Cvoid
+@glfunc glNamedBufferStorage(buffer::GLuint, size::GLsizeiptr, data::Ptr{Cvoid}, flags::GLbitfield)::Cvoid
+@glfunc glNamedBufferData(buffer::GLuint, size::GLsizeiptr, data::Ptr{Cvoid}, usage::GLenum)::Cvoid
+@glfunc glNamedBufferSubData(buffer::GLuint, offset::GLintptr, size::GLsizeiptr, data::Ptr{Cvoid})::Cvoid
+@glfunc glCopyNamedBufferSubData(readBuffer::GLuint, writeBuffer::GLuint, readOffset::GLintptr, writeOffset::GLintptr, size::GLsizeiptr)::Cvoid 
+@glfunc glClearNamedBufferData(buffer::GLuint, internalformat::GLenum, format::GLenum, type::GLenum, data::Ptr{Cvoid})::Cvoid
+@glfunc glClearNamedBufferSubData(buffer::GLuint, internalformat::GLenum, offset::GLintptr, size::GLsizeiptr, format::GLenum, type::GLenum, data::Ptr{Cvoid})::Cvoid
+@glfunc glMapNamedBuffer(buffer::GLuint, access::GLenum)::Ptr{Cvoid}
+@glfunc glMapNamedBufferRange(buffer::GLuint, offset::GLintptr, length::GLsizeiptr, access::GLbitfield)::Ptr{Cvoid}
 @glfunc glUnmapNamedBuffer(buffer::GLuint)::GLboolean
-@glfunc glFlushMappedNamedBufferRange(buffer::GLuint, offset::GLintptr, length::GLsizeiptr)::GLCvoid
-@glfunc glGetNamedBufferParameteriv(buffer::GLuint, pname::GLenum, params::Ptr{GLint})::GLCvoid
-@glfunc glGetNamedBufferParameteri64v(buffer::GLuint, pname::GLenum, params::Ptr{GLint64})::GLCvoid
-@glfunc glGetNamedBufferPointerv(buffer::GLuint, pname::GLenum, params::Ptr{Ptr{GLCvoid}})::GLCvoid
-@glfunc glGetNamedBufferSubData(buffer::GLuint, offset::GLintptr, size::GLsizeiptr, data::Ptr{GLCvoid})::GLCvoid
-@glfunc glCreateFramebuffers(n::GLsizei, framebuffers::Ptr{GLuint})::GLCvoid
-@glfunc glNamedFramebufferRenderbuffer(framebuffer::GLuint, attachment::GLenum, renderbuffertarget::GLenum, renderbuffer::GLuint)::GLCvoid        
-@glfunc glNamedFramebufferParameteri(framebuffer::GLuint, pname::GLenum, param::GLint)::GLCvoid
-@glfunc glNamedFramebufferTexture(framebuffer::GLuint, attachment::GLenum, texture::GLuint, level::GLint)::GLCvoid
-@glfunc glNamedFramebufferTextureLayer(framebuffer::GLuint, attachment::GLenum, texture::GLuint, level::GLint, layer::GLint)::GLCvoid
-@glfunc glNamedFramebufferDrawBuffer(framebuffer::GLuint, mode::GLenum)::GLCvoid
-@glfunc glNamedFramebufferDrawBuffers(framebuffer::GLuint, n::GLsizei, enum::GLconst)::GLCvoid
-@glfunc glNamedFramebufferReadBuffer(framebuffer::GLuint, mode::GLenum)::GLCvoid
-@glfunc glInvalidateNamedFramebufferData(framebuffer::GLuint, numAttachments::GLsizei, enum::GLconst)::GLCvoid
-@glfunc glInvalidateNamedFramebufferSubData(framebuffer::GLuint, numAttachments::GLsizei, enum::GLconst, x::GLint, y::GLint, width::GLsizei, height::GLsizei)::GLCvoid
-@glfunc glClearNamedFramebufferiv(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, int::GLconst)::GLCvoid
-@glfunc glClearNamedFramebufferuiv(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, uint::GLconst)::GLCvoid
-@glfunc glClearNamedFramebufferfv(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, float::GLconst)::GLCvoid
-@glfunc glClearNamedFramebufferfi(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, depth::GLfloat, stencil::GLint)::GLCvoid
-@glfunc glBlitNamedFramebuffer(readFramebuffer::GLuint, drawFramebuffer::GLuint, srcX0::GLint, srcY0::GLint, srcX1::GLint, srcY1::GLint, dstX0::GLint, dstY0::GLint, dstX1::GLint, dstY1::GLint, mask::GLbitfield, filter::GLenum)::GLCvoid
+@glfunc glFlushMappedNamedBufferRange(buffer::GLuint, offset::GLintptr, length::GLsizeiptr)::Cvoid
+@glfunc glGetNamedBufferParameteriv(buffer::GLuint, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glGetNamedBufferParameteri64v(buffer::GLuint, pname::GLenum, params::Ptr{GLint64})::Cvoid
+@glfunc glGetNamedBufferPointerv(buffer::GLuint, pname::GLenum, params::Ptr{Ptr{Cvoid}})::Cvoid
+@glfunc glGetNamedBufferSubData(buffer::GLuint, offset::GLintptr, size::GLsizeiptr, data::Ptr{Cvoid})::Cvoid
+@glfunc glCreateFramebuffers(n::GLsizei, framebuffers::Ptr{GLuint})::Cvoid
+@glfunc glNamedFramebufferRenderbuffer(framebuffer::GLuint, attachment::GLenum, renderbuffertarget::GLenum, renderbuffer::GLuint)::Cvoid        
+@glfunc glNamedFramebufferParameteri(framebuffer::GLuint, pname::GLenum, param::GLint)::Cvoid
+@glfunc glNamedFramebufferTexture(framebuffer::GLuint, attachment::GLenum, texture::GLuint, level::GLint)::Cvoid
+@glfunc glNamedFramebufferTextureLayer(framebuffer::GLuint, attachment::GLenum, texture::GLuint, level::GLint, layer::GLint)::Cvoid
+@glfunc glNamedFramebufferDrawBuffer(framebuffer::GLuint, mode::GLenum)::Cvoid
+@glfunc glNamedFramebufferDrawBuffers(framebuffer::GLuint, n::GLsizei, bufs::Ptr{GLenum})::Cvoid
+@glfunc glNamedFramebufferReadBuffer(framebuffer::GLuint, mode::GLenum)::Cvoid
+@glfunc glInvalidateNamedFramebufferData(framebuffer::GLuint, numAttachments::GLsizei, attachments::Ptr{GLenum})::Cvoid
+@glfunc glInvalidateNamedFramebufferSubData(framebuffer::GLuint, numAttachments::GLsizei, attachments::Ptr{GLenum}, x::GLint, y::GLint, width::GLsizei, height::GLsizei)::Cvoid
+@glfunc glClearNamedFramebufferiv(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, value::Ptr{GLint})::Cvoid
+@glfunc glClearNamedFramebufferuiv(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, value::Ptr{GLuint})::Cvoid
+@glfunc glClearNamedFramebufferfv(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, value::Ptr{GLfloat})::Cvoid
+@glfunc glClearNamedFramebufferfi(framebuffer::GLuint, buffer::GLenum, drawbuffer::GLint, depth::GLfloat, stencil::GLint)::Cvoid
+@glfunc glBlitNamedFramebuffer(readFramebuffer::GLuint, drawFramebuffer::GLuint, srcX0::GLint, srcY0::GLint, srcX1::GLint, srcY1::GLint, dstX0::GLint, dstY0::GLint, dstX1::GLint, dstY1::GLint, mask::GLbitfield, filter::GLenum)::Cvoid
 @glfunc glCheckNamedFramebufferStatus(framebuffer::GLuint, target::GLenum)::GLenum
-@glfunc glGetNamedFramebufferParameteriv(framebuffer::GLuint, pname::GLenum, param::Ptr{GLint})::GLCvoid
-@glfunc glGetNamedFramebufferAttachmentParameteriv(framebuffer::GLuint, attachment::GLenum, pname::GLenum, params::Ptr{GLint})::GLCvoid
-@glfunc glCreateRenderbuffers(n::GLsizei, renderbuffers::Ptr{GLuint})::GLCvoid
-@glfunc glNamedRenderbufferStorage(renderbuffer::GLuint, internalformat::GLenum, width::GLsizei, height::GLsizei)::GLCvoid
-@glfunc glNamedRenderbufferStorageMultisample(renderbuffer::GLuint, samples::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei)::GLCvoid
-@glfunc glGetNamedRenderbufferParameteriv(renderbuffer::GLuint, pname::GLenum, params::Ptr{GLint})::GLCvoid
-@glfunc glCreateTextures(target::GLenum, n::GLsizei, textures::Ptr{GLuint})::GLCvoid
-@glfunc glTextureBuffer(texture::GLuint, internalformat::GLenum, buffer::GLuint)::GLCvoid
-@glfunc glTextureBufferRange(texture::GLuint, internalformat::GLenum, buffer::GLuint, offset::GLintptr, size::GLsizeiptr)::GLCvoid
-@glfunc glTextureStorage1D(texture::GLuint, levels::GLsizei, internalformat::GLenum, width::GLsizei)::GLCvoid
-@glfunc glTextureStorage2D(texture::GLuint, levels::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei)::GLCvoid
-@glfunc glTextureStorage3D(texture::GLuint, levels::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei, depth::GLsizei)::GLCvoid    
-@glfunc glTextureStorage2DMultisample(texture::GLuint, samples::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei, fixedsamplelocations::GLboolean)::GLCvoid
+@glfunc glGetNamedFramebufferParameteriv(framebuffer::GLuint, pname::GLenum, param::Ptr{GLint})::Cvoid
+@glfunc glGetNamedFramebufferAttachmentParameteriv(framebuffer::GLuint, attachment::GLenum, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glCreateRenderbuffers(n::GLsizei, renderbuffers::Ptr{GLuint})::Cvoid
+@glfunc glNamedRenderbufferStorage(renderbuffer::GLuint, internalformat::GLenum, width::GLsizei, height::GLsizei)::Cvoid
+@glfunc glNamedRenderbufferStorageMultisample(renderbuffer::GLuint, samples::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei)::Cvoid
+@glfunc glGetNamedRenderbufferParameteriv(renderbuffer::GLuint, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glCreateTextures(target::GLenum, n::GLsizei, textures::Ptr{GLuint})::Cvoid
+@glfunc glTextureBuffer(texture::GLuint, internalformat::GLenum, buffer::GLuint)::Cvoid
+@glfunc glTextureBufferRange(texture::GLuint, internalformat::GLenum, buffer::GLuint, offset::GLintptr, size::GLsizeiptr)::Cvoid
+@glfunc glTextureStorage1D(texture::GLuint, levels::GLsizei, internalformat::GLenum, width::GLsizei)::Cvoid
+@glfunc glTextureStorage2D(texture::GLuint, levels::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei)::Cvoid
+@glfunc glTextureStorage3D(texture::GLuint, levels::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei, depth::GLsizei)::Cvoid    
+@glfunc glTextureStorage2DMultisample(texture::GLuint, samples::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei, fixedsamplelocations::GLboolean)::Cvoid
 @glfunc glTextureStorage3DMultisample(texture::GLuint, samples::GLsizei, internalformat::GLenum, width::GLsizei, height::GLsizei, depth::GLsizei, 
-fixedsamplelocations::GLboolean)::GLCvoid
-@glfunc glTextureSubImage1D(texture::GLuint, level::GLint, xoffset::GLint, width::GLsizei, format::GLenum, type::GLenum, void::GLconst)::GLCvoid  
-@glfunc glTextureSubImage2D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, width::GLsizei, height::GLsizei, format::GLenum, type::GLenum, void::GLconst)::GLCvoid
-@glfunc glTextureSubImage3D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, type::GLenum, void::GLconst)::GLCvoid
-@glfunc glCompressedTextureSubImage1D(texture::GLuint, level::GLint, xoffset::GLint, width::GLsizei, format::GLenum, imageSize::GLsizei, void::GLconst)::GLCvoid
-@glfunc glCompressedTextureSubImage2D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, width::GLsizei, height::GLsizei, format::GLenum, imageSize::GLsizei, void::GLconst)::GLCvoid
-@glfunc glCompressedTextureSubImage3D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, imageSize::GLsizei, void::GLconst)::GLCvoid
-@glfunc glCopyTextureSubImage1D(texture::GLuint, level::GLint, xoffset::GLint, x::GLint, y::GLint, width::GLsizei)::GLCvoid
-@glfunc glCopyTextureSubImage2D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, x::GLint, y::GLint, width::GLsizei, height::GLsizei)::GLCvoid
-@glfunc glCopyTextureSubImage3D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, x::GLint, y::GLint, width::GLsizei, height::GLsizei)::GLCvoid
-@glfunc glTextureParameterf(texture::GLuint, pname::GLenum, param::GLfloat)::GLCvoid
-@glfunc glTextureParameterfv(texture::GLuint, pname::GLenum, float::GLconst)::GLCvoid
-@glfunc glTextureParameteri(texture::GLuint, pname::GLenum, param::GLint)::GLCvoid
-@glfunc glTextureParameterIiv(texture::GLuint, pname::GLenum, int::GLconst)::GLCvoid
-@glfunc glTextureParameterIuiv(texture::GLuint, pname::GLenum, uint::GLconst)::GLCvoid
-@glfunc glTextureParameteriv(texture::GLuint, pname::GLenum, int::GLconst)::GLCvoid
-@glfunc glGenerateTextureMipmap(texture::GLuint)::GLCvoid
-@glfunc glBindTextureUnit(unit::GLuint, texture::GLuint)::GLCvoid
-@glfunc glGetTextureImage(texture::GLuint, level::GLint, format::GLenum, type::GLenum, bufSize::GLsizei, pixels::Ptr{GLCvoid})::GLCvoid
-@glfunc glGetCompressedTextureImage(texture::GLuint, level::GLint, bufSize::GLsizei, pixels::Ptr{GLCvoid})::GLCvoid
-@glfunc glGetTextureLevelParameterfv(texture::GLuint, level::GLint, pname::GLenum, params::Ptr{GLfloat})::GLCvoid
-@glfunc glGetTextureLevelParameteriv(texture::GLuint, level::GLint, pname::GLenum, params::Ptr{GLint})::GLCvoid
-@glfunc glGetTextureParameterfv(texture::GLuint, pname::GLenum, params::Ptr{GLfloat})::GLCvoid
-@glfunc glGetTextureParameterIiv(texture::GLuint, pname::GLenum, params::Ptr{GLint})::GLCvoid
-@glfunc glGetTextureParameterIuiv(texture::GLuint, pname::GLenum, params::Ptr{GLuint})::GLCvoid
-@glfunc glGetTextureParameteriv(texture::GLuint, pname::GLenum, params::Ptr{GLint})::GLCvoid
-@glfunc glCreateVertexArrays(n::GLsizei, arrays::Ptr{GLuint})::GLCvoid
-@glfunc glDisableVertexArrayAttrib(vaobj::GLuint, index::GLuint)::GLCvoid
-@glfunc glEnableVertexArrayAttrib(vaobj::GLuint, index::GLuint)::GLCvoid
-@glfunc glVertexArrayElementBuffer(vaobj::GLuint, buffer::GLuint)::GLCvoid
-@glfunc glVertexArrayVertexBuffer(vaobj::GLuint, bindingindex::GLuint, buffer::GLuint, offset::GLintptr, stride::GLsizei)::GLCvoid
-@glfunc glVertexArrayVertexBuffers(vaobj::GLuint, first::GLuint, count::GLsizei, uint::GLconst, intptr::GLconst, sizei::GLconst)::GLCvoid
-@glfunc glVertexArrayAttribFormat(vaobj::GLuint, attribindex::GLuint, size::GLint, type::GLenum, normalized::GLboolean, relativeoffset::GLuint)::GLCvoid
-@glfunc glVertexArrayAttribIFormat(vaobj::GLuint, attribindex::GLuint, size::GLint, type::GLenum, relativeoffset::GLuint)::GLCvoid
-@glfunc glVertexArrayAttribLFormat(vaobj::GLuint, attribindex::GLuint, size::GLint, type::GLenum, relativeoffset::GLuint)::GLCvoid
-@glfunc glVertexArrayAttribBinding(vaobj::GLuint, attribindex::GLuint, bindingindex::GLuint)::GLCvoid
-@glfunc glVertexArrayBindingDivisor(vaobj::GLuint, bindingindex::GLuint, divisor::GLuint)::GLCvoid
-@glfunc glGetVertexArrayiv(vaobj::GLuint, pname::GLenum, param::Ptr{GLint})::GLCvoid
-@glfunc glGetVertexArrayIndexediv(vaobj::GLuint, index::GLuint, pname::GLenum, param::Ptr{GLint})::GLCvoid
-@glfunc glGetVertexArrayIndexed64iv(vaobj::GLuint, index::GLuint, pname::GLenum, param::Ptr{GLint64})::GLCvoid
-@glfunc glCreateSamplers(n::GLsizei, samplers::Ptr{GLuint})::GLCvoid
-@glfunc glCreateProgramPipelines(n::GLsizei, pipelines::Ptr{GLuint})::GLCvoid
-@glfunc glCreateQueries(target::GLenum, n::GLsizei, ids::Ptr{GLuint})::GLCvoid
-@glfunc glGetQueryBufferObjectiv(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::GLCvoid
-@glfunc glGetQueryBufferObjectuiv(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::GLCvoid
-@glfunc glGetQueryBufferObjecti64v(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::GLCvoid
-@glfunc glGetQueryBufferObjectui64v(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::GLCvoid
-@glfunc glGetTextureSubImage(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, type::GLenum, bufSize::GLsizei, pixels::Ptr{GLCvoid})::Cvoid
-@glfunc glGetCompressedTextureSubImage(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, bufSize::GLsizei, pixels::Ptr{GLCvoid})::Cvoid
+fixedsamplelocations::GLboolean)::Cvoid
+@glfunc glTextureSubImage1D(texture::GLuint, level::GLint, xoffset::GLint, width::GLsizei, format::GLenum, type::GLenum, pixels::Ptr{Cvoid})::Cvoid  
+@glfunc glTextureSubImage2D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, width::GLsizei, height::GLsizei, format::GLenum, type::GLenum, pixels::Ptr{Cvoid})::Cvoid
+@glfunc glTextureSubImage3D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, type::GLenum, pixels::Ptr{Cvoid})::Cvoid
+@glfunc glCompressedTextureSubImage1D(texture::GLuint, level::GLint, xoffset::GLint, width::GLsizei, format::GLenum, imageSize::GLsizei, data::Ptr{Cvoid})::Cvoid
+@glfunc glCompressedTextureSubImage2D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, width::GLsizei, height::GLsizei, format::GLenum, imageSize::GLsizei, data::Ptr{Cvoid})::Cvoid
+@glfunc glCompressedTextureSubImage3D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, imageSize::GLsizei, data::Ptr{Cvoid})::Cvoid
+@glfunc glCopyTextureSubImage1D(texture::GLuint, level::GLint, xoffset::GLint, x::GLint, y::GLint, width::GLsizei)::Cvoid
+@glfunc glCopyTextureSubImage2D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, x::GLint, y::GLint, width::GLsizei, height::GLsizei)::Cvoid
+@glfunc glCopyTextureSubImage3D(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, x::GLint, y::GLint, width::GLsizei, height::GLsizei)::Cvoid
+@glfunc glTextureParameterf(texture::GLuint, pname::GLenum, param::GLfloat)::Cvoid
+@glfunc glTextureParameterfv(texture::GLuint, pname::GLenum, params::Ptr{GLfloat})::Cvoid
+@glfunc glTextureParameteri(texture::GLuint, pname::GLenum, param::GLint)::Cvoid
+@glfunc glTextureParameterIiv(texture::GLuint, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glTextureParameterIuiv(texture::GLuint, pname::GLenum, params::Ptr{GLuint})::Cvoid
+@glfunc glTextureParameteriv(texture::GLuint, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glGenerateTextureMipmap(texture::GLuint)::Cvoid
+@glfunc glBindTextureUnit(unit::GLuint, texture::GLuint)::Cvoid
+@glfunc glGetTextureImage(texture::GLuint, level::GLint, format::GLenum, type::GLenum, bufSize::GLsizei, pixels::Ptr{Cvoid})::Cvoid
+@glfunc glGetCompressedTextureImage(texture::GLuint, level::GLint, bufSize::GLsizei, pixels::Ptr{Cvoid})::Cvoid
+@glfunc glGetTextureLevelParameterfv(texture::GLuint, level::GLint, pname::GLenum, params::Ptr{GLfloat})::Cvoid
+@glfunc glGetTextureLevelParameteriv(texture::GLuint, level::GLint, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glGetTextureParameterfv(texture::GLuint, pname::GLenum, params::Ptr{GLfloat})::Cvoid
+@glfunc glGetTextureParameterIiv(texture::GLuint, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glGetTextureParameterIuiv(texture::GLuint, pname::GLenum, params::Ptr{GLuint})::Cvoid
+@glfunc glGetTextureParameteriv(texture::GLuint, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glCreateVertexArrays(n::GLsizei, arrays::Ptr{GLuint})::Cvoid
+@glfunc glDisableVertexArrayAttrib(vaobj::GLuint, index::GLuint)::Cvoid
+@glfunc glEnableVertexArrayAttrib(vaobj::GLuint, index::GLuint)::Cvoid
+@glfunc glVertexArrayElementBuffer(vaobj::GLuint, buffer::GLuint)::Cvoid
+@glfunc glVertexArrayVertexBuffer(vaobj::GLuint, bindingindex::GLuint, buffer::GLuint, offset::GLintptr, stride::GLsizei)::Cvoid
+@glfunc glVertexArrayVertexBuffers(vaobj::GLuint, first::GLuint, count::GLsizei, buffers::Ptr{GLuint}, offsets::Ptr{GLintptr}, strides::Ptr{GLsizei})::Cvoid
+@glfunc glVertexArrayAttribFormat(vaobj::GLuint, attribindex::GLuint, size::GLint, type::GLenum, normalized::GLboolean, relativeoffset::GLuint)::Cvoid
+@glfunc glVertexArrayAttribIFormat(vaobj::GLuint, attribindex::GLuint, size::GLint, type::GLenum, relativeoffset::GLuint)::Cvoid
+@glfunc glVertexArrayAttribLFormat(vaobj::GLuint, attribindex::GLuint, size::GLint, type::GLenum, relativeoffset::GLuint)::Cvoid
+@glfunc glVertexArrayAttribBinding(vaobj::GLuint, attribindex::GLuint, bindingindex::GLuint)::Cvoid
+@glfunc glVertexArrayBindingDivisor(vaobj::GLuint, bindingindex::GLuint, divisor::GLuint)::Cvoid
+@glfunc glGetVertexArrayiv(vaobj::GLuint, pname::GLenum, param::Ptr{GLint})::Cvoid
+@glfunc glGetVertexArrayIndexediv(vaobj::GLuint, index::GLuint, pname::GLenum, param::Ptr{GLint})::Cvoid
+@glfunc glGetVertexArrayIndexed64iv(vaobj::GLuint, index::GLuint, pname::GLenum, param::Ptr{GLint64})::Cvoid
+@glfunc glCreateSamplers(n::GLsizei, samplers::Ptr{GLuint})::Cvoid
+@glfunc glCreateProgramPipelines(n::GLsizei, pipelines::Ptr{GLuint})::Cvoid
+@glfunc glCreateQueries(target::GLenum, n::GLsizei, ids::Ptr{GLuint})::Cvoid
+@glfunc glGetQueryBufferObjectiv(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::Cvoid
+@glfunc glGetQueryBufferObjectuiv(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::Cvoid
+@glfunc glGetQueryBufferObjecti64v(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::Cvoid
+@glfunc glGetQueryBufferObjectui64v(id::GLuint, buffer::GLuint, pname::GLenum, offset::GLintptr)::Cvoid
+@glfunc glGetTextureSubImage(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, type::GLenum, bufSize::GLsizei, pixels::Ptr{Cvoid})::Cvoid
+@glfunc glGetCompressedTextureSubImage(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, bufSize::GLsizei, pixels::Ptr{Cvoid})::Cvoid
 @glfunc glGetGraphicsResetStatus()::GLenum
-@glfunc glReadnPixels(x::GLint, y::GLint, width::GLsizei, height::GLsizei, format::GLenum, type::GLenum, bufSize::GLsizei, data::Ptr{GLCvoid})::Cvoid
+@glfunc glReadnPixels(x::GLint, y::GLint, width::GLsizei, height::GLsizei, format::GLenum, type::GLenum, bufSize::GLsizei, data::Ptr{Cvoid})::Cvoid
 @glfunc glGetnUniformfv(program::GLuint, location::GLint, bufSize::GLsizei, params::Ptr{GLfloat})::Cvoid
 @glfunc glGetnUniformiv(program::GLuint, location::GLint, bufSize::GLsizei, params::Ptr{GLint})::Cvoid
 @glfunc glGetnUniformuiv(program::GLuint, location::GLint, bufSize::GLsizei, params::Ptr{GLuint})::Cvoid
