@@ -1736,6 +1736,22 @@ const GL_SPIR_V_EXTENSIONS                                            = convert(
 const GL_NUM_SPIR_V_EXTENSIONS                                        = convert(GLenum, 0x9554)
 const GL_PARAMETER_BUFFER                                             = convert(GLenum, 0x80EE)
 const GL_PARAMETER_BUFFER_BINDING                                     = convert(GLenum, 0x80EF)
+const GL_VERTICES_SUBMITTED                                           = convert(GLenum, 0x82EE)
+const GL_PRIMITIVES_SUBMITTED                                         = convert(GLenum, 0x82EF)
+const GL_VERTEX_SHADER_INVOCATIONS                                    = convert(GLenum, 0x82F0)
+const GL_TESS_CONTROL_SHADER_PATCHES                                  = convert(GLenum, 0x82F1)
+const GL_TESS_EVALUATION_SHADER_INVOCATIONS                           = convert(GLenum, 0x82F2)
+const GL_GEOMETRY_SHADER_PRIMITIVES_EMITTED                           = convert(GLenum, 0x82F3)
+const GL_FRAGMENT_SHADER_INVOCATIONS                                  = convert(GLenum, 0x82F4)
+const GL_COMPUTE_SHADER_INVOCATIONS                                   = convert(GLenum, 0x82F5)
+const GL_CLIPPING_INPUT_PRIMITIVES                                    = convert(GLenum, 0x82F6)
+const GL_CLIPPING_OUTPUT_PRIMITIVES                                   = convert(GLenum, 0x82F7)
+const GL_TRANSFORM_FEEDBACK_OVERFLOW                                  = convert(GLenum, 0x82EC)
+const GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW                           = convert(GLenum, 0x82ED)
+const GL_TEXTURE_MAX_ANISOTROPY                                       = convert(GLenum, 0x84FE)
+const GL_MAX_TEXTURE_MAX_ANISOTROPY                                   = convert(GLenum, 0x84FF)
+const GL_POLYGON_OFFSET_CLAMP                                         = convert(GLenum, 0x8E1B)
+const GL_CONTEXT_FLAG_NO_ERROR_BIT                                    = convert(GLbitfield, 0x00000008)
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
@@ -3463,5 +3479,13 @@ export GL_GUILTY_CONTEXT_RESET, GL_INNOCENT_CONTEXT_RESET, GL_UNKNOWN_CONTEXT_RE
        GL_CONTEXT_ROBUST_ACCESS, GL_RESET_NOTIFICATION_STRATEGY,
        GL_LOSE_CONTEXT_ON_RESET, GL_NO_RESET_NOTIFICATION,
        GL_CONTEXT_LOST
-
+       
 export GL_SPIR_V_BINARY, GL_SPIR_V_EXTENSIONS, GL_NUM_SPIR_V_EXTENSIONS
+export GL_VERTICES_SUBMITTED, GL_PRIMITIVES_SUBMITTED, GL_VERTEX_SHADER_INVOCATIONS,
+       GL_TESS_CONTROL_SHADER_PATCHES, GL_TESS_EVALUATION_SHADER_INVOCATIONS,
+       GL_GEOMETRY_SHADER_PRIMITIVES_EMITTED, GL_FRAGMENT_SHADER_INVOCATIONS,
+       GL_COMPUTE_SHADER_INVOCATIONS, GL_CLIPPING_INPUT_PRIMITIVES, GL_CLIPPING_OUTPUT_PRIMITIVES
+export GL_TRANSFORM_FEEDBACK_OVERFLOW, GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW
+export GL_TEXTURE_MAX_ANISOTROPY, GL_MAX_TEXTURE_MAX_ANISOTROPY
+export GL_POLYGON_OFFSET_CLAMP
+export GL_CONTEXT_FLAG_NO_ERROR_BIT

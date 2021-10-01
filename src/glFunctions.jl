@@ -660,3 +660,4 @@ fixedsamplelocations::GLboolean)::Cvoid
 @glfunc glSpecializeShader(shader::GLuint, pEntryPoint::Ptr{GLchar}, numSpecializationConstants::GLuint, pConstantIndex::Ptr{GLuint}, pConstantValue::Ptr{GLuint})::Cvoid
 @glfunc glMultiDrawArraysIndirectCount(mode::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
 @glfunc glMultiDrawElementsIndirectCount(mode::GLenum, type::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
+@glfunc glPolygonOffsetClamp(factor::GLfloat, units::GLfloat, clamp::GLfloat)::Cvoid
