@@ -1723,7 +1723,6 @@ const GL_RESET_NOTIFICATION_STRATEGY                                  = convert(
 const GL_LOSE_CONTEXT_ON_RESET                                        = convert(GLenum, 0x8252)
 const GL_NO_RESET_NOTIFICATION                                        = convert(GLenum, 0x8261)
 const GL_CONTEXT_LOST                                                 = convert(GLenum, 0x0507)
-<<<<<<< HEAD
 const GL_QUERY_BUFFER                                                 = convert(GLenum, 0x9192)
 const GL_LOCATION_COMPONENT                                           = convert(GLenum, 0x934A)
 const GL_TRANSFORM_FEEDBACK_BUFFER_INDEX                              = convert(GLenum, 0x934B)
@@ -1753,8 +1752,6 @@ const GL_TEXTURE_MAX_ANISOTROPY                                       = convert(
 const GL_MAX_TEXTURE_MAX_ANISOTROPY                                   = convert(GLenum, 0x84FF)
 const GL_POLYGON_OFFSET_CLAMP                                         = convert(GLenum, 0x8E1B)
 const GL_CONTEXT_FLAG_NO_ERROR_BIT                                    = convert(GLbitfield, 0x00000008)
-=======
->>>>>>> master
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
