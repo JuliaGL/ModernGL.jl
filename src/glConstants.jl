@@ -1723,6 +1723,7 @@ const GL_RESET_NOTIFICATION_STRATEGY                                  = convert(
 const GL_LOSE_CONTEXT_ON_RESET                                        = convert(GLenum, 0x8252)
 const GL_NO_RESET_NOTIFICATION                                        = convert(GLenum, 0x8261)
 const GL_CONTEXT_LOST                                                 = convert(GLenum, 0x0507)
+<<<<<<< HEAD
 const GL_QUERY_BUFFER                                                 = convert(GLenum, 0x9192)
 const GL_LOCATION_COMPONENT                                           = convert(GLenum, 0x934A)
 const GL_TRANSFORM_FEEDBACK_BUFFER_INDEX                              = convert(GLenum, 0x934B)
@@ -1752,6 +1753,8 @@ const GL_TEXTURE_MAX_ANISOTROPY                                       = convert(
 const GL_MAX_TEXTURE_MAX_ANISOTROPY                                   = convert(GLenum, 0x84FF)
 const GL_POLYGON_OFFSET_CLAMP                                         = convert(GLenum, 0x8E1B)
 const GL_CONTEXT_FLAG_NO_ERROR_BIT                                    = convert(GLbitfield, 0x00000008)
+=======
+>>>>>>> master
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
@@ -3462,24 +3465,16 @@ export GL_LOCATION_COMPONENT,
        GL_TRANSFORM_FEEDBACK_BUFFER_INDEX, GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE
 export GL_QUERY_RESULT_NO_WAIT, GL_QUERY_BUFFER_BINDING, GL_QUERY_BARRIER_BIT
 export GL_MIRROR_CLAMP_TO_EDGE
-
-# Added in OpenGL 4.5:
-#   from ARB_clip_control
 export GL_NEGATIVE_ONE_TO_ONE, GL_ZERO_TO_ONE,
        GL_CLIP_ORIGIN, GL_CLIP_DEPTH_MODE
-#   from ARB_cull_distance
 export GL_MAX_CULL_DISTANCES, GL_MAX_COMBINED_CLIP_AND_CULL_DISTANCES
-#   from ARB_conditional_render_inverted
 export GL_QUERY_WAIT_INVERTED, GL_QUERY_NO_WAIT_INVERTED,
        GL_QUERY_BY_REGION_WAIT_INVERTED, GL_QUERY_BY_REGION_NO_WAIT_INVERTED
-#   from ARB_direct_state_access
 export GL_TEXTURE_TARGET, GL_QUERY_TARGET
-#   from KHR_robustness
 export GL_GUILTY_CONTEXT_RESET, GL_INNOCENT_CONTEXT_RESET, GL_UNKNOWN_CONTEXT_RESET,
        GL_CONTEXT_ROBUST_ACCESS, GL_RESET_NOTIFICATION_STRATEGY,
        GL_LOSE_CONTEXT_ON_RESET, GL_NO_RESET_NOTIFICATION,
        GL_CONTEXT_LOST
-       
 export GL_SPIR_V_BINARY, GL_SPIR_V_EXTENSIONS, GL_NUM_SPIR_V_EXTENSIONS
 export GL_VERTICES_SUBMITTED, GL_PRIMITIVES_SUBMITTED, GL_VERTEX_SHADER_INVOCATIONS,
        GL_TESS_CONTROL_SHADER_PATCHES, GL_TESS_EVALUATION_SHADER_INVOCATIONS,
