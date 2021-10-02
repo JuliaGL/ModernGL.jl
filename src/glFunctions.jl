@@ -415,7 +415,7 @@
 @glfunc glVertexAttribFormat(attribindex::GLuint, size::GLint, type_::GLenum, normalized::GLboolean, relativeoffset::GLuint)::Cvoid
 @glfunc glClearColor(red::GLfloat, green::GLfloat, blue::GLfloat, alpha::GLfloat)::Cvoid
 @glfunc glClearTexImage(texture::GLuint, level::GLint, format::GLenum, type::GLenum, data::Ptr{Cvoid})::Cvoid
-@glfunc glClearTexImage(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, type::GLenum, data::Ptr{Cvoid})::Cvoid
+@glfunc glClearTexSubImage(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, type::GLenum, data::Ptr{Cvoid})::Cvoid
 @glfunc glIsFramebuffer(framebuffer::GLuint)::Bool
 @glfunc glVertexAttribP1uiv(index::GLuint, type_::GLenum, normalized::GLboolean, value::Ptr{GLuint})::Cvoid
 @glfunc glUniform3i(location::GLint, v0::GLint, v1::GLint, v2::GLint)::Cvoid
