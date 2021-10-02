@@ -1728,7 +1728,7 @@ GL_TRANSFORM_FEEDBACK_BUFFER_INDEX                                              
 GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE                                                =     0x934C
 GL_QUERY_RESULT_NO_WAIT                                                            =     0x9194
 GL_QUERY_BUFFER_BINDING                                                            =     0x9193
-GL_QUERY_BARRIER_BIT                                              ::GLbitfield     =     0x00008000
+GL_QUERY_BUFFER_BARRIER_BIT                                       ::GLbitfield     =     0x000080000
 GL_MIRROR_CLAMP_TO_EDGE                                                            =     0x8743
 GL_SPIR_V_BINARY                                                                   =     0x9552
 GL_SPIR_V_EXTENSIONS                                                               =     0x9553
