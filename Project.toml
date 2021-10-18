@@ -3,7 +3,6 @@ uuid = "66fc600b-dfda-50eb-8b99-91cfa97b1301"
 version = "1.2.0"
 
 [deps]
-InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 
 [compat]
