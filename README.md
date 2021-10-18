@@ -15,6 +15,11 @@ ENV["MODERNGL_DEBUGGING"] = "true"; Pkg.build("ModernGL")
 ENV["MODERNGL_DEBUGGING"] = "false"; Pkg.build("ModernGL")
 ```
 
+OpenGL constants are wrapped as enums, which allows you to print the name of a constant like this:
+GLENUM(x::GLenum).name
+This works pretty well, but keep in mind some constants actually have the same value, and only one name will be stored for each value. This leads to counterintuitive behavior in some cases, such as `GLENUM(GL_SYNC_FLUSH_COMMANDS_BIT).name == :GL_TRUE`.
+The behavior of GLENUM is manually overridden to return specific names for important constants, like `GL_TRUE` for 1 and `GL_FALSE` for 0. You can force other names using the macro `ModernGL.@custom_glenum [value] [name]`.
+
 ### Installation notes
 There are no dependencies, besides the graphic driver. If you have any problems, you should consider updating the driver first.
 
@@ -27,11 +32,6 @@ Other OpenGL abstraction packages, which make it easier to get started with Open
 ### Known problems
 
 There might be a few problems with older platforms and video cards, since it's not heavily tested on them.
-
-OpenGL constants are wrapped as enums, which allows you to print the name of a constant like this:
-GLENUM(x::GLenum).name
-This works pretty well, but some constants actually have the same value. As they're stored in one big dictionary, this leads to some enums being overwritten, resulting in a wrong name being printed.
-Most annoying example: `GLENUM(1).name` prints out: `GL_SYNC_FLUSH_COMMANDS_BIT`, but should be  `GL_TRUE`
 
 ### Some more details
 
