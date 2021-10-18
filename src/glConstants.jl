@@ -1754,19 +1754,12 @@ GL_CONTEXT_FLAG_NO_ERROR_BIT                                      ::GLbitfield  
 end
 
 # Define custom overloads for important constants, to make sure they print correctly.
-using InteractiveUtils
 macro custom_glenum(value::Integer, name::Symbol, real_type::DataType = GLenum)
     e_name = :(Symbol($(string(name))))
-    exprs = [ ]
-    for i_type::DataType in vcat(subtypes(Signed), subtypes(Unsigned))
-        if i_type != BigInt
-            push!(exprs, esc(:(
-                ModernGL.GLENUM(::Val{$i_type($value)}) =
-                    GLENUM{$e_name, $real_type}(convert($real_type, $value), $e_name)
-            )))
-        end
-    end
-    return Expr(:block, exprs...)
+    return :(
+        ModernGL.GLENUM(::Val{UInt32($value)}) =
+            GLENUM{$e_name, $real_type}(convert($real_type, $value), $e_name)
+    )
 end
 @custom_glenum 1 GL_TRUE
 @custom_glenum 0 GL_FALSE

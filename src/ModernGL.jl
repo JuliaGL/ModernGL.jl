@@ -76,15 +76,19 @@ Base.show(io::IO, ::MIME"text/plain", e::GLENUM) = print(io,
 
 const MGL_LOOKUP = Dict{Integer, Symbol}()
 
-"Finds the GLENUM value matching the given number."
-GLENUM(i::I) where {I<:Integer} = GLENUM(Val(i))
+"Finds the GLENUM value matching the given number"
+GLENUM(i::I) where {I<:Integer} = GLENUM(Val(UInt32(i)))
 
-"Overload this function to add new results."
+"Overload this method (with a Val(::UInt32) parameter) to change the name of specific GL constants"
 function GLENUM(i::Val)
     i_val::Integer = typeof(i).parameters[1]
-    return haskey(MGL_LOOKUP, i_val) ?
-        GLENUM{MGL_LOOKUP[i_val], typeof(i_val)}(i_val, MGL_LOOKUP[i_val]) : 
+    if haskey(MGL_LOOKUP, i_val)
+        name::Symbol = MGL_LOOKUP[i_val]
+        original_type::Type{<:Integer} = typeof(getkey(MGL_LOOKUP, i_val, name))
+        return GLENUM{name, original_type}(convert(original_type, i_val), name)
+    else
         error(i_val, " is not a valid GLenum value")
+    end
 end
 
 export GLENUM

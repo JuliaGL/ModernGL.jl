@@ -2,6 +2,28 @@ import GLFW
 using ModernGL
 include("util.jl")
 
+# Check the name/type of the GLENUM constants.
+function test_gl_enum(i::Integer, name::Symbol, expected_type::DataType = GLenum)
+    e = GLENUM(i)
+    if e.name != name
+        error("GLENUM(", i, ") should be :", name, " but is :", e.name)
+    end
+    if typeof(e.number) != expected_type
+        error(e, " should be a ", expected_type, ", but it's a ", typeof(e.number))
+    end
+end
+test_gl_enum(0x82EE, :GL_VERTICES_SUBMITTED)
+test_gl_enum(0x000080000, :GL_QUERY_BUFFER_BARRIER_BIT, GLbitfield)
+test_gl_enum(Int(1), :GL_TRUE)
+test_gl_enum(Int8(1), :GL_TRUE)
+test_gl_enum(UInt(1), :GL_TRUE)
+test_gl_enum(UInt8(1), :GL_TRUE)
+test_gl_enum(Int(0), :GL_FALSE)
+test_gl_enum(Int8(0), :GL_FALSE)
+test_gl_enum(UInt(0), :GL_FALSE)
+test_gl_enum(UInt8(0), :GL_FALSE)
+
+
 is_ci() = lowercase(get(ENV, "CI", "false")) == "true"
 
 if !is_ci() # only do test if not CI... this is for automated testing environments which fail for OpenGL stuff, but I'd like to test if at least including works
