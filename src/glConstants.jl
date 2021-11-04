@@ -1751,6 +1751,10 @@ GL_TEXTURE_MAX_ANISOTROPY                                                       
 GL_MAX_TEXTURE_MAX_ANISOTROPY                                                      =     0x84FF
 GL_POLYGON_OFFSET_CLAMP                                                            =     0x8E1B
 GL_CONTEXT_FLAG_NO_ERROR_BIT                                      ::GLbitfield     =     0x00000008
+GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT                                                =     0x8E8E
+GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT                                              =     0x8E8F
+GL_COMPRESSED_RGBA_BPTC_UNORM                                                      =     0x8E8C
+GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM                                                =     0x8E8D
 end
 
 # Define custom overloads for important constants, to make sure they print correctly.
