@@ -59,7 +59,7 @@ isavailable(ptr::Ptr{Cvoid}) = !(
     ptr == convert(Ptr{Cvoid},  3)
 )
 
-struct GLENUM{Sym, T}
+struct GLENUM{T}
     number::T
     name::Symbol
 end
@@ -76,16 +76,16 @@ Base.show(io::IO, ::MIME"text/plain", e::GLENUM) = print(io,
 
 const MGL_LOOKUP = Dict{Integer, Symbol}()
 
-"Finds the GLENUM value matching the given number"
+"Finds the GLENUM value matching the given number."
 GLENUM(i::I) where {I<:Integer} = GLENUM(Val(UInt32(i)))
-
+ 
 "Overload this method (with a Val(::UInt32) parameter) to change the name of specific GL constants"
-function GLENUM(i::Val)
+function GLENUM(@nospecialize i::Val)
     i_val::Integer = typeof(i).parameters[1]
     if haskey(MGL_LOOKUP, i_val)
         name::Symbol = MGL_LOOKUP[i_val]
         original_type::Type{<:Integer} = typeof(getkey(MGL_LOOKUP, i_val, name))
-        return GLENUM{name, original_type}(convert(original_type, i_val), name)
+        return GLENUM{original_type}(convert(original_type, i_val), name)
     else
         error(i_val, " is not a valid GLenum value")
     end
