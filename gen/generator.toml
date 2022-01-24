@@ -1,0 +1,15 @@
+[general]
+library_name = "libgl"
+ 
+output_ignorelist = [
+    "APIENTRYP",
+]
+
+use_deterministic_symbol = true
+
+[codegen.macro]
+macro_mode = "basic"
+
+# function-like macros in the following list will always be translated.
+functionlike_macro_whitelist = [
+]
