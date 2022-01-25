@@ -1730,6 +1730,7 @@ const GL_CLIENT_STORAGE_BIT                                           = convert(
 const GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT                             = convert(GLbitfield, 0x000004000)
 const GL_BUFFER_IMMUTABLE_STORAGE                                     = convert(GLenum, 0x821F)
 const GL_BUFFER_STORAGE_FLAGS                                         = convert(GLenum, 0x8220)
+<<<<<<< Updated upstream
 const GL_QUERY_BUFFER                                                 = convert(GLenum, 0x9192)
 const GL_LOCATION_COMPONENT                                           = convert(GLenum, 0x934A)
 const GL_TRANSFORM_FEEDBACK_BUFFER_INDEX                              = convert(GLenum, 0x934B)
@@ -1759,6 +1760,12 @@ const GL_TEXTURE_MAX_ANISOTROPY                                       = convert(
 const GL_MAX_TEXTURE_MAX_ANISOTROPY                                   = convert(GLenum, 0x84FF)
 const GL_POLYGON_OFFSET_CLAMP                                         = convert(GLenum, 0x8E1B)
 const GL_CONTEXT_FLAG_NO_ERROR_BIT                                    = convert(GLbitfield, 0x00000008)
+=======
+const GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT                             = convert(GLenum, 0x8E8E)
+const GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT                           = convert(GLenum, 0x8E8F)
+const GL_COMPRESSED_RGBA_BPTC_UNORM                                   = convert(GLenum, 0x8E8C)
+const GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM                             = convert(GLenum, 0x8E8D)
+>>>>>>> Stashed changes
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
@@ -3482,6 +3489,7 @@ export GL_GUILTY_CONTEXT_RESET, GL_INNOCENT_CONTEXT_RESET, GL_UNKNOWN_CONTEXT_RE
 export GL_MAP_PERSISTENT_BIT, GL_MAP_COHERENT_BIT, GL_DYNAMIC_STORAGE_BIT,
        GL_CLIENT_STORAGE_BIT, GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT,
        GL_BUFFER_IMMUTABLE_STORAGE, GL_BUFFER_STORAGE_FLAGS
+<<<<<<< Updated upstream
 export GL_SPIR_V_BINARY, GL_SPIR_V_EXTENSIONS, GL_NUM_SPIR_V_EXTENSIONS
 export GL_VERTICES_SUBMITTED, GL_PRIMITIVES_SUBMITTED, GL_VERTEX_SHADER_INVOCATIONS,
        GL_TESS_CONTROL_SHADER_PATCHES, GL_TESS_EVALUATION_SHADER_INVOCATIONS,
@@ -3491,3 +3499,7 @@ export GL_TRANSFORM_FEEDBACK_OVERFLOW, GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW
 export GL_TEXTURE_MAX_ANISOTROPY, GL_MAX_TEXTURE_MAX_ANISOTROPY
 export GL_POLYGON_OFFSET_CLAMP
 export GL_CONTEXT_FLAG_NO_ERROR_BIT
+=======
+export GL_COMPRESSED_RGB_BPTC_SIGNED_FLOAT, GL_COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT, 
+       GL_COMPRESSED_RGBA_BPTC_UNORM, GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM
+>>>>>>> Stashed changes
