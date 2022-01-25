@@ -1,6 +1,7 @@
 module ModernGL
 
 using Libdl
+using CEnum
 
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
@@ -59,39 +60,6 @@ isavailable(ptr::Ptr{Cvoid}) = !(
     ptr == convert(Ptr{Cvoid},  3)
 )
 
-abstract type Enum end
-
-macro GenEnums(list)
-    tmp = list.args
-    enumName = tmp[2]
-    splice!(tmp, 1:2)
-    enumType    = typeof(eval(tmp[4].args[1].args[2]))
-    enumdict1   = Dict{enumType, Symbol}()
-    for elem in tmp
-        if Meta.isexpr(elem, :const)
-            enumdict1[eval(elem.args[1].args[2])] = elem.args[1].args[1]
-        end
-    end
-    dictname = gensym()
-    enumtype =  quote
-        struct $(enumName){Sym, T} <: Enum
-            number::T
-            name::Symbol
-        end
-        $(dictname) = $enumdict1
-        function $(enumName)(number::T) where T
-            if !haskey($(dictname), number)
-                error("$number is not a GLenum")
-            end
-            $(enumName){$(dictname)[number], T}(number, $(dictname)[number])
-        end
-
-    end
-    esc(Expr(:block, enumtype, tmp..., Expr(:export, :($(enumName)))))
-end
-
-include("glTypes.jl")
-include("functionloading.jl")
-include("glConstants.jl")
+include("gl.jl")
 
 end # module
