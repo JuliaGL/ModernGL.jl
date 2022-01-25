@@ -1722,6 +1722,13 @@ const GL_RESET_NOTIFICATION_STRATEGY                                  = convert(
 const GL_LOSE_CONTEXT_ON_RESET                                        = convert(GLenum, 0x8252)
 const GL_NO_RESET_NOTIFICATION                                        = convert(GLenum, 0x8261)
 const GL_CONTEXT_LOST                                                 = convert(GLenum, 0x0507)
+const GL_MAP_PERSISTENT_BIT                                           = convert(GLbitfield, 0x0040)
+const GL_MAP_COHERENT_BIT                                             = convert(GLbitfield, 0x0080)
+const GL_DYNAMIC_STORAGE_BIT                                          = convert(GLbitfield, 0x0100)
+const GL_CLIENT_STORAGE_BIT                                           = convert(GLbitfield, 0x0200)
+const GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT                             = convert(GLbitfield, 0x000004000)
+const GL_BUFFER_IMMUTABLE_STORAGE                                     = convert(GLenum, 0x821F)
+const GL_BUFFER_STORAGE_FLAGS                                         = convert(GLenum, 0x8220)
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
@@ -3436,3 +3443,6 @@ export GL_GUILTY_CONTEXT_RESET, GL_INNOCENT_CONTEXT_RESET, GL_UNKNOWN_CONTEXT_RE
        GL_CONTEXT_ROBUST_ACCESS, GL_RESET_NOTIFICATION_STRATEGY,
        GL_LOSE_CONTEXT_ON_RESET, GL_NO_RESET_NOTIFICATION,
        GL_CONTEXT_LOST
+export GL_MAP_PERSISTENT_BIT, GL_MAP_COHERENT_BIT, GL_DYNAMIC_STORAGE_BIT,
+       GL_CLIENT_STORAGE_BIT, GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT,
+       GL_BUFFER_IMMUTABLE_STORAGE, GL_BUFFER_STORAGE_FLAGS
