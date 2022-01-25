@@ -201,195 +201,195 @@ const PFNGLDEPTHRANGEPROC = Ptr{Cvoid}
 const PFNGLVIEWPORTPROC = Ptr{Cvoid}
 
 function glCullFace(mode)
-    ccall((:glCullFace, libgl), Cvoid, (GLenum,), mode)
+    ccall(getprocaddress_e("glCullFace"), Cvoid, (GLenum,), mode)
 end
 
 function glFrontFace(mode)
-    ccall((:glFrontFace, libgl), Cvoid, (GLenum,), mode)
+    ccall(getprocaddress_e("glFrontFace"), Cvoid, (GLenum,), mode)
 end
 
 function glHint(target, mode)
-    ccall((:glHint, libgl), Cvoid, (GLenum, GLenum), target, mode)
+    ccall(getprocaddress_e("glHint"), Cvoid, (GLenum, GLenum), target, mode)
 end
 
 function glLineWidth(width)
-    ccall((:glLineWidth, libgl), Cvoid, (GLfloat,), width)
+    ccall(getprocaddress_e("glLineWidth"), Cvoid, (GLfloat,), width)
 end
 
 function glPointSize(size)
-    ccall((:glPointSize, libgl), Cvoid, (GLfloat,), size)
+    ccall(getprocaddress_e("glPointSize"), Cvoid, (GLfloat,), size)
 end
 
 function glPolygonMode(face, mode)
-    ccall((:glPolygonMode, libgl), Cvoid, (GLenum, GLenum), face, mode)
+    ccall(getprocaddress_e("glPolygonMode"), Cvoid, (GLenum, GLenum), face, mode)
 end
 
 function glScissor(x, y, width, height)
-    ccall((:glScissor, libgl), Cvoid, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
+    ccall(getprocaddress_e("glScissor"), Cvoid, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
 end
 
 function glTexParameterf(target, pname, param)
-    ccall((:glTexParameterf, libgl), Cvoid, (GLenum, GLenum, GLfloat), target, pname, param)
+    ccall(getprocaddress_e("glTexParameterf"), Cvoid, (GLenum, GLenum, GLfloat), target, pname, param)
 end
 
 function glTexParameterfv(target, pname, params)
-    ccall((:glTexParameterfv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
+    ccall(getprocaddress_e("glTexParameterfv"), Cvoid, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
 end
 
 function glTexParameteri(target, pname, param)
-    ccall((:glTexParameteri, libgl), Cvoid, (GLenum, GLenum, GLint), target, pname, param)
+    ccall(getprocaddress_e("glTexParameteri"), Cvoid, (GLenum, GLenum, GLint), target, pname, param)
 end
 
 function glTexParameteriv(target, pname, params)
-    ccall((:glTexParameteriv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glTexParameteriv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glTexImage1D(target, level, internalformat, width, border, format, type, pixels)
-    ccall((:glTexImage1D, libgl), Cvoid, (GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, internalformat, width, border, format, type, pixels)
+    ccall(getprocaddress_e("glTexImage1D"), Cvoid, (GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, internalformat, width, border, format, type, pixels)
 end
 
 function glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels)
-    ccall((:glTexImage2D, libgl), Cvoid, (GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, internalformat, width, height, border, format, type, pixels)
+    ccall(getprocaddress_e("glTexImage2D"), Cvoid, (GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, internalformat, width, height, border, format, type, pixels)
 end
 
 function glDrawBuffer(buf)
-    ccall((:glDrawBuffer, libgl), Cvoid, (GLenum,), buf)
+    ccall(getprocaddress_e("glDrawBuffer"), Cvoid, (GLenum,), buf)
 end
 
 function glClear(mask)
-    ccall((:glClear, libgl), Cvoid, (GLbitfield,), mask)
+    ccall(getprocaddress_e("glClear"), Cvoid, (GLbitfield,), mask)
 end
 
 function glClearColor(red, green, blue, alpha)
-    ccall((:glClearColor, libgl), Cvoid, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
+    ccall(getprocaddress_e("glClearColor"), Cvoid, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
 end
 
 function glClearStencil(s)
-    ccall((:glClearStencil, libgl), Cvoid, (GLint,), s)
+    ccall(getprocaddress_e("glClearStencil"), Cvoid, (GLint,), s)
 end
 
 function glClearDepth(depth)
-    ccall((:glClearDepth, libgl), Cvoid, (GLdouble,), depth)
+    ccall(getprocaddress_e("glClearDepth"), Cvoid, (GLdouble,), depth)
 end
 
 function glStencilMask(mask)
-    ccall((:glStencilMask, libgl), Cvoid, (GLuint,), mask)
+    ccall(getprocaddress_e("glStencilMask"), Cvoid, (GLuint,), mask)
 end
 
 function glColorMask(red, green, blue, alpha)
-    ccall((:glColorMask, libgl), Cvoid, (GLboolean, GLboolean, GLboolean, GLboolean), red, green, blue, alpha)
+    ccall(getprocaddress_e("glColorMask"), Cvoid, (GLboolean, GLboolean, GLboolean, GLboolean), red, green, blue, alpha)
 end
 
 function glDepthMask(flag)
-    ccall((:glDepthMask, libgl), Cvoid, (GLboolean,), flag)
+    ccall(getprocaddress_e("glDepthMask"), Cvoid, (GLboolean,), flag)
 end
 
 function glDisable(cap)
-    ccall((:glDisable, libgl), Cvoid, (GLenum,), cap)
+    ccall(getprocaddress_e("glDisable"), Cvoid, (GLenum,), cap)
 end
 
 function glEnable(cap)
-    ccall((:glEnable, libgl), Cvoid, (GLenum,), cap)
+    ccall(getprocaddress_e("glEnable"), Cvoid, (GLenum,), cap)
 end
 
 function glFinish()
-    ccall((:glFinish, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glFinish"), Cvoid, ())
 end
 
 function glFlush()
-    ccall((:glFlush, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glFlush"), Cvoid, ())
 end
 
 function glBlendFunc(sfactor, dfactor)
-    ccall((:glBlendFunc, libgl), Cvoid, (GLenum, GLenum), sfactor, dfactor)
+    ccall(getprocaddress_e("glBlendFunc"), Cvoid, (GLenum, GLenum), sfactor, dfactor)
 end
 
 function glLogicOp(opcode)
-    ccall((:glLogicOp, libgl), Cvoid, (GLenum,), opcode)
+    ccall(getprocaddress_e("glLogicOp"), Cvoid, (GLenum,), opcode)
 end
 
 function glStencilFunc(func, ref, mask)
-    ccall((:glStencilFunc, libgl), Cvoid, (GLenum, GLint, GLuint), func, ref, mask)
+    ccall(getprocaddress_e("glStencilFunc"), Cvoid, (GLenum, GLint, GLuint), func, ref, mask)
 end
 
 function glStencilOp(fail, zfail, zpass)
-    ccall((:glStencilOp, libgl), Cvoid, (GLenum, GLenum, GLenum), fail, zfail, zpass)
+    ccall(getprocaddress_e("glStencilOp"), Cvoid, (GLenum, GLenum, GLenum), fail, zfail, zpass)
 end
 
 function glDepthFunc(func)
-    ccall((:glDepthFunc, libgl), Cvoid, (GLenum,), func)
+    ccall(getprocaddress_e("glDepthFunc"), Cvoid, (GLenum,), func)
 end
 
 function glPixelStoref(pname, param)
-    ccall((:glPixelStoref, libgl), Cvoid, (GLenum, GLfloat), pname, param)
+    ccall(getprocaddress_e("glPixelStoref"), Cvoid, (GLenum, GLfloat), pname, param)
 end
 
 function glPixelStorei(pname, param)
-    ccall((:glPixelStorei, libgl), Cvoid, (GLenum, GLint), pname, param)
+    ccall(getprocaddress_e("glPixelStorei"), Cvoid, (GLenum, GLint), pname, param)
 end
 
 function glReadBuffer(src)
-    ccall((:glReadBuffer, libgl), Cvoid, (GLenum,), src)
+    ccall(getprocaddress_e("glReadBuffer"), Cvoid, (GLenum,), src)
 end
 
 function glReadPixels(x, y, width, height, format, type, pixels)
-    ccall((:glReadPixels, libgl), Cvoid, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), x, y, width, height, format, type, pixels)
+    ccall(getprocaddress_e("glReadPixels"), Cvoid, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), x, y, width, height, format, type, pixels)
 end
 
 function glGetBooleanv(pname, data)
-    ccall((:glGetBooleanv, libgl), Cvoid, (GLenum, Ptr{GLboolean}), pname, data)
+    ccall(getprocaddress_e("glGetBooleanv"), Cvoid, (GLenum, Ptr{GLboolean}), pname, data)
 end
 
 function glGetDoublev(pname, data)
-    ccall((:glGetDoublev, libgl), Cvoid, (GLenum, Ptr{GLdouble}), pname, data)
+    ccall(getprocaddress_e("glGetDoublev"), Cvoid, (GLenum, Ptr{GLdouble}), pname, data)
 end
 
 function glGetError()
-    ccall((:glGetError, libgl), GLenum, ())
+    ccall(getprocaddress_e("glGetError"), GLenum, ())
 end
 
 function glGetFloatv(pname, data)
-    ccall((:glGetFloatv, libgl), Cvoid, (GLenum, Ptr{GLfloat}), pname, data)
+    ccall(getprocaddress_e("glGetFloatv"), Cvoid, (GLenum, Ptr{GLfloat}), pname, data)
 end
 
 function glGetIntegerv(pname, data)
-    ccall((:glGetIntegerv, libgl), Cvoid, (GLenum, Ptr{GLint}), pname, data)
+    ccall(getprocaddress_e("glGetIntegerv"), Cvoid, (GLenum, Ptr{GLint}), pname, data)
 end
 
 function glGetString(name)
-    ccall((:glGetString, libgl), Ptr{GLubyte}, (GLenum,), name)
+    ccall(getprocaddress_e("glGetString"), Ptr{GLubyte}, (GLenum,), name)
 end
 
 function glGetTexImage(target, level, format, type, pixels)
-    ccall((:glGetTexImage, libgl), Cvoid, (GLenum, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, format, type, pixels)
+    ccall(getprocaddress_e("glGetTexImage"), Cvoid, (GLenum, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, format, type, pixels)
 end
 
 function glGetTexParameterfv(target, pname, params)
-    ccall((:glGetTexParameterfv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
+    ccall(getprocaddress_e("glGetTexParameterfv"), Cvoid, (GLenum, GLenum, Ptr{GLfloat}), target, pname, params)
 end
 
 function glGetTexParameteriv(target, pname, params)
-    ccall((:glGetTexParameteriv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glGetTexParameteriv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glGetTexLevelParameterfv(target, level, pname, params)
-    ccall((:glGetTexLevelParameterfv, libgl), Cvoid, (GLenum, GLint, GLenum, Ptr{GLfloat}), target, level, pname, params)
+    ccall(getprocaddress_e("glGetTexLevelParameterfv"), Cvoid, (GLenum, GLint, GLenum, Ptr{GLfloat}), target, level, pname, params)
 end
 
 function glGetTexLevelParameteriv(target, level, pname, params)
-    ccall((:glGetTexLevelParameteriv, libgl), Cvoid, (GLenum, GLint, GLenum, Ptr{GLint}), target, level, pname, params)
+    ccall(getprocaddress_e("glGetTexLevelParameteriv"), Cvoid, (GLenum, GLint, GLenum, Ptr{GLint}), target, level, pname, params)
 end
 
 function glIsEnabled(cap)
-    ccall((:glIsEnabled, libgl), GLboolean, (GLenum,), cap)
+    ccall(getprocaddress_e("glIsEnabled"), GLboolean, (GLenum,), cap)
 end
 
 function glDepthRange(n, f)
-    ccall((:glDepthRange, libgl), Cvoid, (GLdouble, GLdouble), n, f)
+    ccall(getprocaddress_e("glDepthRange"), Cvoid, (GLdouble, GLdouble), n, f)
 end
 
 function glViewport(x, y, width, height)
-    ccall((:glViewport, libgl), Cvoid, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
+    ccall(getprocaddress_e("glViewport"), Cvoid, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
 end
 
 const GLclampf = khronos_float_t
@@ -439,59 +439,59 @@ const PFNGLGENTEXTURESPROC = Ptr{Cvoid}
 const PFNGLISTEXTUREPROC = Ptr{Cvoid}
 
 function glDrawArrays(mode, first, count)
-    ccall((:glDrawArrays, libgl), Cvoid, (GLenum, GLint, GLsizei), mode, first, count)
+    ccall(getprocaddress_e("glDrawArrays"), Cvoid, (GLenum, GLint, GLsizei), mode, first, count)
 end
 
 function glDrawElements(mode, count, type, indices)
-    ccall((:glDrawElements, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}), mode, count, type, indices)
+    ccall(getprocaddress_e("glDrawElements"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}), mode, count, type, indices)
 end
 
 function glGetPointerv(pname, params)
-    ccall((:glGetPointerv, libgl), Cvoid, (GLenum, Ptr{Ptr{Cvoid}}), pname, params)
+    ccall(getprocaddress_e("glGetPointerv"), Cvoid, (GLenum, Ptr{Ptr{Cvoid}}), pname, params)
 end
 
 function glPolygonOffset(factor, units)
-    ccall((:glPolygonOffset, libgl), Cvoid, (GLfloat, GLfloat), factor, units)
+    ccall(getprocaddress_e("glPolygonOffset"), Cvoid, (GLfloat, GLfloat), factor, units)
 end
 
 function glCopyTexImage1D(target, level, internalformat, x, y, width, border)
-    ccall((:glCopyTexImage1D, libgl), Cvoid, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), target, level, internalformat, x, y, width, border)
+    ccall(getprocaddress_e("glCopyTexImage1D"), Cvoid, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), target, level, internalformat, x, y, width, border)
 end
 
 function glCopyTexImage2D(target, level, internalformat, x, y, width, height, border)
-    ccall((:glCopyTexImage2D, libgl), Cvoid, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), target, level, internalformat, x, y, width, height, border)
+    ccall(getprocaddress_e("glCopyTexImage2D"), Cvoid, (GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), target, level, internalformat, x, y, width, height, border)
 end
 
 function glCopyTexSubImage1D(target, level, xoffset, x, y, width)
-    ccall((:glCopyTexSubImage1D, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei), target, level, xoffset, x, y, width)
+    ccall(getprocaddress_e("glCopyTexSubImage1D"), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei), target, level, xoffset, x, y, width)
 end
 
 function glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height)
-    ccall((:glCopyTexSubImage2D, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyTexSubImage2D"), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, x, y, width, height)
 end
 
 function glTexSubImage1D(target, level, xoffset, width, format, type, pixels)
-    ccall((:glTexSubImage1D, libgl), Cvoid, (GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), target, level, xoffset, width, format, type, pixels)
+    ccall(getprocaddress_e("glTexSubImage1D"), Cvoid, (GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), target, level, xoffset, width, format, type, pixels)
 end
 
 function glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels)
-    ccall((:glTexSubImage2D, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), target, level, xoffset, yoffset, width, height, format, type, pixels)
+    ccall(getprocaddress_e("glTexSubImage2D"), Cvoid, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), target, level, xoffset, yoffset, width, height, format, type, pixels)
 end
 
 function glBindTexture(target, texture)
-    ccall((:glBindTexture, libgl), Cvoid, (GLenum, GLuint), target, texture)
+    ccall(getprocaddress_e("glBindTexture"), Cvoid, (GLenum, GLuint), target, texture)
 end
 
 function glDeleteTextures(n, textures)
-    ccall((:glDeleteTextures, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, textures)
+    ccall(getprocaddress_e("glDeleteTextures"), Cvoid, (GLsizei, Ptr{GLuint}), n, textures)
 end
 
 function glGenTextures(n, textures)
-    ccall((:glGenTextures, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, textures)
+    ccall(getprocaddress_e("glGenTextures"), Cvoid, (GLsizei, Ptr{GLuint}), n, textures)
 end
 
 function glIsTexture(texture)
-    ccall((:glIsTexture, libgl), GLboolean, (GLuint,), texture)
+    ccall(getprocaddress_e("glIsTexture"), GLboolean, (GLuint,), texture)
 end
 
 # typedef void ( APIENTRYP PFNGLDRAWRANGEELEMENTSPROC ) ( GLenum mode , GLuint start , GLuint end , GLsizei count , GLenum type , const void * indices )
@@ -507,19 +507,19 @@ const PFNGLTEXSUBIMAGE3DPROC = Ptr{Cvoid}
 const PFNGLCOPYTEXSUBIMAGE3DPROC = Ptr{Cvoid}
 
 function glDrawRangeElements(mode, start, _end, count, type, indices)
-    ccall((:glDrawRangeElements, libgl), Cvoid, (GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr{Cvoid}), mode, start, _end, count, type, indices)
+    ccall(getprocaddress_e("glDrawRangeElements"), Cvoid, (GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr{Cvoid}), mode, start, _end, count, type, indices)
 end
 
 function glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels)
-    ccall((:glTexImage3D, libgl), Cvoid, (GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, internalformat, width, height, depth, border, format, type, pixels)
+    ccall(getprocaddress_e("glTexImage3D"), Cvoid, (GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), target, level, internalformat, width, height, depth, border, format, type, pixels)
 end
 
 function glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
-    ccall((:glTexSubImage3D, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
+    ccall(getprocaddress_e("glTexSubImage3D"), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 end
 
 function glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height)
-    ccall((:glCopyTexSubImage3D, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, zoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyTexSubImage3D"), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), target, level, xoffset, yoffset, zoffset, x, y, width, height)
 end
 
 # typedef void ( APIENTRYP PFNGLACTIVETEXTUREPROC ) ( GLenum texture )
@@ -550,39 +550,39 @@ const PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC = Ptr{Cvoid}
 const PFNGLGETCOMPRESSEDTEXIMAGEPROC = Ptr{Cvoid}
 
 function glActiveTexture(texture)
-    ccall((:glActiveTexture, libgl), Cvoid, (GLenum,), texture)
+    ccall(getprocaddress_e("glActiveTexture"), Cvoid, (GLenum,), texture)
 end
 
 function glSampleCoverage(value, invert)
-    ccall((:glSampleCoverage, libgl), Cvoid, (GLfloat, GLboolean), value, invert)
+    ccall(getprocaddress_e("glSampleCoverage"), Cvoid, (GLfloat, GLboolean), value, invert)
 end
 
 function glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data)
-    ccall((:glCompressedTexImage3D, libgl), Cvoid, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), target, level, internalformat, width, height, depth, border, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTexImage3D"), Cvoid, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), target, level, internalformat, width, height, depth, border, imageSize, data)
 end
 
 function glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data)
-    ccall((:glCompressedTexImage2D, libgl), Cvoid, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), target, level, internalformat, width, height, border, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTexImage2D"), Cvoid, (GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), target, level, internalformat, width, height, border, imageSize, data)
 end
 
 function glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data)
-    ccall((:glCompressedTexImage1D, libgl), Cvoid, (GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Cvoid}), target, level, internalformat, width, border, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTexImage1D"), Cvoid, (GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Cvoid}), target, level, internalformat, width, border, imageSize, data)
 end
 
 function glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
-    ccall((:glCompressedTexSubImage3D, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTexSubImage3D"), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
 end
 
 function glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data)
-    ccall((:glCompressedTexSubImage2D, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), target, level, xoffset, yoffset, width, height, format, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTexSubImage2D"), Cvoid, (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), target, level, xoffset, yoffset, width, height, format, imageSize, data)
 end
 
 function glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data)
-    ccall((:glCompressedTexSubImage1D, libgl), Cvoid, (GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), target, level, xoffset, width, format, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTexSubImage1D"), Cvoid, (GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), target, level, xoffset, width, format, imageSize, data)
 end
 
 function glGetCompressedTexImage(target, level, img)
-    ccall((:glGetCompressedTexImage, libgl), Cvoid, (GLenum, GLint, Ptr{Cvoid}), target, level, img)
+    ccall(getprocaddress_e("glGetCompressedTexImage"), Cvoid, (GLenum, GLint, Ptr{Cvoid}), target, level, img)
 end
 
 # typedef void ( APIENTRYP PFNGLBLENDFUNCSEPARATEPROC ) ( GLenum sfactorRGB , GLenum dfactorRGB , GLenum sfactorAlpha , GLenum dfactorAlpha )
@@ -613,39 +613,39 @@ const PFNGLBLENDCOLORPROC = Ptr{Cvoid}
 const PFNGLBLENDEQUATIONPROC = Ptr{Cvoid}
 
 function glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha)
-    ccall((:glBlendFuncSeparate, libgl), Cvoid, (GLenum, GLenum, GLenum, GLenum), sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha)
+    ccall(getprocaddress_e("glBlendFuncSeparate"), Cvoid, (GLenum, GLenum, GLenum, GLenum), sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha)
 end
 
 function glMultiDrawArrays(mode, first, count, drawcount)
-    ccall((:glMultiDrawArrays, libgl), Cvoid, (GLenum, Ptr{GLint}, Ptr{GLsizei}, GLsizei), mode, first, count, drawcount)
+    ccall(getprocaddress_e("glMultiDrawArrays"), Cvoid, (GLenum, Ptr{GLint}, Ptr{GLsizei}, GLsizei), mode, first, count, drawcount)
 end
 
 function glMultiDrawElements(mode, count, type, indices, drawcount)
-    ccall((:glMultiDrawElements, libgl), Cvoid, (GLenum, Ptr{GLsizei}, GLenum, Ptr{Ptr{Cvoid}}, GLsizei), mode, count, type, indices, drawcount)
+    ccall(getprocaddress_e("glMultiDrawElements"), Cvoid, (GLenum, Ptr{GLsizei}, GLenum, Ptr{Ptr{Cvoid}}, GLsizei), mode, count, type, indices, drawcount)
 end
 
 function glPointParameterf(pname, param)
-    ccall((:glPointParameterf, libgl), Cvoid, (GLenum, GLfloat), pname, param)
+    ccall(getprocaddress_e("glPointParameterf"), Cvoid, (GLenum, GLfloat), pname, param)
 end
 
 function glPointParameterfv(pname, params)
-    ccall((:glPointParameterfv, libgl), Cvoid, (GLenum, Ptr{GLfloat}), pname, params)
+    ccall(getprocaddress_e("glPointParameterfv"), Cvoid, (GLenum, Ptr{GLfloat}), pname, params)
 end
 
 function glPointParameteri(pname, param)
-    ccall((:glPointParameteri, libgl), Cvoid, (GLenum, GLint), pname, param)
+    ccall(getprocaddress_e("glPointParameteri"), Cvoid, (GLenum, GLint), pname, param)
 end
 
 function glPointParameteriv(pname, params)
-    ccall((:glPointParameteriv, libgl), Cvoid, (GLenum, Ptr{GLint}), pname, params)
+    ccall(getprocaddress_e("glPointParameteriv"), Cvoid, (GLenum, Ptr{GLint}), pname, params)
 end
 
 function glBlendColor(red, green, blue, alpha)
-    ccall((:glBlendColor, libgl), Cvoid, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
+    ccall(getprocaddress_e("glBlendColor"), Cvoid, (GLfloat, GLfloat, GLfloat, GLfloat), red, green, blue, alpha)
 end
 
 function glBlendEquation(mode)
-    ccall((:glBlendEquation, libgl), Cvoid, (GLenum,), mode)
+    ccall(getprocaddress_e("glBlendEquation"), Cvoid, (GLenum,), mode)
 end
 
 const GLsizeiptr = khronos_ssize_t
@@ -710,79 +710,79 @@ const PFNGLGETBUFFERPARAMETERIVPROC = Ptr{Cvoid}
 const PFNGLGETBUFFERPOINTERVPROC = Ptr{Cvoid}
 
 function glGenQueries(n, ids)
-    ccall((:glGenQueries, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
+    ccall(getprocaddress_e("glGenQueries"), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
 end
 
 function glDeleteQueries(n, ids)
-    ccall((:glDeleteQueries, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
+    ccall(getprocaddress_e("glDeleteQueries"), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
 end
 
 function glIsQuery(id)
-    ccall((:glIsQuery, libgl), GLboolean, (GLuint,), id)
+    ccall(getprocaddress_e("glIsQuery"), GLboolean, (GLuint,), id)
 end
 
 function glBeginQuery(target, id)
-    ccall((:glBeginQuery, libgl), Cvoid, (GLenum, GLuint), target, id)
+    ccall(getprocaddress_e("glBeginQuery"), Cvoid, (GLenum, GLuint), target, id)
 end
 
 function glEndQuery(target)
-    ccall((:glEndQuery, libgl), Cvoid, (GLenum,), target)
+    ccall(getprocaddress_e("glEndQuery"), Cvoid, (GLenum,), target)
 end
 
 function glGetQueryiv(target, pname, params)
-    ccall((:glGetQueryiv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glGetQueryiv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glGetQueryObjectiv(id, pname, params)
-    ccall((:glGetQueryObjectiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), id, pname, params)
+    ccall(getprocaddress_e("glGetQueryObjectiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), id, pname, params)
 end
 
 function glGetQueryObjectuiv(id, pname, params)
-    ccall((:glGetQueryObjectuiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint}), id, pname, params)
+    ccall(getprocaddress_e("glGetQueryObjectuiv"), Cvoid, (GLuint, GLenum, Ptr{GLuint}), id, pname, params)
 end
 
 function glBindBuffer(target, buffer)
-    ccall((:glBindBuffer, libgl), Cvoid, (GLenum, GLuint), target, buffer)
+    ccall(getprocaddress_e("glBindBuffer"), Cvoid, (GLenum, GLuint), target, buffer)
 end
 
 function glDeleteBuffers(n, buffers)
-    ccall((:glDeleteBuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, buffers)
+    ccall(getprocaddress_e("glDeleteBuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, buffers)
 end
 
 function glGenBuffers(n, buffers)
-    ccall((:glGenBuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, buffers)
+    ccall(getprocaddress_e("glGenBuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, buffers)
 end
 
 function glIsBuffer(buffer)
-    ccall((:glIsBuffer, libgl), GLboolean, (GLuint,), buffer)
+    ccall(getprocaddress_e("glIsBuffer"), GLboolean, (GLuint,), buffer)
 end
 
 function glBufferData(target, size, data, usage)
-    ccall((:glBufferData, libgl), Cvoid, (GLenum, GLsizeiptr, Ptr{Cvoid}, GLenum), target, size, data, usage)
+    ccall(getprocaddress_e("glBufferData"), Cvoid, (GLenum, GLsizeiptr, Ptr{Cvoid}, GLenum), target, size, data, usage)
 end
 
 function glBufferSubData(target, offset, size, data)
-    ccall((:glBufferSubData, libgl), Cvoid, (GLenum, GLintptr, GLsizeiptr, Ptr{Cvoid}), target, offset, size, data)
+    ccall(getprocaddress_e("glBufferSubData"), Cvoid, (GLenum, GLintptr, GLsizeiptr, Ptr{Cvoid}), target, offset, size, data)
 end
 
 function glGetBufferSubData(target, offset, size, data)
-    ccall((:glGetBufferSubData, libgl), Cvoid, (GLenum, GLintptr, GLsizeiptr, Ptr{Cvoid}), target, offset, size, data)
+    ccall(getprocaddress_e("glGetBufferSubData"), Cvoid, (GLenum, GLintptr, GLsizeiptr, Ptr{Cvoid}), target, offset, size, data)
 end
 
 function glMapBuffer(target, access)
-    ccall((:glMapBuffer, libgl), Ptr{Cvoid}, (GLenum, GLenum), target, access)
+    ccall(getprocaddress_e("glMapBuffer"), Ptr{Cvoid}, (GLenum, GLenum), target, access)
 end
 
 function glUnmapBuffer(target)
-    ccall((:glUnmapBuffer, libgl), GLboolean, (GLenum,), target)
+    ccall(getprocaddress_e("glUnmapBuffer"), GLboolean, (GLenum,), target)
 end
 
 function glGetBufferParameteriv(target, pname, params)
-    ccall((:glGetBufferParameteriv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glGetBufferParameteriv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glGetBufferPointerv(target, pname, params)
-    ccall((:glGetBufferPointerv, libgl), Cvoid, (GLenum, GLenum, Ptr{Ptr{Cvoid}}), target, pname, params)
+    ccall(getprocaddress_e("glGetBufferPointerv"), Cvoid, (GLenum, GLenum, Ptr{Ptr{Cvoid}}), target, pname, params)
 end
 
 const GLchar = Cchar
@@ -1073,375 +1073,375 @@ const PFNGLVERTEXATTRIB4USVPROC = Ptr{Cvoid}
 const PFNGLVERTEXATTRIBPOINTERPROC = Ptr{Cvoid}
 
 function glBlendEquationSeparate(modeRGB, modeAlpha)
-    ccall((:glBlendEquationSeparate, libgl), Cvoid, (GLenum, GLenum), modeRGB, modeAlpha)
+    ccall(getprocaddress_e("glBlendEquationSeparate"), Cvoid, (GLenum, GLenum), modeRGB, modeAlpha)
 end
 
 function glDrawBuffers(n, bufs)
-    ccall((:glDrawBuffers, libgl), Cvoid, (GLsizei, Ptr{GLenum}), n, bufs)
+    ccall(getprocaddress_e("glDrawBuffers"), Cvoid, (GLsizei, Ptr{GLenum}), n, bufs)
 end
 
 function glStencilOpSeparate(face, sfail, dpfail, dppass)
-    ccall((:glStencilOpSeparate, libgl), Cvoid, (GLenum, GLenum, GLenum, GLenum), face, sfail, dpfail, dppass)
+    ccall(getprocaddress_e("glStencilOpSeparate"), Cvoid, (GLenum, GLenum, GLenum, GLenum), face, sfail, dpfail, dppass)
 end
 
 function glStencilFuncSeparate(face, func, ref, mask)
-    ccall((:glStencilFuncSeparate, libgl), Cvoid, (GLenum, GLenum, GLint, GLuint), face, func, ref, mask)
+    ccall(getprocaddress_e("glStencilFuncSeparate"), Cvoid, (GLenum, GLenum, GLint, GLuint), face, func, ref, mask)
 end
 
 function glStencilMaskSeparate(face, mask)
-    ccall((:glStencilMaskSeparate, libgl), Cvoid, (GLenum, GLuint), face, mask)
+    ccall(getprocaddress_e("glStencilMaskSeparate"), Cvoid, (GLenum, GLuint), face, mask)
 end
 
 function glAttachShader(program, shader)
-    ccall((:glAttachShader, libgl), Cvoid, (GLuint, GLuint), program, shader)
+    ccall(getprocaddress_e("glAttachShader"), Cvoid, (GLuint, GLuint), program, shader)
 end
 
 function glBindAttribLocation(program, index, name)
-    ccall((:glBindAttribLocation, libgl), Cvoid, (GLuint, GLuint, Ptr{GLchar}), program, index, name)
+    ccall(getprocaddress_e("glBindAttribLocation"), Cvoid, (GLuint, GLuint, Ptr{GLchar}), program, index, name)
 end
 
 function glCompileShader(shader)
-    ccall((:glCompileShader, libgl), Cvoid, (GLuint,), shader)
+    ccall(getprocaddress_e("glCompileShader"), Cvoid, (GLuint,), shader)
 end
 
 function glCreateProgram()
-    ccall((:glCreateProgram, libgl), GLuint, ())
+    ccall(getprocaddress_e("glCreateProgram"), GLuint, ())
 end
 
 function glCreateShader(type)
-    ccall((:glCreateShader, libgl), GLuint, (GLenum,), type)
+    ccall(getprocaddress_e("glCreateShader"), GLuint, (GLenum,), type)
 end
 
 function glDeleteProgram(program)
-    ccall((:glDeleteProgram, libgl), Cvoid, (GLuint,), program)
+    ccall(getprocaddress_e("glDeleteProgram"), Cvoid, (GLuint,), program)
 end
 
 function glDeleteShader(shader)
-    ccall((:glDeleteShader, libgl), Cvoid, (GLuint,), shader)
+    ccall(getprocaddress_e("glDeleteShader"), Cvoid, (GLuint,), shader)
 end
 
 function glDetachShader(program, shader)
-    ccall((:glDetachShader, libgl), Cvoid, (GLuint, GLuint), program, shader)
+    ccall(getprocaddress_e("glDetachShader"), Cvoid, (GLuint, GLuint), program, shader)
 end
 
 function glDisableVertexAttribArray(index)
-    ccall((:glDisableVertexAttribArray, libgl), Cvoid, (GLuint,), index)
+    ccall(getprocaddress_e("glDisableVertexAttribArray"), Cvoid, (GLuint,), index)
 end
 
 function glEnableVertexAttribArray(index)
-    ccall((:glEnableVertexAttribArray, libgl), Cvoid, (GLuint,), index)
+    ccall(getprocaddress_e("glEnableVertexAttribArray"), Cvoid, (GLuint,), index)
 end
 
 function glGetActiveAttrib(program, index, bufSize, length, size, type, name)
-    ccall((:glGetActiveAttrib, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type, name)
+    ccall(getprocaddress_e("glGetActiveAttrib"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type, name)
 end
 
 function glGetActiveUniform(program, index, bufSize, length, size, type, name)
-    ccall((:glGetActiveUniform, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type, name)
+    ccall(getprocaddress_e("glGetActiveUniform"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLint}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type, name)
 end
 
 function glGetAttachedShaders(program, maxCount, count, shaders)
-    ccall((:glGetAttachedShaders, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLuint}), program, maxCount, count, shaders)
+    ccall(getprocaddress_e("glGetAttachedShaders"), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLuint}), program, maxCount, count, shaders)
 end
 
 function glGetAttribLocation(program, name)
-    ccall((:glGetAttribLocation, libgl), GLint, (GLuint, Ptr{GLchar}), program, name)
+    ccall(getprocaddress_e("glGetAttribLocation"), GLint, (GLuint, Ptr{GLchar}), program, name)
 end
 
 function glGetProgramiv(program, pname, params)
-    ccall((:glGetProgramiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), program, pname, params)
+    ccall(getprocaddress_e("glGetProgramiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), program, pname, params)
 end
 
 function glGetProgramInfoLog(program, bufSize, length, infoLog)
-    ccall((:glGetProgramInfoLog, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, bufSize, length, infoLog)
+    ccall(getprocaddress_e("glGetProgramInfoLog"), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, bufSize, length, infoLog)
 end
 
 function glGetShaderiv(shader, pname, params)
-    ccall((:glGetShaderiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), shader, pname, params)
+    ccall(getprocaddress_e("glGetShaderiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), shader, pname, params)
 end
 
 function glGetShaderInfoLog(shader, bufSize, length, infoLog)
-    ccall((:glGetShaderInfoLog, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), shader, bufSize, length, infoLog)
+    ccall(getprocaddress_e("glGetShaderInfoLog"), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), shader, bufSize, length, infoLog)
 end
 
 function glGetShaderSource(shader, bufSize, length, source)
-    ccall((:glGetShaderSource, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), shader, bufSize, length, source)
+    ccall(getprocaddress_e("glGetShaderSource"), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), shader, bufSize, length, source)
 end
 
 function glGetUniformLocation(program, name)
-    ccall((:glGetUniformLocation, libgl), GLint, (GLuint, Ptr{GLchar}), program, name)
+    ccall(getprocaddress_e("glGetUniformLocation"), GLint, (GLuint, Ptr{GLchar}), program, name)
 end
 
 function glGetUniformfv(program, location, params)
-    ccall((:glGetUniformfv, libgl), Cvoid, (GLuint, GLint, Ptr{GLfloat}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformfv"), Cvoid, (GLuint, GLint, Ptr{GLfloat}), program, location, params)
 end
 
 function glGetUniformiv(program, location, params)
-    ccall((:glGetUniformiv, libgl), Cvoid, (GLuint, GLint, Ptr{GLint}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformiv"), Cvoid, (GLuint, GLint, Ptr{GLint}), program, location, params)
 end
 
 function glGetVertexAttribdv(index, pname, params)
-    ccall((:glGetVertexAttribdv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLdouble}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribdv"), Cvoid, (GLuint, GLenum, Ptr{GLdouble}), index, pname, params)
 end
 
 function glGetVertexAttribfv(index, pname, params)
-    ccall((:glGetVertexAttribfv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribfv"), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), index, pname, params)
 end
 
 function glGetVertexAttribiv(index, pname, params)
-    ccall((:glGetVertexAttribiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), index, pname, params)
 end
 
 function glGetVertexAttribPointerv(index, pname, pointer)
-    ccall((:glGetVertexAttribPointerv, libgl), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), index, pname, pointer)
+    ccall(getprocaddress_e("glGetVertexAttribPointerv"), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), index, pname, pointer)
 end
 
 function glIsProgram(program)
-    ccall((:glIsProgram, libgl), GLboolean, (GLuint,), program)
+    ccall(getprocaddress_e("glIsProgram"), GLboolean, (GLuint,), program)
 end
 
 function glIsShader(shader)
-    ccall((:glIsShader, libgl), GLboolean, (GLuint,), shader)
+    ccall(getprocaddress_e("glIsShader"), GLboolean, (GLuint,), shader)
 end
 
 function glLinkProgram(program)
-    ccall((:glLinkProgram, libgl), Cvoid, (GLuint,), program)
+    ccall(getprocaddress_e("glLinkProgram"), Cvoid, (GLuint,), program)
 end
 
 function glShaderSource(shader, count, string, length)
-    ccall((:glShaderSource, libgl), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLint}), shader, count, string, length)
+    ccall(getprocaddress_e("glShaderSource"), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLint}), shader, count, string, length)
 end
 
 function glUseProgram(program)
-    ccall((:glUseProgram, libgl), Cvoid, (GLuint,), program)
+    ccall(getprocaddress_e("glUseProgram"), Cvoid, (GLuint,), program)
 end
 
 function glUniform1f(location, v0)
-    ccall((:glUniform1f, libgl), Cvoid, (GLint, GLfloat), location, v0)
+    ccall(getprocaddress_e("glUniform1f"), Cvoid, (GLint, GLfloat), location, v0)
 end
 
 function glUniform2f(location, v0, v1)
-    ccall((:glUniform2f, libgl), Cvoid, (GLint, GLfloat, GLfloat), location, v0, v1)
+    ccall(getprocaddress_e("glUniform2f"), Cvoid, (GLint, GLfloat, GLfloat), location, v0, v1)
 end
 
 function glUniform3f(location, v0, v1, v2)
-    ccall((:glUniform3f, libgl), Cvoid, (GLint, GLfloat, GLfloat, GLfloat), location, v0, v1, v2)
+    ccall(getprocaddress_e("glUniform3f"), Cvoid, (GLint, GLfloat, GLfloat, GLfloat), location, v0, v1, v2)
 end
 
 function glUniform4f(location, v0, v1, v2, v3)
-    ccall((:glUniform4f, libgl), Cvoid, (GLint, GLfloat, GLfloat, GLfloat, GLfloat), location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glUniform4f"), Cvoid, (GLint, GLfloat, GLfloat, GLfloat, GLfloat), location, v0, v1, v2, v3)
 end
 
 function glUniform1i(location, v0)
-    ccall((:glUniform1i, libgl), Cvoid, (GLint, GLint), location, v0)
+    ccall(getprocaddress_e("glUniform1i"), Cvoid, (GLint, GLint), location, v0)
 end
 
 function glUniform2i(location, v0, v1)
-    ccall((:glUniform2i, libgl), Cvoid, (GLint, GLint, GLint), location, v0, v1)
+    ccall(getprocaddress_e("glUniform2i"), Cvoid, (GLint, GLint, GLint), location, v0, v1)
 end
 
 function glUniform3i(location, v0, v1, v2)
-    ccall((:glUniform3i, libgl), Cvoid, (GLint, GLint, GLint, GLint), location, v0, v1, v2)
+    ccall(getprocaddress_e("glUniform3i"), Cvoid, (GLint, GLint, GLint, GLint), location, v0, v1, v2)
 end
 
 function glUniform4i(location, v0, v1, v2, v3)
-    ccall((:glUniform4i, libgl), Cvoid, (GLint, GLint, GLint, GLint, GLint), location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glUniform4i"), Cvoid, (GLint, GLint, GLint, GLint, GLint), location, v0, v1, v2, v3)
 end
 
 function glUniform1fv(location, count, value)
-    ccall((:glUniform1fv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
+    ccall(getprocaddress_e("glUniform1fv"), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
 end
 
 function glUniform2fv(location, count, value)
-    ccall((:glUniform2fv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
+    ccall(getprocaddress_e("glUniform2fv"), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
 end
 
 function glUniform3fv(location, count, value)
-    ccall((:glUniform3fv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
+    ccall(getprocaddress_e("glUniform3fv"), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
 end
 
 function glUniform4fv(location, count, value)
-    ccall((:glUniform4fv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
+    ccall(getprocaddress_e("glUniform4fv"), Cvoid, (GLint, GLsizei, Ptr{GLfloat}), location, count, value)
 end
 
 function glUniform1iv(location, count, value)
-    ccall((:glUniform1iv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
+    ccall(getprocaddress_e("glUniform1iv"), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
 end
 
 function glUniform2iv(location, count, value)
-    ccall((:glUniform2iv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
+    ccall(getprocaddress_e("glUniform2iv"), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
 end
 
 function glUniform3iv(location, count, value)
-    ccall((:glUniform3iv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
+    ccall(getprocaddress_e("glUniform3iv"), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
 end
 
 function glUniform4iv(location, count, value)
-    ccall((:glUniform4iv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
+    ccall(getprocaddress_e("glUniform4iv"), Cvoid, (GLint, GLsizei, Ptr{GLint}), location, count, value)
 end
 
 function glUniformMatrix2fv(location, count, transpose, value)
-    ccall((:glUniformMatrix2fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix2fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glUniformMatrix3fv(location, count, transpose, value)
-    ccall((:glUniformMatrix3fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix3fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glUniformMatrix4fv(location, count, transpose, value)
-    ccall((:glUniformMatrix4fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix4fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glValidateProgram(program)
-    ccall((:glValidateProgram, libgl), Cvoid, (GLuint,), program)
+    ccall(getprocaddress_e("glValidateProgram"), Cvoid, (GLuint,), program)
 end
 
 function glVertexAttrib1d(index, x)
-    ccall((:glVertexAttrib1d, libgl), Cvoid, (GLuint, GLdouble), index, x)
+    ccall(getprocaddress_e("glVertexAttrib1d"), Cvoid, (GLuint, GLdouble), index, x)
 end
 
 function glVertexAttrib1dv(index, v)
-    ccall((:glVertexAttrib1dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib1dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttrib1f(index, x)
-    ccall((:glVertexAttrib1f, libgl), Cvoid, (GLuint, GLfloat), index, x)
+    ccall(getprocaddress_e("glVertexAttrib1f"), Cvoid, (GLuint, GLfloat), index, x)
 end
 
 function glVertexAttrib1fv(index, v)
-    ccall((:glVertexAttrib1fv, libgl), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib1fv"), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
 end
 
 function glVertexAttrib1s(index, x)
-    ccall((:glVertexAttrib1s, libgl), Cvoid, (GLuint, GLshort), index, x)
+    ccall(getprocaddress_e("glVertexAttrib1s"), Cvoid, (GLuint, GLshort), index, x)
 end
 
 function glVertexAttrib1sv(index, v)
-    ccall((:glVertexAttrib1sv, libgl), Cvoid, (GLuint, Ptr{GLshort}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib1sv"), Cvoid, (GLuint, Ptr{GLshort}), index, v)
 end
 
 function glVertexAttrib2d(index, x, y)
-    ccall((:glVertexAttrib2d, libgl), Cvoid, (GLuint, GLdouble, GLdouble), index, x, y)
+    ccall(getprocaddress_e("glVertexAttrib2d"), Cvoid, (GLuint, GLdouble, GLdouble), index, x, y)
 end
 
 function glVertexAttrib2dv(index, v)
-    ccall((:glVertexAttrib2dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib2dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttrib2f(index, x, y)
-    ccall((:glVertexAttrib2f, libgl), Cvoid, (GLuint, GLfloat, GLfloat), index, x, y)
+    ccall(getprocaddress_e("glVertexAttrib2f"), Cvoid, (GLuint, GLfloat, GLfloat), index, x, y)
 end
 
 function glVertexAttrib2fv(index, v)
-    ccall((:glVertexAttrib2fv, libgl), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib2fv"), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
 end
 
 function glVertexAttrib2s(index, x, y)
-    ccall((:glVertexAttrib2s, libgl), Cvoid, (GLuint, GLshort, GLshort), index, x, y)
+    ccall(getprocaddress_e("glVertexAttrib2s"), Cvoid, (GLuint, GLshort, GLshort), index, x, y)
 end
 
 function glVertexAttrib2sv(index, v)
-    ccall((:glVertexAttrib2sv, libgl), Cvoid, (GLuint, Ptr{GLshort}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib2sv"), Cvoid, (GLuint, Ptr{GLshort}), index, v)
 end
 
 function glVertexAttrib3d(index, x, y, z)
-    ccall((:glVertexAttrib3d, libgl), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttrib3d"), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble), index, x, y, z)
 end
 
 function glVertexAttrib3dv(index, v)
-    ccall((:glVertexAttrib3dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib3dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttrib3f(index, x, y, z)
-    ccall((:glVertexAttrib3f, libgl), Cvoid, (GLuint, GLfloat, GLfloat, GLfloat), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttrib3f"), Cvoid, (GLuint, GLfloat, GLfloat, GLfloat), index, x, y, z)
 end
 
 function glVertexAttrib3fv(index, v)
-    ccall((:glVertexAttrib3fv, libgl), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib3fv"), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
 end
 
 function glVertexAttrib3s(index, x, y, z)
-    ccall((:glVertexAttrib3s, libgl), Cvoid, (GLuint, GLshort, GLshort, GLshort), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttrib3s"), Cvoid, (GLuint, GLshort, GLshort, GLshort), index, x, y, z)
 end
 
 function glVertexAttrib3sv(index, v)
-    ccall((:glVertexAttrib3sv, libgl), Cvoid, (GLuint, Ptr{GLshort}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib3sv"), Cvoid, (GLuint, Ptr{GLshort}), index, v)
 end
 
 function glVertexAttrib4Nbv(index, v)
-    ccall((:glVertexAttrib4Nbv, libgl), Cvoid, (GLuint, Ptr{GLbyte}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4Nbv"), Cvoid, (GLuint, Ptr{GLbyte}), index, v)
 end
 
 function glVertexAttrib4Niv(index, v)
-    ccall((:glVertexAttrib4Niv, libgl), Cvoid, (GLuint, Ptr{GLint}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4Niv"), Cvoid, (GLuint, Ptr{GLint}), index, v)
 end
 
 function glVertexAttrib4Nsv(index, v)
-    ccall((:glVertexAttrib4Nsv, libgl), Cvoid, (GLuint, Ptr{GLshort}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4Nsv"), Cvoid, (GLuint, Ptr{GLshort}), index, v)
 end
 
 function glVertexAttrib4Nub(index, x, y, z, w)
-    ccall((:glVertexAttrib4Nub, libgl), Cvoid, (GLuint, GLubyte, GLubyte, GLubyte, GLubyte), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttrib4Nub"), Cvoid, (GLuint, GLubyte, GLubyte, GLubyte, GLubyte), index, x, y, z, w)
 end
 
 function glVertexAttrib4Nubv(index, v)
-    ccall((:glVertexAttrib4Nubv, libgl), Cvoid, (GLuint, Ptr{GLubyte}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4Nubv"), Cvoid, (GLuint, Ptr{GLubyte}), index, v)
 end
 
 function glVertexAttrib4Nuiv(index, v)
-    ccall((:glVertexAttrib4Nuiv, libgl), Cvoid, (GLuint, Ptr{GLuint}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4Nuiv"), Cvoid, (GLuint, Ptr{GLuint}), index, v)
 end
 
 function glVertexAttrib4Nusv(index, v)
-    ccall((:glVertexAttrib4Nusv, libgl), Cvoid, (GLuint, Ptr{GLushort}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4Nusv"), Cvoid, (GLuint, Ptr{GLushort}), index, v)
 end
 
 function glVertexAttrib4bv(index, v)
-    ccall((:glVertexAttrib4bv, libgl), Cvoid, (GLuint, Ptr{GLbyte}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4bv"), Cvoid, (GLuint, Ptr{GLbyte}), index, v)
 end
 
 function glVertexAttrib4d(index, x, y, z, w)
-    ccall((:glVertexAttrib4d, libgl), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble, GLdouble), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttrib4d"), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble, GLdouble), index, x, y, z, w)
 end
 
 function glVertexAttrib4dv(index, v)
-    ccall((:glVertexAttrib4dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttrib4f(index, x, y, z, w)
-    ccall((:glVertexAttrib4f, libgl), Cvoid, (GLuint, GLfloat, GLfloat, GLfloat, GLfloat), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttrib4f"), Cvoid, (GLuint, GLfloat, GLfloat, GLfloat, GLfloat), index, x, y, z, w)
 end
 
 function glVertexAttrib4fv(index, v)
-    ccall((:glVertexAttrib4fv, libgl), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4fv"), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
 end
 
 function glVertexAttrib4iv(index, v)
-    ccall((:glVertexAttrib4iv, libgl), Cvoid, (GLuint, Ptr{GLint}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4iv"), Cvoid, (GLuint, Ptr{GLint}), index, v)
 end
 
 function glVertexAttrib4s(index, x, y, z, w)
-    ccall((:glVertexAttrib4s, libgl), Cvoid, (GLuint, GLshort, GLshort, GLshort, GLshort), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttrib4s"), Cvoid, (GLuint, GLshort, GLshort, GLshort, GLshort), index, x, y, z, w)
 end
 
 function glVertexAttrib4sv(index, v)
-    ccall((:glVertexAttrib4sv, libgl), Cvoid, (GLuint, Ptr{GLshort}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4sv"), Cvoid, (GLuint, Ptr{GLshort}), index, v)
 end
 
 function glVertexAttrib4ubv(index, v)
-    ccall((:glVertexAttrib4ubv, libgl), Cvoid, (GLuint, Ptr{GLubyte}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4ubv"), Cvoid, (GLuint, Ptr{GLubyte}), index, v)
 end
 
 function glVertexAttrib4uiv(index, v)
-    ccall((:glVertexAttrib4uiv, libgl), Cvoid, (GLuint, Ptr{GLuint}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4uiv"), Cvoid, (GLuint, Ptr{GLuint}), index, v)
 end
 
 function glVertexAttrib4usv(index, v)
-    ccall((:glVertexAttrib4usv, libgl), Cvoid, (GLuint, Ptr{GLushort}), index, v)
+    ccall(getprocaddress_e("glVertexAttrib4usv"), Cvoid, (GLuint, Ptr{GLushort}), index, v)
 end
 
 function glVertexAttribPointer(index, size, type, normalized, stride, pointer)
-    ccall((:glVertexAttribPointer, libgl), Cvoid, (GLuint, GLint, GLenum, GLboolean, GLsizei, Ptr{Cvoid}), index, size, type, normalized, stride, pointer)
+    ccall(getprocaddress_e("glVertexAttribPointer"), Cvoid, (GLuint, GLint, GLenum, GLboolean, GLsizei, Ptr{Cvoid}), index, size, type, normalized, stride, pointer)
 end
 
 # typedef void ( APIENTRYP PFNGLUNIFORMMATRIX2X3FVPROC ) ( GLint location , GLsizei count , GLboolean transpose , const GLfloat * value )
@@ -1463,27 +1463,27 @@ const PFNGLUNIFORMMATRIX3X4FVPROC = Ptr{Cvoid}
 const PFNGLUNIFORMMATRIX4X3FVPROC = Ptr{Cvoid}
 
 function glUniformMatrix2x3fv(location, count, transpose, value)
-    ccall((:glUniformMatrix2x3fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix2x3fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glUniformMatrix3x2fv(location, count, transpose, value)
-    ccall((:glUniformMatrix3x2fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix3x2fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glUniformMatrix2x4fv(location, count, transpose, value)
-    ccall((:glUniformMatrix2x4fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix2x4fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glUniformMatrix4x2fv(location, count, transpose, value)
-    ccall((:glUniformMatrix4x2fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix4x2fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glUniformMatrix3x4fv(location, count, transpose, value)
-    ccall((:glUniformMatrix3x4fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix3x4fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 function glUniformMatrix4x3fv(location, count, transpose, value)
-    ccall((:glUniformMatrix4x3fv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix4x3fv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLfloat}), location, count, transpose, value)
 end
 
 const GLhalf = khronos_uint16_t
@@ -1741,339 +1741,339 @@ const PFNGLGENVERTEXARRAYSPROC = Ptr{Cvoid}
 const PFNGLISVERTEXARRAYPROC = Ptr{Cvoid}
 
 function glColorMaski(index, r, g, b, a)
-    ccall((:glColorMaski, libgl), Cvoid, (GLuint, GLboolean, GLboolean, GLboolean, GLboolean), index, r, g, b, a)
+    ccall(getprocaddress_e("glColorMaski"), Cvoid, (GLuint, GLboolean, GLboolean, GLboolean, GLboolean), index, r, g, b, a)
 end
 
 function glGetBooleani_v(target, index, data)
-    ccall((:glGetBooleani_v, libgl), Cvoid, (GLenum, GLuint, Ptr{GLboolean}), target, index, data)
+    ccall(getprocaddress_e("glGetBooleani_v"), Cvoid, (GLenum, GLuint, Ptr{GLboolean}), target, index, data)
 end
 
 function glGetIntegeri_v(target, index, data)
-    ccall((:glGetIntegeri_v, libgl), Cvoid, (GLenum, GLuint, Ptr{GLint}), target, index, data)
+    ccall(getprocaddress_e("glGetIntegeri_v"), Cvoid, (GLenum, GLuint, Ptr{GLint}), target, index, data)
 end
 
 function glEnablei(target, index)
-    ccall((:glEnablei, libgl), Cvoid, (GLenum, GLuint), target, index)
+    ccall(getprocaddress_e("glEnablei"), Cvoid, (GLenum, GLuint), target, index)
 end
 
 function glDisablei(target, index)
-    ccall((:glDisablei, libgl), Cvoid, (GLenum, GLuint), target, index)
+    ccall(getprocaddress_e("glDisablei"), Cvoid, (GLenum, GLuint), target, index)
 end
 
 function glIsEnabledi(target, index)
-    ccall((:glIsEnabledi, libgl), GLboolean, (GLenum, GLuint), target, index)
+    ccall(getprocaddress_e("glIsEnabledi"), GLboolean, (GLenum, GLuint), target, index)
 end
 
 function glBeginTransformFeedback(primitiveMode)
-    ccall((:glBeginTransformFeedback, libgl), Cvoid, (GLenum,), primitiveMode)
+    ccall(getprocaddress_e("glBeginTransformFeedback"), Cvoid, (GLenum,), primitiveMode)
 end
 
 function glEndTransformFeedback()
-    ccall((:glEndTransformFeedback, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glEndTransformFeedback"), Cvoid, ())
 end
 
 function glBindBufferRange(target, index, buffer, offset, size)
-    ccall((:glBindBufferRange, libgl), Cvoid, (GLenum, GLuint, GLuint, GLintptr, GLsizeiptr), target, index, buffer, offset, size)
+    ccall(getprocaddress_e("glBindBufferRange"), Cvoid, (GLenum, GLuint, GLuint, GLintptr, GLsizeiptr), target, index, buffer, offset, size)
 end
 
 function glBindBufferBase(target, index, buffer)
-    ccall((:glBindBufferBase, libgl), Cvoid, (GLenum, GLuint, GLuint), target, index, buffer)
+    ccall(getprocaddress_e("glBindBufferBase"), Cvoid, (GLenum, GLuint, GLuint), target, index, buffer)
 end
 
 function glTransformFeedbackVaryings(program, count, varyings, bufferMode)
-    ccall((:glTransformFeedbackVaryings, libgl), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, GLenum), program, count, varyings, bufferMode)
+    ccall(getprocaddress_e("glTransformFeedbackVaryings"), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, GLenum), program, count, varyings, bufferMode)
 end
 
 function glGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name)
-    ccall((:glGetTransformFeedbackVarying, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLsizei}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type, name)
+    ccall(getprocaddress_e("glGetTransformFeedbackVarying"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLsizei}, Ptr{GLenum}, Ptr{GLchar}), program, index, bufSize, length, size, type, name)
 end
 
 function glClampColor(target, clamp)
-    ccall((:glClampColor, libgl), Cvoid, (GLenum, GLenum), target, clamp)
+    ccall(getprocaddress_e("glClampColor"), Cvoid, (GLenum, GLenum), target, clamp)
 end
 
 function glBeginConditionalRender(id, mode)
-    ccall((:glBeginConditionalRender, libgl), Cvoid, (GLuint, GLenum), id, mode)
+    ccall(getprocaddress_e("glBeginConditionalRender"), Cvoid, (GLuint, GLenum), id, mode)
 end
 
 function glEndConditionalRender()
-    ccall((:glEndConditionalRender, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glEndConditionalRender"), Cvoid, ())
 end
 
 function glVertexAttribIPointer(index, size, type, stride, pointer)
-    ccall((:glVertexAttribIPointer, libgl), Cvoid, (GLuint, GLint, GLenum, GLsizei, Ptr{Cvoid}), index, size, type, stride, pointer)
+    ccall(getprocaddress_e("glVertexAttribIPointer"), Cvoid, (GLuint, GLint, GLenum, GLsizei, Ptr{Cvoid}), index, size, type, stride, pointer)
 end
 
 function glGetVertexAttribIiv(index, pname, params)
-    ccall((:glGetVertexAttribIiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribIiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), index, pname, params)
 end
 
 function glGetVertexAttribIuiv(index, pname, params)
-    ccall((:glGetVertexAttribIuiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribIuiv"), Cvoid, (GLuint, GLenum, Ptr{GLuint}), index, pname, params)
 end
 
 function glVertexAttribI1i(index, x)
-    ccall((:glVertexAttribI1i, libgl), Cvoid, (GLuint, GLint), index, x)
+    ccall(getprocaddress_e("glVertexAttribI1i"), Cvoid, (GLuint, GLint), index, x)
 end
 
 function glVertexAttribI2i(index, x, y)
-    ccall((:glVertexAttribI2i, libgl), Cvoid, (GLuint, GLint, GLint), index, x, y)
+    ccall(getprocaddress_e("glVertexAttribI2i"), Cvoid, (GLuint, GLint, GLint), index, x, y)
 end
 
 function glVertexAttribI3i(index, x, y, z)
-    ccall((:glVertexAttribI3i, libgl), Cvoid, (GLuint, GLint, GLint, GLint), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttribI3i"), Cvoid, (GLuint, GLint, GLint, GLint), index, x, y, z)
 end
 
 function glVertexAttribI4i(index, x, y, z, w)
-    ccall((:glVertexAttribI4i, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttribI4i"), Cvoid, (GLuint, GLint, GLint, GLint, GLint), index, x, y, z, w)
 end
 
 function glVertexAttribI1ui(index, x)
-    ccall((:glVertexAttribI1ui, libgl), Cvoid, (GLuint, GLuint), index, x)
+    ccall(getprocaddress_e("glVertexAttribI1ui"), Cvoid, (GLuint, GLuint), index, x)
 end
 
 function glVertexAttribI2ui(index, x, y)
-    ccall((:glVertexAttribI2ui, libgl), Cvoid, (GLuint, GLuint, GLuint), index, x, y)
+    ccall(getprocaddress_e("glVertexAttribI2ui"), Cvoid, (GLuint, GLuint, GLuint), index, x, y)
 end
 
 function glVertexAttribI3ui(index, x, y, z)
-    ccall((:glVertexAttribI3ui, libgl), Cvoid, (GLuint, GLuint, GLuint, GLuint), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttribI3ui"), Cvoid, (GLuint, GLuint, GLuint, GLuint), index, x, y, z)
 end
 
 function glVertexAttribI4ui(index, x, y, z, w)
-    ccall((:glVertexAttribI4ui, libgl), Cvoid, (GLuint, GLuint, GLuint, GLuint, GLuint), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttribI4ui"), Cvoid, (GLuint, GLuint, GLuint, GLuint, GLuint), index, x, y, z, w)
 end
 
 function glVertexAttribI1iv(index, v)
-    ccall((:glVertexAttribI1iv, libgl), Cvoid, (GLuint, Ptr{GLint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI1iv"), Cvoid, (GLuint, Ptr{GLint}), index, v)
 end
 
 function glVertexAttribI2iv(index, v)
-    ccall((:glVertexAttribI2iv, libgl), Cvoid, (GLuint, Ptr{GLint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI2iv"), Cvoid, (GLuint, Ptr{GLint}), index, v)
 end
 
 function glVertexAttribI3iv(index, v)
-    ccall((:glVertexAttribI3iv, libgl), Cvoid, (GLuint, Ptr{GLint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI3iv"), Cvoid, (GLuint, Ptr{GLint}), index, v)
 end
 
 function glVertexAttribI4iv(index, v)
-    ccall((:glVertexAttribI4iv, libgl), Cvoid, (GLuint, Ptr{GLint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI4iv"), Cvoid, (GLuint, Ptr{GLint}), index, v)
 end
 
 function glVertexAttribI1uiv(index, v)
-    ccall((:glVertexAttribI1uiv, libgl), Cvoid, (GLuint, Ptr{GLuint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI1uiv"), Cvoid, (GLuint, Ptr{GLuint}), index, v)
 end
 
 function glVertexAttribI2uiv(index, v)
-    ccall((:glVertexAttribI2uiv, libgl), Cvoid, (GLuint, Ptr{GLuint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI2uiv"), Cvoid, (GLuint, Ptr{GLuint}), index, v)
 end
 
 function glVertexAttribI3uiv(index, v)
-    ccall((:glVertexAttribI3uiv, libgl), Cvoid, (GLuint, Ptr{GLuint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI3uiv"), Cvoid, (GLuint, Ptr{GLuint}), index, v)
 end
 
 function glVertexAttribI4uiv(index, v)
-    ccall((:glVertexAttribI4uiv, libgl), Cvoid, (GLuint, Ptr{GLuint}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI4uiv"), Cvoid, (GLuint, Ptr{GLuint}), index, v)
 end
 
 function glVertexAttribI4bv(index, v)
-    ccall((:glVertexAttribI4bv, libgl), Cvoid, (GLuint, Ptr{GLbyte}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI4bv"), Cvoid, (GLuint, Ptr{GLbyte}), index, v)
 end
 
 function glVertexAttribI4sv(index, v)
-    ccall((:glVertexAttribI4sv, libgl), Cvoid, (GLuint, Ptr{GLshort}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI4sv"), Cvoid, (GLuint, Ptr{GLshort}), index, v)
 end
 
 function glVertexAttribI4ubv(index, v)
-    ccall((:glVertexAttribI4ubv, libgl), Cvoid, (GLuint, Ptr{GLubyte}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI4ubv"), Cvoid, (GLuint, Ptr{GLubyte}), index, v)
 end
 
 function glVertexAttribI4usv(index, v)
-    ccall((:glVertexAttribI4usv, libgl), Cvoid, (GLuint, Ptr{GLushort}), index, v)
+    ccall(getprocaddress_e("glVertexAttribI4usv"), Cvoid, (GLuint, Ptr{GLushort}), index, v)
 end
 
 function glGetUniformuiv(program, location, params)
-    ccall((:glGetUniformuiv, libgl), Cvoid, (GLuint, GLint, Ptr{GLuint}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformuiv"), Cvoid, (GLuint, GLint, Ptr{GLuint}), program, location, params)
 end
 
 function glBindFragDataLocation(program, color, name)
-    ccall((:glBindFragDataLocation, libgl), Cvoid, (GLuint, GLuint, Ptr{GLchar}), program, color, name)
+    ccall(getprocaddress_e("glBindFragDataLocation"), Cvoid, (GLuint, GLuint, Ptr{GLchar}), program, color, name)
 end
 
 function glGetFragDataLocation(program, name)
-    ccall((:glGetFragDataLocation, libgl), GLint, (GLuint, Ptr{GLchar}), program, name)
+    ccall(getprocaddress_e("glGetFragDataLocation"), GLint, (GLuint, Ptr{GLchar}), program, name)
 end
 
 function glUniform1ui(location, v0)
-    ccall((:glUniform1ui, libgl), Cvoid, (GLint, GLuint), location, v0)
+    ccall(getprocaddress_e("glUniform1ui"), Cvoid, (GLint, GLuint), location, v0)
 end
 
 function glUniform2ui(location, v0, v1)
-    ccall((:glUniform2ui, libgl), Cvoid, (GLint, GLuint, GLuint), location, v0, v1)
+    ccall(getprocaddress_e("glUniform2ui"), Cvoid, (GLint, GLuint, GLuint), location, v0, v1)
 end
 
 function glUniform3ui(location, v0, v1, v2)
-    ccall((:glUniform3ui, libgl), Cvoid, (GLint, GLuint, GLuint, GLuint), location, v0, v1, v2)
+    ccall(getprocaddress_e("glUniform3ui"), Cvoid, (GLint, GLuint, GLuint, GLuint), location, v0, v1, v2)
 end
 
 function glUniform4ui(location, v0, v1, v2, v3)
-    ccall((:glUniform4ui, libgl), Cvoid, (GLint, GLuint, GLuint, GLuint, GLuint), location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glUniform4ui"), Cvoid, (GLint, GLuint, GLuint, GLuint, GLuint), location, v0, v1, v2, v3)
 end
 
 function glUniform1uiv(location, count, value)
-    ccall((:glUniform1uiv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
+    ccall(getprocaddress_e("glUniform1uiv"), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
 end
 
 function glUniform2uiv(location, count, value)
-    ccall((:glUniform2uiv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
+    ccall(getprocaddress_e("glUniform2uiv"), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
 end
 
 function glUniform3uiv(location, count, value)
-    ccall((:glUniform3uiv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
+    ccall(getprocaddress_e("glUniform3uiv"), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
 end
 
 function glUniform4uiv(location, count, value)
-    ccall((:glUniform4uiv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
+    ccall(getprocaddress_e("glUniform4uiv"), Cvoid, (GLint, GLsizei, Ptr{GLuint}), location, count, value)
 end
 
 function glTexParameterIiv(target, pname, params)
-    ccall((:glTexParameterIiv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glTexParameterIiv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glTexParameterIuiv(target, pname, params)
-    ccall((:glTexParameterIuiv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLuint}), target, pname, params)
+    ccall(getprocaddress_e("glTexParameterIuiv"), Cvoid, (GLenum, GLenum, Ptr{GLuint}), target, pname, params)
 end
 
 function glGetTexParameterIiv(target, pname, params)
-    ccall((:glGetTexParameterIiv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glGetTexParameterIiv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glGetTexParameterIuiv(target, pname, params)
-    ccall((:glGetTexParameterIuiv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLuint}), target, pname, params)
+    ccall(getprocaddress_e("glGetTexParameterIuiv"), Cvoid, (GLenum, GLenum, Ptr{GLuint}), target, pname, params)
 end
 
 function glClearBufferiv(buffer, drawbuffer, value)
-    ccall((:glClearBufferiv, libgl), Cvoid, (GLenum, GLint, Ptr{GLint}), buffer, drawbuffer, value)
+    ccall(getprocaddress_e("glClearBufferiv"), Cvoid, (GLenum, GLint, Ptr{GLint}), buffer, drawbuffer, value)
 end
 
 function glClearBufferuiv(buffer, drawbuffer, value)
-    ccall((:glClearBufferuiv, libgl), Cvoid, (GLenum, GLint, Ptr{GLuint}), buffer, drawbuffer, value)
+    ccall(getprocaddress_e("glClearBufferuiv"), Cvoid, (GLenum, GLint, Ptr{GLuint}), buffer, drawbuffer, value)
 end
 
 function glClearBufferfv(buffer, drawbuffer, value)
-    ccall((:glClearBufferfv, libgl), Cvoid, (GLenum, GLint, Ptr{GLfloat}), buffer, drawbuffer, value)
+    ccall(getprocaddress_e("glClearBufferfv"), Cvoid, (GLenum, GLint, Ptr{GLfloat}), buffer, drawbuffer, value)
 end
 
 function glClearBufferfi(buffer, drawbuffer, depth, stencil)
-    ccall((:glClearBufferfi, libgl), Cvoid, (GLenum, GLint, GLfloat, GLint), buffer, drawbuffer, depth, stencil)
+    ccall(getprocaddress_e("glClearBufferfi"), Cvoid, (GLenum, GLint, GLfloat, GLint), buffer, drawbuffer, depth, stencil)
 end
 
 function glGetStringi(name, index)
-    ccall((:glGetStringi, libgl), Ptr{GLubyte}, (GLenum, GLuint), name, index)
+    ccall(getprocaddress_e("glGetStringi"), Ptr{GLubyte}, (GLenum, GLuint), name, index)
 end
 
 function glIsRenderbuffer(renderbuffer)
-    ccall((:glIsRenderbuffer, libgl), GLboolean, (GLuint,), renderbuffer)
+    ccall(getprocaddress_e("glIsRenderbuffer"), GLboolean, (GLuint,), renderbuffer)
 end
 
 function glBindRenderbuffer(target, renderbuffer)
-    ccall((:glBindRenderbuffer, libgl), Cvoid, (GLenum, GLuint), target, renderbuffer)
+    ccall(getprocaddress_e("glBindRenderbuffer"), Cvoid, (GLenum, GLuint), target, renderbuffer)
 end
 
 function glDeleteRenderbuffers(n, renderbuffers)
-    ccall((:glDeleteRenderbuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, renderbuffers)
+    ccall(getprocaddress_e("glDeleteRenderbuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, renderbuffers)
 end
 
 function glGenRenderbuffers(n, renderbuffers)
-    ccall((:glGenRenderbuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, renderbuffers)
+    ccall(getprocaddress_e("glGenRenderbuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, renderbuffers)
 end
 
 function glRenderbufferStorage(target, internalformat, width, height)
-    ccall((:glRenderbufferStorage, libgl), Cvoid, (GLenum, GLenum, GLsizei, GLsizei), target, internalformat, width, height)
+    ccall(getprocaddress_e("glRenderbufferStorage"), Cvoid, (GLenum, GLenum, GLsizei, GLsizei), target, internalformat, width, height)
 end
 
 function glGetRenderbufferParameteriv(target, pname, params)
-    ccall((:glGetRenderbufferParameteriv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glGetRenderbufferParameteriv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glIsFramebuffer(framebuffer)
-    ccall((:glIsFramebuffer, libgl), GLboolean, (GLuint,), framebuffer)
+    ccall(getprocaddress_e("glIsFramebuffer"), GLboolean, (GLuint,), framebuffer)
 end
 
 function glBindFramebuffer(target, framebuffer)
-    ccall((:glBindFramebuffer, libgl), Cvoid, (GLenum, GLuint), target, framebuffer)
+    ccall(getprocaddress_e("glBindFramebuffer"), Cvoid, (GLenum, GLuint), target, framebuffer)
 end
 
 function glDeleteFramebuffers(n, framebuffers)
-    ccall((:glDeleteFramebuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, framebuffers)
+    ccall(getprocaddress_e("glDeleteFramebuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, framebuffers)
 end
 
 function glGenFramebuffers(n, framebuffers)
-    ccall((:glGenFramebuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, framebuffers)
+    ccall(getprocaddress_e("glGenFramebuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, framebuffers)
 end
 
 function glCheckFramebufferStatus(target)
-    ccall((:glCheckFramebufferStatus, libgl), GLenum, (GLenum,), target)
+    ccall(getprocaddress_e("glCheckFramebufferStatus"), GLenum, (GLenum,), target)
 end
 
 function glFramebufferTexture1D(target, attachment, textarget, texture, level)
-    ccall((:glFramebufferTexture1D, libgl), Cvoid, (GLenum, GLenum, GLenum, GLuint, GLint), target, attachment, textarget, texture, level)
+    ccall(getprocaddress_e("glFramebufferTexture1D"), Cvoid, (GLenum, GLenum, GLenum, GLuint, GLint), target, attachment, textarget, texture, level)
 end
 
 function glFramebufferTexture2D(target, attachment, textarget, texture, level)
-    ccall((:glFramebufferTexture2D, libgl), Cvoid, (GLenum, GLenum, GLenum, GLuint, GLint), target, attachment, textarget, texture, level)
+    ccall(getprocaddress_e("glFramebufferTexture2D"), Cvoid, (GLenum, GLenum, GLenum, GLuint, GLint), target, attachment, textarget, texture, level)
 end
 
 function glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset)
-    ccall((:glFramebufferTexture3D, libgl), Cvoid, (GLenum, GLenum, GLenum, GLuint, GLint, GLint), target, attachment, textarget, texture, level, zoffset)
+    ccall(getprocaddress_e("glFramebufferTexture3D"), Cvoid, (GLenum, GLenum, GLenum, GLuint, GLint, GLint), target, attachment, textarget, texture, level, zoffset)
 end
 
 function glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer)
-    ccall((:glFramebufferRenderbuffer, libgl), Cvoid, (GLenum, GLenum, GLenum, GLuint), target, attachment, renderbuffertarget, renderbuffer)
+    ccall(getprocaddress_e("glFramebufferRenderbuffer"), Cvoid, (GLenum, GLenum, GLenum, GLuint), target, attachment, renderbuffertarget, renderbuffer)
 end
 
 function glGetFramebufferAttachmentParameteriv(target, attachment, pname, params)
-    ccall((:glGetFramebufferAttachmentParameteriv, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), target, attachment, pname, params)
+    ccall(getprocaddress_e("glGetFramebufferAttachmentParameteriv"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), target, attachment, pname, params)
 end
 
 function glGenerateMipmap(target)
-    ccall((:glGenerateMipmap, libgl), Cvoid, (GLenum,), target)
+    ccall(getprocaddress_e("glGenerateMipmap"), Cvoid, (GLenum,), target)
 end
 
 function glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
-    ccall((:glBlitFramebuffer, libgl), Cvoid, (GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum), srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
+    ccall(getprocaddress_e("glBlitFramebuffer"), Cvoid, (GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum), srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
 end
 
 function glRenderbufferStorageMultisample(target, samples, internalformat, width, height)
-    ccall((:glRenderbufferStorageMultisample, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei), target, samples, internalformat, width, height)
+    ccall(getprocaddress_e("glRenderbufferStorageMultisample"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei), target, samples, internalformat, width, height)
 end
 
 function glFramebufferTextureLayer(target, attachment, texture, level, layer)
-    ccall((:glFramebufferTextureLayer, libgl), Cvoid, (GLenum, GLenum, GLuint, GLint, GLint), target, attachment, texture, level, layer)
+    ccall(getprocaddress_e("glFramebufferTextureLayer"), Cvoid, (GLenum, GLenum, GLuint, GLint, GLint), target, attachment, texture, level, layer)
 end
 
 function glMapBufferRange(target, offset, length, access)
-    ccall((:glMapBufferRange, libgl), Ptr{Cvoid}, (GLenum, GLintptr, GLsizeiptr, GLbitfield), target, offset, length, access)
+    ccall(getprocaddress_e("glMapBufferRange"), Ptr{Cvoid}, (GLenum, GLintptr, GLsizeiptr, GLbitfield), target, offset, length, access)
 end
 
 function glFlushMappedBufferRange(target, offset, length)
-    ccall((:glFlushMappedBufferRange, libgl), Cvoid, (GLenum, GLintptr, GLsizeiptr), target, offset, length)
+    ccall(getprocaddress_e("glFlushMappedBufferRange"), Cvoid, (GLenum, GLintptr, GLsizeiptr), target, offset, length)
 end
 
 function glBindVertexArray(array)
-    ccall((:glBindVertexArray, libgl), Cvoid, (GLuint,), array)
+    ccall(getprocaddress_e("glBindVertexArray"), Cvoid, (GLuint,), array)
 end
 
 function glDeleteVertexArrays(n, arrays)
-    ccall((:glDeleteVertexArrays, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, arrays)
+    ccall(getprocaddress_e("glDeleteVertexArrays"), Cvoid, (GLsizei, Ptr{GLuint}), n, arrays)
 end
 
 function glGenVertexArrays(n, arrays)
-    ccall((:glGenVertexArrays, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, arrays)
+    ccall(getprocaddress_e("glGenVertexArrays"), Cvoid, (GLsizei, Ptr{GLuint}), n, arrays)
 end
 
 function glIsVertexArray(array)
-    ccall((:glIsVertexArray, libgl), GLboolean, (GLuint,), array)
+    ccall(getprocaddress_e("glIsVertexArray"), GLboolean, (GLuint,), array)
 end
 
 # typedef void ( APIENTRYP PFNGLDRAWARRAYSINSTANCEDPROC ) ( GLenum mode , GLint first , GLsizei count , GLsizei instancecount )
@@ -2113,51 +2113,51 @@ const PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC = Ptr{Cvoid}
 const PFNGLUNIFORMBLOCKBINDINGPROC = Ptr{Cvoid}
 
 function glDrawArraysInstanced(mode, first, count, instancecount)
-    ccall((:glDrawArraysInstanced, libgl), Cvoid, (GLenum, GLint, GLsizei, GLsizei), mode, first, count, instancecount)
+    ccall(getprocaddress_e("glDrawArraysInstanced"), Cvoid, (GLenum, GLint, GLsizei, GLsizei), mode, first, count, instancecount)
 end
 
 function glDrawElementsInstanced(mode, count, type, indices, instancecount)
-    ccall((:glDrawElementsInstanced, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei), mode, count, type, indices, instancecount)
+    ccall(getprocaddress_e("glDrawElementsInstanced"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei), mode, count, type, indices, instancecount)
 end
 
 function glTexBuffer(target, internalformat, buffer)
-    ccall((:glTexBuffer, libgl), Cvoid, (GLenum, GLenum, GLuint), target, internalformat, buffer)
+    ccall(getprocaddress_e("glTexBuffer"), Cvoid, (GLenum, GLenum, GLuint), target, internalformat, buffer)
 end
 
 function glPrimitiveRestartIndex(index)
-    ccall((:glPrimitiveRestartIndex, libgl), Cvoid, (GLuint,), index)
+    ccall(getprocaddress_e("glPrimitiveRestartIndex"), Cvoid, (GLuint,), index)
 end
 
 function glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size)
-    ccall((:glCopyBufferSubData, libgl), Cvoid, (GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr), readTarget, writeTarget, readOffset, writeOffset, size)
+    ccall(getprocaddress_e("glCopyBufferSubData"), Cvoid, (GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr), readTarget, writeTarget, readOffset, writeOffset, size)
 end
 
 function glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices)
-    ccall((:glGetUniformIndices, libgl), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLuint}), program, uniformCount, uniformNames, uniformIndices)
+    ccall(getprocaddress_e("glGetUniformIndices"), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLuint}), program, uniformCount, uniformNames, uniformIndices)
 end
 
 function glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, params)
-    ccall((:glGetActiveUniformsiv, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLuint}, GLenum, Ptr{GLint}), program, uniformCount, uniformIndices, pname, params)
+    ccall(getprocaddress_e("glGetActiveUniformsiv"), Cvoid, (GLuint, GLsizei, Ptr{GLuint}, GLenum, Ptr{GLint}), program, uniformCount, uniformIndices, pname, params)
 end
 
 function glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName)
-    ccall((:glGetActiveUniformName, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, uniformIndex, bufSize, length, uniformName)
+    ccall(getprocaddress_e("glGetActiveUniformName"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, uniformIndex, bufSize, length, uniformName)
 end
 
 function glGetUniformBlockIndex(program, uniformBlockName)
-    ccall((:glGetUniformBlockIndex, libgl), GLuint, (GLuint, Ptr{GLchar}), program, uniformBlockName)
+    ccall(getprocaddress_e("glGetUniformBlockIndex"), GLuint, (GLuint, Ptr{GLchar}), program, uniformBlockName)
 end
 
 function glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, params)
-    ccall((:glGetActiveUniformBlockiv, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), program, uniformBlockIndex, pname, params)
+    ccall(getprocaddress_e("glGetActiveUniformBlockiv"), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), program, uniformBlockIndex, pname, params)
 end
 
 function glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName)
-    ccall((:glGetActiveUniformBlockName, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, uniformBlockIndex, bufSize, length, uniformBlockName)
+    ccall(getprocaddress_e("glGetActiveUniformBlockName"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, uniformBlockIndex, bufSize, length, uniformBlockName)
 end
 
 function glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding)
-    ccall((:glUniformBlockBinding, libgl), Cvoid, (GLuint, GLuint, GLuint), program, uniformBlockIndex, uniformBlockBinding)
+    ccall(getprocaddress_e("glUniformBlockBinding"), Cvoid, (GLuint, GLuint, GLuint), program, uniformBlockIndex, uniformBlockBinding)
 end
 
 mutable struct __GLsync end
@@ -2226,79 +2226,79 @@ const PFNGLGETMULTISAMPLEFVPROC = Ptr{Cvoid}
 const PFNGLSAMPLEMASKIPROC = Ptr{Cvoid}
 
 function glDrawElementsBaseVertex(mode, count, type, indices, basevertex)
-    ccall((:glDrawElementsBaseVertex, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLint), mode, count, type, indices, basevertex)
+    ccall(getprocaddress_e("glDrawElementsBaseVertex"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLint), mode, count, type, indices, basevertex)
 end
 
 function glDrawRangeElementsBaseVertex(mode, start, _end, count, type, indices, basevertex)
-    ccall((:glDrawRangeElementsBaseVertex, libgl), Cvoid, (GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr{Cvoid}, GLint), mode, start, _end, count, type, indices, basevertex)
+    ccall(getprocaddress_e("glDrawRangeElementsBaseVertex"), Cvoid, (GLenum, GLuint, GLuint, GLsizei, GLenum, Ptr{Cvoid}, GLint), mode, start, _end, count, type, indices, basevertex)
 end
 
 function glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex)
-    ccall((:glDrawElementsInstancedBaseVertex, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei, GLint), mode, count, type, indices, instancecount, basevertex)
+    ccall(getprocaddress_e("glDrawElementsInstancedBaseVertex"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei, GLint), mode, count, type, indices, instancecount, basevertex)
 end
 
 function glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex)
-    ccall((:glMultiDrawElementsBaseVertex, libgl), Cvoid, (GLenum, Ptr{GLsizei}, GLenum, Ptr{Ptr{Cvoid}}, GLsizei, Ptr{GLint}), mode, count, type, indices, drawcount, basevertex)
+    ccall(getprocaddress_e("glMultiDrawElementsBaseVertex"), Cvoid, (GLenum, Ptr{GLsizei}, GLenum, Ptr{Ptr{Cvoid}}, GLsizei, Ptr{GLint}), mode, count, type, indices, drawcount, basevertex)
 end
 
 function glProvokingVertex(mode)
-    ccall((:glProvokingVertex, libgl), Cvoid, (GLenum,), mode)
+    ccall(getprocaddress_e("glProvokingVertex"), Cvoid, (GLenum,), mode)
 end
 
 function glFenceSync(condition, flags)
-    ccall((:glFenceSync, libgl), GLsync, (GLenum, GLbitfield), condition, flags)
+    ccall(getprocaddress_e("glFenceSync"), GLsync, (GLenum, GLbitfield), condition, flags)
 end
 
 function glIsSync(sync)
-    ccall((:glIsSync, libgl), GLboolean, (GLsync,), sync)
+    ccall(getprocaddress_e("glIsSync"), GLboolean, (GLsync,), sync)
 end
 
 function glDeleteSync(sync)
-    ccall((:glDeleteSync, libgl), Cvoid, (GLsync,), sync)
+    ccall(getprocaddress_e("glDeleteSync"), Cvoid, (GLsync,), sync)
 end
 
 function glClientWaitSync(sync, flags, timeout)
-    ccall((:glClientWaitSync, libgl), GLenum, (GLsync, GLbitfield, GLuint64), sync, flags, timeout)
+    ccall(getprocaddress_e("glClientWaitSync"), GLenum, (GLsync, GLbitfield, GLuint64), sync, flags, timeout)
 end
 
 function glWaitSync(sync, flags, timeout)
-    ccall((:glWaitSync, libgl), Cvoid, (GLsync, GLbitfield, GLuint64), sync, flags, timeout)
+    ccall(getprocaddress_e("glWaitSync"), Cvoid, (GLsync, GLbitfield, GLuint64), sync, flags, timeout)
 end
 
 function glGetInteger64v(pname, data)
-    ccall((:glGetInteger64v, libgl), Cvoid, (GLenum, Ptr{GLint64}), pname, data)
+    ccall(getprocaddress_e("glGetInteger64v"), Cvoid, (GLenum, Ptr{GLint64}), pname, data)
 end
 
 function glGetSynciv(sync, pname, count, length, values)
-    ccall((:glGetSynciv, libgl), Cvoid, (GLsync, GLenum, GLsizei, Ptr{GLsizei}, Ptr{GLint}), sync, pname, count, length, values)
+    ccall(getprocaddress_e("glGetSynciv"), Cvoid, (GLsync, GLenum, GLsizei, Ptr{GLsizei}, Ptr{GLint}), sync, pname, count, length, values)
 end
 
 function glGetInteger64i_v(target, index, data)
-    ccall((:glGetInteger64i_v, libgl), Cvoid, (GLenum, GLuint, Ptr{GLint64}), target, index, data)
+    ccall(getprocaddress_e("glGetInteger64i_v"), Cvoid, (GLenum, GLuint, Ptr{GLint64}), target, index, data)
 end
 
 function glGetBufferParameteri64v(target, pname, params)
-    ccall((:glGetBufferParameteri64v, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint64}), target, pname, params)
+    ccall(getprocaddress_e("glGetBufferParameteri64v"), Cvoid, (GLenum, GLenum, Ptr{GLint64}), target, pname, params)
 end
 
 function glFramebufferTexture(target, attachment, texture, level)
-    ccall((:glFramebufferTexture, libgl), Cvoid, (GLenum, GLenum, GLuint, GLint), target, attachment, texture, level)
+    ccall(getprocaddress_e("glFramebufferTexture"), Cvoid, (GLenum, GLenum, GLuint, GLint), target, attachment, texture, level)
 end
 
 function glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations)
-    ccall((:glTexImage2DMultisample, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, fixedsamplelocations)
+    ccall(getprocaddress_e("glTexImage2DMultisample"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, fixedsamplelocations)
 end
 
 function glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations)
-    ccall((:glTexImage3DMultisample, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, depth, fixedsamplelocations)
+    ccall(getprocaddress_e("glTexImage3DMultisample"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, depth, fixedsamplelocations)
 end
 
 function glGetMultisamplefv(pname, index, val)
-    ccall((:glGetMultisamplefv, libgl), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), pname, index, val)
+    ccall(getprocaddress_e("glGetMultisamplefv"), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), pname, index, val)
 end
 
 function glSampleMaski(maskNumber, mask)
-    ccall((:glSampleMaski, libgl), Cvoid, (GLuint, GLbitfield), maskNumber, mask)
+    ccall(getprocaddress_e("glSampleMaski"), Cvoid, (GLuint, GLbitfield), maskNumber, mask)
 end
 
 # typedef void ( APIENTRYP PFNGLBINDFRAGDATALOCATIONINDEXEDPROC ) ( GLuint program , GLuint colorNumber , GLuint index , const GLchar * name )
@@ -2386,115 +2386,115 @@ const PFNGLVERTEXATTRIBP4UIPROC = Ptr{Cvoid}
 const PFNGLVERTEXATTRIBP4UIVPROC = Ptr{Cvoid}
 
 function glBindFragDataLocationIndexed(program, colorNumber, index, name)
-    ccall((:glBindFragDataLocationIndexed, libgl), Cvoid, (GLuint, GLuint, GLuint, Ptr{GLchar}), program, colorNumber, index, name)
+    ccall(getprocaddress_e("glBindFragDataLocationIndexed"), Cvoid, (GLuint, GLuint, GLuint, Ptr{GLchar}), program, colorNumber, index, name)
 end
 
 function glGetFragDataIndex(program, name)
-    ccall((:glGetFragDataIndex, libgl), GLint, (GLuint, Ptr{GLchar}), program, name)
+    ccall(getprocaddress_e("glGetFragDataIndex"), GLint, (GLuint, Ptr{GLchar}), program, name)
 end
 
 function glGenSamplers(count, samplers)
-    ccall((:glGenSamplers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), count, samplers)
+    ccall(getprocaddress_e("glGenSamplers"), Cvoid, (GLsizei, Ptr{GLuint}), count, samplers)
 end
 
 function glDeleteSamplers(count, samplers)
-    ccall((:glDeleteSamplers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), count, samplers)
+    ccall(getprocaddress_e("glDeleteSamplers"), Cvoid, (GLsizei, Ptr{GLuint}), count, samplers)
 end
 
 function glIsSampler(sampler)
-    ccall((:glIsSampler, libgl), GLboolean, (GLuint,), sampler)
+    ccall(getprocaddress_e("glIsSampler"), GLboolean, (GLuint,), sampler)
 end
 
 function glBindSampler(unit, sampler)
-    ccall((:glBindSampler, libgl), Cvoid, (GLuint, GLuint), unit, sampler)
+    ccall(getprocaddress_e("glBindSampler"), Cvoid, (GLuint, GLuint), unit, sampler)
 end
 
 function glSamplerParameteri(sampler, pname, param)
-    ccall((:glSamplerParameteri, libgl), Cvoid, (GLuint, GLenum, GLint), sampler, pname, param)
+    ccall(getprocaddress_e("glSamplerParameteri"), Cvoid, (GLuint, GLenum, GLint), sampler, pname, param)
 end
 
 function glSamplerParameteriv(sampler, pname, param)
-    ccall((:glSamplerParameteriv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, param)
+    ccall(getprocaddress_e("glSamplerParameteriv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, param)
 end
 
 function glSamplerParameterf(sampler, pname, param)
-    ccall((:glSamplerParameterf, libgl), Cvoid, (GLuint, GLenum, GLfloat), sampler, pname, param)
+    ccall(getprocaddress_e("glSamplerParameterf"), Cvoid, (GLuint, GLenum, GLfloat), sampler, pname, param)
 end
 
 function glSamplerParameterfv(sampler, pname, param)
-    ccall((:glSamplerParameterfv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), sampler, pname, param)
+    ccall(getprocaddress_e("glSamplerParameterfv"), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), sampler, pname, param)
 end
 
 function glSamplerParameterIiv(sampler, pname, param)
-    ccall((:glSamplerParameterIiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, param)
+    ccall(getprocaddress_e("glSamplerParameterIiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, param)
 end
 
 function glSamplerParameterIuiv(sampler, pname, param)
-    ccall((:glSamplerParameterIuiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint}), sampler, pname, param)
+    ccall(getprocaddress_e("glSamplerParameterIuiv"), Cvoid, (GLuint, GLenum, Ptr{GLuint}), sampler, pname, param)
 end
 
 function glGetSamplerParameteriv(sampler, pname, params)
-    ccall((:glGetSamplerParameteriv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, params)
+    ccall(getprocaddress_e("glGetSamplerParameteriv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, params)
 end
 
 function glGetSamplerParameterIiv(sampler, pname, params)
-    ccall((:glGetSamplerParameterIiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, params)
+    ccall(getprocaddress_e("glGetSamplerParameterIiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), sampler, pname, params)
 end
 
 function glGetSamplerParameterfv(sampler, pname, params)
-    ccall((:glGetSamplerParameterfv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), sampler, pname, params)
+    ccall(getprocaddress_e("glGetSamplerParameterfv"), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), sampler, pname, params)
 end
 
 function glGetSamplerParameterIuiv(sampler, pname, params)
-    ccall((:glGetSamplerParameterIuiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint}), sampler, pname, params)
+    ccall(getprocaddress_e("glGetSamplerParameterIuiv"), Cvoid, (GLuint, GLenum, Ptr{GLuint}), sampler, pname, params)
 end
 
 function glQueryCounter(id, target)
-    ccall((:glQueryCounter, libgl), Cvoid, (GLuint, GLenum), id, target)
+    ccall(getprocaddress_e("glQueryCounter"), Cvoid, (GLuint, GLenum), id, target)
 end
 
 function glGetQueryObjecti64v(id, pname, params)
-    ccall((:glGetQueryObjecti64v, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint64}), id, pname, params)
+    ccall(getprocaddress_e("glGetQueryObjecti64v"), Cvoid, (GLuint, GLenum, Ptr{GLint64}), id, pname, params)
 end
 
 function glGetQueryObjectui64v(id, pname, params)
-    ccall((:glGetQueryObjectui64v, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint64}), id, pname, params)
+    ccall(getprocaddress_e("glGetQueryObjectui64v"), Cvoid, (GLuint, GLenum, Ptr{GLuint64}), id, pname, params)
 end
 
 function glVertexAttribDivisor(index, divisor)
-    ccall((:glVertexAttribDivisor, libgl), Cvoid, (GLuint, GLuint), index, divisor)
+    ccall(getprocaddress_e("glVertexAttribDivisor"), Cvoid, (GLuint, GLuint), index, divisor)
 end
 
 function glVertexAttribP1ui(index, type, normalized, value)
-    ccall((:glVertexAttribP1ui, libgl), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP1ui"), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
 end
 
 function glVertexAttribP1uiv(index, type, normalized, value)
-    ccall((:glVertexAttribP1uiv, libgl), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP1uiv"), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
 end
 
 function glVertexAttribP2ui(index, type, normalized, value)
-    ccall((:glVertexAttribP2ui, libgl), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP2ui"), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
 end
 
 function glVertexAttribP2uiv(index, type, normalized, value)
-    ccall((:glVertexAttribP2uiv, libgl), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP2uiv"), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
 end
 
 function glVertexAttribP3ui(index, type, normalized, value)
-    ccall((:glVertexAttribP3ui, libgl), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP3ui"), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
 end
 
 function glVertexAttribP3uiv(index, type, normalized, value)
-    ccall((:glVertexAttribP3uiv, libgl), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP3uiv"), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
 end
 
 function glVertexAttribP4ui(index, type, normalized, value)
-    ccall((:glVertexAttribP4ui, libgl), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP4ui"), Cvoid, (GLuint, GLenum, GLboolean, GLuint), index, type, normalized, value)
 end
 
 function glVertexAttribP4uiv(index, type, normalized, value)
-    ccall((:glVertexAttribP4uiv, libgl), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
+    ccall(getprocaddress_e("glVertexAttribP4uiv"), Cvoid, (GLuint, GLenum, GLboolean, Ptr{GLuint}), index, type, normalized, value)
 end
 
 # typedef void ( APIENTRYP PFNGLMINSAMPLESHADINGPROC ) ( GLfloat value )
@@ -2636,187 +2636,187 @@ const PFNGLENDQUERYINDEXEDPROC = Ptr{Cvoid}
 const PFNGLGETQUERYINDEXEDIVPROC = Ptr{Cvoid}
 
 function glMinSampleShading(value)
-    ccall((:glMinSampleShading, libgl), Cvoid, (GLfloat,), value)
+    ccall(getprocaddress_e("glMinSampleShading"), Cvoid, (GLfloat,), value)
 end
 
 function glBlendEquationi(buf, mode)
-    ccall((:glBlendEquationi, libgl), Cvoid, (GLuint, GLenum), buf, mode)
+    ccall(getprocaddress_e("glBlendEquationi"), Cvoid, (GLuint, GLenum), buf, mode)
 end
 
 function glBlendEquationSeparatei(buf, modeRGB, modeAlpha)
-    ccall((:glBlendEquationSeparatei, libgl), Cvoid, (GLuint, GLenum, GLenum), buf, modeRGB, modeAlpha)
+    ccall(getprocaddress_e("glBlendEquationSeparatei"), Cvoid, (GLuint, GLenum, GLenum), buf, modeRGB, modeAlpha)
 end
 
 function glBlendFunci(buf, src, dst)
-    ccall((:glBlendFunci, libgl), Cvoid, (GLuint, GLenum, GLenum), buf, src, dst)
+    ccall(getprocaddress_e("glBlendFunci"), Cvoid, (GLuint, GLenum, GLenum), buf, src, dst)
 end
 
 function glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
-    ccall((:glBlendFuncSeparatei, libgl), Cvoid, (GLuint, GLenum, GLenum, GLenum, GLenum), buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
+    ccall(getprocaddress_e("glBlendFuncSeparatei"), Cvoid, (GLuint, GLenum, GLenum, GLenum, GLenum), buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
 end
 
 function glDrawArraysIndirect(mode, indirect)
-    ccall((:glDrawArraysIndirect, libgl), Cvoid, (GLenum, Ptr{Cvoid}), mode, indirect)
+    ccall(getprocaddress_e("glDrawArraysIndirect"), Cvoid, (GLenum, Ptr{Cvoid}), mode, indirect)
 end
 
 function glDrawElementsIndirect(mode, type, indirect)
-    ccall((:glDrawElementsIndirect, libgl), Cvoid, (GLenum, GLenum, Ptr{Cvoid}), mode, type, indirect)
+    ccall(getprocaddress_e("glDrawElementsIndirect"), Cvoid, (GLenum, GLenum, Ptr{Cvoid}), mode, type, indirect)
 end
 
 function glUniform1d(location, x)
-    ccall((:glUniform1d, libgl), Cvoid, (GLint, GLdouble), location, x)
+    ccall(getprocaddress_e("glUniform1d"), Cvoid, (GLint, GLdouble), location, x)
 end
 
 function glUniform2d(location, x, y)
-    ccall((:glUniform2d, libgl), Cvoid, (GLint, GLdouble, GLdouble), location, x, y)
+    ccall(getprocaddress_e("glUniform2d"), Cvoid, (GLint, GLdouble, GLdouble), location, x, y)
 end
 
 function glUniform3d(location, x, y, z)
-    ccall((:glUniform3d, libgl), Cvoid, (GLint, GLdouble, GLdouble, GLdouble), location, x, y, z)
+    ccall(getprocaddress_e("glUniform3d"), Cvoid, (GLint, GLdouble, GLdouble, GLdouble), location, x, y, z)
 end
 
 function glUniform4d(location, x, y, z, w)
-    ccall((:glUniform4d, libgl), Cvoid, (GLint, GLdouble, GLdouble, GLdouble, GLdouble), location, x, y, z, w)
+    ccall(getprocaddress_e("glUniform4d"), Cvoid, (GLint, GLdouble, GLdouble, GLdouble, GLdouble), location, x, y, z, w)
 end
 
 function glUniform1dv(location, count, value)
-    ccall((:glUniform1dv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
+    ccall(getprocaddress_e("glUniform1dv"), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
 end
 
 function glUniform2dv(location, count, value)
-    ccall((:glUniform2dv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
+    ccall(getprocaddress_e("glUniform2dv"), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
 end
 
 function glUniform3dv(location, count, value)
-    ccall((:glUniform3dv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
+    ccall(getprocaddress_e("glUniform3dv"), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
 end
 
 function glUniform4dv(location, count, value)
-    ccall((:glUniform4dv, libgl), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
+    ccall(getprocaddress_e("glUniform4dv"), Cvoid, (GLint, GLsizei, Ptr{GLdouble}), location, count, value)
 end
 
 function glUniformMatrix2dv(location, count, transpose, value)
-    ccall((:glUniformMatrix2dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix2dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix3dv(location, count, transpose, value)
-    ccall((:glUniformMatrix3dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix3dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix4dv(location, count, transpose, value)
-    ccall((:glUniformMatrix4dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix4dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix2x3dv(location, count, transpose, value)
-    ccall((:glUniformMatrix2x3dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix2x3dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix2x4dv(location, count, transpose, value)
-    ccall((:glUniformMatrix2x4dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix2x4dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix3x2dv(location, count, transpose, value)
-    ccall((:glUniformMatrix3x2dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix3x2dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix3x4dv(location, count, transpose, value)
-    ccall((:glUniformMatrix3x4dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix3x4dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix4x2dv(location, count, transpose, value)
-    ccall((:glUniformMatrix4x2dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix4x2dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glUniformMatrix4x3dv(location, count, transpose, value)
-    ccall((:glUniformMatrix4x3dv, libgl), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
+    ccall(getprocaddress_e("glUniformMatrix4x3dv"), Cvoid, (GLint, GLsizei, GLboolean, Ptr{GLdouble}), location, count, transpose, value)
 end
 
 function glGetUniformdv(program, location, params)
-    ccall((:glGetUniformdv, libgl), Cvoid, (GLuint, GLint, Ptr{GLdouble}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformdv"), Cvoid, (GLuint, GLint, Ptr{GLdouble}), program, location, params)
 end
 
 function glGetSubroutineUniformLocation(program, shadertype, name)
-    ccall((:glGetSubroutineUniformLocation, libgl), GLint, (GLuint, GLenum, Ptr{GLchar}), program, shadertype, name)
+    ccall(getprocaddress_e("glGetSubroutineUniformLocation"), GLint, (GLuint, GLenum, Ptr{GLchar}), program, shadertype, name)
 end
 
 function glGetSubroutineIndex(program, shadertype, name)
-    ccall((:glGetSubroutineIndex, libgl), GLuint, (GLuint, GLenum, Ptr{GLchar}), program, shadertype, name)
+    ccall(getprocaddress_e("glGetSubroutineIndex"), GLuint, (GLuint, GLenum, Ptr{GLchar}), program, shadertype, name)
 end
 
 function glGetActiveSubroutineUniformiv(program, shadertype, index, pname, values)
-    ccall((:glGetActiveSubroutineUniformiv, libgl), Cvoid, (GLuint, GLenum, GLuint, GLenum, Ptr{GLint}), program, shadertype, index, pname, values)
+    ccall(getprocaddress_e("glGetActiveSubroutineUniformiv"), Cvoid, (GLuint, GLenum, GLuint, GLenum, Ptr{GLint}), program, shadertype, index, pname, values)
 end
 
 function glGetActiveSubroutineUniformName(program, shadertype, index, bufSize, length, name)
-    ccall((:glGetActiveSubroutineUniformName, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, shadertype, index, bufSize, length, name)
+    ccall(getprocaddress_e("glGetActiveSubroutineUniformName"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, shadertype, index, bufSize, length, name)
 end
 
 function glGetActiveSubroutineName(program, shadertype, index, bufSize, length, name)
-    ccall((:glGetActiveSubroutineName, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, shadertype, index, bufSize, length, name)
+    ccall(getprocaddress_e("glGetActiveSubroutineName"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, shadertype, index, bufSize, length, name)
 end
 
 function glUniformSubroutinesuiv(shadertype, count, indices)
-    ccall((:glUniformSubroutinesuiv, libgl), Cvoid, (GLenum, GLsizei, Ptr{GLuint}), shadertype, count, indices)
+    ccall(getprocaddress_e("glUniformSubroutinesuiv"), Cvoid, (GLenum, GLsizei, Ptr{GLuint}), shadertype, count, indices)
 end
 
 function glGetUniformSubroutineuiv(shadertype, location, params)
-    ccall((:glGetUniformSubroutineuiv, libgl), Cvoid, (GLenum, GLint, Ptr{GLuint}), shadertype, location, params)
+    ccall(getprocaddress_e("glGetUniformSubroutineuiv"), Cvoid, (GLenum, GLint, Ptr{GLuint}), shadertype, location, params)
 end
 
 function glGetProgramStageiv(program, shadertype, pname, values)
-    ccall((:glGetProgramStageiv, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), program, shadertype, pname, values)
+    ccall(getprocaddress_e("glGetProgramStageiv"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), program, shadertype, pname, values)
 end
 
 function glPatchParameteri(pname, value)
-    ccall((:glPatchParameteri, libgl), Cvoid, (GLenum, GLint), pname, value)
+    ccall(getprocaddress_e("glPatchParameteri"), Cvoid, (GLenum, GLint), pname, value)
 end
 
 function glPatchParameterfv(pname, values)
-    ccall((:glPatchParameterfv, libgl), Cvoid, (GLenum, Ptr{GLfloat}), pname, values)
+    ccall(getprocaddress_e("glPatchParameterfv"), Cvoid, (GLenum, Ptr{GLfloat}), pname, values)
 end
 
 function glBindTransformFeedback(target, id)
-    ccall((:glBindTransformFeedback, libgl), Cvoid, (GLenum, GLuint), target, id)
+    ccall(getprocaddress_e("glBindTransformFeedback"), Cvoid, (GLenum, GLuint), target, id)
 end
 
 function glDeleteTransformFeedbacks(n, ids)
-    ccall((:glDeleteTransformFeedbacks, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
+    ccall(getprocaddress_e("glDeleteTransformFeedbacks"), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
 end
 
 function glGenTransformFeedbacks(n, ids)
-    ccall((:glGenTransformFeedbacks, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
+    ccall(getprocaddress_e("glGenTransformFeedbacks"), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
 end
 
 function glIsTransformFeedback(id)
-    ccall((:glIsTransformFeedback, libgl), GLboolean, (GLuint,), id)
+    ccall(getprocaddress_e("glIsTransformFeedback"), GLboolean, (GLuint,), id)
 end
 
 function glPauseTransformFeedback()
-    ccall((:glPauseTransformFeedback, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glPauseTransformFeedback"), Cvoid, ())
 end
 
 function glResumeTransformFeedback()
-    ccall((:glResumeTransformFeedback, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glResumeTransformFeedback"), Cvoid, ())
 end
 
 function glDrawTransformFeedback(mode, id)
-    ccall((:glDrawTransformFeedback, libgl), Cvoid, (GLenum, GLuint), mode, id)
+    ccall(getprocaddress_e("glDrawTransformFeedback"), Cvoid, (GLenum, GLuint), mode, id)
 end
 
 function glDrawTransformFeedbackStream(mode, id, stream)
-    ccall((:glDrawTransformFeedbackStream, libgl), Cvoid, (GLenum, GLuint, GLuint), mode, id, stream)
+    ccall(getprocaddress_e("glDrawTransformFeedbackStream"), Cvoid, (GLenum, GLuint, GLuint), mode, id, stream)
 end
 
 function glBeginQueryIndexed(target, index, id)
-    ccall((:glBeginQueryIndexed, libgl), Cvoid, (GLenum, GLuint, GLuint), target, index, id)
+    ccall(getprocaddress_e("glBeginQueryIndexed"), Cvoid, (GLenum, GLuint, GLuint), target, index, id)
 end
 
 function glEndQueryIndexed(target, index)
-    ccall((:glEndQueryIndexed, libgl), Cvoid, (GLenum, GLuint), target, index)
+    ccall(getprocaddress_e("glEndQueryIndexed"), Cvoid, (GLenum, GLuint), target, index)
 end
 
 function glGetQueryIndexediv(target, index, pname, params)
-    ccall((:glGetQueryIndexediv, libgl), Cvoid, (GLenum, GLuint, GLenum, Ptr{GLint}), target, index, pname, params)
+    ccall(getprocaddress_e("glGetQueryIndexediv"), Cvoid, (GLenum, GLuint, GLenum, Ptr{GLint}), target, index, pname, params)
 end
 
 # typedef void ( APIENTRYP PFNGLRELEASESHADERCOMPILERPROC ) ( void )
@@ -3084,355 +3084,355 @@ const PFNGLGETFLOATI_VPROC = Ptr{Cvoid}
 const PFNGLGETDOUBLEI_VPROC = Ptr{Cvoid}
 
 function glReleaseShaderCompiler()
-    ccall((:glReleaseShaderCompiler, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glReleaseShaderCompiler"), Cvoid, ())
 end
 
 function glShaderBinary(count, shaders, binaryFormat, binary, length)
-    ccall((:glShaderBinary, libgl), Cvoid, (GLsizei, Ptr{GLuint}, GLenum, Ptr{Cvoid}, GLsizei), count, shaders, binaryFormat, binary, length)
+    ccall(getprocaddress_e("glShaderBinary"), Cvoid, (GLsizei, Ptr{GLuint}, GLenum, Ptr{Cvoid}, GLsizei), count, shaders, binaryFormat, binary, length)
 end
 
 function glGetShaderPrecisionFormat(shadertype, precisiontype, range, precision)
-    ccall((:glGetShaderPrecisionFormat, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}, Ptr{GLint}), shadertype, precisiontype, range, precision)
+    ccall(getprocaddress_e("glGetShaderPrecisionFormat"), Cvoid, (GLenum, GLenum, Ptr{GLint}, Ptr{GLint}), shadertype, precisiontype, range, precision)
 end
 
 function glDepthRangef(n, f)
-    ccall((:glDepthRangef, libgl), Cvoid, (GLfloat, GLfloat), n, f)
+    ccall(getprocaddress_e("glDepthRangef"), Cvoid, (GLfloat, GLfloat), n, f)
 end
 
 function glClearDepthf(d)
-    ccall((:glClearDepthf, libgl), Cvoid, (GLfloat,), d)
+    ccall(getprocaddress_e("glClearDepthf"), Cvoid, (GLfloat,), d)
 end
 
 function glGetProgramBinary(program, bufSize, length, binaryFormat, binary)
-    ccall((:glGetProgramBinary, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLenum}, Ptr{Cvoid}), program, bufSize, length, binaryFormat, binary)
+    ccall(getprocaddress_e("glGetProgramBinary"), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLenum}, Ptr{Cvoid}), program, bufSize, length, binaryFormat, binary)
 end
 
 function glProgramBinary(program, binaryFormat, binary, length)
-    ccall((:glProgramBinary, libgl), Cvoid, (GLuint, GLenum, Ptr{Cvoid}, GLsizei), program, binaryFormat, binary, length)
+    ccall(getprocaddress_e("glProgramBinary"), Cvoid, (GLuint, GLenum, Ptr{Cvoid}, GLsizei), program, binaryFormat, binary, length)
 end
 
 function glProgramParameteri(program, pname, value)
-    ccall((:glProgramParameteri, libgl), Cvoid, (GLuint, GLenum, GLint), program, pname, value)
+    ccall(getprocaddress_e("glProgramParameteri"), Cvoid, (GLuint, GLenum, GLint), program, pname, value)
 end
 
 function glUseProgramStages(pipeline, stages, program)
-    ccall((:glUseProgramStages, libgl), Cvoid, (GLuint, GLbitfield, GLuint), pipeline, stages, program)
+    ccall(getprocaddress_e("glUseProgramStages"), Cvoid, (GLuint, GLbitfield, GLuint), pipeline, stages, program)
 end
 
 function glActiveShaderProgram(pipeline, program)
-    ccall((:glActiveShaderProgram, libgl), Cvoid, (GLuint, GLuint), pipeline, program)
+    ccall(getprocaddress_e("glActiveShaderProgram"), Cvoid, (GLuint, GLuint), pipeline, program)
 end
 
 function glCreateShaderProgramv(type, count, strings)
-    ccall((:glCreateShaderProgramv, libgl), GLuint, (GLenum, GLsizei, Ptr{Ptr{GLchar}}), type, count, strings)
+    ccall(getprocaddress_e("glCreateShaderProgramv"), GLuint, (GLenum, GLsizei, Ptr{Ptr{GLchar}}), type, count, strings)
 end
 
 function glBindProgramPipeline(pipeline)
-    ccall((:glBindProgramPipeline, libgl), Cvoid, (GLuint,), pipeline)
+    ccall(getprocaddress_e("glBindProgramPipeline"), Cvoid, (GLuint,), pipeline)
 end
 
 function glDeleteProgramPipelines(n, pipelines)
-    ccall((:glDeleteProgramPipelines, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, pipelines)
+    ccall(getprocaddress_e("glDeleteProgramPipelines"), Cvoid, (GLsizei, Ptr{GLuint}), n, pipelines)
 end
 
 function glGenProgramPipelines(n, pipelines)
-    ccall((:glGenProgramPipelines, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, pipelines)
+    ccall(getprocaddress_e("glGenProgramPipelines"), Cvoid, (GLsizei, Ptr{GLuint}), n, pipelines)
 end
 
 function glIsProgramPipeline(pipeline)
-    ccall((:glIsProgramPipeline, libgl), GLboolean, (GLuint,), pipeline)
+    ccall(getprocaddress_e("glIsProgramPipeline"), GLboolean, (GLuint,), pipeline)
 end
 
 function glGetProgramPipelineiv(pipeline, pname, params)
-    ccall((:glGetProgramPipelineiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), pipeline, pname, params)
+    ccall(getprocaddress_e("glGetProgramPipelineiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), pipeline, pname, params)
 end
 
 function glProgramUniform1i(program, location, v0)
-    ccall((:glProgramUniform1i, libgl), Cvoid, (GLuint, GLint, GLint), program, location, v0)
+    ccall(getprocaddress_e("glProgramUniform1i"), Cvoid, (GLuint, GLint, GLint), program, location, v0)
 end
 
 function glProgramUniform1iv(program, location, count, value)
-    ccall((:glProgramUniform1iv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1iv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniform1f(program, location, v0)
-    ccall((:glProgramUniform1f, libgl), Cvoid, (GLuint, GLint, GLfloat), program, location, v0)
+    ccall(getprocaddress_e("glProgramUniform1f"), Cvoid, (GLuint, GLint, GLfloat), program, location, v0)
 end
 
 function glProgramUniform1fv(program, location, count, value)
-    ccall((:glProgramUniform1fv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1fv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform1d(program, location, v0)
-    ccall((:glProgramUniform1d, libgl), Cvoid, (GLuint, GLint, GLdouble), program, location, v0)
+    ccall(getprocaddress_e("glProgramUniform1d"), Cvoid, (GLuint, GLint, GLdouble), program, location, v0)
 end
 
 function glProgramUniform1dv(program, location, count, value)
-    ccall((:glProgramUniform1dv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1dv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniform1ui(program, location, v0)
-    ccall((:glProgramUniform1ui, libgl), Cvoid, (GLuint, GLint, GLuint), program, location, v0)
+    ccall(getprocaddress_e("glProgramUniform1ui"), Cvoid, (GLuint, GLint, GLuint), program, location, v0)
 end
 
 function glProgramUniform1uiv(program, location, count, value)
-    ccall((:glProgramUniform1uiv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1uiv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glProgramUniform2i(program, location, v0, v1)
-    ccall((:glProgramUniform2i, libgl), Cvoid, (GLuint, GLint, GLint, GLint), program, location, v0, v1)
+    ccall(getprocaddress_e("glProgramUniform2i"), Cvoid, (GLuint, GLint, GLint, GLint), program, location, v0, v1)
 end
 
 function glProgramUniform2iv(program, location, count, value)
-    ccall((:glProgramUniform2iv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2iv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniform2f(program, location, v0, v1)
-    ccall((:glProgramUniform2f, libgl), Cvoid, (GLuint, GLint, GLfloat, GLfloat), program, location, v0, v1)
+    ccall(getprocaddress_e("glProgramUniform2f"), Cvoid, (GLuint, GLint, GLfloat, GLfloat), program, location, v0, v1)
 end
 
 function glProgramUniform2fv(program, location, count, value)
-    ccall((:glProgramUniform2fv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2fv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform2d(program, location, v0, v1)
-    ccall((:glProgramUniform2d, libgl), Cvoid, (GLuint, GLint, GLdouble, GLdouble), program, location, v0, v1)
+    ccall(getprocaddress_e("glProgramUniform2d"), Cvoid, (GLuint, GLint, GLdouble, GLdouble), program, location, v0, v1)
 end
 
 function glProgramUniform2dv(program, location, count, value)
-    ccall((:glProgramUniform2dv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2dv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniform2ui(program, location, v0, v1)
-    ccall((:glProgramUniform2ui, libgl), Cvoid, (GLuint, GLint, GLuint, GLuint), program, location, v0, v1)
+    ccall(getprocaddress_e("glProgramUniform2ui"), Cvoid, (GLuint, GLint, GLuint, GLuint), program, location, v0, v1)
 end
 
 function glProgramUniform2uiv(program, location, count, value)
-    ccall((:glProgramUniform2uiv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2uiv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glProgramUniform3i(program, location, v0, v1, v2)
-    ccall((:glProgramUniform3i, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2)
+    ccall(getprocaddress_e("glProgramUniform3i"), Cvoid, (GLuint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2)
 end
 
 function glProgramUniform3iv(program, location, count, value)
-    ccall((:glProgramUniform3iv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3iv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniform3f(program, location, v0, v1, v2)
-    ccall((:glProgramUniform3f, libgl), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2)
+    ccall(getprocaddress_e("glProgramUniform3f"), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2)
 end
 
 function glProgramUniform3fv(program, location, count, value)
-    ccall((:glProgramUniform3fv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3fv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform3d(program, location, v0, v1, v2)
-    ccall((:glProgramUniform3d, libgl), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble), program, location, v0, v1, v2)
+    ccall(getprocaddress_e("glProgramUniform3d"), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble), program, location, v0, v1, v2)
 end
 
 function glProgramUniform3dv(program, location, count, value)
-    ccall((:glProgramUniform3dv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3dv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniform3ui(program, location, v0, v1, v2)
-    ccall((:glProgramUniform3ui, libgl), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint), program, location, v0, v1, v2)
+    ccall(getprocaddress_e("glProgramUniform3ui"), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint), program, location, v0, v1, v2)
 end
 
 function glProgramUniform3uiv(program, location, count, value)
-    ccall((:glProgramUniform3uiv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3uiv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glProgramUniform4i(program, location, v0, v1, v2, v3)
-    ccall((:glProgramUniform4i, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glProgramUniform4i"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2, v3)
 end
 
 function glProgramUniform4iv(program, location, count, value)
-    ccall((:glProgramUniform4iv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4iv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniform4f(program, location, v0, v1, v2, v3)
-    ccall((:glProgramUniform4f, libgl), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glProgramUniform4f"), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2, v3)
 end
 
 function glProgramUniform4fv(program, location, count, value)
-    ccall((:glProgramUniform4fv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4fv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform4d(program, location, v0, v1, v2, v3)
-    ccall((:glProgramUniform4d, libgl), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble), program, location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glProgramUniform4d"), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble), program, location, v0, v1, v2, v3)
 end
 
 function glProgramUniform4dv(program, location, count, value)
-    ccall((:glProgramUniform4dv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4dv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniform4ui(program, location, v0, v1, v2, v3)
-    ccall((:glProgramUniform4ui, libgl), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint, GLuint), program, location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glProgramUniform4ui"), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint, GLuint), program, location, v0, v1, v2, v3)
 end
 
 function glProgramUniform4uiv(program, location, count, value)
-    ccall((:glProgramUniform4uiv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4uiv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glProgramUniformMatrix2fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x3fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x3fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x3fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x2fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x2fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x2fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x4fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x4fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x4fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x2fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x2fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x2fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x4fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x4fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x4fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x3fv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x3fv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x3fv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x3dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x3dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x3dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x2dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x2dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x2dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x4dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x4dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x4dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x2dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x2dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x2dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x4dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x4dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x4dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x3dv(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x3dv, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x3dv"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glValidateProgramPipeline(pipeline)
-    ccall((:glValidateProgramPipeline, libgl), Cvoid, (GLuint,), pipeline)
+    ccall(getprocaddress_e("glValidateProgramPipeline"), Cvoid, (GLuint,), pipeline)
 end
 
 function glGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog)
-    ccall((:glGetProgramPipelineInfoLog, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), pipeline, bufSize, length, infoLog)
+    ccall(getprocaddress_e("glGetProgramPipelineInfoLog"), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), pipeline, bufSize, length, infoLog)
 end
 
 function glVertexAttribL1d(index, x)
-    ccall((:glVertexAttribL1d, libgl), Cvoid, (GLuint, GLdouble), index, x)
+    ccall(getprocaddress_e("glVertexAttribL1d"), Cvoid, (GLuint, GLdouble), index, x)
 end
 
 function glVertexAttribL2d(index, x, y)
-    ccall((:glVertexAttribL2d, libgl), Cvoid, (GLuint, GLdouble, GLdouble), index, x, y)
+    ccall(getprocaddress_e("glVertexAttribL2d"), Cvoid, (GLuint, GLdouble, GLdouble), index, x, y)
 end
 
 function glVertexAttribL3d(index, x, y, z)
-    ccall((:glVertexAttribL3d, libgl), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttribL3d"), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble), index, x, y, z)
 end
 
 function glVertexAttribL4d(index, x, y, z, w)
-    ccall((:glVertexAttribL4d, libgl), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble, GLdouble), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttribL4d"), Cvoid, (GLuint, GLdouble, GLdouble, GLdouble, GLdouble), index, x, y, z, w)
 end
 
 function glVertexAttribL1dv(index, v)
-    ccall((:glVertexAttribL1dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL1dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttribL2dv(index, v)
-    ccall((:glVertexAttribL2dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL2dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttribL3dv(index, v)
-    ccall((:glVertexAttribL3dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL3dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttribL4dv(index, v)
-    ccall((:glVertexAttribL4dv, libgl), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL4dv"), Cvoid, (GLuint, Ptr{GLdouble}), index, v)
 end
 
 function glVertexAttribLPointer(index, size, type, stride, pointer)
-    ccall((:glVertexAttribLPointer, libgl), Cvoid, (GLuint, GLint, GLenum, GLsizei, Ptr{Cvoid}), index, size, type, stride, pointer)
+    ccall(getprocaddress_e("glVertexAttribLPointer"), Cvoid, (GLuint, GLint, GLenum, GLsizei, Ptr{Cvoid}), index, size, type, stride, pointer)
 end
 
 function glGetVertexAttribLdv(index, pname, params)
-    ccall((:glGetVertexAttribLdv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLdouble}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribLdv"), Cvoid, (GLuint, GLenum, Ptr{GLdouble}), index, pname, params)
 end
 
 function glViewportArrayv(first, count, v)
-    ccall((:glViewportArrayv, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLfloat}), first, count, v)
+    ccall(getprocaddress_e("glViewportArrayv"), Cvoid, (GLuint, GLsizei, Ptr{GLfloat}), first, count, v)
 end
 
 function glViewportIndexedf(index, x, y, w, h)
-    ccall((:glViewportIndexedf, libgl), Cvoid, (GLuint, GLfloat, GLfloat, GLfloat, GLfloat), index, x, y, w, h)
+    ccall(getprocaddress_e("glViewportIndexedf"), Cvoid, (GLuint, GLfloat, GLfloat, GLfloat, GLfloat), index, x, y, w, h)
 end
 
 function glViewportIndexedfv(index, v)
-    ccall((:glViewportIndexedfv, libgl), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
+    ccall(getprocaddress_e("glViewportIndexedfv"), Cvoid, (GLuint, Ptr{GLfloat}), index, v)
 end
 
 function glScissorArrayv(first, count, v)
-    ccall((:glScissorArrayv, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLint}), first, count, v)
+    ccall(getprocaddress_e("glScissorArrayv"), Cvoid, (GLuint, GLsizei, Ptr{GLint}), first, count, v)
 end
 
 function glScissorIndexed(index, left, bottom, width, height)
-    ccall((:glScissorIndexed, libgl), Cvoid, (GLuint, GLint, GLint, GLsizei, GLsizei), index, left, bottom, width, height)
+    ccall(getprocaddress_e("glScissorIndexed"), Cvoid, (GLuint, GLint, GLint, GLsizei, GLsizei), index, left, bottom, width, height)
 end
 
 function glScissorIndexedv(index, v)
-    ccall((:glScissorIndexedv, libgl), Cvoid, (GLuint, Ptr{GLint}), index, v)
+    ccall(getprocaddress_e("glScissorIndexedv"), Cvoid, (GLuint, Ptr{GLint}), index, v)
 end
 
 function glDepthRangeArrayv(first, count, v)
-    ccall((:glDepthRangeArrayv, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLdouble}), first, count, v)
+    ccall(getprocaddress_e("glDepthRangeArrayv"), Cvoid, (GLuint, GLsizei, Ptr{GLdouble}), first, count, v)
 end
 
 function glDepthRangeIndexed(index, n, f)
-    ccall((:glDepthRangeIndexed, libgl), Cvoid, (GLuint, GLdouble, GLdouble), index, n, f)
+    ccall(getprocaddress_e("glDepthRangeIndexed"), Cvoid, (GLuint, GLdouble, GLdouble), index, n, f)
 end
 
 function glGetFloati_v(target, index, data)
-    ccall((:glGetFloati_v, libgl), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), target, index, data)
+    ccall(getprocaddress_e("glGetFloati_v"), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), target, index, data)
 end
 
 function glGetDoublei_v(target, index, data)
-    ccall((:glGetDoublei_v, libgl), Cvoid, (GLenum, GLuint, Ptr{GLdouble}), target, index, data)
+    ccall(getprocaddress_e("glGetDoublei_v"), Cvoid, (GLenum, GLuint, Ptr{GLdouble}), target, index, data)
 end
 
 # typedef void ( APIENTRYP PFNGLDRAWARRAYSINSTANCEDBASEINSTANCEPROC ) ( GLenum mode , GLint first , GLsizei count , GLsizei instancecount , GLuint baseinstance )
@@ -3472,51 +3472,51 @@ const PFNGLDRAWTRANSFORMFEEDBACKINSTANCEDPROC = Ptr{Cvoid}
 const PFNGLDRAWTRANSFORMFEEDBACKSTREAMINSTANCEDPROC = Ptr{Cvoid}
 
 function glDrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance)
-    ccall((:glDrawArraysInstancedBaseInstance, libgl), Cvoid, (GLenum, GLint, GLsizei, GLsizei, GLuint), mode, first, count, instancecount, baseinstance)
+    ccall(getprocaddress_e("glDrawArraysInstancedBaseInstance"), Cvoid, (GLenum, GLint, GLsizei, GLsizei, GLuint), mode, first, count, instancecount, baseinstance)
 end
 
 function glDrawElementsInstancedBaseInstance(mode, count, type, indices, instancecount, baseinstance)
-    ccall((:glDrawElementsInstancedBaseInstance, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei, GLuint), mode, count, type, indices, instancecount, baseinstance)
+    ccall(getprocaddress_e("glDrawElementsInstancedBaseInstance"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei, GLuint), mode, count, type, indices, instancecount, baseinstance)
 end
 
 function glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instancecount, basevertex, baseinstance)
-    ccall((:glDrawElementsInstancedBaseVertexBaseInstance, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei, GLint, GLuint), mode, count, type, indices, instancecount, basevertex, baseinstance)
+    ccall(getprocaddress_e("glDrawElementsInstancedBaseVertexBaseInstance"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei, GLint, GLuint), mode, count, type, indices, instancecount, basevertex, baseinstance)
 end
 
 function glGetInternalformativ(target, internalformat, pname, count, params)
-    ccall((:glGetInternalformativ, libgl), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLint}), target, internalformat, pname, count, params)
+    ccall(getprocaddress_e("glGetInternalformativ"), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLint}), target, internalformat, pname, count, params)
 end
 
 function glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, params)
-    ccall((:glGetActiveAtomicCounterBufferiv, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), program, bufferIndex, pname, params)
+    ccall(getprocaddress_e("glGetActiveAtomicCounterBufferiv"), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), program, bufferIndex, pname, params)
 end
 
 function glBindImageTexture(unit, texture, level, layered, layer, access, format)
-    ccall((:glBindImageTexture, libgl), Cvoid, (GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum), unit, texture, level, layered, layer, access, format)
+    ccall(getprocaddress_e("glBindImageTexture"), Cvoid, (GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum), unit, texture, level, layered, layer, access, format)
 end
 
 function glMemoryBarrier(barriers)
-    ccall((:glMemoryBarrier, libgl), Cvoid, (GLbitfield,), barriers)
+    ccall(getprocaddress_e("glMemoryBarrier"), Cvoid, (GLbitfield,), barriers)
 end
 
 function glTexStorage1D(target, levels, internalformat, width)
-    ccall((:glTexStorage1D, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei), target, levels, internalformat, width)
+    ccall(getprocaddress_e("glTexStorage1D"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei), target, levels, internalformat, width)
 end
 
 function glTexStorage2D(target, levels, internalformat, width, height)
-    ccall((:glTexStorage2D, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei), target, levels, internalformat, width, height)
+    ccall(getprocaddress_e("glTexStorage2D"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei), target, levels, internalformat, width, height)
 end
 
 function glTexStorage3D(target, levels, internalformat, width, height, depth)
-    ccall((:glTexStorage3D, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), target, levels, internalformat, width, height, depth)
+    ccall(getprocaddress_e("glTexStorage3D"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), target, levels, internalformat, width, height, depth)
 end
 
 function glDrawTransformFeedbackInstanced(mode, id, instancecount)
-    ccall((:glDrawTransformFeedbackInstanced, libgl), Cvoid, (GLenum, GLuint, GLsizei), mode, id, instancecount)
+    ccall(getprocaddress_e("glDrawTransformFeedbackInstanced"), Cvoid, (GLenum, GLuint, GLsizei), mode, id, instancecount)
 end
 
 function glDrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount)
-    ccall((:glDrawTransformFeedbackStreamInstanced, libgl), Cvoid, (GLenum, GLuint, GLuint, GLsizei), mode, id, stream, instancecount)
+    ccall(getprocaddress_e("glDrawTransformFeedbackStreamInstanced"), Cvoid, (GLenum, GLuint, GLuint, GLsizei), mode, id, stream, instancecount)
 end
 
 # typedef void ( APIENTRY * GLDEBUGPROC ) ( GLenum source , GLenum type , GLuint id , GLenum severity , GLsizei length , const GLchar * message , const void * userParam )
@@ -3652,175 +3652,175 @@ const PFNGLOBJECTPTRLABELPROC = Ptr{Cvoid}
 const PFNGLGETOBJECTPTRLABELPROC = Ptr{Cvoid}
 
 function glClearBufferData(target, internalformat, format, type, data)
-    ccall((:glClearBufferData, libgl), Cvoid, (GLenum, GLenum, GLenum, GLenum, Ptr{Cvoid}), target, internalformat, format, type, data)
+    ccall(getprocaddress_e("glClearBufferData"), Cvoid, (GLenum, GLenum, GLenum, GLenum, Ptr{Cvoid}), target, internalformat, format, type, data)
 end
 
 function glClearBufferSubData(target, internalformat, offset, size, format, type, data)
-    ccall((:glClearBufferSubData, libgl), Cvoid, (GLenum, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, Ptr{Cvoid}), target, internalformat, offset, size, format, type, data)
+    ccall(getprocaddress_e("glClearBufferSubData"), Cvoid, (GLenum, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, Ptr{Cvoid}), target, internalformat, offset, size, format, type, data)
 end
 
 function glDispatchCompute(num_groups_x, num_groups_y, num_groups_z)
-    ccall((:glDispatchCompute, libgl), Cvoid, (GLuint, GLuint, GLuint), num_groups_x, num_groups_y, num_groups_z)
+    ccall(getprocaddress_e("glDispatchCompute"), Cvoid, (GLuint, GLuint, GLuint), num_groups_x, num_groups_y, num_groups_z)
 end
 
 function glDispatchComputeIndirect(indirect)
-    ccall((:glDispatchComputeIndirect, libgl), Cvoid, (GLintptr,), indirect)
+    ccall(getprocaddress_e("glDispatchComputeIndirect"), Cvoid, (GLintptr,), indirect)
 end
 
 function glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth)
-    ccall((:glCopyImageSubData, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei), srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth)
+    ccall(getprocaddress_e("glCopyImageSubData"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei), srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth)
 end
 
 function glFramebufferParameteri(target, pname, param)
-    ccall((:glFramebufferParameteri, libgl), Cvoid, (GLenum, GLenum, GLint), target, pname, param)
+    ccall(getprocaddress_e("glFramebufferParameteri"), Cvoid, (GLenum, GLenum, GLint), target, pname, param)
 end
 
 function glGetFramebufferParameteriv(target, pname, params)
-    ccall((:glGetFramebufferParameteriv, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glGetFramebufferParameteriv"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 function glGetInternalformati64v(target, internalformat, pname, count, params)
-    ccall((:glGetInternalformati64v, libgl), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLint64}), target, internalformat, pname, count, params)
+    ccall(getprocaddress_e("glGetInternalformati64v"), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLint64}), target, internalformat, pname, count, params)
 end
 
 function glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth)
-    ccall((:glInvalidateTexSubImage, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei), texture, level, xoffset, yoffset, zoffset, width, height, depth)
+    ccall(getprocaddress_e("glInvalidateTexSubImage"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei), texture, level, xoffset, yoffset, zoffset, width, height, depth)
 end
 
 function glInvalidateTexImage(texture, level)
-    ccall((:glInvalidateTexImage, libgl), Cvoid, (GLuint, GLint), texture, level)
+    ccall(getprocaddress_e("glInvalidateTexImage"), Cvoid, (GLuint, GLint), texture, level)
 end
 
 function glInvalidateBufferSubData(buffer, offset, length)
-    ccall((:glInvalidateBufferSubData, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr), buffer, offset, length)
+    ccall(getprocaddress_e("glInvalidateBufferSubData"), Cvoid, (GLuint, GLintptr, GLsizeiptr), buffer, offset, length)
 end
 
 function glInvalidateBufferData(buffer)
-    ccall((:glInvalidateBufferData, libgl), Cvoid, (GLuint,), buffer)
+    ccall(getprocaddress_e("glInvalidateBufferData"), Cvoid, (GLuint,), buffer)
 end
 
 function glInvalidateFramebuffer(target, numAttachments, attachments)
-    ccall((:glInvalidateFramebuffer, libgl), Cvoid, (GLenum, GLsizei, Ptr{GLenum}), target, numAttachments, attachments)
+    ccall(getprocaddress_e("glInvalidateFramebuffer"), Cvoid, (GLenum, GLsizei, Ptr{GLenum}), target, numAttachments, attachments)
 end
 
 function glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height)
-    ccall((:glInvalidateSubFramebuffer, libgl), Cvoid, (GLenum, GLsizei, Ptr{GLenum}, GLint, GLint, GLsizei, GLsizei), target, numAttachments, attachments, x, y, width, height)
+    ccall(getprocaddress_e("glInvalidateSubFramebuffer"), Cvoid, (GLenum, GLsizei, Ptr{GLenum}, GLint, GLint, GLsizei, GLsizei), target, numAttachments, attachments, x, y, width, height)
 end
 
 function glMultiDrawArraysIndirect(mode, indirect, drawcount, stride)
-    ccall((:glMultiDrawArraysIndirect, libgl), Cvoid, (GLenum, Ptr{Cvoid}, GLsizei, GLsizei), mode, indirect, drawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawArraysIndirect"), Cvoid, (GLenum, Ptr{Cvoid}, GLsizei, GLsizei), mode, indirect, drawcount, stride)
 end
 
 function glMultiDrawElementsIndirect(mode, type, indirect, drawcount, stride)
-    ccall((:glMultiDrawElementsIndirect, libgl), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLsizei, GLsizei), mode, type, indirect, drawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawElementsIndirect"), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLsizei, GLsizei), mode, type, indirect, drawcount, stride)
 end
 
 function glGetProgramInterfaceiv(program, programInterface, pname, params)
-    ccall((:glGetProgramInterfaceiv, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), program, programInterface, pname, params)
+    ccall(getprocaddress_e("glGetProgramInterfaceiv"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), program, programInterface, pname, params)
 end
 
 function glGetProgramResourceIndex(program, programInterface, name)
-    ccall((:glGetProgramResourceIndex, libgl), GLuint, (GLuint, GLenum, Ptr{GLchar}), program, programInterface, name)
+    ccall(getprocaddress_e("glGetProgramResourceIndex"), GLuint, (GLuint, GLenum, Ptr{GLchar}), program, programInterface, name)
 end
 
 function glGetProgramResourceName(program, programInterface, index, bufSize, length, name)
-    ccall((:glGetProgramResourceName, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, programInterface, index, bufSize, length, name)
+    ccall(getprocaddress_e("glGetProgramResourceName"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), program, programInterface, index, bufSize, length, name)
 end
 
 function glGetProgramResourceiv(program, programInterface, index, propCount, props, count, length, params)
-    ccall((:glGetProgramResourceiv, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLenum}, GLsizei, Ptr{GLsizei}, Ptr{GLint}), program, programInterface, index, propCount, props, count, length, params)
+    ccall(getprocaddress_e("glGetProgramResourceiv"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLenum}, GLsizei, Ptr{GLsizei}, Ptr{GLint}), program, programInterface, index, propCount, props, count, length, params)
 end
 
 function glGetProgramResourceLocation(program, programInterface, name)
-    ccall((:glGetProgramResourceLocation, libgl), GLint, (GLuint, GLenum, Ptr{GLchar}), program, programInterface, name)
+    ccall(getprocaddress_e("glGetProgramResourceLocation"), GLint, (GLuint, GLenum, Ptr{GLchar}), program, programInterface, name)
 end
 
 function glGetProgramResourceLocationIndex(program, programInterface, name)
-    ccall((:glGetProgramResourceLocationIndex, libgl), GLint, (GLuint, GLenum, Ptr{GLchar}), program, programInterface, name)
+    ccall(getprocaddress_e("glGetProgramResourceLocationIndex"), GLint, (GLuint, GLenum, Ptr{GLchar}), program, programInterface, name)
 end
 
 function glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding)
-    ccall((:glShaderStorageBlockBinding, libgl), Cvoid, (GLuint, GLuint, GLuint), program, storageBlockIndex, storageBlockBinding)
+    ccall(getprocaddress_e("glShaderStorageBlockBinding"), Cvoid, (GLuint, GLuint, GLuint), program, storageBlockIndex, storageBlockBinding)
 end
 
 function glTexBufferRange(target, internalformat, buffer, offset, size)
-    ccall((:glTexBufferRange, libgl), Cvoid, (GLenum, GLenum, GLuint, GLintptr, GLsizeiptr), target, internalformat, buffer, offset, size)
+    ccall(getprocaddress_e("glTexBufferRange"), Cvoid, (GLenum, GLenum, GLuint, GLintptr, GLsizeiptr), target, internalformat, buffer, offset, size)
 end
 
 function glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations)
-    ccall((:glTexStorage2DMultisample, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, fixedsamplelocations)
+    ccall(getprocaddress_e("glTexStorage2DMultisample"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, fixedsamplelocations)
 end
 
 function glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations)
-    ccall((:glTexStorage3DMultisample, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, depth, fixedsamplelocations)
+    ccall(getprocaddress_e("glTexStorage3DMultisample"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), target, samples, internalformat, width, height, depth, fixedsamplelocations)
 end
 
 function glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers)
-    ccall((:glTextureView, libgl), Cvoid, (GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint), texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers)
+    ccall(getprocaddress_e("glTextureView"), Cvoid, (GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint), texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers)
 end
 
 function glBindVertexBuffer(bindingindex, buffer, offset, stride)
-    ccall((:glBindVertexBuffer, libgl), Cvoid, (GLuint, GLuint, GLintptr, GLsizei), bindingindex, buffer, offset, stride)
+    ccall(getprocaddress_e("glBindVertexBuffer"), Cvoid, (GLuint, GLuint, GLintptr, GLsizei), bindingindex, buffer, offset, stride)
 end
 
 function glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset)
-    ccall((:glVertexAttribFormat, libgl), Cvoid, (GLuint, GLint, GLenum, GLboolean, GLuint), attribindex, size, type, normalized, relativeoffset)
+    ccall(getprocaddress_e("glVertexAttribFormat"), Cvoid, (GLuint, GLint, GLenum, GLboolean, GLuint), attribindex, size, type, normalized, relativeoffset)
 end
 
 function glVertexAttribIFormat(attribindex, size, type, relativeoffset)
-    ccall((:glVertexAttribIFormat, libgl), Cvoid, (GLuint, GLint, GLenum, GLuint), attribindex, size, type, relativeoffset)
+    ccall(getprocaddress_e("glVertexAttribIFormat"), Cvoid, (GLuint, GLint, GLenum, GLuint), attribindex, size, type, relativeoffset)
 end
 
 function glVertexAttribLFormat(attribindex, size, type, relativeoffset)
-    ccall((:glVertexAttribLFormat, libgl), Cvoid, (GLuint, GLint, GLenum, GLuint), attribindex, size, type, relativeoffset)
+    ccall(getprocaddress_e("glVertexAttribLFormat"), Cvoid, (GLuint, GLint, GLenum, GLuint), attribindex, size, type, relativeoffset)
 end
 
 function glVertexAttribBinding(attribindex, bindingindex)
-    ccall((:glVertexAttribBinding, libgl), Cvoid, (GLuint, GLuint), attribindex, bindingindex)
+    ccall(getprocaddress_e("glVertexAttribBinding"), Cvoid, (GLuint, GLuint), attribindex, bindingindex)
 end
 
 function glVertexBindingDivisor(bindingindex, divisor)
-    ccall((:glVertexBindingDivisor, libgl), Cvoid, (GLuint, GLuint), bindingindex, divisor)
+    ccall(getprocaddress_e("glVertexBindingDivisor"), Cvoid, (GLuint, GLuint), bindingindex, divisor)
 end
 
 function glDebugMessageControl(source, type, severity, count, ids, enabled)
-    ccall((:glDebugMessageControl, libgl), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLuint}, GLboolean), source, type, severity, count, ids, enabled)
+    ccall(getprocaddress_e("glDebugMessageControl"), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLuint}, GLboolean), source, type, severity, count, ids, enabled)
 end
 
 function glDebugMessageInsert(source, type, id, severity, length, buf)
-    ccall((:glDebugMessageInsert, libgl), Cvoid, (GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr{GLchar}), source, type, id, severity, length, buf)
+    ccall(getprocaddress_e("glDebugMessageInsert"), Cvoid, (GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr{GLchar}), source, type, id, severity, length, buf)
 end
 
 function glDebugMessageCallback(callback, userParam)
-    ccall((:glDebugMessageCallback, libgl), Cvoid, (GLDEBUGPROC, Ptr{Cvoid}), callback, userParam)
+    ccall(getprocaddress_e("glDebugMessageCallback"), Cvoid, (GLDEBUGPROC, Ptr{Cvoid}), callback, userParam)
 end
 
 function glGetDebugMessageLog(count, bufSize, sources, types, ids, severities, lengths, messageLog)
-    ccall((:glGetDebugMessageLog, libgl), GLuint, (GLuint, GLsizei, Ptr{GLenum}, Ptr{GLenum}, Ptr{GLuint}, Ptr{GLenum}, Ptr{GLsizei}, Ptr{GLchar}), count, bufSize, sources, types, ids, severities, lengths, messageLog)
+    ccall(getprocaddress_e("glGetDebugMessageLog"), GLuint, (GLuint, GLsizei, Ptr{GLenum}, Ptr{GLenum}, Ptr{GLuint}, Ptr{GLenum}, Ptr{GLsizei}, Ptr{GLchar}), count, bufSize, sources, types, ids, severities, lengths, messageLog)
 end
 
 function glPushDebugGroup(source, id, length, message)
-    ccall((:glPushDebugGroup, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLchar}), source, id, length, message)
+    ccall(getprocaddress_e("glPushDebugGroup"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLchar}), source, id, length, message)
 end
 
 function glPopDebugGroup()
-    ccall((:glPopDebugGroup, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glPopDebugGroup"), Cvoid, ())
 end
 
 function glObjectLabel(identifier, name, length, label)
-    ccall((:glObjectLabel, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLchar}), identifier, name, length, label)
+    ccall(getprocaddress_e("glObjectLabel"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLchar}), identifier, name, length, label)
 end
 
 function glGetObjectLabel(identifier, name, bufSize, length, label)
-    ccall((:glGetObjectLabel, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), identifier, name, bufSize, length, label)
+    ccall(getprocaddress_e("glGetObjectLabel"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), identifier, name, bufSize, length, label)
 end
 
 function glObjectPtrLabel(ptr, length, label)
-    ccall((:glObjectPtrLabel, libgl), Cvoid, (Ptr{Cvoid}, GLsizei, Ptr{GLchar}), ptr, length, label)
+    ccall(getprocaddress_e("glObjectPtrLabel"), Cvoid, (Ptr{Cvoid}, GLsizei, Ptr{GLchar}), ptr, length, label)
 end
 
 function glGetObjectPtrLabel(ptr, bufSize, length, label)
-    ccall((:glGetObjectPtrLabel, libgl), Cvoid, (Ptr{Cvoid}, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), ptr, bufSize, length, label)
+    ccall(getprocaddress_e("glGetObjectPtrLabel"), Cvoid, (Ptr{Cvoid}, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), ptr, bufSize, length, label)
 end
 
 # typedef void ( APIENTRYP PFNGLBUFFERSTORAGEPROC ) ( GLenum target , GLsizeiptr size , const void * data , GLbitfield flags )
@@ -3851,39 +3851,39 @@ const PFNGLBINDIMAGETEXTURESPROC = Ptr{Cvoid}
 const PFNGLBINDVERTEXBUFFERSPROC = Ptr{Cvoid}
 
 function glBufferStorage(target, size, data, flags)
-    ccall((:glBufferStorage, libgl), Cvoid, (GLenum, GLsizeiptr, Ptr{Cvoid}, GLbitfield), target, size, data, flags)
+    ccall(getprocaddress_e("glBufferStorage"), Cvoid, (GLenum, GLsizeiptr, Ptr{Cvoid}, GLbitfield), target, size, data, flags)
 end
 
 function glClearTexImage(texture, level, format, type, data)
-    ccall((:glClearTexImage, libgl), Cvoid, (GLuint, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, level, format, type, data)
+    ccall(getprocaddress_e("glClearTexImage"), Cvoid, (GLuint, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, level, format, type, data)
 end
 
 function glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data)
-    ccall((:glClearTexSubImage, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data)
+    ccall(getprocaddress_e("glClearTexSubImage"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data)
 end
 
 function glBindBuffersBase(target, first, count, buffers)
-    ccall((:glBindBuffersBase, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLuint}), target, first, count, buffers)
+    ccall(getprocaddress_e("glBindBuffersBase"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLuint}), target, first, count, buffers)
 end
 
 function glBindBuffersRange(target, first, count, buffers, offsets, sizes)
-    ccall((:glBindBuffersRange, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLuint}, Ptr{GLintptr}, Ptr{GLsizeiptr}), target, first, count, buffers, offsets, sizes)
+    ccall(getprocaddress_e("glBindBuffersRange"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLuint}, Ptr{GLintptr}, Ptr{GLsizeiptr}), target, first, count, buffers, offsets, sizes)
 end
 
 function glBindTextures(first, count, textures)
-    ccall((:glBindTextures, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLuint}), first, count, textures)
+    ccall(getprocaddress_e("glBindTextures"), Cvoid, (GLuint, GLsizei, Ptr{GLuint}), first, count, textures)
 end
 
 function glBindSamplers(first, count, samplers)
-    ccall((:glBindSamplers, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLuint}), first, count, samplers)
+    ccall(getprocaddress_e("glBindSamplers"), Cvoid, (GLuint, GLsizei, Ptr{GLuint}), first, count, samplers)
 end
 
 function glBindImageTextures(first, count, textures)
-    ccall((:glBindImageTextures, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLuint}), first, count, textures)
+    ccall(getprocaddress_e("glBindImageTextures"), Cvoid, (GLuint, GLsizei, Ptr{GLuint}), first, count, textures)
 end
 
 function glBindVertexBuffers(first, count, buffers, offsets, strides)
-    ccall((:glBindVertexBuffers, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLuint}, Ptr{GLintptr}, Ptr{GLsizei}), first, count, buffers, offsets, strides)
+    ccall(getprocaddress_e("glBindVertexBuffers"), Cvoid, (GLuint, GLsizei, Ptr{GLuint}, Ptr{GLintptr}, Ptr{GLsizei}), first, count, buffers, offsets, strides)
 end
 
 # typedef void ( APIENTRYP PFNGLCLIPCONTROLPROC ) ( GLenum origin , GLenum depth )
@@ -4217,443 +4217,443 @@ const PFNGLREADNPIXELSPROC = Ptr{Cvoid}
 const PFNGLTEXTUREBARRIERPROC = Ptr{Cvoid}
 
 function glClipControl(origin, depth)
-    ccall((:glClipControl, libgl), Cvoid, (GLenum, GLenum), origin, depth)
+    ccall(getprocaddress_e("glClipControl"), Cvoid, (GLenum, GLenum), origin, depth)
 end
 
 function glCreateTransformFeedbacks(n, ids)
-    ccall((:glCreateTransformFeedbacks, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
+    ccall(getprocaddress_e("glCreateTransformFeedbacks"), Cvoid, (GLsizei, Ptr{GLuint}), n, ids)
 end
 
 function glTransformFeedbackBufferBase(xfb, index, buffer)
-    ccall((:glTransformFeedbackBufferBase, libgl), Cvoid, (GLuint, GLuint, GLuint), xfb, index, buffer)
+    ccall(getprocaddress_e("glTransformFeedbackBufferBase"), Cvoid, (GLuint, GLuint, GLuint), xfb, index, buffer)
 end
 
 function glTransformFeedbackBufferRange(xfb, index, buffer, offset, size)
-    ccall((:glTransformFeedbackBufferRange, libgl), Cvoid, (GLuint, GLuint, GLuint, GLintptr, GLsizeiptr), xfb, index, buffer, offset, size)
+    ccall(getprocaddress_e("glTransformFeedbackBufferRange"), Cvoid, (GLuint, GLuint, GLuint, GLintptr, GLsizeiptr), xfb, index, buffer, offset, size)
 end
 
 function glGetTransformFeedbackiv(xfb, pname, param)
-    ccall((:glGetTransformFeedbackiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), xfb, pname, param)
+    ccall(getprocaddress_e("glGetTransformFeedbackiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), xfb, pname, param)
 end
 
 function glGetTransformFeedbacki_v(xfb, pname, index, param)
-    ccall((:glGetTransformFeedbacki_v, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint}), xfb, pname, index, param)
+    ccall(getprocaddress_e("glGetTransformFeedbacki_v"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint}), xfb, pname, index, param)
 end
 
 function glGetTransformFeedbacki64_v(xfb, pname, index, param)
-    ccall((:glGetTransformFeedbacki64_v, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint64}), xfb, pname, index, param)
+    ccall(getprocaddress_e("glGetTransformFeedbacki64_v"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint64}), xfb, pname, index, param)
 end
 
 function glCreateBuffers(n, buffers)
-    ccall((:glCreateBuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, buffers)
+    ccall(getprocaddress_e("glCreateBuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, buffers)
 end
 
 function glNamedBufferStorage(buffer, size, data, flags)
-    ccall((:glNamedBufferStorage, libgl), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLbitfield), buffer, size, data, flags)
+    ccall(getprocaddress_e("glNamedBufferStorage"), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLbitfield), buffer, size, data, flags)
 end
 
 function glNamedBufferData(buffer, size, data, usage)
-    ccall((:glNamedBufferData, libgl), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLenum), buffer, size, data, usage)
+    ccall(getprocaddress_e("glNamedBufferData"), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLenum), buffer, size, data, usage)
 end
 
 function glNamedBufferSubData(buffer, offset, size, data)
-    ccall((:glNamedBufferSubData, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
+    ccall(getprocaddress_e("glNamedBufferSubData"), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
 end
 
 function glCopyNamedBufferSubData(readBuffer, writeBuffer, readOffset, writeOffset, size)
-    ccall((:glCopyNamedBufferSubData, libgl), Cvoid, (GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr), readBuffer, writeBuffer, readOffset, writeOffset, size)
+    ccall(getprocaddress_e("glCopyNamedBufferSubData"), Cvoid, (GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr), readBuffer, writeBuffer, readOffset, writeOffset, size)
 end
 
 function glClearNamedBufferData(buffer, internalformat, format, type, data)
-    ccall((:glClearNamedBufferData, libgl), Cvoid, (GLuint, GLenum, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, format, type, data)
+    ccall(getprocaddress_e("glClearNamedBufferData"), Cvoid, (GLuint, GLenum, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, format, type, data)
 end
 
 function glClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data)
-    ccall((:glClearNamedBufferSubData, libgl), Cvoid, (GLuint, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, offset, size, format, type, data)
+    ccall(getprocaddress_e("glClearNamedBufferSubData"), Cvoid, (GLuint, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, offset, size, format, type, data)
 end
 
 function glMapNamedBuffer(buffer, access)
-    ccall((:glMapNamedBuffer, libgl), Ptr{Cvoid}, (GLuint, GLenum), buffer, access)
+    ccall(getprocaddress_e("glMapNamedBuffer"), Ptr{Cvoid}, (GLuint, GLenum), buffer, access)
 end
 
 function glMapNamedBufferRange(buffer, offset, length, access)
-    ccall((:glMapNamedBufferRange, libgl), Ptr{Cvoid}, (GLuint, GLintptr, GLsizeiptr, GLbitfield), buffer, offset, length, access)
+    ccall(getprocaddress_e("glMapNamedBufferRange"), Ptr{Cvoid}, (GLuint, GLintptr, GLsizeiptr, GLbitfield), buffer, offset, length, access)
 end
 
 function glUnmapNamedBuffer(buffer)
-    ccall((:glUnmapNamedBuffer, libgl), GLboolean, (GLuint,), buffer)
+    ccall(getprocaddress_e("glUnmapNamedBuffer"), GLboolean, (GLuint,), buffer)
 end
 
 function glFlushMappedNamedBufferRange(buffer, offset, length)
-    ccall((:glFlushMappedNamedBufferRange, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr), buffer, offset, length)
+    ccall(getprocaddress_e("glFlushMappedNamedBufferRange"), Cvoid, (GLuint, GLintptr, GLsizeiptr), buffer, offset, length)
 end
 
 function glGetNamedBufferParameteriv(buffer, pname, params)
-    ccall((:glGetNamedBufferParameteriv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), buffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedBufferParameteriv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), buffer, pname, params)
 end
 
 function glGetNamedBufferParameteri64v(buffer, pname, params)
-    ccall((:glGetNamedBufferParameteri64v, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint64}), buffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedBufferParameteri64v"), Cvoid, (GLuint, GLenum, Ptr{GLint64}), buffer, pname, params)
 end
 
 function glGetNamedBufferPointerv(buffer, pname, params)
-    ccall((:glGetNamedBufferPointerv, libgl), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), buffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedBufferPointerv"), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), buffer, pname, params)
 end
 
 function glGetNamedBufferSubData(buffer, offset, size, data)
-    ccall((:glGetNamedBufferSubData, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
+    ccall(getprocaddress_e("glGetNamedBufferSubData"), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
 end
 
 function glCreateFramebuffers(n, framebuffers)
-    ccall((:glCreateFramebuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, framebuffers)
+    ccall(getprocaddress_e("glCreateFramebuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, framebuffers)
 end
 
 function glNamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer)
-    ccall((:glNamedFramebufferRenderbuffer, libgl), Cvoid, (GLuint, GLenum, GLenum, GLuint), framebuffer, attachment, renderbuffertarget, renderbuffer)
+    ccall(getprocaddress_e("glNamedFramebufferRenderbuffer"), Cvoid, (GLuint, GLenum, GLenum, GLuint), framebuffer, attachment, renderbuffertarget, renderbuffer)
 end
 
 function glNamedFramebufferParameteri(framebuffer, pname, param)
-    ccall((:glNamedFramebufferParameteri, libgl), Cvoid, (GLuint, GLenum, GLint), framebuffer, pname, param)
+    ccall(getprocaddress_e("glNamedFramebufferParameteri"), Cvoid, (GLuint, GLenum, GLint), framebuffer, pname, param)
 end
 
 function glNamedFramebufferTexture(framebuffer, attachment, texture, level)
-    ccall((:glNamedFramebufferTexture, libgl), Cvoid, (GLuint, GLenum, GLuint, GLint), framebuffer, attachment, texture, level)
+    ccall(getprocaddress_e("glNamedFramebufferTexture"), Cvoid, (GLuint, GLenum, GLuint, GLint), framebuffer, attachment, texture, level)
 end
 
 function glNamedFramebufferTextureLayer(framebuffer, attachment, texture, level, layer)
-    ccall((:glNamedFramebufferTextureLayer, libgl), Cvoid, (GLuint, GLenum, GLuint, GLint, GLint), framebuffer, attachment, texture, level, layer)
+    ccall(getprocaddress_e("glNamedFramebufferTextureLayer"), Cvoid, (GLuint, GLenum, GLuint, GLint, GLint), framebuffer, attachment, texture, level, layer)
 end
 
 function glNamedFramebufferDrawBuffer(framebuffer, buf)
-    ccall((:glNamedFramebufferDrawBuffer, libgl), Cvoid, (GLuint, GLenum), framebuffer, buf)
+    ccall(getprocaddress_e("glNamedFramebufferDrawBuffer"), Cvoid, (GLuint, GLenum), framebuffer, buf)
 end
 
 function glNamedFramebufferDrawBuffers(framebuffer, n, bufs)
-    ccall((:glNamedFramebufferDrawBuffers, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLenum}), framebuffer, n, bufs)
+    ccall(getprocaddress_e("glNamedFramebufferDrawBuffers"), Cvoid, (GLuint, GLsizei, Ptr{GLenum}), framebuffer, n, bufs)
 end
 
 function glNamedFramebufferReadBuffer(framebuffer, src)
-    ccall((:glNamedFramebufferReadBuffer, libgl), Cvoid, (GLuint, GLenum), framebuffer, src)
+    ccall(getprocaddress_e("glNamedFramebufferReadBuffer"), Cvoid, (GLuint, GLenum), framebuffer, src)
 end
 
 function glInvalidateNamedFramebufferData(framebuffer, numAttachments, attachments)
-    ccall((:glInvalidateNamedFramebufferData, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLenum}), framebuffer, numAttachments, attachments)
+    ccall(getprocaddress_e("glInvalidateNamedFramebufferData"), Cvoid, (GLuint, GLsizei, Ptr{GLenum}), framebuffer, numAttachments, attachments)
 end
 
 function glInvalidateNamedFramebufferSubData(framebuffer, numAttachments, attachments, x, y, width, height)
-    ccall((:glInvalidateNamedFramebufferSubData, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLenum}, GLint, GLint, GLsizei, GLsizei), framebuffer, numAttachments, attachments, x, y, width, height)
+    ccall(getprocaddress_e("glInvalidateNamedFramebufferSubData"), Cvoid, (GLuint, GLsizei, Ptr{GLenum}, GLint, GLint, GLsizei, GLsizei), framebuffer, numAttachments, attachments, x, y, width, height)
 end
 
 function glClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value)
-    ccall((:glClearNamedFramebufferiv, libgl), Cvoid, (GLuint, GLenum, GLint, Ptr{GLint}), framebuffer, buffer, drawbuffer, value)
+    ccall(getprocaddress_e("glClearNamedFramebufferiv"), Cvoid, (GLuint, GLenum, GLint, Ptr{GLint}), framebuffer, buffer, drawbuffer, value)
 end
 
 function glClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, value)
-    ccall((:glClearNamedFramebufferuiv, libgl), Cvoid, (GLuint, GLenum, GLint, Ptr{GLuint}), framebuffer, buffer, drawbuffer, value)
+    ccall(getprocaddress_e("glClearNamedFramebufferuiv"), Cvoid, (GLuint, GLenum, GLint, Ptr{GLuint}), framebuffer, buffer, drawbuffer, value)
 end
 
 function glClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, value)
-    ccall((:glClearNamedFramebufferfv, libgl), Cvoid, (GLuint, GLenum, GLint, Ptr{GLfloat}), framebuffer, buffer, drawbuffer, value)
+    ccall(getprocaddress_e("glClearNamedFramebufferfv"), Cvoid, (GLuint, GLenum, GLint, Ptr{GLfloat}), framebuffer, buffer, drawbuffer, value)
 end
 
 function glClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil)
-    ccall((:glClearNamedFramebufferfi, libgl), Cvoid, (GLuint, GLenum, GLint, GLfloat, GLint), framebuffer, buffer, drawbuffer, depth, stencil)
+    ccall(getprocaddress_e("glClearNamedFramebufferfi"), Cvoid, (GLuint, GLenum, GLint, GLfloat, GLint), framebuffer, buffer, drawbuffer, depth, stencil)
 end
 
 function glBlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
-    ccall((:glBlitNamedFramebuffer, libgl), Cvoid, (GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum), readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
+    ccall(getprocaddress_e("glBlitNamedFramebuffer"), Cvoid, (GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum), readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)
 end
 
 function glCheckNamedFramebufferStatus(framebuffer, target)
-    ccall((:glCheckNamedFramebufferStatus, libgl), GLenum, (GLuint, GLenum), framebuffer, target)
+    ccall(getprocaddress_e("glCheckNamedFramebufferStatus"), GLenum, (GLuint, GLenum), framebuffer, target)
 end
 
 function glGetNamedFramebufferParameteriv(framebuffer, pname, param)
-    ccall((:glGetNamedFramebufferParameteriv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), framebuffer, pname, param)
+    ccall(getprocaddress_e("glGetNamedFramebufferParameteriv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), framebuffer, pname, param)
 end
 
 function glGetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, params)
-    ccall((:glGetNamedFramebufferAttachmentParameteriv, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), framebuffer, attachment, pname, params)
+    ccall(getprocaddress_e("glGetNamedFramebufferAttachmentParameteriv"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), framebuffer, attachment, pname, params)
 end
 
 function glCreateRenderbuffers(n, renderbuffers)
-    ccall((:glCreateRenderbuffers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, renderbuffers)
+    ccall(getprocaddress_e("glCreateRenderbuffers"), Cvoid, (GLsizei, Ptr{GLuint}), n, renderbuffers)
 end
 
 function glNamedRenderbufferStorage(renderbuffer, internalformat, width, height)
-    ccall((:glNamedRenderbufferStorage, libgl), Cvoid, (GLuint, GLenum, GLsizei, GLsizei), renderbuffer, internalformat, width, height)
+    ccall(getprocaddress_e("glNamedRenderbufferStorage"), Cvoid, (GLuint, GLenum, GLsizei, GLsizei), renderbuffer, internalformat, width, height)
 end
 
 function glNamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height)
-    ccall((:glNamedRenderbufferStorageMultisample, libgl), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, samples, internalformat, width, height)
+    ccall(getprocaddress_e("glNamedRenderbufferStorageMultisample"), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, samples, internalformat, width, height)
 end
 
 function glGetNamedRenderbufferParameteriv(renderbuffer, pname, params)
-    ccall((:glGetNamedRenderbufferParameteriv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), renderbuffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedRenderbufferParameteriv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), renderbuffer, pname, params)
 end
 
 function glCreateTextures(target, n, textures)
-    ccall((:glCreateTextures, libgl), Cvoid, (GLenum, GLsizei, Ptr{GLuint}), target, n, textures)
+    ccall(getprocaddress_e("glCreateTextures"), Cvoid, (GLenum, GLsizei, Ptr{GLuint}), target, n, textures)
 end
 
 function glTextureBuffer(texture, internalformat, buffer)
-    ccall((:glTextureBuffer, libgl), Cvoid, (GLuint, GLenum, GLuint), texture, internalformat, buffer)
+    ccall(getprocaddress_e("glTextureBuffer"), Cvoid, (GLuint, GLenum, GLuint), texture, internalformat, buffer)
 end
 
 function glTextureBufferRange(texture, internalformat, buffer, offset, size)
-    ccall((:glTextureBufferRange, libgl), Cvoid, (GLuint, GLenum, GLuint, GLintptr, GLsizeiptr), texture, internalformat, buffer, offset, size)
+    ccall(getprocaddress_e("glTextureBufferRange"), Cvoid, (GLuint, GLenum, GLuint, GLintptr, GLsizeiptr), texture, internalformat, buffer, offset, size)
 end
 
 function glTextureStorage1D(texture, levels, internalformat, width)
-    ccall((:glTextureStorage1D, libgl), Cvoid, (GLuint, GLsizei, GLenum, GLsizei), texture, levels, internalformat, width)
+    ccall(getprocaddress_e("glTextureStorage1D"), Cvoid, (GLuint, GLsizei, GLenum, GLsizei), texture, levels, internalformat, width)
 end
 
 function glTextureStorage2D(texture, levels, internalformat, width, height)
-    ccall((:glTextureStorage2D, libgl), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei), texture, levels, internalformat, width, height)
+    ccall(getprocaddress_e("glTextureStorage2D"), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei), texture, levels, internalformat, width, height)
 end
 
 function glTextureStorage3D(texture, levels, internalformat, width, height, depth)
-    ccall((:glTextureStorage3D, libgl), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), texture, levels, internalformat, width, height, depth)
+    ccall(getprocaddress_e("glTextureStorage3D"), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), texture, levels, internalformat, width, height, depth)
 end
 
 function glTextureStorage2DMultisample(texture, samples, internalformat, width, height, fixedsamplelocations)
-    ccall((:glTextureStorage2DMultisample, libgl), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), texture, samples, internalformat, width, height, fixedsamplelocations)
+    ccall(getprocaddress_e("glTextureStorage2DMultisample"), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), texture, samples, internalformat, width, height, fixedsamplelocations)
 end
 
 function glTextureStorage3DMultisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations)
-    ccall((:glTextureStorage3DMultisample, libgl), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), texture, samples, internalformat, width, height, depth, fixedsamplelocations)
+    ccall(getprocaddress_e("glTextureStorage3DMultisample"), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), texture, samples, internalformat, width, height, depth, fixedsamplelocations)
 end
 
 function glTextureSubImage1D(texture, level, xoffset, width, format, type, pixels)
-    ccall((:glTextureSubImage1D, libgl), Cvoid, (GLuint, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, width, format, type, pixels)
+    ccall(getprocaddress_e("glTextureSubImage1D"), Cvoid, (GLuint, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, width, format, type, pixels)
 end
 
 function glTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels)
-    ccall((:glTextureSubImage2D, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, yoffset, width, height, format, type, pixels)
+    ccall(getprocaddress_e("glTextureSubImage2D"), Cvoid, (GLuint, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, yoffset, width, height, format, type, pixels)
 end
 
 function glTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
-    ccall((:glTextureSubImage3D, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
+    ccall(getprocaddress_e("glTextureSubImage3D"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 end
 
 function glCompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data)
-    ccall((:glCompressedTextureSubImage1D, libgl), Cvoid, (GLuint, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, width, format, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTextureSubImage1D"), Cvoid, (GLuint, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, width, format, imageSize, data)
 end
 
 function glCompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data)
-    ccall((:glCompressedTextureSubImage2D, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, width, height, format, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTextureSubImage2D"), Cvoid, (GLuint, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, width, height, format, imageSize, data)
 end
 
 function glCompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
-    ccall((:glCompressedTextureSubImage3D, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
+    ccall(getprocaddress_e("glCompressedTextureSubImage3D"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
 end
 
 function glCopyTextureSubImage1D(texture, level, xoffset, x, y, width)
-    ccall((:glCopyTextureSubImage1D, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei), texture, level, xoffset, x, y, width)
+    ccall(getprocaddress_e("glCopyTextureSubImage1D"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei), texture, level, xoffset, x, y, width)
 end
 
 function glCopyTextureSubImage2D(texture, level, xoffset, yoffset, x, y, width, height)
-    ccall((:glCopyTextureSubImage2D, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, level, xoffset, yoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyTextureSubImage2D"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, level, xoffset, yoffset, x, y, width, height)
 end
 
 function glCopyTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, x, y, width, height)
-    ccall((:glCopyTextureSubImage3D, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, level, xoffset, yoffset, zoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyTextureSubImage3D"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, level, xoffset, yoffset, zoffset, x, y, width, height)
 end
 
 function glTextureParameterf(texture, pname, param)
-    ccall((:glTextureParameterf, libgl), Cvoid, (GLuint, GLenum, GLfloat), texture, pname, param)
+    ccall(getprocaddress_e("glTextureParameterf"), Cvoid, (GLuint, GLenum, GLfloat), texture, pname, param)
 end
 
 function glTextureParameterfv(texture, pname, param)
-    ccall((:glTextureParameterfv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), texture, pname, param)
+    ccall(getprocaddress_e("glTextureParameterfv"), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), texture, pname, param)
 end
 
 function glTextureParameteri(texture, pname, param)
-    ccall((:glTextureParameteri, libgl), Cvoid, (GLuint, GLenum, GLint), texture, pname, param)
+    ccall(getprocaddress_e("glTextureParameteri"), Cvoid, (GLuint, GLenum, GLint), texture, pname, param)
 end
 
 function glTextureParameterIiv(texture, pname, params)
-    ccall((:glTextureParameterIiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, params)
+    ccall(getprocaddress_e("glTextureParameterIiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, params)
 end
 
 function glTextureParameterIuiv(texture, pname, params)
-    ccall((:glTextureParameterIuiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint}), texture, pname, params)
+    ccall(getprocaddress_e("glTextureParameterIuiv"), Cvoid, (GLuint, GLenum, Ptr{GLuint}), texture, pname, params)
 end
 
 function glTextureParameteriv(texture, pname, param)
-    ccall((:glTextureParameteriv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, param)
+    ccall(getprocaddress_e("glTextureParameteriv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, param)
 end
 
 function glGenerateTextureMipmap(texture)
-    ccall((:glGenerateTextureMipmap, libgl), Cvoid, (GLuint,), texture)
+    ccall(getprocaddress_e("glGenerateTextureMipmap"), Cvoid, (GLuint,), texture)
 end
 
 function glBindTextureUnit(unit, texture)
-    ccall((:glBindTextureUnit, libgl), Cvoid, (GLuint, GLuint), unit, texture)
+    ccall(getprocaddress_e("glBindTextureUnit"), Cvoid, (GLuint, GLuint), unit, texture)
 end
 
 function glGetTextureImage(texture, level, format, type, bufSize, pixels)
-    ccall((:glGetTextureImage, libgl), Cvoid, (GLuint, GLint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), texture, level, format, type, bufSize, pixels)
+    ccall(getprocaddress_e("glGetTextureImage"), Cvoid, (GLuint, GLint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), texture, level, format, type, bufSize, pixels)
 end
 
 function glGetCompressedTextureImage(texture, level, bufSize, pixels)
-    ccall((:glGetCompressedTextureImage, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{Cvoid}), texture, level, bufSize, pixels)
+    ccall(getprocaddress_e("glGetCompressedTextureImage"), Cvoid, (GLuint, GLint, GLsizei, Ptr{Cvoid}), texture, level, bufSize, pixels)
 end
 
 function glGetTextureLevelParameterfv(texture, level, pname, params)
-    ccall((:glGetTextureLevelParameterfv, libgl), Cvoid, (GLuint, GLint, GLenum, Ptr{GLfloat}), texture, level, pname, params)
+    ccall(getprocaddress_e("glGetTextureLevelParameterfv"), Cvoid, (GLuint, GLint, GLenum, Ptr{GLfloat}), texture, level, pname, params)
 end
 
 function glGetTextureLevelParameteriv(texture, level, pname, params)
-    ccall((:glGetTextureLevelParameteriv, libgl), Cvoid, (GLuint, GLint, GLenum, Ptr{GLint}), texture, level, pname, params)
+    ccall(getprocaddress_e("glGetTextureLevelParameteriv"), Cvoid, (GLuint, GLint, GLenum, Ptr{GLint}), texture, level, pname, params)
 end
 
 function glGetTextureParameterfv(texture, pname, params)
-    ccall((:glGetTextureParameterfv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), texture, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameterfv"), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), texture, pname, params)
 end
 
 function glGetTextureParameterIiv(texture, pname, params)
-    ccall((:glGetTextureParameterIiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameterIiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, params)
 end
 
 function glGetTextureParameterIuiv(texture, pname, params)
-    ccall((:glGetTextureParameterIuiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint}), texture, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameterIuiv"), Cvoid, (GLuint, GLenum, Ptr{GLuint}), texture, pname, params)
 end
 
 function glGetTextureParameteriv(texture, pname, params)
-    ccall((:glGetTextureParameteriv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameteriv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), texture, pname, params)
 end
 
 function glCreateVertexArrays(n, arrays)
-    ccall((:glCreateVertexArrays, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, arrays)
+    ccall(getprocaddress_e("glCreateVertexArrays"), Cvoid, (GLsizei, Ptr{GLuint}), n, arrays)
 end
 
 function glDisableVertexArrayAttrib(vaobj, index)
-    ccall((:glDisableVertexArrayAttrib, libgl), Cvoid, (GLuint, GLuint), vaobj, index)
+    ccall(getprocaddress_e("glDisableVertexArrayAttrib"), Cvoid, (GLuint, GLuint), vaobj, index)
 end
 
 function glEnableVertexArrayAttrib(vaobj, index)
-    ccall((:glEnableVertexArrayAttrib, libgl), Cvoid, (GLuint, GLuint), vaobj, index)
+    ccall(getprocaddress_e("glEnableVertexArrayAttrib"), Cvoid, (GLuint, GLuint), vaobj, index)
 end
 
 function glVertexArrayElementBuffer(vaobj, buffer)
-    ccall((:glVertexArrayElementBuffer, libgl), Cvoid, (GLuint, GLuint), vaobj, buffer)
+    ccall(getprocaddress_e("glVertexArrayElementBuffer"), Cvoid, (GLuint, GLuint), vaobj, buffer)
 end
 
 function glVertexArrayVertexBuffer(vaobj, bindingindex, buffer, offset, stride)
-    ccall((:glVertexArrayVertexBuffer, libgl), Cvoid, (GLuint, GLuint, GLuint, GLintptr, GLsizei), vaobj, bindingindex, buffer, offset, stride)
+    ccall(getprocaddress_e("glVertexArrayVertexBuffer"), Cvoid, (GLuint, GLuint, GLuint, GLintptr, GLsizei), vaobj, bindingindex, buffer, offset, stride)
 end
 
 function glVertexArrayVertexBuffers(vaobj, first, count, buffers, offsets, strides)
-    ccall((:glVertexArrayVertexBuffers, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLuint}, Ptr{GLintptr}, Ptr{GLsizei}), vaobj, first, count, buffers, offsets, strides)
+    ccall(getprocaddress_e("glVertexArrayVertexBuffers"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLuint}, Ptr{GLintptr}, Ptr{GLsizei}), vaobj, first, count, buffers, offsets, strides)
 end
 
 function glVertexArrayAttribBinding(vaobj, attribindex, bindingindex)
-    ccall((:glVertexArrayAttribBinding, libgl), Cvoid, (GLuint, GLuint, GLuint), vaobj, attribindex, bindingindex)
+    ccall(getprocaddress_e("glVertexArrayAttribBinding"), Cvoid, (GLuint, GLuint, GLuint), vaobj, attribindex, bindingindex)
 end
 
 function glVertexArrayAttribFormat(vaobj, attribindex, size, type, normalized, relativeoffset)
-    ccall((:glVertexArrayAttribFormat, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLboolean, GLuint), vaobj, attribindex, size, type, normalized, relativeoffset)
+    ccall(getprocaddress_e("glVertexArrayAttribFormat"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLboolean, GLuint), vaobj, attribindex, size, type, normalized, relativeoffset)
 end
 
 function glVertexArrayAttribIFormat(vaobj, attribindex, size, type, relativeoffset)
-    ccall((:glVertexArrayAttribIFormat, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
+    ccall(getprocaddress_e("glVertexArrayAttribIFormat"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
 end
 
 function glVertexArrayAttribLFormat(vaobj, attribindex, size, type, relativeoffset)
-    ccall((:glVertexArrayAttribLFormat, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
+    ccall(getprocaddress_e("glVertexArrayAttribLFormat"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
 end
 
 function glVertexArrayBindingDivisor(vaobj, bindingindex, divisor)
-    ccall((:glVertexArrayBindingDivisor, libgl), Cvoid, (GLuint, GLuint, GLuint), vaobj, bindingindex, divisor)
+    ccall(getprocaddress_e("glVertexArrayBindingDivisor"), Cvoid, (GLuint, GLuint, GLuint), vaobj, bindingindex, divisor)
 end
 
 function glGetVertexArrayiv(vaobj, pname, param)
-    ccall((:glGetVertexArrayiv, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), vaobj, pname, param)
+    ccall(getprocaddress_e("glGetVertexArrayiv"), Cvoid, (GLuint, GLenum, Ptr{GLint}), vaobj, pname, param)
 end
 
 function glGetVertexArrayIndexediv(vaobj, index, pname, param)
-    ccall((:glGetVertexArrayIndexediv, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), vaobj, index, pname, param)
+    ccall(getprocaddress_e("glGetVertexArrayIndexediv"), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), vaobj, index, pname, param)
 end
 
 function glGetVertexArrayIndexed64iv(vaobj, index, pname, param)
-    ccall((:glGetVertexArrayIndexed64iv, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint64}), vaobj, index, pname, param)
+    ccall(getprocaddress_e("glGetVertexArrayIndexed64iv"), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint64}), vaobj, index, pname, param)
 end
 
 function glCreateSamplers(n, samplers)
-    ccall((:glCreateSamplers, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, samplers)
+    ccall(getprocaddress_e("glCreateSamplers"), Cvoid, (GLsizei, Ptr{GLuint}), n, samplers)
 end
 
 function glCreateProgramPipelines(n, pipelines)
-    ccall((:glCreateProgramPipelines, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, pipelines)
+    ccall(getprocaddress_e("glCreateProgramPipelines"), Cvoid, (GLsizei, Ptr{GLuint}), n, pipelines)
 end
 
 function glCreateQueries(target, n, ids)
-    ccall((:glCreateQueries, libgl), Cvoid, (GLenum, GLsizei, Ptr{GLuint}), target, n, ids)
+    ccall(getprocaddress_e("glCreateQueries"), Cvoid, (GLenum, GLsizei, Ptr{GLuint}), target, n, ids)
 end
 
 function glGetQueryBufferObjecti64v(id, buffer, pname, offset)
-    ccall((:glGetQueryBufferObjecti64v, libgl), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
+    ccall(getprocaddress_e("glGetQueryBufferObjecti64v"), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
 end
 
 function glGetQueryBufferObjectiv(id, buffer, pname, offset)
-    ccall((:glGetQueryBufferObjectiv, libgl), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
+    ccall(getprocaddress_e("glGetQueryBufferObjectiv"), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
 end
 
 function glGetQueryBufferObjectui64v(id, buffer, pname, offset)
-    ccall((:glGetQueryBufferObjectui64v, libgl), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
+    ccall(getprocaddress_e("glGetQueryBufferObjectui64v"), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
 end
 
 function glGetQueryBufferObjectuiv(id, buffer, pname, offset)
-    ccall((:glGetQueryBufferObjectuiv, libgl), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
+    ccall(getprocaddress_e("glGetQueryBufferObjectuiv"), Cvoid, (GLuint, GLuint, GLenum, GLintptr), id, buffer, pname, offset)
 end
 
 function glMemoryBarrierByRegion(barriers)
-    ccall((:glMemoryBarrierByRegion, libgl), Cvoid, (GLbitfield,), barriers)
+    ccall(getprocaddress_e("glMemoryBarrierByRegion"), Cvoid, (GLbitfield,), barriers)
 end
 
 function glGetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels)
-    ccall((:glGetTextureSubImage, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels)
+    ccall(getprocaddress_e("glGetTextureSubImage"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels)
 end
 
 function glGetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels)
-    ccall((:glGetCompressedTextureSubImage, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels)
+    ccall(getprocaddress_e("glGetCompressedTextureSubImage"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, Ptr{Cvoid}), texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels)
 end
 
 function glGetGraphicsResetStatus()
-    ccall((:glGetGraphicsResetStatus, libgl), GLenum, ())
+    ccall(getprocaddress_e("glGetGraphicsResetStatus"), GLenum, ())
 end
 
 function glGetnCompressedTexImage(target, lod, bufSize, pixels)
-    ccall((:glGetnCompressedTexImage, libgl), Cvoid, (GLenum, GLint, GLsizei, Ptr{Cvoid}), target, lod, bufSize, pixels)
+    ccall(getprocaddress_e("glGetnCompressedTexImage"), Cvoid, (GLenum, GLint, GLsizei, Ptr{Cvoid}), target, lod, bufSize, pixels)
 end
 
 function glGetnTexImage(target, level, format, type, bufSize, pixels)
-    ccall((:glGetnTexImage, libgl), Cvoid, (GLenum, GLint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), target, level, format, type, bufSize, pixels)
+    ccall(getprocaddress_e("glGetnTexImage"), Cvoid, (GLenum, GLint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), target, level, format, type, bufSize, pixels)
 end
 
 function glGetnUniformdv(program, location, bufSize, params)
-    ccall((:glGetnUniformdv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformdv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, bufSize, params)
 end
 
 function glGetnUniformfv(program, location, bufSize, params)
-    ccall((:glGetnUniformfv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformfv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, bufSize, params)
 end
 
 function glGetnUniformiv(program, location, bufSize, params)
-    ccall((:glGetnUniformiv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformiv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, bufSize, params)
 end
 
 function glGetnUniformuiv(program, location, bufSize, params)
-    ccall((:glGetnUniformuiv, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformuiv"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, bufSize, params)
 end
 
 function glReadnPixels(x, y, width, height, format, type, bufSize, data)
-    ccall((:glReadnPixels, libgl), Cvoid, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, Ptr{Cvoid}), x, y, width, height, format, type, bufSize, data)
+    ccall(getprocaddress_e("glReadnPixels"), Cvoid, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, Ptr{Cvoid}), x, y, width, height, format, type, bufSize, data)
 end
 
 function glTextureBarrier()
-    ccall((:glTextureBarrier, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glTextureBarrier"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLSPECIALIZESHADERPROC ) ( GLuint shader , const GLchar * pEntryPoint , GLuint numSpecializationConstants , const GLuint * pConstantIndex , const GLuint * pConstantValue )
@@ -4669,26 +4669,26 @@ const PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTPROC = Ptr{Cvoid}
 const PFNGLPOLYGONOFFSETCLAMPPROC = Ptr{Cvoid}
 
 function glSpecializeShader(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue)
-    ccall((:glSpecializeShader, libgl), Cvoid, (GLuint, Ptr{GLchar}, GLuint, Ptr{GLuint}, Ptr{GLuint}), shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue)
+    ccall(getprocaddress_e("glSpecializeShader"), Cvoid, (GLuint, Ptr{GLchar}, GLuint, Ptr{GLuint}, Ptr{GLuint}), shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue)
 end
 
 function glMultiDrawArraysIndirectCount(mode, indirect, drawcount, maxdrawcount, stride)
-    ccall((:glMultiDrawArraysIndirectCount, libgl), Cvoid, (GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, indirect, drawcount, maxdrawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawArraysIndirectCount"), Cvoid, (GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, indirect, drawcount, maxdrawcount, stride)
 end
 
 function glMultiDrawElementsIndirectCount(mode, type, indirect, drawcount, maxdrawcount, stride)
-    ccall((:glMultiDrawElementsIndirectCount, libgl), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, type, indirect, drawcount, maxdrawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawElementsIndirectCount"), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, type, indirect, drawcount, maxdrawcount, stride)
 end
 
 function glPolygonOffsetClamp(factor, units, clamp)
-    ccall((:glPolygonOffsetClamp, libgl), Cvoid, (GLfloat, GLfloat, GLfloat), factor, units, clamp)
+    ccall(getprocaddress_e("glPolygonOffsetClamp"), Cvoid, (GLfloat, GLfloat, GLfloat), factor, units, clamp)
 end
 
 # typedef void ( APIENTRYP PFNGLPRIMITIVEBOUNDINGBOXARBPROC ) ( GLfloat minX , GLfloat minY , GLfloat minZ , GLfloat minW , GLfloat maxX , GLfloat maxY , GLfloat maxZ , GLfloat maxW )
 const PFNGLPRIMITIVEBOUNDINGBOXARBPROC = Ptr{Cvoid}
 
 function glPrimitiveBoundingBoxARB(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW)
-    ccall((:glPrimitiveBoundingBoxARB, libgl), Cvoid, (GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat), minX, minY, minZ, minW, maxX, maxY, maxZ, maxW)
+    ccall(getprocaddress_e("glPrimitiveBoundingBoxARB"), Cvoid, (GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat), minX, minY, minZ, minW, maxX, maxY, maxZ, maxW)
 end
 
 const GLuint64EXT = khronos_uint64_t
@@ -4742,67 +4742,67 @@ const PFNGLVERTEXATTRIBL1UI64VARBPROC = Ptr{Cvoid}
 const PFNGLGETVERTEXATTRIBLUI64VARBPROC = Ptr{Cvoid}
 
 function glGetTextureHandleARB(texture)
-    ccall((:glGetTextureHandleARB, libgl), GLuint64, (GLuint,), texture)
+    ccall(getprocaddress_e("glGetTextureHandleARB"), GLuint64, (GLuint,), texture)
 end
 
 function glGetTextureSamplerHandleARB(texture, sampler)
-    ccall((:glGetTextureSamplerHandleARB, libgl), GLuint64, (GLuint, GLuint), texture, sampler)
+    ccall(getprocaddress_e("glGetTextureSamplerHandleARB"), GLuint64, (GLuint, GLuint), texture, sampler)
 end
 
 function glMakeTextureHandleResidentARB(handle)
-    ccall((:glMakeTextureHandleResidentARB, libgl), Cvoid, (GLuint64,), handle)
+    ccall(getprocaddress_e("glMakeTextureHandleResidentARB"), Cvoid, (GLuint64,), handle)
 end
 
 function glMakeTextureHandleNonResidentARB(handle)
-    ccall((:glMakeTextureHandleNonResidentARB, libgl), Cvoid, (GLuint64,), handle)
+    ccall(getprocaddress_e("glMakeTextureHandleNonResidentARB"), Cvoid, (GLuint64,), handle)
 end
 
 function glGetImageHandleARB(texture, level, layered, layer, format)
-    ccall((:glGetImageHandleARB, libgl), GLuint64, (GLuint, GLint, GLboolean, GLint, GLenum), texture, level, layered, layer, format)
+    ccall(getprocaddress_e("glGetImageHandleARB"), GLuint64, (GLuint, GLint, GLboolean, GLint, GLenum), texture, level, layered, layer, format)
 end
 
 function glMakeImageHandleResidentARB(handle, access)
-    ccall((:glMakeImageHandleResidentARB, libgl), Cvoid, (GLuint64, GLenum), handle, access)
+    ccall(getprocaddress_e("glMakeImageHandleResidentARB"), Cvoid, (GLuint64, GLenum), handle, access)
 end
 
 function glMakeImageHandleNonResidentARB(handle)
-    ccall((:glMakeImageHandleNonResidentARB, libgl), Cvoid, (GLuint64,), handle)
+    ccall(getprocaddress_e("glMakeImageHandleNonResidentARB"), Cvoid, (GLuint64,), handle)
 end
 
 function glUniformHandleui64ARB(location, value)
-    ccall((:glUniformHandleui64ARB, libgl), Cvoid, (GLint, GLuint64), location, value)
+    ccall(getprocaddress_e("glUniformHandleui64ARB"), Cvoid, (GLint, GLuint64), location, value)
 end
 
 function glUniformHandleui64vARB(location, count, value)
-    ccall((:glUniformHandleui64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
+    ccall(getprocaddress_e("glUniformHandleui64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
 end
 
 function glProgramUniformHandleui64ARB(program, location, value)
-    ccall((:glProgramUniformHandleui64ARB, libgl), Cvoid, (GLuint, GLint, GLuint64), program, location, value)
+    ccall(getprocaddress_e("glProgramUniformHandleui64ARB"), Cvoid, (GLuint, GLint, GLuint64), program, location, value)
 end
 
 function glProgramUniformHandleui64vARB(program, location, count, values)
-    ccall((:glProgramUniformHandleui64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, values)
+    ccall(getprocaddress_e("glProgramUniformHandleui64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, values)
 end
 
 function glIsTextureHandleResidentARB(handle)
-    ccall((:glIsTextureHandleResidentARB, libgl), GLboolean, (GLuint64,), handle)
+    ccall(getprocaddress_e("glIsTextureHandleResidentARB"), GLboolean, (GLuint64,), handle)
 end
 
 function glIsImageHandleResidentARB(handle)
-    ccall((:glIsImageHandleResidentARB, libgl), GLboolean, (GLuint64,), handle)
+    ccall(getprocaddress_e("glIsImageHandleResidentARB"), GLboolean, (GLuint64,), handle)
 end
 
 function glVertexAttribL1ui64ARB(index, x)
-    ccall((:glVertexAttribL1ui64ARB, libgl), Cvoid, (GLuint, GLuint64EXT), index, x)
+    ccall(getprocaddress_e("glVertexAttribL1ui64ARB"), Cvoid, (GLuint, GLuint64EXT), index, x)
 end
 
 function glVertexAttribL1ui64vARB(index, v)
-    ccall((:glVertexAttribL1ui64vARB, libgl), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL1ui64vARB"), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
 end
 
 function glGetVertexAttribLui64vARB(index, pname, params)
-    ccall((:glGetVertexAttribLui64vARB, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint64EXT}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribLui64vARB"), Cvoid, (GLuint, GLenum, Ptr{GLuint64EXT}), index, pname, params)
 end
 
 mutable struct _cl_context end
@@ -4813,14 +4813,14 @@ mutable struct _cl_event end
 const PFNGLCREATESYNCFROMCLEVENTARBPROC = Ptr{Cvoid}
 
 function glCreateSyncFromCLeventARB(context, event, flags)
-    ccall((:glCreateSyncFromCLeventARB, libgl), GLsync, (Ptr{_cl_context}, Ptr{_cl_event}, GLbitfield), context, event, flags)
+    ccall(getprocaddress_e("glCreateSyncFromCLeventARB"), GLsync, (Ptr{_cl_context}, Ptr{_cl_event}, GLbitfield), context, event, flags)
 end
 
 # typedef void ( APIENTRYP PFNGLDISPATCHCOMPUTEGROUPSIZEARBPROC ) ( GLuint num_groups_x , GLuint num_groups_y , GLuint num_groups_z , GLuint group_size_x , GLuint group_size_y , GLuint group_size_z )
 const PFNGLDISPATCHCOMPUTEGROUPSIZEARBPROC = Ptr{Cvoid}
 
 function glDispatchComputeGroupSizeARB(num_groups_x, num_groups_y, num_groups_z, group_size_x, group_size_y, group_size_z)
-    ccall((:glDispatchComputeGroupSizeARB, libgl), Cvoid, (GLuint, GLuint, GLuint, GLuint, GLuint, GLuint), num_groups_x, num_groups_y, num_groups_z, group_size_x, group_size_y, group_size_z)
+    ccall(getprocaddress_e("glDispatchComputeGroupSizeARB"), Cvoid, (GLuint, GLuint, GLuint, GLuint, GLuint, GLuint), num_groups_x, num_groups_y, num_groups_z, group_size_x, group_size_y, group_size_z)
 end
 
 # typedef void ( APIENTRY * GLDEBUGPROCARB ) ( GLenum source , GLenum type , GLuint id , GLenum severity , GLsizei length , const GLchar * message , const void * userParam )
@@ -4839,19 +4839,19 @@ const PFNGLDEBUGMESSAGECALLBACKARBPROC = Ptr{Cvoid}
 const PFNGLGETDEBUGMESSAGELOGARBPROC = Ptr{Cvoid}
 
 function glDebugMessageControlARB(source, type, severity, count, ids, enabled)
-    ccall((:glDebugMessageControlARB, libgl), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLuint}, GLboolean), source, type, severity, count, ids, enabled)
+    ccall(getprocaddress_e("glDebugMessageControlARB"), Cvoid, (GLenum, GLenum, GLenum, GLsizei, Ptr{GLuint}, GLboolean), source, type, severity, count, ids, enabled)
 end
 
 function glDebugMessageInsertARB(source, type, id, severity, length, buf)
-    ccall((:glDebugMessageInsertARB, libgl), Cvoid, (GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr{GLchar}), source, type, id, severity, length, buf)
+    ccall(getprocaddress_e("glDebugMessageInsertARB"), Cvoid, (GLenum, GLenum, GLuint, GLenum, GLsizei, Ptr{GLchar}), source, type, id, severity, length, buf)
 end
 
 function glDebugMessageCallbackARB(callback, userParam)
-    ccall((:glDebugMessageCallbackARB, libgl), Cvoid, (GLDEBUGPROCARB, Ptr{Cvoid}), callback, userParam)
+    ccall(getprocaddress_e("glDebugMessageCallbackARB"), Cvoid, (GLDEBUGPROCARB, Ptr{Cvoid}), callback, userParam)
 end
 
 function glGetDebugMessageLogARB(count, bufSize, sources, types, ids, severities, lengths, messageLog)
-    ccall((:glGetDebugMessageLogARB, libgl), GLuint, (GLuint, GLsizei, Ptr{GLenum}, Ptr{GLenum}, Ptr{GLuint}, Ptr{GLenum}, Ptr{GLsizei}, Ptr{GLchar}), count, bufSize, sources, types, ids, severities, lengths, messageLog)
+    ccall(getprocaddress_e("glGetDebugMessageLogARB"), GLuint, (GLuint, GLsizei, Ptr{GLenum}, Ptr{GLenum}, Ptr{GLuint}, Ptr{GLenum}, Ptr{GLsizei}, Ptr{GLchar}), count, bufSize, sources, types, ids, severities, lengths, messageLog)
 end
 
 # typedef void ( APIENTRYP PFNGLBLENDEQUATIONIARBPROC ) ( GLuint buf , GLenum mode )
@@ -4867,19 +4867,19 @@ const PFNGLBLENDFUNCIARBPROC = Ptr{Cvoid}
 const PFNGLBLENDFUNCSEPARATEIARBPROC = Ptr{Cvoid}
 
 function glBlendEquationiARB(buf, mode)
-    ccall((:glBlendEquationiARB, libgl), Cvoid, (GLuint, GLenum), buf, mode)
+    ccall(getprocaddress_e("glBlendEquationiARB"), Cvoid, (GLuint, GLenum), buf, mode)
 end
 
 function glBlendEquationSeparateiARB(buf, modeRGB, modeAlpha)
-    ccall((:glBlendEquationSeparateiARB, libgl), Cvoid, (GLuint, GLenum, GLenum), buf, modeRGB, modeAlpha)
+    ccall(getprocaddress_e("glBlendEquationSeparateiARB"), Cvoid, (GLuint, GLenum, GLenum), buf, modeRGB, modeAlpha)
 end
 
 function glBlendFunciARB(buf, src, dst)
-    ccall((:glBlendFunciARB, libgl), Cvoid, (GLuint, GLenum, GLenum), buf, src, dst)
+    ccall(getprocaddress_e("glBlendFunciARB"), Cvoid, (GLuint, GLenum, GLenum), buf, src, dst)
 end
 
 function glBlendFuncSeparateiARB(buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
-    ccall((:glBlendFuncSeparateiARB, libgl), Cvoid, (GLuint, GLenum, GLenum, GLenum, GLenum), buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
+    ccall(getprocaddress_e("glBlendFuncSeparateiARB"), Cvoid, (GLuint, GLenum, GLenum, GLenum, GLenum), buf, srcRGB, dstRGB, srcAlpha, dstAlpha)
 end
 
 # typedef void ( APIENTRYP PFNGLDRAWARRAYSINSTANCEDARBPROC ) ( GLenum mode , GLint first , GLsizei count , GLsizei primcount )
@@ -4889,11 +4889,11 @@ const PFNGLDRAWARRAYSINSTANCEDARBPROC = Ptr{Cvoid}
 const PFNGLDRAWELEMENTSINSTANCEDARBPROC = Ptr{Cvoid}
 
 function glDrawArraysInstancedARB(mode, first, count, primcount)
-    ccall((:glDrawArraysInstancedARB, libgl), Cvoid, (GLenum, GLint, GLsizei, GLsizei), mode, first, count, primcount)
+    ccall(getprocaddress_e("glDrawArraysInstancedARB"), Cvoid, (GLenum, GLint, GLsizei, GLsizei), mode, first, count, primcount)
 end
 
 function glDrawElementsInstancedARB(mode, count, type, indices, primcount)
-    ccall((:glDrawElementsInstancedARB, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei), mode, count, type, indices, primcount)
+    ccall(getprocaddress_e("glDrawElementsInstancedARB"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei), mode, count, type, indices, primcount)
 end
 
 # typedef void ( APIENTRYP PFNGLPROGRAMPARAMETERIARBPROC ) ( GLuint program , GLenum pname , GLint value )
@@ -4909,26 +4909,26 @@ const PFNGLFRAMEBUFFERTEXTURELAYERARBPROC = Ptr{Cvoid}
 const PFNGLFRAMEBUFFERTEXTUREFACEARBPROC = Ptr{Cvoid}
 
 function glProgramParameteriARB(program, pname, value)
-    ccall((:glProgramParameteriARB, libgl), Cvoid, (GLuint, GLenum, GLint), program, pname, value)
+    ccall(getprocaddress_e("glProgramParameteriARB"), Cvoid, (GLuint, GLenum, GLint), program, pname, value)
 end
 
 function glFramebufferTextureARB(target, attachment, texture, level)
-    ccall((:glFramebufferTextureARB, libgl), Cvoid, (GLenum, GLenum, GLuint, GLint), target, attachment, texture, level)
+    ccall(getprocaddress_e("glFramebufferTextureARB"), Cvoid, (GLenum, GLenum, GLuint, GLint), target, attachment, texture, level)
 end
 
 function glFramebufferTextureLayerARB(target, attachment, texture, level, layer)
-    ccall((:glFramebufferTextureLayerARB, libgl), Cvoid, (GLenum, GLenum, GLuint, GLint, GLint), target, attachment, texture, level, layer)
+    ccall(getprocaddress_e("glFramebufferTextureLayerARB"), Cvoid, (GLenum, GLenum, GLuint, GLint, GLint), target, attachment, texture, level, layer)
 end
 
 function glFramebufferTextureFaceARB(target, attachment, texture, level, face)
-    ccall((:glFramebufferTextureFaceARB, libgl), Cvoid, (GLenum, GLenum, GLuint, GLint, GLenum), target, attachment, texture, level, face)
+    ccall(getprocaddress_e("glFramebufferTextureFaceARB"), Cvoid, (GLenum, GLenum, GLuint, GLint, GLenum), target, attachment, texture, level, face)
 end
 
 # typedef void ( APIENTRYP PFNGLSPECIALIZESHADERARBPROC ) ( GLuint shader , const GLchar * pEntryPoint , GLuint numSpecializationConstants , const GLuint * pConstantIndex , const GLuint * pConstantValue )
 const PFNGLSPECIALIZESHADERARBPROC = Ptr{Cvoid}
 
 function glSpecializeShaderARB(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue)
-    ccall((:glSpecializeShaderARB, libgl), Cvoid, (GLuint, Ptr{GLchar}, GLuint, Ptr{GLuint}, Ptr{GLuint}), shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue)
+    ccall(getprocaddress_e("glSpecializeShaderARB"), Cvoid, (GLuint, Ptr{GLchar}, GLuint, Ptr{GLuint}, Ptr{GLuint}), shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue)
 end
 
 # typedef void ( APIENTRYP PFNGLUNIFORM1I64ARBPROC ) ( GLint location , GLint64 x )
@@ -5040,147 +5040,147 @@ const PFNGLPROGRAMUNIFORM3UI64VARBPROC = Ptr{Cvoid}
 const PFNGLPROGRAMUNIFORM4UI64VARBPROC = Ptr{Cvoid}
 
 function glUniform1i64ARB(location, x)
-    ccall((:glUniform1i64ARB, libgl), Cvoid, (GLint, GLint64), location, x)
+    ccall(getprocaddress_e("glUniform1i64ARB"), Cvoid, (GLint, GLint64), location, x)
 end
 
 function glUniform2i64ARB(location, x, y)
-    ccall((:glUniform2i64ARB, libgl), Cvoid, (GLint, GLint64, GLint64), location, x, y)
+    ccall(getprocaddress_e("glUniform2i64ARB"), Cvoid, (GLint, GLint64, GLint64), location, x, y)
 end
 
 function glUniform3i64ARB(location, x, y, z)
-    ccall((:glUniform3i64ARB, libgl), Cvoid, (GLint, GLint64, GLint64, GLint64), location, x, y, z)
+    ccall(getprocaddress_e("glUniform3i64ARB"), Cvoid, (GLint, GLint64, GLint64, GLint64), location, x, y, z)
 end
 
 function glUniform4i64ARB(location, x, y, z, w)
-    ccall((:glUniform4i64ARB, libgl), Cvoid, (GLint, GLint64, GLint64, GLint64, GLint64), location, x, y, z, w)
+    ccall(getprocaddress_e("glUniform4i64ARB"), Cvoid, (GLint, GLint64, GLint64, GLint64, GLint64), location, x, y, z, w)
 end
 
 function glUniform1i64vARB(location, count, value)
-    ccall((:glUniform1i64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform1i64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
 end
 
 function glUniform2i64vARB(location, count, value)
-    ccall((:glUniform2i64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform2i64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
 end
 
 function glUniform3i64vARB(location, count, value)
-    ccall((:glUniform3i64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform3i64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
 end
 
 function glUniform4i64vARB(location, count, value)
-    ccall((:glUniform4i64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform4i64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLint64}), location, count, value)
 end
 
 function glUniform1ui64ARB(location, x)
-    ccall((:glUniform1ui64ARB, libgl), Cvoid, (GLint, GLuint64), location, x)
+    ccall(getprocaddress_e("glUniform1ui64ARB"), Cvoid, (GLint, GLuint64), location, x)
 end
 
 function glUniform2ui64ARB(location, x, y)
-    ccall((:glUniform2ui64ARB, libgl), Cvoid, (GLint, GLuint64, GLuint64), location, x, y)
+    ccall(getprocaddress_e("glUniform2ui64ARB"), Cvoid, (GLint, GLuint64, GLuint64), location, x, y)
 end
 
 function glUniform3ui64ARB(location, x, y, z)
-    ccall((:glUniform3ui64ARB, libgl), Cvoid, (GLint, GLuint64, GLuint64, GLuint64), location, x, y, z)
+    ccall(getprocaddress_e("glUniform3ui64ARB"), Cvoid, (GLint, GLuint64, GLuint64, GLuint64), location, x, y, z)
 end
 
 function glUniform4ui64ARB(location, x, y, z, w)
-    ccall((:glUniform4ui64ARB, libgl), Cvoid, (GLint, GLuint64, GLuint64, GLuint64, GLuint64), location, x, y, z, w)
+    ccall(getprocaddress_e("glUniform4ui64ARB"), Cvoid, (GLint, GLuint64, GLuint64, GLuint64, GLuint64), location, x, y, z, w)
 end
 
 function glUniform1ui64vARB(location, count, value)
-    ccall((:glUniform1ui64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform1ui64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
 end
 
 function glUniform2ui64vARB(location, count, value)
-    ccall((:glUniform2ui64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform2ui64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
 end
 
 function glUniform3ui64vARB(location, count, value)
-    ccall((:glUniform3ui64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform3ui64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
 end
 
 function glUniform4ui64vARB(location, count, value)
-    ccall((:glUniform4ui64vARB, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
+    ccall(getprocaddress_e("glUniform4ui64vARB"), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
 end
 
 function glGetUniformi64vARB(program, location, params)
-    ccall((:glGetUniformi64vARB, libgl), Cvoid, (GLuint, GLint, Ptr{GLint64}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformi64vARB"), Cvoid, (GLuint, GLint, Ptr{GLint64}), program, location, params)
 end
 
 function glGetUniformui64vARB(program, location, params)
-    ccall((:glGetUniformui64vARB, libgl), Cvoid, (GLuint, GLint, Ptr{GLuint64}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformui64vARB"), Cvoid, (GLuint, GLint, Ptr{GLuint64}), program, location, params)
 end
 
 function glGetnUniformi64vARB(program, location, bufSize, params)
-    ccall((:glGetnUniformi64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformi64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, bufSize, params)
 end
 
 function glGetnUniformui64vARB(program, location, bufSize, params)
-    ccall((:glGetnUniformui64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformui64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, bufSize, params)
 end
 
 function glProgramUniform1i64ARB(program, location, x)
-    ccall((:glProgramUniform1i64ARB, libgl), Cvoid, (GLuint, GLint, GLint64), program, location, x)
+    ccall(getprocaddress_e("glProgramUniform1i64ARB"), Cvoid, (GLuint, GLint, GLint64), program, location, x)
 end
 
 function glProgramUniform2i64ARB(program, location, x, y)
-    ccall((:glProgramUniform2i64ARB, libgl), Cvoid, (GLuint, GLint, GLint64, GLint64), program, location, x, y)
+    ccall(getprocaddress_e("glProgramUniform2i64ARB"), Cvoid, (GLuint, GLint, GLint64, GLint64), program, location, x, y)
 end
 
 function glProgramUniform3i64ARB(program, location, x, y, z)
-    ccall((:glProgramUniform3i64ARB, libgl), Cvoid, (GLuint, GLint, GLint64, GLint64, GLint64), program, location, x, y, z)
+    ccall(getprocaddress_e("glProgramUniform3i64ARB"), Cvoid, (GLuint, GLint, GLint64, GLint64, GLint64), program, location, x, y, z)
 end
 
 function glProgramUniform4i64ARB(program, location, x, y, z, w)
-    ccall((:glProgramUniform4i64ARB, libgl), Cvoid, (GLuint, GLint, GLint64, GLint64, GLint64, GLint64), program, location, x, y, z, w)
+    ccall(getprocaddress_e("glProgramUniform4i64ARB"), Cvoid, (GLuint, GLint, GLint64, GLint64, GLint64, GLint64), program, location, x, y, z, w)
 end
 
 function glProgramUniform1i64vARB(program, location, count, value)
-    ccall((:glProgramUniform1i64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1i64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
 end
 
 function glProgramUniform2i64vARB(program, location, count, value)
-    ccall((:glProgramUniform2i64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2i64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
 end
 
 function glProgramUniform3i64vARB(program, location, count, value)
-    ccall((:glProgramUniform3i64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3i64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
 end
 
 function glProgramUniform4i64vARB(program, location, count, value)
-    ccall((:glProgramUniform4i64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4i64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64}), program, location, count, value)
 end
 
 function glProgramUniform1ui64ARB(program, location, x)
-    ccall((:glProgramUniform1ui64ARB, libgl), Cvoid, (GLuint, GLint, GLuint64), program, location, x)
+    ccall(getprocaddress_e("glProgramUniform1ui64ARB"), Cvoid, (GLuint, GLint, GLuint64), program, location, x)
 end
 
 function glProgramUniform2ui64ARB(program, location, x, y)
-    ccall((:glProgramUniform2ui64ARB, libgl), Cvoid, (GLuint, GLint, GLuint64, GLuint64), program, location, x, y)
+    ccall(getprocaddress_e("glProgramUniform2ui64ARB"), Cvoid, (GLuint, GLint, GLuint64, GLuint64), program, location, x, y)
 end
 
 function glProgramUniform3ui64ARB(program, location, x, y, z)
-    ccall((:glProgramUniform3ui64ARB, libgl), Cvoid, (GLuint, GLint, GLuint64, GLuint64, GLuint64), program, location, x, y, z)
+    ccall(getprocaddress_e("glProgramUniform3ui64ARB"), Cvoid, (GLuint, GLint, GLuint64, GLuint64, GLuint64), program, location, x, y, z)
 end
 
 function glProgramUniform4ui64ARB(program, location, x, y, z, w)
-    ccall((:glProgramUniform4ui64ARB, libgl), Cvoid, (GLuint, GLint, GLuint64, GLuint64, GLuint64, GLuint64), program, location, x, y, z, w)
+    ccall(getprocaddress_e("glProgramUniform4ui64ARB"), Cvoid, (GLuint, GLint, GLuint64, GLuint64, GLuint64, GLuint64), program, location, x, y, z, w)
 end
 
 function glProgramUniform1ui64vARB(program, location, count, value)
-    ccall((:glProgramUniform1ui64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1ui64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
 end
 
 function glProgramUniform2ui64vARB(program, location, count, value)
-    ccall((:glProgramUniform2ui64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2ui64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
 end
 
 function glProgramUniform3ui64vARB(program, location, count, value)
-    ccall((:glProgramUniform3ui64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3ui64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
 end
 
 function glProgramUniform4ui64vARB(program, location, count, value)
-    ccall((:glProgramUniform4ui64vARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4ui64vARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, value)
 end
 
 # typedef void ( APIENTRYP PFNGLMULTIDRAWARRAYSINDIRECTCOUNTARBPROC ) ( GLenum mode , const void * indirect , GLintptr drawcount , GLsizei maxdrawcount , GLsizei stride )
@@ -5190,25 +5190,25 @@ const PFNGLMULTIDRAWARRAYSINDIRECTCOUNTARBPROC = Ptr{Cvoid}
 const PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTARBPROC = Ptr{Cvoid}
 
 function glMultiDrawArraysIndirectCountARB(mode, indirect, drawcount, maxdrawcount, stride)
-    ccall((:glMultiDrawArraysIndirectCountARB, libgl), Cvoid, (GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, indirect, drawcount, maxdrawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawArraysIndirectCountARB"), Cvoid, (GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, indirect, drawcount, maxdrawcount, stride)
 end
 
 function glMultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride)
-    ccall((:glMultiDrawElementsIndirectCountARB, libgl), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, type, indirect, drawcount, maxdrawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawElementsIndirectCountARB"), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLintptr, GLsizei, GLsizei), mode, type, indirect, drawcount, maxdrawcount, stride)
 end
 
 # typedef void ( APIENTRYP PFNGLVERTEXATTRIBDIVISORARBPROC ) ( GLuint index , GLuint divisor )
 const PFNGLVERTEXATTRIBDIVISORARBPROC = Ptr{Cvoid}
 
 function glVertexAttribDivisorARB(index, divisor)
-    ccall((:glVertexAttribDivisorARB, libgl), Cvoid, (GLuint, GLuint), index, divisor)
+    ccall(getprocaddress_e("glVertexAttribDivisorARB"), Cvoid, (GLuint, GLuint), index, divisor)
 end
 
 # typedef void ( APIENTRYP PFNGLMAXSHADERCOMPILERTHREADSARBPROC ) ( GLuint count )
 const PFNGLMAXSHADERCOMPILERTHREADSARBPROC = Ptr{Cvoid}
 
 function glMaxShaderCompilerThreadsARB(count)
-    ccall((:glMaxShaderCompilerThreadsARB, libgl), Cvoid, (GLuint,), count)
+    ccall(getprocaddress_e("glMaxShaderCompilerThreadsARB"), Cvoid, (GLuint,), count)
 end
 
 # typedef GLenum ( APIENTRYP PFNGLGETGRAPHICSRESETSTATUSARBPROC ) ( void )
@@ -5236,35 +5236,35 @@ const PFNGLGETNUNIFORMUIVARBPROC = Ptr{Cvoid}
 const PFNGLGETNUNIFORMDVARBPROC = Ptr{Cvoid}
 
 function glGetGraphicsResetStatusARB()
-    ccall((:glGetGraphicsResetStatusARB, libgl), GLenum, ())
+    ccall(getprocaddress_e("glGetGraphicsResetStatusARB"), GLenum, ())
 end
 
 function glGetnTexImageARB(target, level, format, type, bufSize, img)
-    ccall((:glGetnTexImageARB, libgl), Cvoid, (GLenum, GLint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), target, level, format, type, bufSize, img)
+    ccall(getprocaddress_e("glGetnTexImageARB"), Cvoid, (GLenum, GLint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), target, level, format, type, bufSize, img)
 end
 
 function glReadnPixelsARB(x, y, width, height, format, type, bufSize, data)
-    ccall((:glReadnPixelsARB, libgl), Cvoid, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, Ptr{Cvoid}), x, y, width, height, format, type, bufSize, data)
+    ccall(getprocaddress_e("glReadnPixelsARB"), Cvoid, (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, Ptr{Cvoid}), x, y, width, height, format, type, bufSize, data)
 end
 
 function glGetnCompressedTexImageARB(target, lod, bufSize, img)
-    ccall((:glGetnCompressedTexImageARB, libgl), Cvoid, (GLenum, GLint, GLsizei, Ptr{Cvoid}), target, lod, bufSize, img)
+    ccall(getprocaddress_e("glGetnCompressedTexImageARB"), Cvoid, (GLenum, GLint, GLsizei, Ptr{Cvoid}), target, lod, bufSize, img)
 end
 
 function glGetnUniformfvARB(program, location, bufSize, params)
-    ccall((:glGetnUniformfvARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformfvARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, bufSize, params)
 end
 
 function glGetnUniformivARB(program, location, bufSize, params)
-    ccall((:glGetnUniformivARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformivARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, bufSize, params)
 end
 
 function glGetnUniformuivARB(program, location, bufSize, params)
-    ccall((:glGetnUniformuivARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformuivARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, bufSize, params)
 end
 
 function glGetnUniformdvARB(program, location, bufSize, params)
-    ccall((:glGetnUniformdvARB, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, bufSize, params)
+    ccall(getprocaddress_e("glGetnUniformdvARB"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, bufSize, params)
 end
 
 # typedef void ( APIENTRYP PFNGLFRAMEBUFFERSAMPLELOCATIONSFVARBPROC ) ( GLenum target , GLuint start , GLsizei count , const GLfloat * v )
@@ -5277,22 +5277,22 @@ const PFNGLNAMEDFRAMEBUFFERSAMPLELOCATIONSFVARBPROC = Ptr{Cvoid}
 const PFNGLEVALUATEDEPTHVALUESARBPROC = Ptr{Cvoid}
 
 function glFramebufferSampleLocationsfvARB(target, start, count, v)
-    ccall((:glFramebufferSampleLocationsfvARB, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLfloat}), target, start, count, v)
+    ccall(getprocaddress_e("glFramebufferSampleLocationsfvARB"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLfloat}), target, start, count, v)
 end
 
 function glNamedFramebufferSampleLocationsfvARB(framebuffer, start, count, v)
-    ccall((:glNamedFramebufferSampleLocationsfvARB, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLfloat}), framebuffer, start, count, v)
+    ccall(getprocaddress_e("glNamedFramebufferSampleLocationsfvARB"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLfloat}), framebuffer, start, count, v)
 end
 
 function glEvaluateDepthValuesARB()
-    ccall((:glEvaluateDepthValuesARB, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glEvaluateDepthValuesARB"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLMINSAMPLESHADINGARBPROC ) ( GLfloat value )
 const PFNGLMINSAMPLESHADINGARBPROC = Ptr{Cvoid}
 
 function glMinSampleShadingARB(value)
-    ccall((:glMinSampleShadingARB, libgl), Cvoid, (GLfloat,), value)
+    ccall(getprocaddress_e("glMinSampleShadingARB"), Cvoid, (GLfloat,), value)
 end
 
 # typedef void ( APIENTRYP PFNGLNAMEDSTRINGARBPROC ) ( GLenum type , GLint namelen , const GLchar * name , GLint stringlen , const GLchar * string )
@@ -5314,27 +5314,27 @@ const PFNGLGETNAMEDSTRINGARBPROC = Ptr{Cvoid}
 const PFNGLGETNAMEDSTRINGIVARBPROC = Ptr{Cvoid}
 
 function glNamedStringARB(type, namelen, name, stringlen, string)
-    ccall((:glNamedStringARB, libgl), Cvoid, (GLenum, GLint, Ptr{GLchar}, GLint, Ptr{GLchar}), type, namelen, name, stringlen, string)
+    ccall(getprocaddress_e("glNamedStringARB"), Cvoid, (GLenum, GLint, Ptr{GLchar}, GLint, Ptr{GLchar}), type, namelen, name, stringlen, string)
 end
 
 function glDeleteNamedStringARB(namelen, name)
-    ccall((:glDeleteNamedStringARB, libgl), Cvoid, (GLint, Ptr{GLchar}), namelen, name)
+    ccall(getprocaddress_e("glDeleteNamedStringARB"), Cvoid, (GLint, Ptr{GLchar}), namelen, name)
 end
 
 function glCompileShaderIncludeARB(shader, count, path, length)
-    ccall((:glCompileShaderIncludeARB, libgl), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLint}), shader, count, path, length)
+    ccall(getprocaddress_e("glCompileShaderIncludeARB"), Cvoid, (GLuint, GLsizei, Ptr{Ptr{GLchar}}, Ptr{GLint}), shader, count, path, length)
 end
 
 function glIsNamedStringARB(namelen, name)
-    ccall((:glIsNamedStringARB, libgl), GLboolean, (GLint, Ptr{GLchar}), namelen, name)
+    ccall(getprocaddress_e("glIsNamedStringARB"), GLboolean, (GLint, Ptr{GLchar}), namelen, name)
 end
 
 function glGetNamedStringARB(namelen, name, bufSize, stringlen, string)
-    ccall((:glGetNamedStringARB, libgl), Cvoid, (GLint, Ptr{GLchar}, GLsizei, Ptr{GLint}, Ptr{GLchar}), namelen, name, bufSize, stringlen, string)
+    ccall(getprocaddress_e("glGetNamedStringARB"), Cvoid, (GLint, Ptr{GLchar}, GLsizei, Ptr{GLint}, Ptr{GLchar}), namelen, name, bufSize, stringlen, string)
 end
 
 function glGetNamedStringivARB(namelen, name, pname, params)
-    ccall((:glGetNamedStringivARB, libgl), Cvoid, (GLint, Ptr{GLchar}, GLenum, Ptr{GLint}), namelen, name, pname, params)
+    ccall(getprocaddress_e("glGetNamedStringivARB"), Cvoid, (GLint, Ptr{GLchar}, GLenum, Ptr{GLint}), namelen, name, pname, params)
 end
 
 # typedef void ( APIENTRYP PFNGLBUFFERPAGECOMMITMENTARBPROC ) ( GLenum target , GLintptr offset , GLsizeiptr size , GLboolean commit )
@@ -5347,29 +5347,29 @@ const PFNGLNAMEDBUFFERPAGECOMMITMENTEXTPROC = Ptr{Cvoid}
 const PFNGLNAMEDBUFFERPAGECOMMITMENTARBPROC = Ptr{Cvoid}
 
 function glBufferPageCommitmentARB(target, offset, size, commit)
-    ccall((:glBufferPageCommitmentARB, libgl), Cvoid, (GLenum, GLintptr, GLsizeiptr, GLboolean), target, offset, size, commit)
+    ccall(getprocaddress_e("glBufferPageCommitmentARB"), Cvoid, (GLenum, GLintptr, GLsizeiptr, GLboolean), target, offset, size, commit)
 end
 
 function glNamedBufferPageCommitmentEXT(buffer, offset, size, commit)
-    ccall((:glNamedBufferPageCommitmentEXT, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr, GLboolean), buffer, offset, size, commit)
+    ccall(getprocaddress_e("glNamedBufferPageCommitmentEXT"), Cvoid, (GLuint, GLintptr, GLsizeiptr, GLboolean), buffer, offset, size, commit)
 end
 
 function glNamedBufferPageCommitmentARB(buffer, offset, size, commit)
-    ccall((:glNamedBufferPageCommitmentARB, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr, GLboolean), buffer, offset, size, commit)
+    ccall(getprocaddress_e("glNamedBufferPageCommitmentARB"), Cvoid, (GLuint, GLintptr, GLsizeiptr, GLboolean), buffer, offset, size, commit)
 end
 
 # typedef void ( APIENTRYP PFNGLTEXPAGECOMMITMENTARBPROC ) ( GLenum target , GLint level , GLint xoffset , GLint yoffset , GLint zoffset , GLsizei width , GLsizei height , GLsizei depth , GLboolean commit )
 const PFNGLTEXPAGECOMMITMENTARBPROC = Ptr{Cvoid}
 
 function glTexPageCommitmentARB(target, level, xoffset, yoffset, zoffset, width, height, depth, commit)
-    ccall((:glTexPageCommitmentARB, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean), target, level, xoffset, yoffset, zoffset, width, height, depth, commit)
+    ccall(getprocaddress_e("glTexPageCommitmentARB"), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean), target, level, xoffset, yoffset, zoffset, width, height, depth, commit)
 end
 
 # typedef void ( APIENTRYP PFNGLTEXBUFFERARBPROC ) ( GLenum target , GLenum internalformat , GLuint buffer )
 const PFNGLTEXBUFFERARBPROC = Ptr{Cvoid}
 
 function glTexBufferARB(target, internalformat, buffer)
-    ccall((:glTexBufferARB, libgl), Cvoid, (GLenum, GLenum, GLuint), target, internalformat, buffer)
+    ccall(getprocaddress_e("glTexBufferARB"), Cvoid, (GLenum, GLenum, GLuint), target, internalformat, buffer)
 end
 
 # typedef void ( APIENTRYP PFNGLDEPTHRANGEARRAYDVNVPROC ) ( GLuint first , GLsizei count , const GLdouble * v )
@@ -5379,25 +5379,25 @@ const PFNGLDEPTHRANGEARRAYDVNVPROC = Ptr{Cvoid}
 const PFNGLDEPTHRANGEINDEXEDDNVPROC = Ptr{Cvoid}
 
 function glDepthRangeArraydvNV(first, count, v)
-    ccall((:glDepthRangeArraydvNV, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLdouble}), first, count, v)
+    ccall(getprocaddress_e("glDepthRangeArraydvNV"), Cvoid, (GLuint, GLsizei, Ptr{GLdouble}), first, count, v)
 end
 
 function glDepthRangeIndexeddNV(index, n, f)
-    ccall((:glDepthRangeIndexeddNV, libgl), Cvoid, (GLuint, GLdouble, GLdouble), index, n, f)
+    ccall(getprocaddress_e("glDepthRangeIndexeddNV"), Cvoid, (GLuint, GLdouble, GLdouble), index, n, f)
 end
 
 # typedef void ( APIENTRYP PFNGLBLENDBARRIERKHRPROC ) ( void )
 const PFNGLBLENDBARRIERKHRPROC = Ptr{Cvoid}
 
 function glBlendBarrierKHR()
-    ccall((:glBlendBarrierKHR, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glBlendBarrierKHR"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLMAXSHADERCOMPILERTHREADSKHRPROC ) ( GLuint count )
 const PFNGLMAXSHADERCOMPILERTHREADSKHRPROC = Ptr{Cvoid}
 
 function glMaxShaderCompilerThreadsKHR(count)
-    ccall((:glMaxShaderCompilerThreadsKHR, libgl), Cvoid, (GLuint,), count)
+    ccall(getprocaddress_e("glMaxShaderCompilerThreadsKHR"), Cvoid, (GLuint,), count)
 end
 
 # typedef void ( APIENTRYP PFNGLRENDERBUFFERSTORAGEMULTISAMPLEADVANCEDAMDPROC ) ( GLenum target , GLsizei samples , GLsizei storageSamples , GLenum internalformat , GLsizei width , GLsizei height )
@@ -5407,11 +5407,11 @@ const PFNGLRENDERBUFFERSTORAGEMULTISAMPLEADVANCEDAMDPROC = Ptr{Cvoid}
 const PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEADVANCEDAMDPROC = Ptr{Cvoid}
 
 function glRenderbufferStorageMultisampleAdvancedAMD(target, samples, storageSamples, internalformat, width, height)
-    ccall((:glRenderbufferStorageMultisampleAdvancedAMD, libgl), Cvoid, (GLenum, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), target, samples, storageSamples, internalformat, width, height)
+    ccall(getprocaddress_e("glRenderbufferStorageMultisampleAdvancedAMD"), Cvoid, (GLenum, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), target, samples, storageSamples, internalformat, width, height)
 end
 
 function glNamedRenderbufferStorageMultisampleAdvancedAMD(renderbuffer, samples, storageSamples, internalformat, width, height)
-    ccall((:glNamedRenderbufferStorageMultisampleAdvancedAMD, libgl), Cvoid, (GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, samples, storageSamples, internalformat, width, height)
+    ccall(getprocaddress_e("glNamedRenderbufferStorageMultisampleAdvancedAMD"), Cvoid, (GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, samples, storageSamples, internalformat, width, height)
 end
 
 # typedef void ( APIENTRYP PFNGLGETPERFMONITORGROUPSAMDPROC ) ( GLint * numGroups , GLsizei groupsSize , GLuint * groups )
@@ -5448,47 +5448,47 @@ const PFNGLENDPERFMONITORAMDPROC = Ptr{Cvoid}
 const PFNGLGETPERFMONITORCOUNTERDATAAMDPROC = Ptr{Cvoid}
 
 function glGetPerfMonitorGroupsAMD(numGroups, groupsSize, groups)
-    ccall((:glGetPerfMonitorGroupsAMD, libgl), Cvoid, (Ptr{GLint}, GLsizei, Ptr{GLuint}), numGroups, groupsSize, groups)
+    ccall(getprocaddress_e("glGetPerfMonitorGroupsAMD"), Cvoid, (Ptr{GLint}, GLsizei, Ptr{GLuint}), numGroups, groupsSize, groups)
 end
 
 function glGetPerfMonitorCountersAMD(group, numCounters, maxActiveCounters, counterSize, counters)
-    ccall((:glGetPerfMonitorCountersAMD, libgl), Cvoid, (GLuint, Ptr{GLint}, Ptr{GLint}, GLsizei, Ptr{GLuint}), group, numCounters, maxActiveCounters, counterSize, counters)
+    ccall(getprocaddress_e("glGetPerfMonitorCountersAMD"), Cvoid, (GLuint, Ptr{GLint}, Ptr{GLint}, GLsizei, Ptr{GLuint}), group, numCounters, maxActiveCounters, counterSize, counters)
 end
 
 function glGetPerfMonitorGroupStringAMD(group, bufSize, length, groupString)
-    ccall((:glGetPerfMonitorGroupStringAMD, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), group, bufSize, length, groupString)
+    ccall(getprocaddress_e("glGetPerfMonitorGroupStringAMD"), Cvoid, (GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), group, bufSize, length, groupString)
 end
 
 function glGetPerfMonitorCounterStringAMD(group, counter, bufSize, length, counterString)
-    ccall((:glGetPerfMonitorCounterStringAMD, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), group, counter, bufSize, length, counterString)
+    ccall(getprocaddress_e("glGetPerfMonitorCounterStringAMD"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), group, counter, bufSize, length, counterString)
 end
 
 function glGetPerfMonitorCounterInfoAMD(group, counter, pname, data)
-    ccall((:glGetPerfMonitorCounterInfoAMD, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{Cvoid}), group, counter, pname, data)
+    ccall(getprocaddress_e("glGetPerfMonitorCounterInfoAMD"), Cvoid, (GLuint, GLuint, GLenum, Ptr{Cvoid}), group, counter, pname, data)
 end
 
 function glGenPerfMonitorsAMD(n, monitors)
-    ccall((:glGenPerfMonitorsAMD, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, monitors)
+    ccall(getprocaddress_e("glGenPerfMonitorsAMD"), Cvoid, (GLsizei, Ptr{GLuint}), n, monitors)
 end
 
 function glDeletePerfMonitorsAMD(n, monitors)
-    ccall((:glDeletePerfMonitorsAMD, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, monitors)
+    ccall(getprocaddress_e("glDeletePerfMonitorsAMD"), Cvoid, (GLsizei, Ptr{GLuint}), n, monitors)
 end
 
 function glSelectPerfMonitorCountersAMD(monitor, enable, group, numCounters, counterList)
-    ccall((:glSelectPerfMonitorCountersAMD, libgl), Cvoid, (GLuint, GLboolean, GLuint, GLint, Ptr{GLuint}), monitor, enable, group, numCounters, counterList)
+    ccall(getprocaddress_e("glSelectPerfMonitorCountersAMD"), Cvoid, (GLuint, GLboolean, GLuint, GLint, Ptr{GLuint}), monitor, enable, group, numCounters, counterList)
 end
 
 function glBeginPerfMonitorAMD(monitor)
-    ccall((:glBeginPerfMonitorAMD, libgl), Cvoid, (GLuint,), monitor)
+    ccall(getprocaddress_e("glBeginPerfMonitorAMD"), Cvoid, (GLuint,), monitor)
 end
 
 function glEndPerfMonitorAMD(monitor)
-    ccall((:glEndPerfMonitorAMD, libgl), Cvoid, (GLuint,), monitor)
+    ccall(getprocaddress_e("glEndPerfMonitorAMD"), Cvoid, (GLuint,), monitor)
 end
 
 function glGetPerfMonitorCounterDataAMD(monitor, pname, dataSize, data, bytesWritten)
-    ccall((:glGetPerfMonitorCounterDataAMD, libgl), Cvoid, (GLuint, GLenum, GLsizei, Ptr{GLuint}, Ptr{GLint}), monitor, pname, dataSize, data, bytesWritten)
+    ccall(getprocaddress_e("glGetPerfMonitorCounterDataAMD"), Cvoid, (GLuint, GLenum, GLsizei, Ptr{GLuint}, Ptr{GLint}), monitor, pname, dataSize, data, bytesWritten)
 end
 
 const GLeglImageOES = Ptr{Cvoid}
@@ -5500,11 +5500,11 @@ const PFNGLEGLIMAGETARGETTEXSTORAGEEXTPROC = Ptr{Cvoid}
 const PFNGLEGLIMAGETARGETTEXTURESTORAGEEXTPROC = Ptr{Cvoid}
 
 function glEGLImageTargetTexStorageEXT(target, image, attrib_list)
-    ccall((:glEGLImageTargetTexStorageEXT, libgl), Cvoid, (GLenum, GLeglImageOES, Ptr{GLint}), target, image, attrib_list)
+    ccall(getprocaddress_e("glEGLImageTargetTexStorageEXT"), Cvoid, (GLenum, GLeglImageOES, Ptr{GLint}), target, image, attrib_list)
 end
 
 function glEGLImageTargetTextureStorageEXT(texture, image, attrib_list)
-    ccall((:glEGLImageTargetTextureStorageEXT, libgl), Cvoid, (GLuint, GLeglImageOES, Ptr{GLint}), texture, image, attrib_list)
+    ccall(getprocaddress_e("glEGLImageTargetTextureStorageEXT"), Cvoid, (GLuint, GLeglImageOES, Ptr{GLint}), texture, image, attrib_list)
 end
 
 # typedef void ( APIENTRYP PFNGLLABELOBJECTEXTPROC ) ( GLenum type , GLuint object , GLsizei length , const GLchar * label )
@@ -5514,11 +5514,11 @@ const PFNGLLABELOBJECTEXTPROC = Ptr{Cvoid}
 const PFNGLGETOBJECTLABELEXTPROC = Ptr{Cvoid}
 
 function glLabelObjectEXT(type, object, length, label)
-    ccall((:glLabelObjectEXT, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLchar}), type, object, length, label)
+    ccall(getprocaddress_e("glLabelObjectEXT"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLchar}), type, object, length, label)
 end
 
 function glGetObjectLabelEXT(type, object, bufSize, length, label)
-    ccall((:glGetObjectLabelEXT, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), type, object, bufSize, length, label)
+    ccall(getprocaddress_e("glGetObjectLabelEXT"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLsizei}, Ptr{GLchar}), type, object, bufSize, length, label)
 end
 
 # typedef void ( APIENTRYP PFNGLINSERTEVENTMARKEREXTPROC ) ( GLsizei length , const GLchar * marker )
@@ -5531,15 +5531,15 @@ const PFNGLPUSHGROUPMARKEREXTPROC = Ptr{Cvoid}
 const PFNGLPOPGROUPMARKEREXTPROC = Ptr{Cvoid}
 
 function glInsertEventMarkerEXT(length, marker)
-    ccall((:glInsertEventMarkerEXT, libgl), Cvoid, (GLsizei, Ptr{GLchar}), length, marker)
+    ccall(getprocaddress_e("glInsertEventMarkerEXT"), Cvoid, (GLsizei, Ptr{GLchar}), length, marker)
 end
 
 function glPushGroupMarkerEXT(length, marker)
-    ccall((:glPushGroupMarkerEXT, libgl), Cvoid, (GLsizei, Ptr{GLchar}), length, marker)
+    ccall(getprocaddress_e("glPushGroupMarkerEXT"), Cvoid, (GLsizei, Ptr{GLchar}), length, marker)
 end
 
 function glPopGroupMarkerEXT()
-    ccall((:glPopGroupMarkerEXT, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glPopGroupMarkerEXT"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLMATRIXLOADFEXTPROC ) ( GLenum mode , const GLfloat * m )
@@ -6308,1023 +6308,1023 @@ const PFNGLTEXTUREPAGECOMMITMENTEXTPROC = Ptr{Cvoid}
 const PFNGLVERTEXARRAYVERTEXATTRIBDIVISOREXTPROC = Ptr{Cvoid}
 
 function glMatrixLoadfEXT(mode, m)
-    ccall((:glMatrixLoadfEXT, libgl), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
+    ccall(getprocaddress_e("glMatrixLoadfEXT"), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
 end
 
 function glMatrixLoaddEXT(mode, m)
-    ccall((:glMatrixLoaddEXT, libgl), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
+    ccall(getprocaddress_e("glMatrixLoaddEXT"), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
 end
 
 function glMatrixMultfEXT(mode, m)
-    ccall((:glMatrixMultfEXT, libgl), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
+    ccall(getprocaddress_e("glMatrixMultfEXT"), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
 end
 
 function glMatrixMultdEXT(mode, m)
-    ccall((:glMatrixMultdEXT, libgl), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
+    ccall(getprocaddress_e("glMatrixMultdEXT"), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
 end
 
 function glMatrixLoadIdentityEXT(mode)
-    ccall((:glMatrixLoadIdentityEXT, libgl), Cvoid, (GLenum,), mode)
+    ccall(getprocaddress_e("glMatrixLoadIdentityEXT"), Cvoid, (GLenum,), mode)
 end
 
 function glMatrixRotatefEXT(mode, angle, x, y, z)
-    ccall((:glMatrixRotatefEXT, libgl), Cvoid, (GLenum, GLfloat, GLfloat, GLfloat, GLfloat), mode, angle, x, y, z)
+    ccall(getprocaddress_e("glMatrixRotatefEXT"), Cvoid, (GLenum, GLfloat, GLfloat, GLfloat, GLfloat), mode, angle, x, y, z)
 end
 
 function glMatrixRotatedEXT(mode, angle, x, y, z)
-    ccall((:glMatrixRotatedEXT, libgl), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble, GLdouble), mode, angle, x, y, z)
+    ccall(getprocaddress_e("glMatrixRotatedEXT"), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble, GLdouble), mode, angle, x, y, z)
 end
 
 function glMatrixScalefEXT(mode, x, y, z)
-    ccall((:glMatrixScalefEXT, libgl), Cvoid, (GLenum, GLfloat, GLfloat, GLfloat), mode, x, y, z)
+    ccall(getprocaddress_e("glMatrixScalefEXT"), Cvoid, (GLenum, GLfloat, GLfloat, GLfloat), mode, x, y, z)
 end
 
 function glMatrixScaledEXT(mode, x, y, z)
-    ccall((:glMatrixScaledEXT, libgl), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble), mode, x, y, z)
+    ccall(getprocaddress_e("glMatrixScaledEXT"), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble), mode, x, y, z)
 end
 
 function glMatrixTranslatefEXT(mode, x, y, z)
-    ccall((:glMatrixTranslatefEXT, libgl), Cvoid, (GLenum, GLfloat, GLfloat, GLfloat), mode, x, y, z)
+    ccall(getprocaddress_e("glMatrixTranslatefEXT"), Cvoid, (GLenum, GLfloat, GLfloat, GLfloat), mode, x, y, z)
 end
 
 function glMatrixTranslatedEXT(mode, x, y, z)
-    ccall((:glMatrixTranslatedEXT, libgl), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble), mode, x, y, z)
+    ccall(getprocaddress_e("glMatrixTranslatedEXT"), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble), mode, x, y, z)
 end
 
 function glMatrixFrustumEXT(mode, left, right, bottom, top, zNear, zFar)
-    ccall((:glMatrixFrustumEXT, libgl), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble), mode, left, right, bottom, top, zNear, zFar)
+    ccall(getprocaddress_e("glMatrixFrustumEXT"), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble), mode, left, right, bottom, top, zNear, zFar)
 end
 
 function glMatrixOrthoEXT(mode, left, right, bottom, top, zNear, zFar)
-    ccall((:glMatrixOrthoEXT, libgl), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble), mode, left, right, bottom, top, zNear, zFar)
+    ccall(getprocaddress_e("glMatrixOrthoEXT"), Cvoid, (GLenum, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble), mode, left, right, bottom, top, zNear, zFar)
 end
 
 function glMatrixPopEXT(mode)
-    ccall((:glMatrixPopEXT, libgl), Cvoid, (GLenum,), mode)
+    ccall(getprocaddress_e("glMatrixPopEXT"), Cvoid, (GLenum,), mode)
 end
 
 function glMatrixPushEXT(mode)
-    ccall((:glMatrixPushEXT, libgl), Cvoid, (GLenum,), mode)
+    ccall(getprocaddress_e("glMatrixPushEXT"), Cvoid, (GLenum,), mode)
 end
 
 function glClientAttribDefaultEXT(mask)
-    ccall((:glClientAttribDefaultEXT, libgl), Cvoid, (GLbitfield,), mask)
+    ccall(getprocaddress_e("glClientAttribDefaultEXT"), Cvoid, (GLbitfield,), mask)
 end
 
 function glPushClientAttribDefaultEXT(mask)
-    ccall((:glPushClientAttribDefaultEXT, libgl), Cvoid, (GLbitfield,), mask)
+    ccall(getprocaddress_e("glPushClientAttribDefaultEXT"), Cvoid, (GLbitfield,), mask)
 end
 
 function glTextureParameterfEXT(texture, target, pname, param)
-    ccall((:glTextureParameterfEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLfloat), texture, target, pname, param)
+    ccall(getprocaddress_e("glTextureParameterfEXT"), Cvoid, (GLuint, GLenum, GLenum, GLfloat), texture, target, pname, param)
 end
 
 function glTextureParameterfvEXT(texture, target, pname, params)
-    ccall((:glTextureParameterfvEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLfloat}), texture, target, pname, params)
+    ccall(getprocaddress_e("glTextureParameterfvEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLfloat}), texture, target, pname, params)
 end
 
 function glTextureParameteriEXT(texture, target, pname, param)
-    ccall((:glTextureParameteriEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLint), texture, target, pname, param)
+    ccall(getprocaddress_e("glTextureParameteriEXT"), Cvoid, (GLuint, GLenum, GLenum, GLint), texture, target, pname, param)
 end
 
 function glTextureParameterivEXT(texture, target, pname, params)
-    ccall((:glTextureParameterivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
+    ccall(getprocaddress_e("glTextureParameterivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
 end
 
 function glTextureImage1DEXT(texture, target, level, internalformat, width, border, format, type, pixels)
-    ccall((:glTextureImage1DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, internalformat, width, border, format, type, pixels)
+    ccall(getprocaddress_e("glTextureImage1DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, internalformat, width, border, format, type, pixels)
 end
 
 function glTextureImage2DEXT(texture, target, level, internalformat, width, height, border, format, type, pixels)
-    ccall((:glTextureImage2DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, internalformat, width, height, border, format, type, pixels)
+    ccall(getprocaddress_e("glTextureImage2DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, internalformat, width, height, border, format, type, pixels)
 end
 
 function glTextureSubImage1DEXT(texture, target, level, xoffset, width, format, type, pixels)
-    ccall((:glTextureSubImage1DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, xoffset, width, format, type, pixels)
+    ccall(getprocaddress_e("glTextureSubImage1DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, xoffset, width, format, type, pixels)
 end
 
 function glTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, type, pixels)
-    ccall((:glTextureSubImage2DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, width, height, format, type, pixels)
+    ccall(getprocaddress_e("glTextureSubImage2DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, width, height, format, type, pixels)
 end
 
 function glCopyTextureImage1DEXT(texture, target, level, internalformat, x, y, width, border)
-    ccall((:glCopyTextureImage1DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), texture, target, level, internalformat, x, y, width, border)
+    ccall(getprocaddress_e("glCopyTextureImage1DEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), texture, target, level, internalformat, x, y, width, border)
 end
 
 function glCopyTextureImage2DEXT(texture, target, level, internalformat, x, y, width, height, border)
-    ccall((:glCopyTextureImage2DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), texture, target, level, internalformat, x, y, width, height, border)
+    ccall(getprocaddress_e("glCopyTextureImage2DEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), texture, target, level, internalformat, x, y, width, height, border)
 end
 
 function glCopyTextureSubImage1DEXT(texture, target, level, xoffset, x, y, width)
-    ccall((:glCopyTextureSubImage1DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei), texture, target, level, xoffset, x, y, width)
+    ccall(getprocaddress_e("glCopyTextureSubImage1DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei), texture, target, level, xoffset, x, y, width)
 end
 
 function glCopyTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, x, y, width, height)
-    ccall((:glCopyTextureSubImage2DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, target, level, xoffset, yoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyTextureSubImage2DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, target, level, xoffset, yoffset, x, y, width, height)
 end
 
 function glGetTextureImageEXT(texture, target, level, format, type, pixels)
-    ccall((:glGetTextureImageEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, format, type, pixels)
+    ccall(getprocaddress_e("glGetTextureImageEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, format, type, pixels)
 end
 
 function glGetTextureParameterfvEXT(texture, target, pname, params)
-    ccall((:glGetTextureParameterfvEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLfloat}), texture, target, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameterfvEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLfloat}), texture, target, pname, params)
 end
 
 function glGetTextureParameterivEXT(texture, target, pname, params)
-    ccall((:glGetTextureParameterivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameterivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
 end
 
 function glGetTextureLevelParameterfvEXT(texture, target, level, pname, params)
-    ccall((:glGetTextureLevelParameterfvEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, Ptr{GLfloat}), texture, target, level, pname, params)
+    ccall(getprocaddress_e("glGetTextureLevelParameterfvEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, Ptr{GLfloat}), texture, target, level, pname, params)
 end
 
 function glGetTextureLevelParameterivEXT(texture, target, level, pname, params)
-    ccall((:glGetTextureLevelParameterivEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, Ptr{GLint}), texture, target, level, pname, params)
+    ccall(getprocaddress_e("glGetTextureLevelParameterivEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, Ptr{GLint}), texture, target, level, pname, params)
 end
 
 function glTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, format, type, pixels)
-    ccall((:glTextureImage3DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, internalformat, width, height, depth, border, format, type, pixels)
+    ccall(getprocaddress_e("glTextureImage3DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, internalformat, width, height, depth, border, format, type, pixels)
 end
 
 function glTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
-    ccall((:glTextureSubImage3DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
+    ccall(getprocaddress_e("glTextureSubImage3DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 end
 
 function glCopyTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, x, y, width, height)
-    ccall((:glCopyTextureSubImage3DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, target, level, xoffset, yoffset, zoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyTextureSubImage3DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texture, target, level, xoffset, yoffset, zoffset, x, y, width, height)
 end
 
 function glBindMultiTextureEXT(texunit, target, texture)
-    ccall((:glBindMultiTextureEXT, libgl), Cvoid, (GLenum, GLenum, GLuint), texunit, target, texture)
+    ccall(getprocaddress_e("glBindMultiTextureEXT"), Cvoid, (GLenum, GLenum, GLuint), texunit, target, texture)
 end
 
 function glMultiTexCoordPointerEXT(texunit, size, type, stride, pointer)
-    ccall((:glMultiTexCoordPointerEXT, libgl), Cvoid, (GLenum, GLint, GLenum, GLsizei, Ptr{Cvoid}), texunit, size, type, stride, pointer)
+    ccall(getprocaddress_e("glMultiTexCoordPointerEXT"), Cvoid, (GLenum, GLint, GLenum, GLsizei, Ptr{Cvoid}), texunit, size, type, stride, pointer)
 end
 
 function glMultiTexEnvfEXT(texunit, target, pname, param)
-    ccall((:glMultiTexEnvfEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLfloat), texunit, target, pname, param)
+    ccall(getprocaddress_e("glMultiTexEnvfEXT"), Cvoid, (GLenum, GLenum, GLenum, GLfloat), texunit, target, pname, param)
 end
 
 function glMultiTexEnvfvEXT(texunit, target, pname, params)
-    ccall((:glMultiTexEnvfvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glMultiTexEnvfvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
 end
 
 function glMultiTexEnviEXT(texunit, target, pname, param)
-    ccall((:glMultiTexEnviEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLint), texunit, target, pname, param)
+    ccall(getprocaddress_e("glMultiTexEnviEXT"), Cvoid, (GLenum, GLenum, GLenum, GLint), texunit, target, pname, param)
 end
 
 function glMultiTexEnvivEXT(texunit, target, pname, params)
-    ccall((:glMultiTexEnvivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glMultiTexEnvivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
 end
 
 function glMultiTexGendEXT(texunit, coord, pname, param)
-    ccall((:glMultiTexGendEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLdouble), texunit, coord, pname, param)
+    ccall(getprocaddress_e("glMultiTexGendEXT"), Cvoid, (GLenum, GLenum, GLenum, GLdouble), texunit, coord, pname, param)
 end
 
 function glMultiTexGendvEXT(texunit, coord, pname, params)
-    ccall((:glMultiTexGendvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLdouble}), texunit, coord, pname, params)
+    ccall(getprocaddress_e("glMultiTexGendvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLdouble}), texunit, coord, pname, params)
 end
 
 function glMultiTexGenfEXT(texunit, coord, pname, param)
-    ccall((:glMultiTexGenfEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLfloat), texunit, coord, pname, param)
+    ccall(getprocaddress_e("glMultiTexGenfEXT"), Cvoid, (GLenum, GLenum, GLenum, GLfloat), texunit, coord, pname, param)
 end
 
 function glMultiTexGenfvEXT(texunit, coord, pname, params)
-    ccall((:glMultiTexGenfvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, coord, pname, params)
+    ccall(getprocaddress_e("glMultiTexGenfvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, coord, pname, params)
 end
 
 function glMultiTexGeniEXT(texunit, coord, pname, param)
-    ccall((:glMultiTexGeniEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLint), texunit, coord, pname, param)
+    ccall(getprocaddress_e("glMultiTexGeniEXT"), Cvoid, (GLenum, GLenum, GLenum, GLint), texunit, coord, pname, param)
 end
 
 function glMultiTexGenivEXT(texunit, coord, pname, params)
-    ccall((:glMultiTexGenivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, coord, pname, params)
+    ccall(getprocaddress_e("glMultiTexGenivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, coord, pname, params)
 end
 
 function glGetMultiTexEnvfvEXT(texunit, target, pname, params)
-    ccall((:glGetMultiTexEnvfvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexEnvfvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
 end
 
 function glGetMultiTexEnvivEXT(texunit, target, pname, params)
-    ccall((:glGetMultiTexEnvivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexEnvivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
 end
 
 function glGetMultiTexGendvEXT(texunit, coord, pname, params)
-    ccall((:glGetMultiTexGendvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLdouble}), texunit, coord, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexGendvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLdouble}), texunit, coord, pname, params)
 end
 
 function glGetMultiTexGenfvEXT(texunit, coord, pname, params)
-    ccall((:glGetMultiTexGenfvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, coord, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexGenfvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, coord, pname, params)
 end
 
 function glGetMultiTexGenivEXT(texunit, coord, pname, params)
-    ccall((:glGetMultiTexGenivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, coord, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexGenivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, coord, pname, params)
 end
 
 function glMultiTexParameteriEXT(texunit, target, pname, param)
-    ccall((:glMultiTexParameteriEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLint), texunit, target, pname, param)
+    ccall(getprocaddress_e("glMultiTexParameteriEXT"), Cvoid, (GLenum, GLenum, GLenum, GLint), texunit, target, pname, param)
 end
 
 function glMultiTexParameterivEXT(texunit, target, pname, params)
-    ccall((:glMultiTexParameterivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glMultiTexParameterivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
 end
 
 function glMultiTexParameterfEXT(texunit, target, pname, param)
-    ccall((:glMultiTexParameterfEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLfloat), texunit, target, pname, param)
+    ccall(getprocaddress_e("glMultiTexParameterfEXT"), Cvoid, (GLenum, GLenum, GLenum, GLfloat), texunit, target, pname, param)
 end
 
 function glMultiTexParameterfvEXT(texunit, target, pname, params)
-    ccall((:glMultiTexParameterfvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glMultiTexParameterfvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
 end
 
 function glMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, format, type, pixels)
-    ccall((:glMultiTexImage1DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, internalformat, width, border, format, type, pixels)
+    ccall(getprocaddress_e("glMultiTexImage1DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, internalformat, width, border, format, type, pixels)
 end
 
 function glMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, format, type, pixels)
-    ccall((:glMultiTexImage2DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, border, format, type, pixels)
+    ccall(getprocaddress_e("glMultiTexImage2DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, border, format, type, pixels)
 end
 
 function glMultiTexSubImage1DEXT(texunit, target, level, xoffset, width, format, type, pixels)
-    ccall((:glMultiTexSubImage1DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, xoffset, width, format, type, pixels)
+    ccall(getprocaddress_e("glMultiTexSubImage1DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, xoffset, width, format, type, pixels)
 end
 
 function glMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, width, height, format, type, pixels)
-    ccall((:glMultiTexSubImage2DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, width, height, format, type, pixels)
+    ccall(getprocaddress_e("glMultiTexSubImage2DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, width, height, format, type, pixels)
 end
 
 function glCopyMultiTexImage1DEXT(texunit, target, level, internalformat, x, y, width, border)
-    ccall((:glCopyMultiTexImage1DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), texunit, target, level, internalformat, x, y, width, border)
+    ccall(getprocaddress_e("glCopyMultiTexImage1DEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint), texunit, target, level, internalformat, x, y, width, border)
 end
 
 function glCopyMultiTexImage2DEXT(texunit, target, level, internalformat, x, y, width, height, border)
-    ccall((:glCopyMultiTexImage2DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), texunit, target, level, internalformat, x, y, width, height, border)
+    ccall(getprocaddress_e("glCopyMultiTexImage2DEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint), texunit, target, level, internalformat, x, y, width, height, border)
 end
 
 function glCopyMultiTexSubImage1DEXT(texunit, target, level, xoffset, x, y, width)
-    ccall((:glCopyMultiTexSubImage1DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei), texunit, target, level, xoffset, x, y, width)
+    ccall(getprocaddress_e("glCopyMultiTexSubImage1DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei), texunit, target, level, xoffset, x, y, width)
 end
 
 function glCopyMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, x, y, width, height)
-    ccall((:glCopyMultiTexSubImage2DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texunit, target, level, xoffset, yoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyMultiTexSubImage2DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texunit, target, level, xoffset, yoffset, x, y, width, height)
 end
 
 function glGetMultiTexImageEXT(texunit, target, level, format, type, pixels)
-    ccall((:glGetMultiTexImageEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, format, type, pixels)
+    ccall(getprocaddress_e("glGetMultiTexImageEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, format, type, pixels)
 end
 
 function glGetMultiTexParameterfvEXT(texunit, target, pname, params)
-    ccall((:glGetMultiTexParameterfvEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexParameterfvEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLfloat}), texunit, target, pname, params)
 end
 
 function glGetMultiTexParameterivEXT(texunit, target, pname, params)
-    ccall((:glGetMultiTexParameterivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexParameterivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
 end
 
 function glGetMultiTexLevelParameterfvEXT(texunit, target, level, pname, params)
-    ccall((:glGetMultiTexLevelParameterfvEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, Ptr{GLfloat}), texunit, target, level, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexLevelParameterfvEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, Ptr{GLfloat}), texunit, target, level, pname, params)
 end
 
 function glGetMultiTexLevelParameterivEXT(texunit, target, level, pname, params)
-    ccall((:glGetMultiTexLevelParameterivEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, Ptr{GLint}), texunit, target, level, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexLevelParameterivEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, Ptr{GLint}), texunit, target, level, pname, params)
 end
 
 function glMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels)
-    ccall((:glMultiTexImage3DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, depth, border, format, type, pixels)
+    ccall(getprocaddress_e("glMultiTexImage3DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, depth, border, format, type, pixels)
 end
 
 function glMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
-    ccall((:glMultiTexSubImage3DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
+    ccall(getprocaddress_e("glMultiTexSubImage3DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 end
 
 function glCopyMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height)
-    ccall((:glCopyMultiTexSubImage3DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height)
+    ccall(getprocaddress_e("glCopyMultiTexSubImage3DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei), texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height)
 end
 
 function glEnableClientStateIndexedEXT(array, index)
-    ccall((:glEnableClientStateIndexedEXT, libgl), Cvoid, (GLenum, GLuint), array, index)
+    ccall(getprocaddress_e("glEnableClientStateIndexedEXT"), Cvoid, (GLenum, GLuint), array, index)
 end
 
 function glDisableClientStateIndexedEXT(array, index)
-    ccall((:glDisableClientStateIndexedEXT, libgl), Cvoid, (GLenum, GLuint), array, index)
+    ccall(getprocaddress_e("glDisableClientStateIndexedEXT"), Cvoid, (GLenum, GLuint), array, index)
 end
 
 function glGetFloatIndexedvEXT(target, index, data)
-    ccall((:glGetFloatIndexedvEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), target, index, data)
+    ccall(getprocaddress_e("glGetFloatIndexedvEXT"), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), target, index, data)
 end
 
 function glGetDoubleIndexedvEXT(target, index, data)
-    ccall((:glGetDoubleIndexedvEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{GLdouble}), target, index, data)
+    ccall(getprocaddress_e("glGetDoubleIndexedvEXT"), Cvoid, (GLenum, GLuint, Ptr{GLdouble}), target, index, data)
 end
 
 function glGetPointerIndexedvEXT(target, index, data)
-    ccall((:glGetPointerIndexedvEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{Ptr{Cvoid}}), target, index, data)
+    ccall(getprocaddress_e("glGetPointerIndexedvEXT"), Cvoid, (GLenum, GLuint, Ptr{Ptr{Cvoid}}), target, index, data)
 end
 
 function glEnableIndexedEXT(target, index)
-    ccall((:glEnableIndexedEXT, libgl), Cvoid, (GLenum, GLuint), target, index)
+    ccall(getprocaddress_e("glEnableIndexedEXT"), Cvoid, (GLenum, GLuint), target, index)
 end
 
 function glDisableIndexedEXT(target, index)
-    ccall((:glDisableIndexedEXT, libgl), Cvoid, (GLenum, GLuint), target, index)
+    ccall(getprocaddress_e("glDisableIndexedEXT"), Cvoid, (GLenum, GLuint), target, index)
 end
 
 function glIsEnabledIndexedEXT(target, index)
-    ccall((:glIsEnabledIndexedEXT, libgl), GLboolean, (GLenum, GLuint), target, index)
+    ccall(getprocaddress_e("glIsEnabledIndexedEXT"), GLboolean, (GLenum, GLuint), target, index)
 end
 
 function glGetIntegerIndexedvEXT(target, index, data)
-    ccall((:glGetIntegerIndexedvEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{GLint}), target, index, data)
+    ccall(getprocaddress_e("glGetIntegerIndexedvEXT"), Cvoid, (GLenum, GLuint, Ptr{GLint}), target, index, data)
 end
 
 function glGetBooleanIndexedvEXT(target, index, data)
-    ccall((:glGetBooleanIndexedvEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{GLboolean}), target, index, data)
+    ccall(getprocaddress_e("glGetBooleanIndexedvEXT"), Cvoid, (GLenum, GLuint, Ptr{GLboolean}), target, index, data)
 end
 
 function glCompressedTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, imageSize, bits)
-    ccall((:glCompressedTextureImage3DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texture, target, level, internalformat, width, height, depth, border, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedTextureImage3DEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texture, target, level, internalformat, width, height, depth, border, imageSize, bits)
 end
 
 function glCompressedTextureImage2DEXT(texture, target, level, internalformat, width, height, border, imageSize, bits)
-    ccall((:glCompressedTextureImage2DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texture, target, level, internalformat, width, height, border, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedTextureImage2DEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texture, target, level, internalformat, width, height, border, imageSize, bits)
 end
 
 function glCompressedTextureImage1DEXT(texture, target, level, internalformat, width, border, imageSize, bits)
-    ccall((:glCompressedTextureImage1DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texture, target, level, internalformat, width, border, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedTextureImage1DEXT"), Cvoid, (GLuint, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texture, target, level, internalformat, width, border, imageSize, bits)
 end
 
 function glCompressedTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
-    ccall((:glCompressedTextureSubImage3DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedTextureSubImage3DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
 end
 
 function glCompressedTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
-    ccall((:glCompressedTextureSubImage2DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedTextureSubImage2DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
 end
 
 function glCompressedTextureSubImage1DEXT(texture, target, level, xoffset, width, format, imageSize, bits)
-    ccall((:glCompressedTextureSubImage1DEXT, libgl), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, target, level, xoffset, width, format, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedTextureSubImage1DEXT"), Cvoid, (GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texture, target, level, xoffset, width, format, imageSize, bits)
 end
 
 function glGetCompressedTextureImageEXT(texture, target, lod, img)
-    ccall((:glGetCompressedTextureImageEXT, libgl), Cvoid, (GLuint, GLenum, GLint, Ptr{Cvoid}), texture, target, lod, img)
+    ccall(getprocaddress_e("glGetCompressedTextureImageEXT"), Cvoid, (GLuint, GLenum, GLint, Ptr{Cvoid}), texture, target, lod, img)
 end
 
 function glCompressedMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, imageSize, bits)
-    ccall((:glCompressedMultiTexImage3DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, depth, border, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedMultiTexImage3DEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, depth, border, imageSize, bits)
 end
 
 function glCompressedMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, imageSize, bits)
-    ccall((:glCompressedMultiTexImage2DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, border, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedMultiTexImage2DEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texunit, target, level, internalformat, width, height, border, imageSize, bits)
 end
 
 function glCompressedMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, imageSize, bits)
-    ccall((:glCompressedMultiTexImage1DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texunit, target, level, internalformat, width, border, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedMultiTexImage1DEXT"), Cvoid, (GLenum, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, Ptr{Cvoid}), texunit, target, level, internalformat, width, border, imageSize, bits)
 end
 
 function glCompressedMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
-    ccall((:glCompressedMultiTexSubImage3DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedMultiTexSubImage3DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
 end
 
 function glCompressedMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
-    ccall((:glCompressedMultiTexSubImage2DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedMultiTexSubImage2DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
 end
 
 function glCompressedMultiTexSubImage1DEXT(texunit, target, level, xoffset, width, format, imageSize, bits)
-    ccall((:glCompressedMultiTexSubImage1DEXT, libgl), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texunit, target, level, xoffset, width, format, imageSize, bits)
+    ccall(getprocaddress_e("glCompressedMultiTexSubImage1DEXT"), Cvoid, (GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, Ptr{Cvoid}), texunit, target, level, xoffset, width, format, imageSize, bits)
 end
 
 function glGetCompressedMultiTexImageEXT(texunit, target, lod, img)
-    ccall((:glGetCompressedMultiTexImageEXT, libgl), Cvoid, (GLenum, GLenum, GLint, Ptr{Cvoid}), texunit, target, lod, img)
+    ccall(getprocaddress_e("glGetCompressedMultiTexImageEXT"), Cvoid, (GLenum, GLenum, GLint, Ptr{Cvoid}), texunit, target, lod, img)
 end
 
 function glMatrixLoadTransposefEXT(mode, m)
-    ccall((:glMatrixLoadTransposefEXT, libgl), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
+    ccall(getprocaddress_e("glMatrixLoadTransposefEXT"), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
 end
 
 function glMatrixLoadTransposedEXT(mode, m)
-    ccall((:glMatrixLoadTransposedEXT, libgl), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
+    ccall(getprocaddress_e("glMatrixLoadTransposedEXT"), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
 end
 
 function glMatrixMultTransposefEXT(mode, m)
-    ccall((:glMatrixMultTransposefEXT, libgl), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
+    ccall(getprocaddress_e("glMatrixMultTransposefEXT"), Cvoid, (GLenum, Ptr{GLfloat}), mode, m)
 end
 
 function glMatrixMultTransposedEXT(mode, m)
-    ccall((:glMatrixMultTransposedEXT, libgl), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
+    ccall(getprocaddress_e("glMatrixMultTransposedEXT"), Cvoid, (GLenum, Ptr{GLdouble}), mode, m)
 end
 
 function glNamedBufferDataEXT(buffer, size, data, usage)
-    ccall((:glNamedBufferDataEXT, libgl), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLenum), buffer, size, data, usage)
+    ccall(getprocaddress_e("glNamedBufferDataEXT"), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLenum), buffer, size, data, usage)
 end
 
 function glNamedBufferSubDataEXT(buffer, offset, size, data)
-    ccall((:glNamedBufferSubDataEXT, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
+    ccall(getprocaddress_e("glNamedBufferSubDataEXT"), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
 end
 
 function glMapNamedBufferEXT(buffer, access)
-    ccall((:glMapNamedBufferEXT, libgl), Ptr{Cvoid}, (GLuint, GLenum), buffer, access)
+    ccall(getprocaddress_e("glMapNamedBufferEXT"), Ptr{Cvoid}, (GLuint, GLenum), buffer, access)
 end
 
 function glUnmapNamedBufferEXT(buffer)
-    ccall((:glUnmapNamedBufferEXT, libgl), GLboolean, (GLuint,), buffer)
+    ccall(getprocaddress_e("glUnmapNamedBufferEXT"), GLboolean, (GLuint,), buffer)
 end
 
 function glGetNamedBufferParameterivEXT(buffer, pname, params)
-    ccall((:glGetNamedBufferParameterivEXT, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), buffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedBufferParameterivEXT"), Cvoid, (GLuint, GLenum, Ptr{GLint}), buffer, pname, params)
 end
 
 function glGetNamedBufferPointervEXT(buffer, pname, params)
-    ccall((:glGetNamedBufferPointervEXT, libgl), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), buffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedBufferPointervEXT"), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), buffer, pname, params)
 end
 
 function glGetNamedBufferSubDataEXT(buffer, offset, size, data)
-    ccall((:glGetNamedBufferSubDataEXT, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
+    ccall(getprocaddress_e("glGetNamedBufferSubDataEXT"), Cvoid, (GLuint, GLintptr, GLsizeiptr, Ptr{Cvoid}), buffer, offset, size, data)
 end
 
 function glProgramUniform1fEXT(program, location, v0)
-    ccall((:glProgramUniform1fEXT, libgl), Cvoid, (GLuint, GLint, GLfloat), program, location, v0)
+    ccall(getprocaddress_e("glProgramUniform1fEXT"), Cvoid, (GLuint, GLint, GLfloat), program, location, v0)
 end
 
 function glProgramUniform2fEXT(program, location, v0, v1)
-    ccall((:glProgramUniform2fEXT, libgl), Cvoid, (GLuint, GLint, GLfloat, GLfloat), program, location, v0, v1)
+    ccall(getprocaddress_e("glProgramUniform2fEXT"), Cvoid, (GLuint, GLint, GLfloat, GLfloat), program, location, v0, v1)
 end
 
 function glProgramUniform3fEXT(program, location, v0, v1, v2)
-    ccall((:glProgramUniform3fEXT, libgl), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2)
+    ccall(getprocaddress_e("glProgramUniform3fEXT"), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2)
 end
 
 function glProgramUniform4fEXT(program, location, v0, v1, v2, v3)
-    ccall((:glProgramUniform4fEXT, libgl), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glProgramUniform4fEXT"), Cvoid, (GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat), program, location, v0, v1, v2, v3)
 end
 
 function glProgramUniform1iEXT(program, location, v0)
-    ccall((:glProgramUniform1iEXT, libgl), Cvoid, (GLuint, GLint, GLint), program, location, v0)
+    ccall(getprocaddress_e("glProgramUniform1iEXT"), Cvoid, (GLuint, GLint, GLint), program, location, v0)
 end
 
 function glProgramUniform2iEXT(program, location, v0, v1)
-    ccall((:glProgramUniform2iEXT, libgl), Cvoid, (GLuint, GLint, GLint, GLint), program, location, v0, v1)
+    ccall(getprocaddress_e("glProgramUniform2iEXT"), Cvoid, (GLuint, GLint, GLint, GLint), program, location, v0, v1)
 end
 
 function glProgramUniform3iEXT(program, location, v0, v1, v2)
-    ccall((:glProgramUniform3iEXT, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2)
+    ccall(getprocaddress_e("glProgramUniform3iEXT"), Cvoid, (GLuint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2)
 end
 
 function glProgramUniform4iEXT(program, location, v0, v1, v2, v3)
-    ccall((:glProgramUniform4iEXT, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glProgramUniform4iEXT"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint), program, location, v0, v1, v2, v3)
 end
 
 function glProgramUniform1fvEXT(program, location, count, value)
-    ccall((:glProgramUniform1fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1fvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform2fvEXT(program, location, count, value)
-    ccall((:glProgramUniform2fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2fvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform3fvEXT(program, location, count, value)
-    ccall((:glProgramUniform3fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3fvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform4fvEXT(program, location, count, value)
-    ccall((:glProgramUniform4fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4fvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLfloat}), program, location, count, value)
 end
 
 function glProgramUniform1ivEXT(program, location, count, value)
-    ccall((:glProgramUniform1ivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1ivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniform2ivEXT(program, location, count, value)
-    ccall((:glProgramUniform2ivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2ivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniform3ivEXT(program, location, count, value)
-    ccall((:glProgramUniform3ivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3ivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniform4ivEXT(program, location, count, value)
-    ccall((:glProgramUniform4ivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4ivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint}), program, location, count, value)
 end
 
 function glProgramUniformMatrix2fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x3fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x3fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x3fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x2fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x2fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x2fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x4fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x4fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x4fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x2fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x2fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x2fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x4fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x4fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x4fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x3fvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x3fvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x3fvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLfloat}), program, location, count, transpose, value)
 end
 
 function glTextureBufferEXT(texture, target, internalformat, buffer)
-    ccall((:glTextureBufferEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLuint), texture, target, internalformat, buffer)
+    ccall(getprocaddress_e("glTextureBufferEXT"), Cvoid, (GLuint, GLenum, GLenum, GLuint), texture, target, internalformat, buffer)
 end
 
 function glMultiTexBufferEXT(texunit, target, internalformat, buffer)
-    ccall((:glMultiTexBufferEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, GLuint), texunit, target, internalformat, buffer)
+    ccall(getprocaddress_e("glMultiTexBufferEXT"), Cvoid, (GLenum, GLenum, GLenum, GLuint), texunit, target, internalformat, buffer)
 end
 
 function glTextureParameterIivEXT(texture, target, pname, params)
-    ccall((:glTextureParameterIivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
+    ccall(getprocaddress_e("glTextureParameterIivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
 end
 
 function glTextureParameterIuivEXT(texture, target, pname, params)
-    ccall((:glTextureParameterIuivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLuint}), texture, target, pname, params)
+    ccall(getprocaddress_e("glTextureParameterIuivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLuint}), texture, target, pname, params)
 end
 
 function glGetTextureParameterIivEXT(texture, target, pname, params)
-    ccall((:glGetTextureParameterIivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameterIivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), texture, target, pname, params)
 end
 
 function glGetTextureParameterIuivEXT(texture, target, pname, params)
-    ccall((:glGetTextureParameterIuivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLuint}), texture, target, pname, params)
+    ccall(getprocaddress_e("glGetTextureParameterIuivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLuint}), texture, target, pname, params)
 end
 
 function glMultiTexParameterIivEXT(texunit, target, pname, params)
-    ccall((:glMultiTexParameterIivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glMultiTexParameterIivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
 end
 
 function glMultiTexParameterIuivEXT(texunit, target, pname, params)
-    ccall((:glMultiTexParameterIuivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLuint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glMultiTexParameterIuivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLuint}), texunit, target, pname, params)
 end
 
 function glGetMultiTexParameterIivEXT(texunit, target, pname, params)
-    ccall((:glGetMultiTexParameterIivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexParameterIivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLint}), texunit, target, pname, params)
 end
 
 function glGetMultiTexParameterIuivEXT(texunit, target, pname, params)
-    ccall((:glGetMultiTexParameterIuivEXT, libgl), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLuint}), texunit, target, pname, params)
+    ccall(getprocaddress_e("glGetMultiTexParameterIuivEXT"), Cvoid, (GLenum, GLenum, GLenum, Ptr{GLuint}), texunit, target, pname, params)
 end
 
 function glProgramUniform1uiEXT(program, location, v0)
-    ccall((:glProgramUniform1uiEXT, libgl), Cvoid, (GLuint, GLint, GLuint), program, location, v0)
+    ccall(getprocaddress_e("glProgramUniform1uiEXT"), Cvoid, (GLuint, GLint, GLuint), program, location, v0)
 end
 
 function glProgramUniform2uiEXT(program, location, v0, v1)
-    ccall((:glProgramUniform2uiEXT, libgl), Cvoid, (GLuint, GLint, GLuint, GLuint), program, location, v0, v1)
+    ccall(getprocaddress_e("glProgramUniform2uiEXT"), Cvoid, (GLuint, GLint, GLuint, GLuint), program, location, v0, v1)
 end
 
 function glProgramUniform3uiEXT(program, location, v0, v1, v2)
-    ccall((:glProgramUniform3uiEXT, libgl), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint), program, location, v0, v1, v2)
+    ccall(getprocaddress_e("glProgramUniform3uiEXT"), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint), program, location, v0, v1, v2)
 end
 
 function glProgramUniform4uiEXT(program, location, v0, v1, v2, v3)
-    ccall((:glProgramUniform4uiEXT, libgl), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint, GLuint), program, location, v0, v1, v2, v3)
+    ccall(getprocaddress_e("glProgramUniform4uiEXT"), Cvoid, (GLuint, GLint, GLuint, GLuint, GLuint, GLuint), program, location, v0, v1, v2, v3)
 end
 
 function glProgramUniform1uivEXT(program, location, count, value)
-    ccall((:glProgramUniform1uivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1uivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glProgramUniform2uivEXT(program, location, count, value)
-    ccall((:glProgramUniform2uivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2uivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glProgramUniform3uivEXT(program, location, count, value)
-    ccall((:glProgramUniform3uivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3uivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glProgramUniform4uivEXT(program, location, count, value)
-    ccall((:glProgramUniform4uivEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4uivEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint}), program, location, count, value)
 end
 
 function glNamedProgramLocalParameters4fvEXT(program, target, index, count, params)
-    ccall((:glNamedProgramLocalParameters4fvEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLfloat}), program, target, index, count, params)
+    ccall(getprocaddress_e("glNamedProgramLocalParameters4fvEXT"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLfloat}), program, target, index, count, params)
 end
 
 function glNamedProgramLocalParameterI4iEXT(program, target, index, x, y, z, w)
-    ccall((:glNamedProgramLocalParameterI4iEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLint, GLint, GLint, GLint), program, target, index, x, y, z, w)
+    ccall(getprocaddress_e("glNamedProgramLocalParameterI4iEXT"), Cvoid, (GLuint, GLenum, GLuint, GLint, GLint, GLint, GLint), program, target, index, x, y, z, w)
 end
 
 function glNamedProgramLocalParameterI4ivEXT(program, target, index, params)
-    ccall((:glNamedProgramLocalParameterI4ivEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint}), program, target, index, params)
+    ccall(getprocaddress_e("glNamedProgramLocalParameterI4ivEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint}), program, target, index, params)
 end
 
 function glNamedProgramLocalParametersI4ivEXT(program, target, index, count, params)
-    ccall((:glNamedProgramLocalParametersI4ivEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLint}), program, target, index, count, params)
+    ccall(getprocaddress_e("glNamedProgramLocalParametersI4ivEXT"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLint}), program, target, index, count, params)
 end
 
 function glNamedProgramLocalParameterI4uiEXT(program, target, index, x, y, z, w)
-    ccall((:glNamedProgramLocalParameterI4uiEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint), program, target, index, x, y, z, w)
+    ccall(getprocaddress_e("glNamedProgramLocalParameterI4uiEXT"), Cvoid, (GLuint, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint), program, target, index, x, y, z, w)
 end
 
 function glNamedProgramLocalParameterI4uivEXT(program, target, index, params)
-    ccall((:glNamedProgramLocalParameterI4uivEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLuint}), program, target, index, params)
+    ccall(getprocaddress_e("glNamedProgramLocalParameterI4uivEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLuint}), program, target, index, params)
 end
 
 function glNamedProgramLocalParametersI4uivEXT(program, target, index, count, params)
-    ccall((:glNamedProgramLocalParametersI4uivEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLuint}), program, target, index, count, params)
+    ccall(getprocaddress_e("glNamedProgramLocalParametersI4uivEXT"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLuint}), program, target, index, count, params)
 end
 
 function glGetNamedProgramLocalParameterIivEXT(program, target, index, params)
-    ccall((:glGetNamedProgramLocalParameterIivEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint}), program, target, index, params)
+    ccall(getprocaddress_e("glGetNamedProgramLocalParameterIivEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLint}), program, target, index, params)
 end
 
 function glGetNamedProgramLocalParameterIuivEXT(program, target, index, params)
-    ccall((:glGetNamedProgramLocalParameterIuivEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLuint}), program, target, index, params)
+    ccall(getprocaddress_e("glGetNamedProgramLocalParameterIuivEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLuint}), program, target, index, params)
 end
 
 function glEnableClientStateiEXT(array, index)
-    ccall((:glEnableClientStateiEXT, libgl), Cvoid, (GLenum, GLuint), array, index)
+    ccall(getprocaddress_e("glEnableClientStateiEXT"), Cvoid, (GLenum, GLuint), array, index)
 end
 
 function glDisableClientStateiEXT(array, index)
-    ccall((:glDisableClientStateiEXT, libgl), Cvoid, (GLenum, GLuint), array, index)
+    ccall(getprocaddress_e("glDisableClientStateiEXT"), Cvoid, (GLenum, GLuint), array, index)
 end
 
 function glGetFloati_vEXT(pname, index, params)
-    ccall((:glGetFloati_vEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), pname, index, params)
+    ccall(getprocaddress_e("glGetFloati_vEXT"), Cvoid, (GLenum, GLuint, Ptr{GLfloat}), pname, index, params)
 end
 
 function glGetDoublei_vEXT(pname, index, params)
-    ccall((:glGetDoublei_vEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{GLdouble}), pname, index, params)
+    ccall(getprocaddress_e("glGetDoublei_vEXT"), Cvoid, (GLenum, GLuint, Ptr{GLdouble}), pname, index, params)
 end
 
 function glGetPointeri_vEXT(pname, index, params)
-    ccall((:glGetPointeri_vEXT, libgl), Cvoid, (GLenum, GLuint, Ptr{Ptr{Cvoid}}), pname, index, params)
+    ccall(getprocaddress_e("glGetPointeri_vEXT"), Cvoid, (GLenum, GLuint, Ptr{Ptr{Cvoid}}), pname, index, params)
 end
 
 function glNamedProgramStringEXT(program, target, format, len, string)
-    ccall((:glNamedProgramStringEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), program, target, format, len, string)
+    ccall(getprocaddress_e("glNamedProgramStringEXT"), Cvoid, (GLuint, GLenum, GLenum, GLsizei, Ptr{Cvoid}), program, target, format, len, string)
 end
 
 function glNamedProgramLocalParameter4dEXT(program, target, index, x, y, z, w)
-    ccall((:glNamedProgramLocalParameter4dEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble), program, target, index, x, y, z, w)
+    ccall(getprocaddress_e("glNamedProgramLocalParameter4dEXT"), Cvoid, (GLuint, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble), program, target, index, x, y, z, w)
 end
 
 function glNamedProgramLocalParameter4dvEXT(program, target, index, params)
-    ccall((:glNamedProgramLocalParameter4dvEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLdouble}), program, target, index, params)
+    ccall(getprocaddress_e("glNamedProgramLocalParameter4dvEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLdouble}), program, target, index, params)
 end
 
 function glNamedProgramLocalParameter4fEXT(program, target, index, x, y, z, w)
-    ccall((:glNamedProgramLocalParameter4fEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat), program, target, index, x, y, z, w)
+    ccall(getprocaddress_e("glNamedProgramLocalParameter4fEXT"), Cvoid, (GLuint, GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat), program, target, index, x, y, z, w)
 end
 
 function glNamedProgramLocalParameter4fvEXT(program, target, index, params)
-    ccall((:glNamedProgramLocalParameter4fvEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLfloat}), program, target, index, params)
+    ccall(getprocaddress_e("glNamedProgramLocalParameter4fvEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLfloat}), program, target, index, params)
 end
 
 function glGetNamedProgramLocalParameterdvEXT(program, target, index, params)
-    ccall((:glGetNamedProgramLocalParameterdvEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLdouble}), program, target, index, params)
+    ccall(getprocaddress_e("glGetNamedProgramLocalParameterdvEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLdouble}), program, target, index, params)
 end
 
 function glGetNamedProgramLocalParameterfvEXT(program, target, index, params)
-    ccall((:glGetNamedProgramLocalParameterfvEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLfloat}), program, target, index, params)
+    ccall(getprocaddress_e("glGetNamedProgramLocalParameterfvEXT"), Cvoid, (GLuint, GLenum, GLuint, Ptr{GLfloat}), program, target, index, params)
 end
 
 function glGetNamedProgramivEXT(program, target, pname, params)
-    ccall((:glGetNamedProgramivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), program, target, pname, params)
+    ccall(getprocaddress_e("glGetNamedProgramivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), program, target, pname, params)
 end
 
 function glGetNamedProgramStringEXT(program, target, pname, string)
-    ccall((:glGetNamedProgramStringEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{Cvoid}), program, target, pname, string)
+    ccall(getprocaddress_e("glGetNamedProgramStringEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{Cvoid}), program, target, pname, string)
 end
 
 function glNamedRenderbufferStorageEXT(renderbuffer, internalformat, width, height)
-    ccall((:glNamedRenderbufferStorageEXT, libgl), Cvoid, (GLuint, GLenum, GLsizei, GLsizei), renderbuffer, internalformat, width, height)
+    ccall(getprocaddress_e("glNamedRenderbufferStorageEXT"), Cvoid, (GLuint, GLenum, GLsizei, GLsizei), renderbuffer, internalformat, width, height)
 end
 
 function glGetNamedRenderbufferParameterivEXT(renderbuffer, pname, params)
-    ccall((:glGetNamedRenderbufferParameterivEXT, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), renderbuffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedRenderbufferParameterivEXT"), Cvoid, (GLuint, GLenum, Ptr{GLint}), renderbuffer, pname, params)
 end
 
 function glNamedRenderbufferStorageMultisampleEXT(renderbuffer, samples, internalformat, width, height)
-    ccall((:glNamedRenderbufferStorageMultisampleEXT, libgl), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, samples, internalformat, width, height)
+    ccall(getprocaddress_e("glNamedRenderbufferStorageMultisampleEXT"), Cvoid, (GLuint, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, samples, internalformat, width, height)
 end
 
 function glNamedRenderbufferStorageMultisampleCoverageEXT(renderbuffer, coverageSamples, colorSamples, internalformat, width, height)
-    ccall((:glNamedRenderbufferStorageMultisampleCoverageEXT, libgl), Cvoid, (GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, coverageSamples, colorSamples, internalformat, width, height)
+    ccall(getprocaddress_e("glNamedRenderbufferStorageMultisampleCoverageEXT"), Cvoid, (GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), renderbuffer, coverageSamples, colorSamples, internalformat, width, height)
 end
 
 function glCheckNamedFramebufferStatusEXT(framebuffer, target)
-    ccall((:glCheckNamedFramebufferStatusEXT, libgl), GLenum, (GLuint, GLenum), framebuffer, target)
+    ccall(getprocaddress_e("glCheckNamedFramebufferStatusEXT"), GLenum, (GLuint, GLenum), framebuffer, target)
 end
 
 function glNamedFramebufferTexture1DEXT(framebuffer, attachment, textarget, texture, level)
-    ccall((:glNamedFramebufferTexture1DEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLint), framebuffer, attachment, textarget, texture, level)
+    ccall(getprocaddress_e("glNamedFramebufferTexture1DEXT"), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLint), framebuffer, attachment, textarget, texture, level)
 end
 
 function glNamedFramebufferTexture2DEXT(framebuffer, attachment, textarget, texture, level)
-    ccall((:glNamedFramebufferTexture2DEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLint), framebuffer, attachment, textarget, texture, level)
+    ccall(getprocaddress_e("glNamedFramebufferTexture2DEXT"), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLint), framebuffer, attachment, textarget, texture, level)
 end
 
 function glNamedFramebufferTexture3DEXT(framebuffer, attachment, textarget, texture, level, zoffset)
-    ccall((:glNamedFramebufferTexture3DEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLint, GLint), framebuffer, attachment, textarget, texture, level, zoffset)
+    ccall(getprocaddress_e("glNamedFramebufferTexture3DEXT"), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLint, GLint), framebuffer, attachment, textarget, texture, level, zoffset)
 end
 
 function glNamedFramebufferRenderbufferEXT(framebuffer, attachment, renderbuffertarget, renderbuffer)
-    ccall((:glNamedFramebufferRenderbufferEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLuint), framebuffer, attachment, renderbuffertarget, renderbuffer)
+    ccall(getprocaddress_e("glNamedFramebufferRenderbufferEXT"), Cvoid, (GLuint, GLenum, GLenum, GLuint), framebuffer, attachment, renderbuffertarget, renderbuffer)
 end
 
 function glGetNamedFramebufferAttachmentParameterivEXT(framebuffer, attachment, pname, params)
-    ccall((:glGetNamedFramebufferAttachmentParameterivEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), framebuffer, attachment, pname, params)
+    ccall(getprocaddress_e("glGetNamedFramebufferAttachmentParameterivEXT"), Cvoid, (GLuint, GLenum, GLenum, Ptr{GLint}), framebuffer, attachment, pname, params)
 end
 
 function glGenerateTextureMipmapEXT(texture, target)
-    ccall((:glGenerateTextureMipmapEXT, libgl), Cvoid, (GLuint, GLenum), texture, target)
+    ccall(getprocaddress_e("glGenerateTextureMipmapEXT"), Cvoid, (GLuint, GLenum), texture, target)
 end
 
 function glGenerateMultiTexMipmapEXT(texunit, target)
-    ccall((:glGenerateMultiTexMipmapEXT, libgl), Cvoid, (GLenum, GLenum), texunit, target)
+    ccall(getprocaddress_e("glGenerateMultiTexMipmapEXT"), Cvoid, (GLenum, GLenum), texunit, target)
 end
 
 function glFramebufferDrawBufferEXT(framebuffer, mode)
-    ccall((:glFramebufferDrawBufferEXT, libgl), Cvoid, (GLuint, GLenum), framebuffer, mode)
+    ccall(getprocaddress_e("glFramebufferDrawBufferEXT"), Cvoid, (GLuint, GLenum), framebuffer, mode)
 end
 
 function glFramebufferDrawBuffersEXT(framebuffer, n, bufs)
-    ccall((:glFramebufferDrawBuffersEXT, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLenum}), framebuffer, n, bufs)
+    ccall(getprocaddress_e("glFramebufferDrawBuffersEXT"), Cvoid, (GLuint, GLsizei, Ptr{GLenum}), framebuffer, n, bufs)
 end
 
 function glFramebufferReadBufferEXT(framebuffer, mode)
-    ccall((:glFramebufferReadBufferEXT, libgl), Cvoid, (GLuint, GLenum), framebuffer, mode)
+    ccall(getprocaddress_e("glFramebufferReadBufferEXT"), Cvoid, (GLuint, GLenum), framebuffer, mode)
 end
 
 function glGetFramebufferParameterivEXT(framebuffer, pname, params)
-    ccall((:glGetFramebufferParameterivEXT, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), framebuffer, pname, params)
+    ccall(getprocaddress_e("glGetFramebufferParameterivEXT"), Cvoid, (GLuint, GLenum, Ptr{GLint}), framebuffer, pname, params)
 end
 
 function glNamedCopyBufferSubDataEXT(readBuffer, writeBuffer, readOffset, writeOffset, size)
-    ccall((:glNamedCopyBufferSubDataEXT, libgl), Cvoid, (GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr), readBuffer, writeBuffer, readOffset, writeOffset, size)
+    ccall(getprocaddress_e("glNamedCopyBufferSubDataEXT"), Cvoid, (GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr), readBuffer, writeBuffer, readOffset, writeOffset, size)
 end
 
 function glNamedFramebufferTextureEXT(framebuffer, attachment, texture, level)
-    ccall((:glNamedFramebufferTextureEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLint), framebuffer, attachment, texture, level)
+    ccall(getprocaddress_e("glNamedFramebufferTextureEXT"), Cvoid, (GLuint, GLenum, GLuint, GLint), framebuffer, attachment, texture, level)
 end
 
 function glNamedFramebufferTextureLayerEXT(framebuffer, attachment, texture, level, layer)
-    ccall((:glNamedFramebufferTextureLayerEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLint, GLint), framebuffer, attachment, texture, level, layer)
+    ccall(getprocaddress_e("glNamedFramebufferTextureLayerEXT"), Cvoid, (GLuint, GLenum, GLuint, GLint, GLint), framebuffer, attachment, texture, level, layer)
 end
 
 function glNamedFramebufferTextureFaceEXT(framebuffer, attachment, texture, level, face)
-    ccall((:glNamedFramebufferTextureFaceEXT, libgl), Cvoid, (GLuint, GLenum, GLuint, GLint, GLenum), framebuffer, attachment, texture, level, face)
+    ccall(getprocaddress_e("glNamedFramebufferTextureFaceEXT"), Cvoid, (GLuint, GLenum, GLuint, GLint, GLenum), framebuffer, attachment, texture, level, face)
 end
 
 function glTextureRenderbufferEXT(texture, target, renderbuffer)
-    ccall((:glTextureRenderbufferEXT, libgl), Cvoid, (GLuint, GLenum, GLuint), texture, target, renderbuffer)
+    ccall(getprocaddress_e("glTextureRenderbufferEXT"), Cvoid, (GLuint, GLenum, GLuint), texture, target, renderbuffer)
 end
 
 function glMultiTexRenderbufferEXT(texunit, target, renderbuffer)
-    ccall((:glMultiTexRenderbufferEXT, libgl), Cvoid, (GLenum, GLenum, GLuint), texunit, target, renderbuffer)
+    ccall(getprocaddress_e("glMultiTexRenderbufferEXT"), Cvoid, (GLenum, GLenum, GLuint), texunit, target, renderbuffer)
 end
 
 function glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset)
-    ccall((:glVertexArrayVertexOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayVertexOffsetEXT"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
 end
 
 function glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset)
-    ccall((:glVertexArrayColorOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayColorOffsetEXT"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
 end
 
 function glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset)
-    ccall((:glVertexArrayEdgeFlagOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLsizei, GLintptr), vaobj, buffer, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayEdgeFlagOffsetEXT"), Cvoid, (GLuint, GLuint, GLsizei, GLintptr), vaobj, buffer, stride, offset)
 end
 
 function glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset)
-    ccall((:glVertexArrayIndexOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLenum, GLsizei, GLintptr), vaobj, buffer, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayIndexOffsetEXT"), Cvoid, (GLuint, GLuint, GLenum, GLsizei, GLintptr), vaobj, buffer, type, stride, offset)
 end
 
 function glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset)
-    ccall((:glVertexArrayNormalOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLenum, GLsizei, GLintptr), vaobj, buffer, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayNormalOffsetEXT"), Cvoid, (GLuint, GLuint, GLenum, GLsizei, GLintptr), vaobj, buffer, type, stride, offset)
 end
 
 function glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset)
-    ccall((:glVertexArrayTexCoordOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayTexCoordOffsetEXT"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
 end
 
 function glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset)
-    ccall((:glVertexArrayMultiTexCoordOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLenum, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, texunit, size, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayMultiTexCoordOffsetEXT"), Cvoid, (GLuint, GLuint, GLenum, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, texunit, size, type, stride, offset)
 end
 
 function glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset)
-    ccall((:glVertexArrayFogCoordOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLenum, GLsizei, GLintptr), vaobj, buffer, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayFogCoordOffsetEXT"), Cvoid, (GLuint, GLuint, GLenum, GLsizei, GLintptr), vaobj, buffer, type, stride, offset)
 end
 
 function glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset)
-    ccall((:glVertexArraySecondaryColorOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArraySecondaryColorOffsetEXT"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, size, type, stride, offset)
 end
 
 function glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset)
-    ccall((:glVertexArrayVertexAttribOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLuint, GLint, GLenum, GLboolean, GLsizei, GLintptr), vaobj, buffer, index, size, type, normalized, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribOffsetEXT"), Cvoid, (GLuint, GLuint, GLuint, GLint, GLenum, GLboolean, GLsizei, GLintptr), vaobj, buffer, index, size, type, normalized, stride, offset)
 end
 
 function glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset)
-    ccall((:glVertexArrayVertexAttribIOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, index, size, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribIOffsetEXT"), Cvoid, (GLuint, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, index, size, type, stride, offset)
 end
 
 function glEnableVertexArrayEXT(vaobj, array)
-    ccall((:glEnableVertexArrayEXT, libgl), Cvoid, (GLuint, GLenum), vaobj, array)
+    ccall(getprocaddress_e("glEnableVertexArrayEXT"), Cvoid, (GLuint, GLenum), vaobj, array)
 end
 
 function glDisableVertexArrayEXT(vaobj, array)
-    ccall((:glDisableVertexArrayEXT, libgl), Cvoid, (GLuint, GLenum), vaobj, array)
+    ccall(getprocaddress_e("glDisableVertexArrayEXT"), Cvoid, (GLuint, GLenum), vaobj, array)
 end
 
 function glEnableVertexArrayAttribEXT(vaobj, index)
-    ccall((:glEnableVertexArrayAttribEXT, libgl), Cvoid, (GLuint, GLuint), vaobj, index)
+    ccall(getprocaddress_e("glEnableVertexArrayAttribEXT"), Cvoid, (GLuint, GLuint), vaobj, index)
 end
 
 function glDisableVertexArrayAttribEXT(vaobj, index)
-    ccall((:glDisableVertexArrayAttribEXT, libgl), Cvoid, (GLuint, GLuint), vaobj, index)
+    ccall(getprocaddress_e("glDisableVertexArrayAttribEXT"), Cvoid, (GLuint, GLuint), vaobj, index)
 end
 
 function glGetVertexArrayIntegervEXT(vaobj, pname, param)
-    ccall((:glGetVertexArrayIntegervEXT, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), vaobj, pname, param)
+    ccall(getprocaddress_e("glGetVertexArrayIntegervEXT"), Cvoid, (GLuint, GLenum, Ptr{GLint}), vaobj, pname, param)
 end
 
 function glGetVertexArrayPointervEXT(vaobj, pname, param)
-    ccall((:glGetVertexArrayPointervEXT, libgl), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), vaobj, pname, param)
+    ccall(getprocaddress_e("glGetVertexArrayPointervEXT"), Cvoid, (GLuint, GLenum, Ptr{Ptr{Cvoid}}), vaobj, pname, param)
 end
 
 function glGetVertexArrayIntegeri_vEXT(vaobj, index, pname, param)
-    ccall((:glGetVertexArrayIntegeri_vEXT, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), vaobj, index, pname, param)
+    ccall(getprocaddress_e("glGetVertexArrayIntegeri_vEXT"), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLint}), vaobj, index, pname, param)
 end
 
 function glGetVertexArrayPointeri_vEXT(vaobj, index, pname, param)
-    ccall((:glGetVertexArrayPointeri_vEXT, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{Ptr{Cvoid}}), vaobj, index, pname, param)
+    ccall(getprocaddress_e("glGetVertexArrayPointeri_vEXT"), Cvoid, (GLuint, GLuint, GLenum, Ptr{Ptr{Cvoid}}), vaobj, index, pname, param)
 end
 
 function glMapNamedBufferRangeEXT(buffer, offset, length, access)
-    ccall((:glMapNamedBufferRangeEXT, libgl), Ptr{Cvoid}, (GLuint, GLintptr, GLsizeiptr, GLbitfield), buffer, offset, length, access)
+    ccall(getprocaddress_e("glMapNamedBufferRangeEXT"), Ptr{Cvoid}, (GLuint, GLintptr, GLsizeiptr, GLbitfield), buffer, offset, length, access)
 end
 
 function glFlushMappedNamedBufferRangeEXT(buffer, offset, length)
-    ccall((:glFlushMappedNamedBufferRangeEXT, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr), buffer, offset, length)
+    ccall(getprocaddress_e("glFlushMappedNamedBufferRangeEXT"), Cvoid, (GLuint, GLintptr, GLsizeiptr), buffer, offset, length)
 end
 
 function glNamedBufferStorageEXT(buffer, size, data, flags)
-    ccall((:glNamedBufferStorageEXT, libgl), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLbitfield), buffer, size, data, flags)
+    ccall(getprocaddress_e("glNamedBufferStorageEXT"), Cvoid, (GLuint, GLsizeiptr, Ptr{Cvoid}, GLbitfield), buffer, size, data, flags)
 end
 
 function glClearNamedBufferDataEXT(buffer, internalformat, format, type, data)
-    ccall((:glClearNamedBufferDataEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, format, type, data)
+    ccall(getprocaddress_e("glClearNamedBufferDataEXT"), Cvoid, (GLuint, GLenum, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, format, type, data)
 end
 
 function glClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data)
-    ccall((:glClearNamedBufferSubDataEXT, libgl), Cvoid, (GLuint, GLenum, GLsizeiptr, GLsizeiptr, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, offset, size, format, type, data)
+    ccall(getprocaddress_e("glClearNamedBufferSubDataEXT"), Cvoid, (GLuint, GLenum, GLsizeiptr, GLsizeiptr, GLenum, GLenum, Ptr{Cvoid}), buffer, internalformat, offset, size, format, type, data)
 end
 
 function glNamedFramebufferParameteriEXT(framebuffer, pname, param)
-    ccall((:glNamedFramebufferParameteriEXT, libgl), Cvoid, (GLuint, GLenum, GLint), framebuffer, pname, param)
+    ccall(getprocaddress_e("glNamedFramebufferParameteriEXT"), Cvoid, (GLuint, GLenum, GLint), framebuffer, pname, param)
 end
 
 function glGetNamedFramebufferParameterivEXT(framebuffer, pname, params)
-    ccall((:glGetNamedFramebufferParameterivEXT, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), framebuffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedFramebufferParameterivEXT"), Cvoid, (GLuint, GLenum, Ptr{GLint}), framebuffer, pname, params)
 end
 
 function glProgramUniform1dEXT(program, location, x)
-    ccall((:glProgramUniform1dEXT, libgl), Cvoid, (GLuint, GLint, GLdouble), program, location, x)
+    ccall(getprocaddress_e("glProgramUniform1dEXT"), Cvoid, (GLuint, GLint, GLdouble), program, location, x)
 end
 
 function glProgramUniform2dEXT(program, location, x, y)
-    ccall((:glProgramUniform2dEXT, libgl), Cvoid, (GLuint, GLint, GLdouble, GLdouble), program, location, x, y)
+    ccall(getprocaddress_e("glProgramUniform2dEXT"), Cvoid, (GLuint, GLint, GLdouble, GLdouble), program, location, x, y)
 end
 
 function glProgramUniform3dEXT(program, location, x, y, z)
-    ccall((:glProgramUniform3dEXT, libgl), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble), program, location, x, y, z)
+    ccall(getprocaddress_e("glProgramUniform3dEXT"), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble), program, location, x, y, z)
 end
 
 function glProgramUniform4dEXT(program, location, x, y, z, w)
-    ccall((:glProgramUniform4dEXT, libgl), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble), program, location, x, y, z, w)
+    ccall(getprocaddress_e("glProgramUniform4dEXT"), Cvoid, (GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble), program, location, x, y, z, w)
 end
 
 function glProgramUniform1dvEXT(program, location, count, value)
-    ccall((:glProgramUniform1dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1dvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniform2dvEXT(program, location, count, value)
-    ccall((:glProgramUniform2dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2dvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniform3dvEXT(program, location, count, value)
-    ccall((:glProgramUniform3dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3dvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniform4dvEXT(program, location, count, value)
-    ccall((:glProgramUniform4dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4dvEXT"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLdouble}), program, location, count, value)
 end
 
 function glProgramUniformMatrix2dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x3dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x3dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x3dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix2x4dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix2x4dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix2x4dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x2dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x2dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x2dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix3x4dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix3x4dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix3x4dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x2dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x2dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x2dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glProgramUniformMatrix4x3dvEXT(program, location, count, transpose, value)
-    ccall((:glProgramUniformMatrix4x3dvEXT, libgl), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
+    ccall(getprocaddress_e("glProgramUniformMatrix4x3dvEXT"), Cvoid, (GLuint, GLint, GLsizei, GLboolean, Ptr{GLdouble}), program, location, count, transpose, value)
 end
 
 function glTextureBufferRangeEXT(texture, target, internalformat, buffer, offset, size)
-    ccall((:glTextureBufferRangeEXT, libgl), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr), texture, target, internalformat, buffer, offset, size)
+    ccall(getprocaddress_e("glTextureBufferRangeEXT"), Cvoid, (GLuint, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr), texture, target, internalformat, buffer, offset, size)
 end
 
 function glTextureStorage1DEXT(texture, target, levels, internalformat, width)
-    ccall((:glTextureStorage1DEXT, libgl), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei), texture, target, levels, internalformat, width)
+    ccall(getprocaddress_e("glTextureStorage1DEXT"), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei), texture, target, levels, internalformat, width)
 end
 
 function glTextureStorage2DEXT(texture, target, levels, internalformat, width, height)
-    ccall((:glTextureStorage2DEXT, libgl), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei), texture, target, levels, internalformat, width, height)
+    ccall(getprocaddress_e("glTextureStorage2DEXT"), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei), texture, target, levels, internalformat, width, height)
 end
 
 function glTextureStorage3DEXT(texture, target, levels, internalformat, width, height, depth)
-    ccall((:glTextureStorage3DEXT, libgl), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), texture, target, levels, internalformat, width, height, depth)
+    ccall(getprocaddress_e("glTextureStorage3DEXT"), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), texture, target, levels, internalformat, width, height, depth)
 end
 
 function glTextureStorage2DMultisampleEXT(texture, target, samples, internalformat, width, height, fixedsamplelocations)
-    ccall((:glTextureStorage2DMultisampleEXT, libgl), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), texture, target, samples, internalformat, width, height, fixedsamplelocations)
+    ccall(getprocaddress_e("glTextureStorage2DMultisampleEXT"), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean), texture, target, samples, internalformat, width, height, fixedsamplelocations)
 end
 
 function glTextureStorage3DMultisampleEXT(texture, target, samples, internalformat, width, height, depth, fixedsamplelocations)
-    ccall((:glTextureStorage3DMultisampleEXT, libgl), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), texture, target, samples, internalformat, width, height, depth, fixedsamplelocations)
+    ccall(getprocaddress_e("glTextureStorage3DMultisampleEXT"), Cvoid, (GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean), texture, target, samples, internalformat, width, height, depth, fixedsamplelocations)
 end
 
 function glVertexArrayBindVertexBufferEXT(vaobj, bindingindex, buffer, offset, stride)
-    ccall((:glVertexArrayBindVertexBufferEXT, libgl), Cvoid, (GLuint, GLuint, GLuint, GLintptr, GLsizei), vaobj, bindingindex, buffer, offset, stride)
+    ccall(getprocaddress_e("glVertexArrayBindVertexBufferEXT"), Cvoid, (GLuint, GLuint, GLuint, GLintptr, GLsizei), vaobj, bindingindex, buffer, offset, stride)
 end
 
 function glVertexArrayVertexAttribFormatEXT(vaobj, attribindex, size, type, normalized, relativeoffset)
-    ccall((:glVertexArrayVertexAttribFormatEXT, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLboolean, GLuint), vaobj, attribindex, size, type, normalized, relativeoffset)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribFormatEXT"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLboolean, GLuint), vaobj, attribindex, size, type, normalized, relativeoffset)
 end
 
 function glVertexArrayVertexAttribIFormatEXT(vaobj, attribindex, size, type, relativeoffset)
-    ccall((:glVertexArrayVertexAttribIFormatEXT, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribIFormatEXT"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
 end
 
 function glVertexArrayVertexAttribLFormatEXT(vaobj, attribindex, size, type, relativeoffset)
-    ccall((:glVertexArrayVertexAttribLFormatEXT, libgl), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribLFormatEXT"), Cvoid, (GLuint, GLuint, GLint, GLenum, GLuint), vaobj, attribindex, size, type, relativeoffset)
 end
 
 function glVertexArrayVertexAttribBindingEXT(vaobj, attribindex, bindingindex)
-    ccall((:glVertexArrayVertexAttribBindingEXT, libgl), Cvoid, (GLuint, GLuint, GLuint), vaobj, attribindex, bindingindex)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribBindingEXT"), Cvoid, (GLuint, GLuint, GLuint), vaobj, attribindex, bindingindex)
 end
 
 function glVertexArrayVertexBindingDivisorEXT(vaobj, bindingindex, divisor)
-    ccall((:glVertexArrayVertexBindingDivisorEXT, libgl), Cvoid, (GLuint, GLuint, GLuint), vaobj, bindingindex, divisor)
+    ccall(getprocaddress_e("glVertexArrayVertexBindingDivisorEXT"), Cvoid, (GLuint, GLuint, GLuint), vaobj, bindingindex, divisor)
 end
 
 function glVertexArrayVertexAttribLOffsetEXT(vaobj, buffer, index, size, type, stride, offset)
-    ccall((:glVertexArrayVertexAttribLOffsetEXT, libgl), Cvoid, (GLuint, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, index, size, type, stride, offset)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribLOffsetEXT"), Cvoid, (GLuint, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr), vaobj, buffer, index, size, type, stride, offset)
 end
 
 function glTexturePageCommitmentEXT(texture, level, xoffset, yoffset, zoffset, width, height, depth, commit)
-    ccall((:glTexturePageCommitmentEXT, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean), texture, level, xoffset, yoffset, zoffset, width, height, depth, commit)
+    ccall(getprocaddress_e("glTexturePageCommitmentEXT"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean), texture, level, xoffset, yoffset, zoffset, width, height, depth, commit)
 end
 
 function glVertexArrayVertexAttribDivisorEXT(vaobj, index, divisor)
-    ccall((:glVertexArrayVertexAttribDivisorEXT, libgl), Cvoid, (GLuint, GLuint, GLuint), vaobj, index, divisor)
+    ccall(getprocaddress_e("glVertexArrayVertexAttribDivisorEXT"), Cvoid, (GLuint, GLuint, GLuint), vaobj, index, divisor)
 end
 
 # typedef void ( APIENTRYP PFNGLDRAWARRAYSINSTANCEDEXTPROC ) ( GLenum mode , GLint start , GLsizei count , GLsizei primcount )
@@ -7334,25 +7334,25 @@ const PFNGLDRAWARRAYSINSTANCEDEXTPROC = Ptr{Cvoid}
 const PFNGLDRAWELEMENTSINSTANCEDEXTPROC = Ptr{Cvoid}
 
 function glDrawArraysInstancedEXT(mode, start, count, primcount)
-    ccall((:glDrawArraysInstancedEXT, libgl), Cvoid, (GLenum, GLint, GLsizei, GLsizei), mode, start, count, primcount)
+    ccall(getprocaddress_e("glDrawArraysInstancedEXT"), Cvoid, (GLenum, GLint, GLsizei, GLsizei), mode, start, count, primcount)
 end
 
 function glDrawElementsInstancedEXT(mode, count, type, indices, primcount)
-    ccall((:glDrawElementsInstancedEXT, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei), mode, count, type, indices, primcount)
+    ccall(getprocaddress_e("glDrawElementsInstancedEXT"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLsizei), mode, count, type, indices, primcount)
 end
 
 # typedef void ( APIENTRYP PFNGLPOLYGONOFFSETCLAMPEXTPROC ) ( GLfloat factor , GLfloat units , GLfloat clamp )
 const PFNGLPOLYGONOFFSETCLAMPEXTPROC = Ptr{Cvoid}
 
 function glPolygonOffsetClampEXT(factor, units, clamp)
-    ccall((:glPolygonOffsetClampEXT, libgl), Cvoid, (GLfloat, GLfloat, GLfloat), factor, units, clamp)
+    ccall(getprocaddress_e("glPolygonOffsetClampEXT"), Cvoid, (GLfloat, GLfloat, GLfloat), factor, units, clamp)
 end
 
 # typedef void ( APIENTRYP PFNGLRASTERSAMPLESEXTPROC ) ( GLuint samples , GLboolean fixedsamplelocations )
 const PFNGLRASTERSAMPLESEXTPROC = Ptr{Cvoid}
 
 function glRasterSamplesEXT(samples, fixedsamplelocations)
-    ccall((:glRasterSamplesEXT, libgl), Cvoid, (GLuint, GLboolean), samples, fixedsamplelocations)
+    ccall(getprocaddress_e("glRasterSamplesEXT"), Cvoid, (GLuint, GLboolean), samples, fixedsamplelocations)
 end
 
 # typedef void ( APIENTRYP PFNGLUSESHADERPROGRAMEXTPROC ) ( GLenum type , GLuint program )
@@ -7365,22 +7365,22 @@ const PFNGLACTIVEPROGRAMEXTPROC = Ptr{Cvoid}
 const PFNGLCREATESHADERPROGRAMEXTPROC = Ptr{Cvoid}
 
 function glUseShaderProgramEXT(type, program)
-    ccall((:glUseShaderProgramEXT, libgl), Cvoid, (GLenum, GLuint), type, program)
+    ccall(getprocaddress_e("glUseShaderProgramEXT"), Cvoid, (GLenum, GLuint), type, program)
 end
 
 function glActiveProgramEXT(program)
-    ccall((:glActiveProgramEXT, libgl), Cvoid, (GLuint,), program)
+    ccall(getprocaddress_e("glActiveProgramEXT"), Cvoid, (GLuint,), program)
 end
 
 function glCreateShaderProgramEXT(type, string)
-    ccall((:glCreateShaderProgramEXT, libgl), GLuint, (GLenum, Ptr{GLchar}), type, string)
+    ccall(getprocaddress_e("glCreateShaderProgramEXT"), GLuint, (GLenum, Ptr{GLchar}), type, string)
 end
 
 # typedef void ( APIENTRYP PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC ) ( void )
 const PFNGLFRAMEBUFFERFETCHBARRIEREXTPROC = Ptr{Cvoid}
 
 function glFramebufferFetchBarrierEXT()
-    ccall((:glFramebufferFetchBarrierEXT, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glFramebufferFetchBarrierEXT"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLTEXSTORAGE1DEXTPROC ) ( GLenum target , GLsizei levels , GLenum internalformat , GLsizei width )
@@ -7393,29 +7393,29 @@ const PFNGLTEXSTORAGE2DEXTPROC = Ptr{Cvoid}
 const PFNGLTEXSTORAGE3DEXTPROC = Ptr{Cvoid}
 
 function glTexStorage1DEXT(target, levels, internalformat, width)
-    ccall((:glTexStorage1DEXT, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei), target, levels, internalformat, width)
+    ccall(getprocaddress_e("glTexStorage1DEXT"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei), target, levels, internalformat, width)
 end
 
 function glTexStorage2DEXT(target, levels, internalformat, width, height)
-    ccall((:glTexStorage2DEXT, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei), target, levels, internalformat, width, height)
+    ccall(getprocaddress_e("glTexStorage2DEXT"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei), target, levels, internalformat, width, height)
 end
 
 function glTexStorage3DEXT(target, levels, internalformat, width, height, depth)
-    ccall((:glTexStorage3DEXT, libgl), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), target, levels, internalformat, width, height, depth)
+    ccall(getprocaddress_e("glTexStorage3DEXT"), Cvoid, (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei), target, levels, internalformat, width, height, depth)
 end
 
 # typedef void ( APIENTRYP PFNGLWINDOWRECTANGLESEXTPROC ) ( GLenum mode , GLsizei count , const GLint * box )
 const PFNGLWINDOWRECTANGLESEXTPROC = Ptr{Cvoid}
 
 function glWindowRectanglesEXT(mode, count, box)
-    ccall((:glWindowRectanglesEXT, libgl), Cvoid, (GLenum, GLsizei, Ptr{GLint}), mode, count, box)
+    ccall(getprocaddress_e("glWindowRectanglesEXT"), Cvoid, (GLenum, GLsizei, Ptr{GLint}), mode, count, box)
 end
 
 # typedef void ( APIENTRYP PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC ) ( void )
 const PFNGLAPPLYFRAMEBUFFERATTACHMENTCMAAINTELPROC = Ptr{Cvoid}
 
 function glApplyFramebufferAttachmentCMAAINTEL()
-    ccall((:glApplyFramebufferAttachmentCMAAINTEL, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glApplyFramebufferAttachmentCMAAINTEL"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLBEGINPERFQUERYINTELPROC ) ( GLuint queryHandle )
@@ -7449,43 +7449,43 @@ const PFNGLGETPERFQUERYIDBYNAMEINTELPROC = Ptr{Cvoid}
 const PFNGLGETPERFQUERYINFOINTELPROC = Ptr{Cvoid}
 
 function glBeginPerfQueryINTEL(queryHandle)
-    ccall((:glBeginPerfQueryINTEL, libgl), Cvoid, (GLuint,), queryHandle)
+    ccall(getprocaddress_e("glBeginPerfQueryINTEL"), Cvoid, (GLuint,), queryHandle)
 end
 
 function glCreatePerfQueryINTEL(queryId, queryHandle)
-    ccall((:glCreatePerfQueryINTEL, libgl), Cvoid, (GLuint, Ptr{GLuint}), queryId, queryHandle)
+    ccall(getprocaddress_e("glCreatePerfQueryINTEL"), Cvoid, (GLuint, Ptr{GLuint}), queryId, queryHandle)
 end
 
 function glDeletePerfQueryINTEL(queryHandle)
-    ccall((:glDeletePerfQueryINTEL, libgl), Cvoid, (GLuint,), queryHandle)
+    ccall(getprocaddress_e("glDeletePerfQueryINTEL"), Cvoid, (GLuint,), queryHandle)
 end
 
 function glEndPerfQueryINTEL(queryHandle)
-    ccall((:glEndPerfQueryINTEL, libgl), Cvoid, (GLuint,), queryHandle)
+    ccall(getprocaddress_e("glEndPerfQueryINTEL"), Cvoid, (GLuint,), queryHandle)
 end
 
 function glGetFirstPerfQueryIdINTEL(queryId)
-    ccall((:glGetFirstPerfQueryIdINTEL, libgl), Cvoid, (Ptr{GLuint},), queryId)
+    ccall(getprocaddress_e("glGetFirstPerfQueryIdINTEL"), Cvoid, (Ptr{GLuint},), queryId)
 end
 
 function glGetNextPerfQueryIdINTEL(queryId, nextQueryId)
-    ccall((:glGetNextPerfQueryIdINTEL, libgl), Cvoid, (GLuint, Ptr{GLuint}), queryId, nextQueryId)
+    ccall(getprocaddress_e("glGetNextPerfQueryIdINTEL"), Cvoid, (GLuint, Ptr{GLuint}), queryId, nextQueryId)
 end
 
 function glGetPerfCounterInfoINTEL(queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue)
-    ccall((:glGetPerfCounterInfoINTEL, libgl), Cvoid, (GLuint, GLuint, GLuint, Ptr{GLchar}, GLuint, Ptr{GLchar}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint64}), queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue)
+    ccall(getprocaddress_e("glGetPerfCounterInfoINTEL"), Cvoid, (GLuint, GLuint, GLuint, Ptr{GLchar}, GLuint, Ptr{GLchar}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint64}), queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue)
 end
 
 function glGetPerfQueryDataINTEL(queryHandle, flags, dataSize, data, bytesWritten)
-    ccall((:glGetPerfQueryDataINTEL, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{Cvoid}, Ptr{GLuint}), queryHandle, flags, dataSize, data, bytesWritten)
+    ccall(getprocaddress_e("glGetPerfQueryDataINTEL"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{Cvoid}, Ptr{GLuint}), queryHandle, flags, dataSize, data, bytesWritten)
 end
 
 function glGetPerfQueryIdByNameINTEL(queryName, queryId)
-    ccall((:glGetPerfQueryIdByNameINTEL, libgl), Cvoid, (Ptr{GLchar}, Ptr{GLuint}), queryName, queryId)
+    ccall(getprocaddress_e("glGetPerfQueryIdByNameINTEL"), Cvoid, (Ptr{GLchar}, Ptr{GLuint}), queryName, queryId)
 end
 
 function glGetPerfQueryInfoINTEL(queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask)
-    ccall((:glGetPerfQueryInfoINTEL, libgl), Cvoid, (GLuint, GLuint, Ptr{GLchar}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}), queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask)
+    ccall(getprocaddress_e("glGetPerfQueryInfoINTEL"), Cvoid, (GLuint, GLuint, Ptr{GLchar}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}, Ptr{GLuint}), queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask)
 end
 
 # typedef void ( APIENTRYP PFNGLFRAMEBUFFERPARAMETERIMESAPROC ) ( GLenum target , GLenum pname , GLint param )
@@ -7495,11 +7495,11 @@ const PFNGLFRAMEBUFFERPARAMETERIMESAPROC = Ptr{Cvoid}
 const PFNGLGETFRAMEBUFFERPARAMETERIVMESAPROC = Ptr{Cvoid}
 
 function glFramebufferParameteriMESA(target, pname, param)
-    ccall((:glFramebufferParameteriMESA, libgl), Cvoid, (GLenum, GLenum, GLint), target, pname, param)
+    ccall(getprocaddress_e("glFramebufferParameteriMESA"), Cvoid, (GLenum, GLenum, GLint), target, pname, param)
 end
 
 function glGetFramebufferParameterivMESA(target, pname, params)
-    ccall((:glGetFramebufferParameterivMESA, libgl), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
+    ccall(getprocaddress_e("glGetFramebufferParameterivMESA"), Cvoid, (GLenum, GLenum, Ptr{GLint}), target, pname, params)
 end
 
 # typedef void ( APIENTRYP PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSNVPROC ) ( GLenum mode , const void * indirect , GLsizei drawCount , GLsizei stride , GLint vertexBufferCount )
@@ -7509,11 +7509,11 @@ const PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSNVPROC = Ptr{Cvoid}
 const PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSNVPROC = Ptr{Cvoid}
 
 function glMultiDrawArraysIndirectBindlessNV(mode, indirect, drawCount, stride, vertexBufferCount)
-    ccall((:glMultiDrawArraysIndirectBindlessNV, libgl), Cvoid, (GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLint), mode, indirect, drawCount, stride, vertexBufferCount)
+    ccall(getprocaddress_e("glMultiDrawArraysIndirectBindlessNV"), Cvoid, (GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLint), mode, indirect, drawCount, stride, vertexBufferCount)
 end
 
 function glMultiDrawElementsIndirectBindlessNV(mode, type, indirect, drawCount, stride, vertexBufferCount)
-    ccall((:glMultiDrawElementsIndirectBindlessNV, libgl), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLint), mode, type, indirect, drawCount, stride, vertexBufferCount)
+    ccall(getprocaddress_e("glMultiDrawElementsIndirectBindlessNV"), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLint), mode, type, indirect, drawCount, stride, vertexBufferCount)
 end
 
 # typedef void ( APIENTRYP PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSCOUNTNVPROC ) ( GLenum mode , const void * indirect , GLsizei drawCount , GLsizei maxDrawCount , GLsizei stride , GLint vertexBufferCount )
@@ -7523,11 +7523,11 @@ const PFNGLMULTIDRAWARRAYSINDIRECTBINDLESSCOUNTNVPROC = Ptr{Cvoid}
 const PFNGLMULTIDRAWELEMENTSINDIRECTBINDLESSCOUNTNVPROC = Ptr{Cvoid}
 
 function glMultiDrawArraysIndirectBindlessCountNV(mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
-    ccall((:glMultiDrawArraysIndirectBindlessCountNV, libgl), Cvoid, (GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLsizei, GLint), mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
+    ccall(getprocaddress_e("glMultiDrawArraysIndirectBindlessCountNV"), Cvoid, (GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLsizei, GLint), mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
 end
 
 function glMultiDrawElementsIndirectBindlessCountNV(mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
-    ccall((:glMultiDrawElementsIndirectBindlessCountNV, libgl), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLsizei, GLint), mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
+    ccall(getprocaddress_e("glMultiDrawElementsIndirectBindlessCountNV"), Cvoid, (GLenum, GLenum, Ptr{Cvoid}, GLsizei, GLsizei, GLsizei, GLint), mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
 end
 
 # typedef GLuint64 ( APIENTRYP PFNGLGETTEXTUREHANDLENVPROC ) ( GLuint texture )
@@ -7570,55 +7570,55 @@ const PFNGLISTEXTUREHANDLERESIDENTNVPROC = Ptr{Cvoid}
 const PFNGLISIMAGEHANDLERESIDENTNVPROC = Ptr{Cvoid}
 
 function glGetTextureHandleNV(texture)
-    ccall((:glGetTextureHandleNV, libgl), GLuint64, (GLuint,), texture)
+    ccall(getprocaddress_e("glGetTextureHandleNV"), GLuint64, (GLuint,), texture)
 end
 
 function glGetTextureSamplerHandleNV(texture, sampler)
-    ccall((:glGetTextureSamplerHandleNV, libgl), GLuint64, (GLuint, GLuint), texture, sampler)
+    ccall(getprocaddress_e("glGetTextureSamplerHandleNV"), GLuint64, (GLuint, GLuint), texture, sampler)
 end
 
 function glMakeTextureHandleResidentNV(handle)
-    ccall((:glMakeTextureHandleResidentNV, libgl), Cvoid, (GLuint64,), handle)
+    ccall(getprocaddress_e("glMakeTextureHandleResidentNV"), Cvoid, (GLuint64,), handle)
 end
 
 function glMakeTextureHandleNonResidentNV(handle)
-    ccall((:glMakeTextureHandleNonResidentNV, libgl), Cvoid, (GLuint64,), handle)
+    ccall(getprocaddress_e("glMakeTextureHandleNonResidentNV"), Cvoid, (GLuint64,), handle)
 end
 
 function glGetImageHandleNV(texture, level, layered, layer, format)
-    ccall((:glGetImageHandleNV, libgl), GLuint64, (GLuint, GLint, GLboolean, GLint, GLenum), texture, level, layered, layer, format)
+    ccall(getprocaddress_e("glGetImageHandleNV"), GLuint64, (GLuint, GLint, GLboolean, GLint, GLenum), texture, level, layered, layer, format)
 end
 
 function glMakeImageHandleResidentNV(handle, access)
-    ccall((:glMakeImageHandleResidentNV, libgl), Cvoid, (GLuint64, GLenum), handle, access)
+    ccall(getprocaddress_e("glMakeImageHandleResidentNV"), Cvoid, (GLuint64, GLenum), handle, access)
 end
 
 function glMakeImageHandleNonResidentNV(handle)
-    ccall((:glMakeImageHandleNonResidentNV, libgl), Cvoid, (GLuint64,), handle)
+    ccall(getprocaddress_e("glMakeImageHandleNonResidentNV"), Cvoid, (GLuint64,), handle)
 end
 
 function glUniformHandleui64NV(location, value)
-    ccall((:glUniformHandleui64NV, libgl), Cvoid, (GLint, GLuint64), location, value)
+    ccall(getprocaddress_e("glUniformHandleui64NV"), Cvoid, (GLint, GLuint64), location, value)
 end
 
 function glUniformHandleui64vNV(location, count, value)
-    ccall((:glUniformHandleui64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
+    ccall(getprocaddress_e("glUniformHandleui64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLuint64}), location, count, value)
 end
 
 function glProgramUniformHandleui64NV(program, location, value)
-    ccall((:glProgramUniformHandleui64NV, libgl), Cvoid, (GLuint, GLint, GLuint64), program, location, value)
+    ccall(getprocaddress_e("glProgramUniformHandleui64NV"), Cvoid, (GLuint, GLint, GLuint64), program, location, value)
 end
 
 function glProgramUniformHandleui64vNV(program, location, count, values)
-    ccall((:glProgramUniformHandleui64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, values)
+    ccall(getprocaddress_e("glProgramUniformHandleui64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64}), program, location, count, values)
 end
 
 function glIsTextureHandleResidentNV(handle)
-    ccall((:glIsTextureHandleResidentNV, libgl), GLboolean, (GLuint64,), handle)
+    ccall(getprocaddress_e("glIsTextureHandleResidentNV"), GLboolean, (GLuint64,), handle)
 end
 
 function glIsImageHandleResidentNV(handle)
-    ccall((:glIsImageHandleResidentNV, libgl), GLboolean, (GLuint64,), handle)
+    ccall(getprocaddress_e("glIsImageHandleResidentNV"), GLboolean, (GLuint64,), handle)
 end
 
 # typedef void ( APIENTRYP PFNGLBLENDPARAMETERINVPROC ) ( GLenum pname , GLint value )
@@ -7628,18 +7628,18 @@ const PFNGLBLENDPARAMETERINVPROC = Ptr{Cvoid}
 const PFNGLBLENDBARRIERNVPROC = Ptr{Cvoid}
 
 function glBlendParameteriNV(pname, value)
-    ccall((:glBlendParameteriNV, libgl), Cvoid, (GLenum, GLint), pname, value)
+    ccall(getprocaddress_e("glBlendParameteriNV"), Cvoid, (GLenum, GLint), pname, value)
 end
 
 function glBlendBarrierNV()
-    ccall((:glBlendBarrierNV, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glBlendBarrierNV"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLVIEWPORTPOSITIONWSCALENVPROC ) ( GLuint index , GLfloat xcoeff , GLfloat ycoeff )
 const PFNGLVIEWPORTPOSITIONWSCALENVPROC = Ptr{Cvoid}
 
 function glViewportPositionWScaleNV(index, xcoeff, ycoeff)
-    ccall((:glViewportPositionWScaleNV, libgl), Cvoid, (GLuint, GLfloat, GLfloat), index, xcoeff, ycoeff)
+    ccall(getprocaddress_e("glViewportPositionWScaleNV"), Cvoid, (GLuint, GLfloat, GLfloat), index, xcoeff, ycoeff)
 end
 
 # typedef void ( APIENTRYP PFNGLCREATESTATESNVPROC ) ( GLsizei n , GLuint * states )
@@ -7694,71 +7694,71 @@ const PFNGLCOMPILECOMMANDLISTNVPROC = Ptr{Cvoid}
 const PFNGLCALLCOMMANDLISTNVPROC = Ptr{Cvoid}
 
 function glCreateStatesNV(n, states)
-    ccall((:glCreateStatesNV, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, states)
+    ccall(getprocaddress_e("glCreateStatesNV"), Cvoid, (GLsizei, Ptr{GLuint}), n, states)
 end
 
 function glDeleteStatesNV(n, states)
-    ccall((:glDeleteStatesNV, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, states)
+    ccall(getprocaddress_e("glDeleteStatesNV"), Cvoid, (GLsizei, Ptr{GLuint}), n, states)
 end
 
 function glIsStateNV(state)
-    ccall((:glIsStateNV, libgl), GLboolean, (GLuint,), state)
+    ccall(getprocaddress_e("glIsStateNV"), GLboolean, (GLuint,), state)
 end
 
 function glStateCaptureNV(state, mode)
-    ccall((:glStateCaptureNV, libgl), Cvoid, (GLuint, GLenum), state, mode)
+    ccall(getprocaddress_e("glStateCaptureNV"), Cvoid, (GLuint, GLenum), state, mode)
 end
 
 function glGetCommandHeaderNV(tokenID, size)
-    ccall((:glGetCommandHeaderNV, libgl), GLuint, (GLenum, GLuint), tokenID, size)
+    ccall(getprocaddress_e("glGetCommandHeaderNV"), GLuint, (GLenum, GLuint), tokenID, size)
 end
 
 function glGetStageIndexNV(shadertype)
-    ccall((:glGetStageIndexNV, libgl), GLushort, (GLenum,), shadertype)
+    ccall(getprocaddress_e("glGetStageIndexNV"), GLushort, (GLenum,), shadertype)
 end
 
 function glDrawCommandsNV(primitiveMode, buffer, indirects, sizes, count)
-    ccall((:glDrawCommandsNV, libgl), Cvoid, (GLenum, GLuint, Ptr{GLintptr}, Ptr{GLsizei}, GLuint), primitiveMode, buffer, indirects, sizes, count)
+    ccall(getprocaddress_e("glDrawCommandsNV"), Cvoid, (GLenum, GLuint, Ptr{GLintptr}, Ptr{GLsizei}, GLuint), primitiveMode, buffer, indirects, sizes, count)
 end
 
 function glDrawCommandsAddressNV(primitiveMode, indirects, sizes, count)
-    ccall((:glDrawCommandsAddressNV, libgl), Cvoid, (GLenum, Ptr{GLuint64}, Ptr{GLsizei}, GLuint), primitiveMode, indirects, sizes, count)
+    ccall(getprocaddress_e("glDrawCommandsAddressNV"), Cvoid, (GLenum, Ptr{GLuint64}, Ptr{GLsizei}, GLuint), primitiveMode, indirects, sizes, count)
 end
 
 function glDrawCommandsStatesNV(buffer, indirects, sizes, states, fbos, count)
-    ccall((:glDrawCommandsStatesNV, libgl), Cvoid, (GLuint, Ptr{GLintptr}, Ptr{GLsizei}, Ptr{GLuint}, Ptr{GLuint}, GLuint), buffer, indirects, sizes, states, fbos, count)
+    ccall(getprocaddress_e("glDrawCommandsStatesNV"), Cvoid, (GLuint, Ptr{GLintptr}, Ptr{GLsizei}, Ptr{GLuint}, Ptr{GLuint}, GLuint), buffer, indirects, sizes, states, fbos, count)
 end
 
 function glDrawCommandsStatesAddressNV(indirects, sizes, states, fbos, count)
-    ccall((:glDrawCommandsStatesAddressNV, libgl), Cvoid, (Ptr{GLuint64}, Ptr{GLsizei}, Ptr{GLuint}, Ptr{GLuint}, GLuint), indirects, sizes, states, fbos, count)
+    ccall(getprocaddress_e("glDrawCommandsStatesAddressNV"), Cvoid, (Ptr{GLuint64}, Ptr{GLsizei}, Ptr{GLuint}, Ptr{GLuint}, GLuint), indirects, sizes, states, fbos, count)
 end
 
 function glCreateCommandListsNV(n, lists)
-    ccall((:glCreateCommandListsNV, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, lists)
+    ccall(getprocaddress_e("glCreateCommandListsNV"), Cvoid, (GLsizei, Ptr{GLuint}), n, lists)
 end
 
 function glDeleteCommandListsNV(n, lists)
-    ccall((:glDeleteCommandListsNV, libgl), Cvoid, (GLsizei, Ptr{GLuint}), n, lists)
+    ccall(getprocaddress_e("glDeleteCommandListsNV"), Cvoid, (GLsizei, Ptr{GLuint}), n, lists)
 end
 
 function glIsCommandListNV(list)
-    ccall((:glIsCommandListNV, libgl), GLboolean, (GLuint,), list)
+    ccall(getprocaddress_e("glIsCommandListNV"), GLboolean, (GLuint,), list)
 end
 
 function glListDrawCommandsStatesClientNV(list, segment, indirects, sizes, states, fbos, count)
-    ccall((:glListDrawCommandsStatesClientNV, libgl), Cvoid, (GLuint, GLuint, Ptr{Ptr{Cvoid}}, Ptr{GLsizei}, Ptr{GLuint}, Ptr{GLuint}, GLuint), list, segment, indirects, sizes, states, fbos, count)
+    ccall(getprocaddress_e("glListDrawCommandsStatesClientNV"), Cvoid, (GLuint, GLuint, Ptr{Ptr{Cvoid}}, Ptr{GLsizei}, Ptr{GLuint}, Ptr{GLuint}, GLuint), list, segment, indirects, sizes, states, fbos, count)
 end
 
 function glCommandListSegmentsNV(list, segments)
-    ccall((:glCommandListSegmentsNV, libgl), Cvoid, (GLuint, GLuint), list, segments)
+    ccall(getprocaddress_e("glCommandListSegmentsNV"), Cvoid, (GLuint, GLuint), list, segments)
 end
 
 function glCompileCommandListNV(list)
-    ccall((:glCompileCommandListNV, libgl), Cvoid, (GLuint,), list)
+    ccall(getprocaddress_e("glCompileCommandListNV"), Cvoid, (GLuint,), list)
 end
 
 function glCallCommandListNV(list)
-    ccall((:glCallCommandListNV, libgl), Cvoid, (GLuint,), list)
+    ccall(getprocaddress_e("glCallCommandListNV"), Cvoid, (GLuint,), list)
 end
 
 # typedef void ( APIENTRYP PFNGLBEGINCONDITIONALRENDERNVPROC ) ( GLuint id , GLenum mode )
@@ -7768,32 +7768,32 @@ const PFNGLBEGINCONDITIONALRENDERNVPROC = Ptr{Cvoid}
 const PFNGLENDCONDITIONALRENDERNVPROC = Ptr{Cvoid}
 
 function glBeginConditionalRenderNV(id, mode)
-    ccall((:glBeginConditionalRenderNV, libgl), Cvoid, (GLuint, GLenum), id, mode)
+    ccall(getprocaddress_e("glBeginConditionalRenderNV"), Cvoid, (GLuint, GLenum), id, mode)
 end
 
 function glEndConditionalRenderNV()
-    ccall((:glEndConditionalRenderNV, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glEndConditionalRenderNV"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLSUBPIXELPRECISIONBIASNVPROC ) ( GLuint xbits , GLuint ybits )
 const PFNGLSUBPIXELPRECISIONBIASNVPROC = Ptr{Cvoid}
 
 function glSubpixelPrecisionBiasNV(xbits, ybits)
-    ccall((:glSubpixelPrecisionBiasNV, libgl), Cvoid, (GLuint, GLuint), xbits, ybits)
+    ccall(getprocaddress_e("glSubpixelPrecisionBiasNV"), Cvoid, (GLuint, GLuint), xbits, ybits)
 end
 
 # typedef void ( APIENTRYP PFNGLCONSERVATIVERASTERPARAMETERFNVPROC ) ( GLenum pname , GLfloat value )
 const PFNGLCONSERVATIVERASTERPARAMETERFNVPROC = Ptr{Cvoid}
 
 function glConservativeRasterParameterfNV(pname, value)
-    ccall((:glConservativeRasterParameterfNV, libgl), Cvoid, (GLenum, GLfloat), pname, value)
+    ccall(getprocaddress_e("glConservativeRasterParameterfNV"), Cvoid, (GLenum, GLfloat), pname, value)
 end
 
 # typedef void ( APIENTRYP PFNGLCONSERVATIVERASTERPARAMETERINVPROC ) ( GLenum pname , GLint param )
 const PFNGLCONSERVATIVERASTERPARAMETERINVPROC = Ptr{Cvoid}
 
 function glConservativeRasterParameteriNV(pname, param)
-    ccall((:glConservativeRasterParameteriNV, libgl), Cvoid, (GLenum, GLint), pname, param)
+    ccall(getprocaddress_e("glConservativeRasterParameteriNV"), Cvoid, (GLenum, GLint), pname, param)
 end
 
 # typedef void ( APIENTRYP PFNGLDEPTHRANGEDNVPROC ) ( GLdouble zNear , GLdouble zFar )
@@ -7806,15 +7806,15 @@ const PFNGLCLEARDEPTHDNVPROC = Ptr{Cvoid}
 const PFNGLDEPTHBOUNDSDNVPROC = Ptr{Cvoid}
 
 function glDepthRangedNV(zNear, zFar)
-    ccall((:glDepthRangedNV, libgl), Cvoid, (GLdouble, GLdouble), zNear, zFar)
+    ccall(getprocaddress_e("glDepthRangedNV"), Cvoid, (GLdouble, GLdouble), zNear, zFar)
 end
 
 function glClearDepthdNV(depth)
-    ccall((:glClearDepthdNV, libgl), Cvoid, (GLdouble,), depth)
+    ccall(getprocaddress_e("glClearDepthdNV"), Cvoid, (GLdouble,), depth)
 end
 
 function glDepthBoundsdNV(zmin, zmax)
-    ccall((:glDepthBoundsdNV, libgl), Cvoid, (GLdouble, GLdouble), zmin, zmax)
+    ccall(getprocaddress_e("glDepthBoundsdNV"), Cvoid, (GLdouble, GLdouble), zmin, zmax)
 end
 
 # typedef void ( APIENTRY * GLVULKANPROCNV ) ( void )
@@ -7836,30 +7836,30 @@ const PFNGLSIGNALVKSEMAPHORENVPROC = Ptr{Cvoid}
 const PFNGLSIGNALVKFENCENVPROC = Ptr{Cvoid}
 
 function glDrawVkImageNV(vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1)
-    ccall((:glDrawVkImageNV, libgl), Cvoid, (GLuint64, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat), vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1)
+    ccall(getprocaddress_e("glDrawVkImageNV"), Cvoid, (GLuint64, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat), vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1)
 end
 
 function glGetVkProcAddrNV(name)
-    ccall((:glGetVkProcAddrNV, libgl), GLVULKANPROCNV, (Ptr{GLchar},), name)
+    ccall(getprocaddress_e("glGetVkProcAddrNV"), GLVULKANPROCNV, (Ptr{GLchar},), name)
 end
 
 function glWaitVkSemaphoreNV(vkSemaphore)
-    ccall((:glWaitVkSemaphoreNV, libgl), Cvoid, (GLuint64,), vkSemaphore)
+    ccall(getprocaddress_e("glWaitVkSemaphoreNV"), Cvoid, (GLuint64,), vkSemaphore)
 end
 
 function glSignalVkSemaphoreNV(vkSemaphore)
-    ccall((:glSignalVkSemaphoreNV, libgl), Cvoid, (GLuint64,), vkSemaphore)
+    ccall(getprocaddress_e("glSignalVkSemaphoreNV"), Cvoid, (GLuint64,), vkSemaphore)
 end
 
 function glSignalVkFenceNV(vkFence)
-    ccall((:glSignalVkFenceNV, libgl), Cvoid, (GLuint64,), vkFence)
+    ccall(getprocaddress_e("glSignalVkFenceNV"), Cvoid, (GLuint64,), vkFence)
 end
 
 # typedef void ( APIENTRYP PFNGLFRAGMENTCOVERAGECOLORNVPROC ) ( GLuint color )
 const PFNGLFRAGMENTCOVERAGECOLORNVPROC = Ptr{Cvoid}
 
 function glFragmentCoverageColorNV(color)
-    ccall((:glFragmentCoverageColorNV, libgl), Cvoid, (GLuint,), color)
+    ccall(getprocaddress_e("glFragmentCoverageColorNV"), Cvoid, (GLuint,), color)
 end
 
 # typedef void ( APIENTRYP PFNGLCOVERAGEMODULATIONTABLENVPROC ) ( GLsizei n , const GLfloat * v )
@@ -7872,22 +7872,22 @@ const PFNGLGETCOVERAGEMODULATIONTABLENVPROC = Ptr{Cvoid}
 const PFNGLCOVERAGEMODULATIONNVPROC = Ptr{Cvoid}
 
 function glCoverageModulationTableNV(n, v)
-    ccall((:glCoverageModulationTableNV, libgl), Cvoid, (GLsizei, Ptr{GLfloat}), n, v)
+    ccall(getprocaddress_e("glCoverageModulationTableNV"), Cvoid, (GLsizei, Ptr{GLfloat}), n, v)
 end
 
 function glGetCoverageModulationTableNV(bufSize, v)
-    ccall((:glGetCoverageModulationTableNV, libgl), Cvoid, (GLsizei, Ptr{GLfloat}), bufSize, v)
+    ccall(getprocaddress_e("glGetCoverageModulationTableNV"), Cvoid, (GLsizei, Ptr{GLfloat}), bufSize, v)
 end
 
 function glCoverageModulationNV(components)
-    ccall((:glCoverageModulationNV, libgl), Cvoid, (GLenum,), components)
+    ccall(getprocaddress_e("glCoverageModulationNV"), Cvoid, (GLenum,), components)
 end
 
 # typedef void ( APIENTRYP PFNGLRENDERBUFFERSTORAGEMULTISAMPLECOVERAGENVPROC ) ( GLenum target , GLsizei coverageSamples , GLsizei colorSamples , GLenum internalformat , GLsizei width , GLsizei height )
 const PFNGLRENDERBUFFERSTORAGEMULTISAMPLECOVERAGENVPROC = Ptr{Cvoid}
 
 function glRenderbufferStorageMultisampleCoverageNV(target, coverageSamples, colorSamples, internalformat, width, height)
-    ccall((:glRenderbufferStorageMultisampleCoverageNV, libgl), Cvoid, (GLenum, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), target, coverageSamples, colorSamples, internalformat, width, height)
+    ccall(getprocaddress_e("glRenderbufferStorageMultisampleCoverageNV"), Cvoid, (GLenum, GLsizei, GLsizei, GLenum, GLsizei, GLsizei), target, coverageSamples, colorSamples, internalformat, width, height)
 end
 
 const GLint64EXT = khronos_int64_t
@@ -7992,142 +7992,142 @@ const PFNGLPROGRAMUNIFORM3UI64VNVPROC = Ptr{Cvoid}
 const PFNGLPROGRAMUNIFORM4UI64VNVPROC = Ptr{Cvoid}
 
 function glUniform1i64NV(location, x)
-    ccall((:glUniform1i64NV, libgl), Cvoid, (GLint, GLint64EXT), location, x)
+    ccall(getprocaddress_e("glUniform1i64NV"), Cvoid, (GLint, GLint64EXT), location, x)
 end
 
 function glUniform2i64NV(location, x, y)
-    ccall((:glUniform2i64NV, libgl), Cvoid, (GLint, GLint64EXT, GLint64EXT), location, x, y)
+    ccall(getprocaddress_e("glUniform2i64NV"), Cvoid, (GLint, GLint64EXT, GLint64EXT), location, x, y)
 end
 
 function glUniform3i64NV(location, x, y, z)
-    ccall((:glUniform3i64NV, libgl), Cvoid, (GLint, GLint64EXT, GLint64EXT, GLint64EXT), location, x, y, z)
+    ccall(getprocaddress_e("glUniform3i64NV"), Cvoid, (GLint, GLint64EXT, GLint64EXT, GLint64EXT), location, x, y, z)
 end
 
 function glUniform4i64NV(location, x, y, z, w)
-    ccall((:glUniform4i64NV, libgl), Cvoid, (GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT), location, x, y, z, w)
+    ccall(getprocaddress_e("glUniform4i64NV"), Cvoid, (GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT), location, x, y, z, w)
 end
 
 function glUniform1i64vNV(location, count, value)
-    ccall((:glUniform1i64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform1i64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
 end
 
 function glUniform2i64vNV(location, count, value)
-    ccall((:glUniform2i64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform2i64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
 end
 
 function glUniform3i64vNV(location, count, value)
-    ccall((:glUniform3i64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform3i64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
 end
 
 function glUniform4i64vNV(location, count, value)
-    ccall((:glUniform4i64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform4i64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLint64EXT}), location, count, value)
 end
 
 function glUniform1ui64NV(location, x)
-    ccall((:glUniform1ui64NV, libgl), Cvoid, (GLint, GLuint64EXT), location, x)
+    ccall(getprocaddress_e("glUniform1ui64NV"), Cvoid, (GLint, GLuint64EXT), location, x)
 end
 
 function glUniform2ui64NV(location, x, y)
-    ccall((:glUniform2ui64NV, libgl), Cvoid, (GLint, GLuint64EXT, GLuint64EXT), location, x, y)
+    ccall(getprocaddress_e("glUniform2ui64NV"), Cvoid, (GLint, GLuint64EXT, GLuint64EXT), location, x, y)
 end
 
 function glUniform3ui64NV(location, x, y, z)
-    ccall((:glUniform3ui64NV, libgl), Cvoid, (GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT), location, x, y, z)
+    ccall(getprocaddress_e("glUniform3ui64NV"), Cvoid, (GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT), location, x, y, z)
 end
 
 function glUniform4ui64NV(location, x, y, z, w)
-    ccall((:glUniform4ui64NV, libgl), Cvoid, (GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT), location, x, y, z, w)
+    ccall(getprocaddress_e("glUniform4ui64NV"), Cvoid, (GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT), location, x, y, z, w)
 end
 
 function glUniform1ui64vNV(location, count, value)
-    ccall((:glUniform1ui64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform1ui64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
 end
 
 function glUniform2ui64vNV(location, count, value)
-    ccall((:glUniform2ui64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform2ui64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
 end
 
 function glUniform3ui64vNV(location, count, value)
-    ccall((:glUniform3ui64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform3ui64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
 end
 
 function glUniform4ui64vNV(location, count, value)
-    ccall((:glUniform4ui64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniform4ui64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
 end
 
 function glGetUniformi64vNV(program, location, params)
-    ccall((:glGetUniformi64vNV, libgl), Cvoid, (GLuint, GLint, Ptr{GLint64EXT}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformi64vNV"), Cvoid, (GLuint, GLint, Ptr{GLint64EXT}), program, location, params)
 end
 
 function glProgramUniform1i64NV(program, location, x)
-    ccall((:glProgramUniform1i64NV, libgl), Cvoid, (GLuint, GLint, GLint64EXT), program, location, x)
+    ccall(getprocaddress_e("glProgramUniform1i64NV"), Cvoid, (GLuint, GLint, GLint64EXT), program, location, x)
 end
 
 function glProgramUniform2i64NV(program, location, x, y)
-    ccall((:glProgramUniform2i64NV, libgl), Cvoid, (GLuint, GLint, GLint64EXT, GLint64EXT), program, location, x, y)
+    ccall(getprocaddress_e("glProgramUniform2i64NV"), Cvoid, (GLuint, GLint, GLint64EXT, GLint64EXT), program, location, x, y)
 end
 
 function glProgramUniform3i64NV(program, location, x, y, z)
-    ccall((:glProgramUniform3i64NV, libgl), Cvoid, (GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT), program, location, x, y, z)
+    ccall(getprocaddress_e("glProgramUniform3i64NV"), Cvoid, (GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT), program, location, x, y, z)
 end
 
 function glProgramUniform4i64NV(program, location, x, y, z, w)
-    ccall((:glProgramUniform4i64NV, libgl), Cvoid, (GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT), program, location, x, y, z, w)
+    ccall(getprocaddress_e("glProgramUniform4i64NV"), Cvoid, (GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT), program, location, x, y, z, w)
 end
 
 function glProgramUniform1i64vNV(program, location, count, value)
-    ccall((:glProgramUniform1i64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1i64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
 end
 
 function glProgramUniform2i64vNV(program, location, count, value)
-    ccall((:glProgramUniform2i64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2i64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
 end
 
 function glProgramUniform3i64vNV(program, location, count, value)
-    ccall((:glProgramUniform3i64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3i64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
 end
 
 function glProgramUniform4i64vNV(program, location, count, value)
-    ccall((:glProgramUniform4i64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4i64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLint64EXT}), program, location, count, value)
 end
 
 function glProgramUniform1ui64NV(program, location, x)
-    ccall((:glProgramUniform1ui64NV, libgl), Cvoid, (GLuint, GLint, GLuint64EXT), program, location, x)
+    ccall(getprocaddress_e("glProgramUniform1ui64NV"), Cvoid, (GLuint, GLint, GLuint64EXT), program, location, x)
 end
 
 function glProgramUniform2ui64NV(program, location, x, y)
-    ccall((:glProgramUniform2ui64NV, libgl), Cvoid, (GLuint, GLint, GLuint64EXT, GLuint64EXT), program, location, x, y)
+    ccall(getprocaddress_e("glProgramUniform2ui64NV"), Cvoid, (GLuint, GLint, GLuint64EXT, GLuint64EXT), program, location, x, y)
 end
 
 function glProgramUniform3ui64NV(program, location, x, y, z)
-    ccall((:glProgramUniform3ui64NV, libgl), Cvoid, (GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT), program, location, x, y, z)
+    ccall(getprocaddress_e("glProgramUniform3ui64NV"), Cvoid, (GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT), program, location, x, y, z)
 end
 
 function glProgramUniform4ui64NV(program, location, x, y, z, w)
-    ccall((:glProgramUniform4ui64NV, libgl), Cvoid, (GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT), program, location, x, y, z, w)
+    ccall(getprocaddress_e("glProgramUniform4ui64NV"), Cvoid, (GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT), program, location, x, y, z, w)
 end
 
 function glProgramUniform1ui64vNV(program, location, count, value)
-    ccall((:glProgramUniform1ui64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform1ui64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
 end
 
 function glProgramUniform2ui64vNV(program, location, count, value)
-    ccall((:glProgramUniform2ui64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform2ui64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
 end
 
 function glProgramUniform3ui64vNV(program, location, count, value)
-    ccall((:glProgramUniform3ui64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform3ui64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
 end
 
 function glProgramUniform4ui64vNV(program, location, count, value)
-    ccall((:glProgramUniform4ui64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniform4ui64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
 end
 
 # typedef void ( APIENTRYP PFNGLGETINTERNALFORMATSAMPLEIVNVPROC ) ( GLenum target , GLenum internalformat , GLsizei samples , GLenum pname , GLsizei count , GLint * params )
 const PFNGLGETINTERNALFORMATSAMPLEIVNVPROC = Ptr{Cvoid}
 
 function glGetInternalformatSampleivNV(target, internalformat, samples, pname, count, params)
-    ccall((:glGetInternalformatSampleivNV, libgl), Cvoid, (GLenum, GLenum, GLsizei, GLenum, GLsizei, Ptr{GLint}), target, internalformat, samples, pname, count, params)
+    ccall(getprocaddress_e("glGetInternalformatSampleivNV"), Cvoid, (GLenum, GLenum, GLsizei, GLenum, GLsizei, Ptr{GLint}), target, internalformat, samples, pname, count, params)
 end
 
 # typedef void ( APIENTRYP PFNGLGETMEMORYOBJECTDETACHEDRESOURCESUIVNVPROC ) ( GLuint memory , GLenum pname , GLint first , GLsizei count , GLuint * params )
@@ -8149,27 +8149,27 @@ const PFNGLTEXTUREATTACHMEMORYNVPROC = Ptr{Cvoid}
 const PFNGLNAMEDBUFFERATTACHMEMORYNVPROC = Ptr{Cvoid}
 
 function glGetMemoryObjectDetachedResourcesuivNV(memory, pname, first, count, params)
-    ccall((:glGetMemoryObjectDetachedResourcesuivNV, libgl), Cvoid, (GLuint, GLenum, GLint, GLsizei, Ptr{GLuint}), memory, pname, first, count, params)
+    ccall(getprocaddress_e("glGetMemoryObjectDetachedResourcesuivNV"), Cvoid, (GLuint, GLenum, GLint, GLsizei, Ptr{GLuint}), memory, pname, first, count, params)
 end
 
 function glResetMemoryObjectParameterNV(memory, pname)
-    ccall((:glResetMemoryObjectParameterNV, libgl), Cvoid, (GLuint, GLenum), memory, pname)
+    ccall(getprocaddress_e("glResetMemoryObjectParameterNV"), Cvoid, (GLuint, GLenum), memory, pname)
 end
 
 function glTexAttachMemoryNV(target, memory, offset)
-    ccall((:glTexAttachMemoryNV, libgl), Cvoid, (GLenum, GLuint, GLuint64), target, memory, offset)
+    ccall(getprocaddress_e("glTexAttachMemoryNV"), Cvoid, (GLenum, GLuint, GLuint64), target, memory, offset)
 end
 
 function glBufferAttachMemoryNV(target, memory, offset)
-    ccall((:glBufferAttachMemoryNV, libgl), Cvoid, (GLenum, GLuint, GLuint64), target, memory, offset)
+    ccall(getprocaddress_e("glBufferAttachMemoryNV"), Cvoid, (GLenum, GLuint, GLuint64), target, memory, offset)
 end
 
 function glTextureAttachMemoryNV(texture, memory, offset)
-    ccall((:glTextureAttachMemoryNV, libgl), Cvoid, (GLuint, GLuint, GLuint64), texture, memory, offset)
+    ccall(getprocaddress_e("glTextureAttachMemoryNV"), Cvoid, (GLuint, GLuint, GLuint64), texture, memory, offset)
 end
 
 function glNamedBufferAttachMemoryNV(buffer, memory, offset)
-    ccall((:glNamedBufferAttachMemoryNV, libgl), Cvoid, (GLuint, GLuint, GLuint64), buffer, memory, offset)
+    ccall(getprocaddress_e("glNamedBufferAttachMemoryNV"), Cvoid, (GLuint, GLuint, GLuint64), buffer, memory, offset)
 end
 
 # typedef void ( APIENTRYP PFNGLBUFFERPAGECOMMITMENTMEMNVPROC ) ( GLenum target , GLintptr offset , GLsizeiptr size , GLuint memory , GLuint64 memOffset , GLboolean commit )
@@ -8185,19 +8185,19 @@ const PFNGLNAMEDBUFFERPAGECOMMITMENTMEMNVPROC = Ptr{Cvoid}
 const PFNGLTEXTUREPAGECOMMITMENTMEMNVPROC = Ptr{Cvoid}
 
 function glBufferPageCommitmentMemNV(target, offset, size, memory, memOffset, commit)
-    ccall((:glBufferPageCommitmentMemNV, libgl), Cvoid, (GLenum, GLintptr, GLsizeiptr, GLuint, GLuint64, GLboolean), target, offset, size, memory, memOffset, commit)
+    ccall(getprocaddress_e("glBufferPageCommitmentMemNV"), Cvoid, (GLenum, GLintptr, GLsizeiptr, GLuint, GLuint64, GLboolean), target, offset, size, memory, memOffset, commit)
 end
 
 function glTexPageCommitmentMemNV(target, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit)
-    ccall((:glTexPageCommitmentMemNV, libgl), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLuint, GLuint64, GLboolean), target, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit)
+    ccall(getprocaddress_e("glTexPageCommitmentMemNV"), Cvoid, (GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLuint, GLuint64, GLboolean), target, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit)
 end
 
 function glNamedBufferPageCommitmentMemNV(buffer, offset, size, memory, memOffset, commit)
-    ccall((:glNamedBufferPageCommitmentMemNV, libgl), Cvoid, (GLuint, GLintptr, GLsizeiptr, GLuint, GLuint64, GLboolean), buffer, offset, size, memory, memOffset, commit)
+    ccall(getprocaddress_e("glNamedBufferPageCommitmentMemNV"), Cvoid, (GLuint, GLintptr, GLsizeiptr, GLuint, GLuint64, GLboolean), buffer, offset, size, memory, memOffset, commit)
 end
 
 function glTexturePageCommitmentMemNV(texture, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit)
-    ccall((:glTexturePageCommitmentMemNV, libgl), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLuint, GLuint64, GLboolean), texture, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit)
+    ccall(getprocaddress_e("glTexturePageCommitmentMemNV"), Cvoid, (GLuint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLuint, GLuint64, GLboolean), texture, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit)
 end
 
 # typedef void ( APIENTRYP PFNGLDRAWMESHTASKSNVPROC ) ( GLuint first , GLuint count )
@@ -8213,19 +8213,19 @@ const PFNGLMULTIDRAWMESHTASKSINDIRECTNVPROC = Ptr{Cvoid}
 const PFNGLMULTIDRAWMESHTASKSINDIRECTCOUNTNVPROC = Ptr{Cvoid}
 
 function glDrawMeshTasksNV(first, count)
-    ccall((:glDrawMeshTasksNV, libgl), Cvoid, (GLuint, GLuint), first, count)
+    ccall(getprocaddress_e("glDrawMeshTasksNV"), Cvoid, (GLuint, GLuint), first, count)
 end
 
 function glDrawMeshTasksIndirectNV(indirect)
-    ccall((:glDrawMeshTasksIndirectNV, libgl), Cvoid, (GLintptr,), indirect)
+    ccall(getprocaddress_e("glDrawMeshTasksIndirectNV"), Cvoid, (GLintptr,), indirect)
 end
 
 function glMultiDrawMeshTasksIndirectNV(indirect, drawcount, stride)
-    ccall((:glMultiDrawMeshTasksIndirectNV, libgl), Cvoid, (GLintptr, GLsizei, GLsizei), indirect, drawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawMeshTasksIndirectNV"), Cvoid, (GLintptr, GLsizei, GLsizei), indirect, drawcount, stride)
 end
 
 function glMultiDrawMeshTasksIndirectCountNV(indirect, drawcount, maxdrawcount, stride)
-    ccall((:glMultiDrawMeshTasksIndirectCountNV, libgl), Cvoid, (GLintptr, GLintptr, GLsizei, GLsizei), indirect, drawcount, maxdrawcount, stride)
+    ccall(getprocaddress_e("glMultiDrawMeshTasksIndirectCountNV"), Cvoid, (GLintptr, GLintptr, GLsizei, GLsizei), indirect, drawcount, maxdrawcount, stride)
 end
 
 # typedef GLuint ( APIENTRYP PFNGLGENPATHSNVPROC ) ( GLsizei range )
@@ -8400,231 +8400,231 @@ const PFNGLPROGRAMPATHFRAGMENTINPUTGENNVPROC = Ptr{Cvoid}
 const PFNGLGETPROGRAMRESOURCEFVNVPROC = Ptr{Cvoid}
 
 function glGenPathsNV(range)
-    ccall((:glGenPathsNV, libgl), GLuint, (GLsizei,), range)
+    ccall(getprocaddress_e("glGenPathsNV"), GLuint, (GLsizei,), range)
 end
 
 function glDeletePathsNV(path, range)
-    ccall((:glDeletePathsNV, libgl), Cvoid, (GLuint, GLsizei), path, range)
+    ccall(getprocaddress_e("glDeletePathsNV"), Cvoid, (GLuint, GLsizei), path, range)
 end
 
 function glIsPathNV(path)
-    ccall((:glIsPathNV, libgl), GLboolean, (GLuint,), path)
+    ccall(getprocaddress_e("glIsPathNV"), GLboolean, (GLuint,), path)
 end
 
 function glPathCommandsNV(path, numCommands, commands, numCoords, coordType, coords)
-    ccall((:glPathCommandsNV, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLubyte}, GLsizei, GLenum, Ptr{Cvoid}), path, numCommands, commands, numCoords, coordType, coords)
+    ccall(getprocaddress_e("glPathCommandsNV"), Cvoid, (GLuint, GLsizei, Ptr{GLubyte}, GLsizei, GLenum, Ptr{Cvoid}), path, numCommands, commands, numCoords, coordType, coords)
 end
 
 function glPathCoordsNV(path, numCoords, coordType, coords)
-    ccall((:glPathCoordsNV, libgl), Cvoid, (GLuint, GLsizei, GLenum, Ptr{Cvoid}), path, numCoords, coordType, coords)
+    ccall(getprocaddress_e("glPathCoordsNV"), Cvoid, (GLuint, GLsizei, GLenum, Ptr{Cvoid}), path, numCoords, coordType, coords)
 end
 
 function glPathSubCommandsNV(path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords)
-    ccall((:glPathSubCommandsNV, libgl), Cvoid, (GLuint, GLsizei, GLsizei, GLsizei, Ptr{GLubyte}, GLsizei, GLenum, Ptr{Cvoid}), path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords)
+    ccall(getprocaddress_e("glPathSubCommandsNV"), Cvoid, (GLuint, GLsizei, GLsizei, GLsizei, Ptr{GLubyte}, GLsizei, GLenum, Ptr{Cvoid}), path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords)
 end
 
 function glPathSubCoordsNV(path, coordStart, numCoords, coordType, coords)
-    ccall((:glPathSubCoordsNV, libgl), Cvoid, (GLuint, GLsizei, GLsizei, GLenum, Ptr{Cvoid}), path, coordStart, numCoords, coordType, coords)
+    ccall(getprocaddress_e("glPathSubCoordsNV"), Cvoid, (GLuint, GLsizei, GLsizei, GLenum, Ptr{Cvoid}), path, coordStart, numCoords, coordType, coords)
 end
 
 function glPathStringNV(path, format, length, pathString)
-    ccall((:glPathStringNV, libgl), Cvoid, (GLuint, GLenum, GLsizei, Ptr{Cvoid}), path, format, length, pathString)
+    ccall(getprocaddress_e("glPathStringNV"), Cvoid, (GLuint, GLenum, GLsizei, Ptr{Cvoid}), path, format, length, pathString)
 end
 
 function glPathGlyphsNV(firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale)
-    ccall((:glPathGlyphsNV, libgl), Cvoid, (GLuint, GLenum, Ptr{Cvoid}, GLbitfield, GLsizei, GLenum, Ptr{Cvoid}, GLenum, GLuint, GLfloat), firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale)
+    ccall(getprocaddress_e("glPathGlyphsNV"), Cvoid, (GLuint, GLenum, Ptr{Cvoid}, GLbitfield, GLsizei, GLenum, Ptr{Cvoid}, GLenum, GLuint, GLfloat), firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale)
 end
 
 function glPathGlyphRangeNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale)
-    ccall((:glPathGlyphRangeNV, libgl), Cvoid, (GLuint, GLenum, Ptr{Cvoid}, GLbitfield, GLuint, GLsizei, GLenum, GLuint, GLfloat), firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale)
+    ccall(getprocaddress_e("glPathGlyphRangeNV"), Cvoid, (GLuint, GLenum, Ptr{Cvoid}, GLbitfield, GLuint, GLsizei, GLenum, GLuint, GLfloat), firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale)
 end
 
 function glWeightPathsNV(resultPath, numPaths, paths, weights)
-    ccall((:glWeightPathsNV, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLuint}, Ptr{GLfloat}), resultPath, numPaths, paths, weights)
+    ccall(getprocaddress_e("glWeightPathsNV"), Cvoid, (GLuint, GLsizei, Ptr{GLuint}, Ptr{GLfloat}), resultPath, numPaths, paths, weights)
 end
 
 function glCopyPathNV(resultPath, srcPath)
-    ccall((:glCopyPathNV, libgl), Cvoid, (GLuint, GLuint), resultPath, srcPath)
+    ccall(getprocaddress_e("glCopyPathNV"), Cvoid, (GLuint, GLuint), resultPath, srcPath)
 end
 
 function glInterpolatePathsNV(resultPath, pathA, pathB, weight)
-    ccall((:glInterpolatePathsNV, libgl), Cvoid, (GLuint, GLuint, GLuint, GLfloat), resultPath, pathA, pathB, weight)
+    ccall(getprocaddress_e("glInterpolatePathsNV"), Cvoid, (GLuint, GLuint, GLuint, GLfloat), resultPath, pathA, pathB, weight)
 end
 
 function glTransformPathNV(resultPath, srcPath, transformType, transformValues)
-    ccall((:glTransformPathNV, libgl), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLfloat}), resultPath, srcPath, transformType, transformValues)
+    ccall(getprocaddress_e("glTransformPathNV"), Cvoid, (GLuint, GLuint, GLenum, Ptr{GLfloat}), resultPath, srcPath, transformType, transformValues)
 end
 
 function glPathParameterivNV(path, pname, value)
-    ccall((:glPathParameterivNV, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), path, pname, value)
+    ccall(getprocaddress_e("glPathParameterivNV"), Cvoid, (GLuint, GLenum, Ptr{GLint}), path, pname, value)
 end
 
 function glPathParameteriNV(path, pname, value)
-    ccall((:glPathParameteriNV, libgl), Cvoid, (GLuint, GLenum, GLint), path, pname, value)
+    ccall(getprocaddress_e("glPathParameteriNV"), Cvoid, (GLuint, GLenum, GLint), path, pname, value)
 end
 
 function glPathParameterfvNV(path, pname, value)
-    ccall((:glPathParameterfvNV, libgl), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), path, pname, value)
+    ccall(getprocaddress_e("glPathParameterfvNV"), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), path, pname, value)
 end
 
 function glPathParameterfNV(path, pname, value)
-    ccall((:glPathParameterfNV, libgl), Cvoid, (GLuint, GLenum, GLfloat), path, pname, value)
+    ccall(getprocaddress_e("glPathParameterfNV"), Cvoid, (GLuint, GLenum, GLfloat), path, pname, value)
 end
 
 function glPathDashArrayNV(path, dashCount, dashArray)
-    ccall((:glPathDashArrayNV, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLfloat}), path, dashCount, dashArray)
+    ccall(getprocaddress_e("glPathDashArrayNV"), Cvoid, (GLuint, GLsizei, Ptr{GLfloat}), path, dashCount, dashArray)
 end
 
 function glPathStencilFuncNV(func, ref, mask)
-    ccall((:glPathStencilFuncNV, libgl), Cvoid, (GLenum, GLint, GLuint), func, ref, mask)
+    ccall(getprocaddress_e("glPathStencilFuncNV"), Cvoid, (GLenum, GLint, GLuint), func, ref, mask)
 end
 
 function glPathStencilDepthOffsetNV(factor, units)
-    ccall((:glPathStencilDepthOffsetNV, libgl), Cvoid, (GLfloat, GLfloat), factor, units)
+    ccall(getprocaddress_e("glPathStencilDepthOffsetNV"), Cvoid, (GLfloat, GLfloat), factor, units)
 end
 
 function glStencilFillPathNV(path, fillMode, mask)
-    ccall((:glStencilFillPathNV, libgl), Cvoid, (GLuint, GLenum, GLuint), path, fillMode, mask)
+    ccall(getprocaddress_e("glStencilFillPathNV"), Cvoid, (GLuint, GLenum, GLuint), path, fillMode, mask)
 end
 
 function glStencilStrokePathNV(path, reference, mask)
-    ccall((:glStencilStrokePathNV, libgl), Cvoid, (GLuint, GLint, GLuint), path, reference, mask)
+    ccall(getprocaddress_e("glStencilStrokePathNV"), Cvoid, (GLuint, GLint, GLuint), path, reference, mask)
 end
 
 function glStencilFillPathInstancedNV(numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues)
-    ccall((:glStencilFillPathInstancedNV, libgl), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLuint, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues)
+    ccall(getprocaddress_e("glStencilFillPathInstancedNV"), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLuint, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues)
 end
 
 function glStencilStrokePathInstancedNV(numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues)
-    ccall((:glStencilStrokePathInstancedNV, libgl), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLint, GLuint, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues)
+    ccall(getprocaddress_e("glStencilStrokePathInstancedNV"), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLint, GLuint, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues)
 end
 
 function glPathCoverDepthFuncNV(func)
-    ccall((:glPathCoverDepthFuncNV, libgl), Cvoid, (GLenum,), func)
+    ccall(getprocaddress_e("glPathCoverDepthFuncNV"), Cvoid, (GLenum,), func)
 end
 
 function glCoverFillPathNV(path, coverMode)
-    ccall((:glCoverFillPathNV, libgl), Cvoid, (GLuint, GLenum), path, coverMode)
+    ccall(getprocaddress_e("glCoverFillPathNV"), Cvoid, (GLuint, GLenum), path, coverMode)
 end
 
 function glCoverStrokePathNV(path, coverMode)
-    ccall((:glCoverStrokePathNV, libgl), Cvoid, (GLuint, GLenum), path, coverMode)
+    ccall(getprocaddress_e("glCoverStrokePathNV"), Cvoid, (GLuint, GLenum), path, coverMode)
 end
 
 function glCoverFillPathInstancedNV(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
-    ccall((:glCoverFillPathInstancedNV, libgl), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
+    ccall(getprocaddress_e("glCoverFillPathInstancedNV"), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
 end
 
 function glCoverStrokePathInstancedNV(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
-    ccall((:glCoverStrokePathInstancedNV, libgl), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
+    ccall(getprocaddress_e("glCoverStrokePathInstancedNV"), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
 end
 
 function glGetPathParameterivNV(path, pname, value)
-    ccall((:glGetPathParameterivNV, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint}), path, pname, value)
+    ccall(getprocaddress_e("glGetPathParameterivNV"), Cvoid, (GLuint, GLenum, Ptr{GLint}), path, pname, value)
 end
 
 function glGetPathParameterfvNV(path, pname, value)
-    ccall((:glGetPathParameterfvNV, libgl), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), path, pname, value)
+    ccall(getprocaddress_e("glGetPathParameterfvNV"), Cvoid, (GLuint, GLenum, Ptr{GLfloat}), path, pname, value)
 end
 
 function glGetPathCommandsNV(path, commands)
-    ccall((:glGetPathCommandsNV, libgl), Cvoid, (GLuint, Ptr{GLubyte}), path, commands)
+    ccall(getprocaddress_e("glGetPathCommandsNV"), Cvoid, (GLuint, Ptr{GLubyte}), path, commands)
 end
 
 function glGetPathCoordsNV(path, coords)
-    ccall((:glGetPathCoordsNV, libgl), Cvoid, (GLuint, Ptr{GLfloat}), path, coords)
+    ccall(getprocaddress_e("glGetPathCoordsNV"), Cvoid, (GLuint, Ptr{GLfloat}), path, coords)
 end
 
 function glGetPathDashArrayNV(path, dashArray)
-    ccall((:glGetPathDashArrayNV, libgl), Cvoid, (GLuint, Ptr{GLfloat}), path, dashArray)
+    ccall(getprocaddress_e("glGetPathDashArrayNV"), Cvoid, (GLuint, Ptr{GLfloat}), path, dashArray)
 end
 
 function glGetPathMetricsNV(metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics)
-    ccall((:glGetPathMetricsNV, libgl), Cvoid, (GLbitfield, GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLsizei, Ptr{GLfloat}), metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics)
+    ccall(getprocaddress_e("glGetPathMetricsNV"), Cvoid, (GLbitfield, GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLsizei, Ptr{GLfloat}), metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics)
 end
 
 function glGetPathMetricRangeNV(metricQueryMask, firstPathName, numPaths, stride, metrics)
-    ccall((:glGetPathMetricRangeNV, libgl), Cvoid, (GLbitfield, GLuint, GLsizei, GLsizei, Ptr{GLfloat}), metricQueryMask, firstPathName, numPaths, stride, metrics)
+    ccall(getprocaddress_e("glGetPathMetricRangeNV"), Cvoid, (GLbitfield, GLuint, GLsizei, GLsizei, Ptr{GLfloat}), metricQueryMask, firstPathName, numPaths, stride, metrics)
 end
 
 function glGetPathSpacingNV(pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing)
-    ccall((:glGetPathSpacingNV, libgl), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLfloat, GLfloat, GLenum, Ptr{GLfloat}), pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing)
+    ccall(getprocaddress_e("glGetPathSpacingNV"), Cvoid, (GLenum, GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLfloat, GLfloat, GLenum, Ptr{GLfloat}), pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing)
 end
 
 function glIsPointInFillPathNV(path, mask, x, y)
-    ccall((:glIsPointInFillPathNV, libgl), GLboolean, (GLuint, GLuint, GLfloat, GLfloat), path, mask, x, y)
+    ccall(getprocaddress_e("glIsPointInFillPathNV"), GLboolean, (GLuint, GLuint, GLfloat, GLfloat), path, mask, x, y)
 end
 
 function glIsPointInStrokePathNV(path, x, y)
-    ccall((:glIsPointInStrokePathNV, libgl), GLboolean, (GLuint, GLfloat, GLfloat), path, x, y)
+    ccall(getprocaddress_e("glIsPointInStrokePathNV"), GLboolean, (GLuint, GLfloat, GLfloat), path, x, y)
 end
 
 function glGetPathLengthNV(path, startSegment, numSegments)
-    ccall((:glGetPathLengthNV, libgl), GLfloat, (GLuint, GLsizei, GLsizei), path, startSegment, numSegments)
+    ccall(getprocaddress_e("glGetPathLengthNV"), GLfloat, (GLuint, GLsizei, GLsizei), path, startSegment, numSegments)
 end
 
 function glPointAlongPathNV(path, startSegment, numSegments, distance, x, y, tangentX, tangentY)
-    ccall((:glPointAlongPathNV, libgl), GLboolean, (GLuint, GLsizei, GLsizei, GLfloat, Ptr{GLfloat}, Ptr{GLfloat}, Ptr{GLfloat}, Ptr{GLfloat}), path, startSegment, numSegments, distance, x, y, tangentX, tangentY)
+    ccall(getprocaddress_e("glPointAlongPathNV"), GLboolean, (GLuint, GLsizei, GLsizei, GLfloat, Ptr{GLfloat}, Ptr{GLfloat}, Ptr{GLfloat}, Ptr{GLfloat}), path, startSegment, numSegments, distance, x, y, tangentX, tangentY)
 end
 
 function glMatrixLoad3x2fNV(matrixMode, m)
-    ccall((:glMatrixLoad3x2fNV, libgl), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
+    ccall(getprocaddress_e("glMatrixLoad3x2fNV"), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
 end
 
 function glMatrixLoad3x3fNV(matrixMode, m)
-    ccall((:glMatrixLoad3x3fNV, libgl), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
+    ccall(getprocaddress_e("glMatrixLoad3x3fNV"), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
 end
 
 function glMatrixLoadTranspose3x3fNV(matrixMode, m)
-    ccall((:glMatrixLoadTranspose3x3fNV, libgl), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
+    ccall(getprocaddress_e("glMatrixLoadTranspose3x3fNV"), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
 end
 
 function glMatrixMult3x2fNV(matrixMode, m)
-    ccall((:glMatrixMult3x2fNV, libgl), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
+    ccall(getprocaddress_e("glMatrixMult3x2fNV"), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
 end
 
 function glMatrixMult3x3fNV(matrixMode, m)
-    ccall((:glMatrixMult3x3fNV, libgl), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
+    ccall(getprocaddress_e("glMatrixMult3x3fNV"), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
 end
 
 function glMatrixMultTranspose3x3fNV(matrixMode, m)
-    ccall((:glMatrixMultTranspose3x3fNV, libgl), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
+    ccall(getprocaddress_e("glMatrixMultTranspose3x3fNV"), Cvoid, (GLenum, Ptr{GLfloat}), matrixMode, m)
 end
 
 function glStencilThenCoverFillPathNV(path, fillMode, mask, coverMode)
-    ccall((:glStencilThenCoverFillPathNV, libgl), Cvoid, (GLuint, GLenum, GLuint, GLenum), path, fillMode, mask, coverMode)
+    ccall(getprocaddress_e("glStencilThenCoverFillPathNV"), Cvoid, (GLuint, GLenum, GLuint, GLenum), path, fillMode, mask, coverMode)
 end
 
 function glStencilThenCoverStrokePathNV(path, reference, mask, coverMode)
-    ccall((:glStencilThenCoverStrokePathNV, libgl), Cvoid, (GLuint, GLint, GLuint, GLenum), path, reference, mask, coverMode)
+    ccall(getprocaddress_e("glStencilThenCoverStrokePathNV"), Cvoid, (GLuint, GLint, GLuint, GLenum), path, reference, mask, coverMode)
 end
 
 function glStencilThenCoverFillPathInstancedNV(numPaths, pathNameType, paths, pathBase, fillMode, mask, coverMode, transformType, transformValues)
-    ccall((:glStencilThenCoverFillPathInstancedNV, libgl), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, fillMode, mask, coverMode, transformType, transformValues)
+    ccall(getprocaddress_e("glStencilThenCoverFillPathInstancedNV"), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLenum, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, fillMode, mask, coverMode, transformType, transformValues)
 end
 
 function glStencilThenCoverStrokePathInstancedNV(numPaths, pathNameType, paths, pathBase, reference, mask, coverMode, transformType, transformValues)
-    ccall((:glStencilThenCoverStrokePathInstancedNV, libgl), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLint, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, reference, mask, coverMode, transformType, transformValues)
+    ccall(getprocaddress_e("glStencilThenCoverStrokePathInstancedNV"), Cvoid, (GLsizei, GLenum, Ptr{Cvoid}, GLuint, GLint, GLuint, GLenum, GLenum, Ptr{GLfloat}), numPaths, pathNameType, paths, pathBase, reference, mask, coverMode, transformType, transformValues)
 end
 
 function glPathGlyphIndexRangeNV(fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount)
-    ccall((:glPathGlyphIndexRangeNV, libgl), GLenum, (GLenum, Ptr{Cvoid}, GLbitfield, GLuint, GLfloat, Ptr{GLuint}), fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount)
+    ccall(getprocaddress_e("glPathGlyphIndexRangeNV"), GLenum, (GLenum, Ptr{Cvoid}, GLbitfield, GLuint, GLfloat, Ptr{GLuint}), fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount)
 end
 
 function glPathGlyphIndexArrayNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
-    ccall((:glPathGlyphIndexArrayNV, libgl), GLenum, (GLuint, GLenum, Ptr{Cvoid}, GLbitfield, GLuint, GLsizei, GLuint, GLfloat), firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
+    ccall(getprocaddress_e("glPathGlyphIndexArrayNV"), GLenum, (GLuint, GLenum, Ptr{Cvoid}, GLbitfield, GLuint, GLsizei, GLuint, GLfloat), firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
 end
 
 function glPathMemoryGlyphIndexArrayNV(firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
-    ccall((:glPathMemoryGlyphIndexArrayNV, libgl), GLenum, (GLuint, GLenum, GLsizeiptr, Ptr{Cvoid}, GLsizei, GLuint, GLsizei, GLuint, GLfloat), firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
+    ccall(getprocaddress_e("glPathMemoryGlyphIndexArrayNV"), GLenum, (GLuint, GLenum, GLsizeiptr, Ptr{Cvoid}, GLsizei, GLuint, GLsizei, GLuint, GLfloat), firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
 end
 
 function glProgramPathFragmentInputGenNV(program, location, genMode, components, coeffs)
-    ccall((:glProgramPathFragmentInputGenNV, libgl), Cvoid, (GLuint, GLint, GLenum, GLint, Ptr{GLfloat}), program, location, genMode, components, coeffs)
+    ccall(getprocaddress_e("glProgramPathFragmentInputGenNV"), Cvoid, (GLuint, GLint, GLenum, GLint, Ptr{GLfloat}), program, location, genMode, components, coeffs)
 end
 
 function glGetProgramResourcefvNV(program, programInterface, index, propCount, props, count, length, params)
-    ccall((:glGetProgramResourcefvNV, libgl), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLenum}, GLsizei, Ptr{GLsizei}, Ptr{GLfloat}), program, programInterface, index, propCount, props, count, length, params)
+    ccall(getprocaddress_e("glGetProgramResourcefvNV"), Cvoid, (GLuint, GLenum, GLuint, GLsizei, Ptr{GLenum}, GLsizei, Ptr{GLsizei}, Ptr{GLfloat}), program, programInterface, index, propCount, props, count, length, params)
 end
 
 # typedef void ( APIENTRYP PFNGLFRAMEBUFFERSAMPLELOCATIONSFVNVPROC ) ( GLenum target , GLuint start , GLsizei count , const GLfloat * v )
@@ -8637,15 +8637,15 @@ const PFNGLNAMEDFRAMEBUFFERSAMPLELOCATIONSFVNVPROC = Ptr{Cvoid}
 const PFNGLRESOLVEDEPTHVALUESNVPROC = Ptr{Cvoid}
 
 function glFramebufferSampleLocationsfvNV(target, start, count, v)
-    ccall((:glFramebufferSampleLocationsfvNV, libgl), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLfloat}), target, start, count, v)
+    ccall(getprocaddress_e("glFramebufferSampleLocationsfvNV"), Cvoid, (GLenum, GLuint, GLsizei, Ptr{GLfloat}), target, start, count, v)
 end
 
 function glNamedFramebufferSampleLocationsfvNV(framebuffer, start, count, v)
-    ccall((:glNamedFramebufferSampleLocationsfvNV, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLfloat}), framebuffer, start, count, v)
+    ccall(getprocaddress_e("glNamedFramebufferSampleLocationsfvNV"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLfloat}), framebuffer, start, count, v)
 end
 
 function glResolveDepthValuesNV()
-    ccall((:glResolveDepthValuesNV, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glResolveDepthValuesNV"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLSCISSOREXCLUSIVENVPROC ) ( GLint x , GLint y , GLsizei width , GLsizei height )
@@ -8655,11 +8655,11 @@ const PFNGLSCISSOREXCLUSIVENVPROC = Ptr{Cvoid}
 const PFNGLSCISSOREXCLUSIVEARRAYVNVPROC = Ptr{Cvoid}
 
 function glScissorExclusiveNV(x, y, width, height)
-    ccall((:glScissorExclusiveNV, libgl), Cvoid, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
+    ccall(getprocaddress_e("glScissorExclusiveNV"), Cvoid, (GLint, GLint, GLsizei, GLsizei), x, y, width, height)
 end
 
 function glScissorExclusiveArrayvNV(first, count, v)
-    ccall((:glScissorExclusiveArrayvNV, libgl), Cvoid, (GLuint, GLsizei, Ptr{GLint}), first, count, v)
+    ccall(getprocaddress_e("glScissorExclusiveArrayvNV"), Cvoid, (GLuint, GLsizei, Ptr{GLint}), first, count, v)
 end
 
 # typedef void ( APIENTRYP PFNGLMAKEBUFFERRESIDENTNVPROC ) ( GLenum target , GLenum access )
@@ -8705,59 +8705,59 @@ const PFNGLPROGRAMUNIFORMUI64NVPROC = Ptr{Cvoid}
 const PFNGLPROGRAMUNIFORMUI64VNVPROC = Ptr{Cvoid}
 
 function glMakeBufferResidentNV(target, access)
-    ccall((:glMakeBufferResidentNV, libgl), Cvoid, (GLenum, GLenum), target, access)
+    ccall(getprocaddress_e("glMakeBufferResidentNV"), Cvoid, (GLenum, GLenum), target, access)
 end
 
 function glMakeBufferNonResidentNV(target)
-    ccall((:glMakeBufferNonResidentNV, libgl), Cvoid, (GLenum,), target)
+    ccall(getprocaddress_e("glMakeBufferNonResidentNV"), Cvoid, (GLenum,), target)
 end
 
 function glIsBufferResidentNV(target)
-    ccall((:glIsBufferResidentNV, libgl), GLboolean, (GLenum,), target)
+    ccall(getprocaddress_e("glIsBufferResidentNV"), GLboolean, (GLenum,), target)
 end
 
 function glMakeNamedBufferResidentNV(buffer, access)
-    ccall((:glMakeNamedBufferResidentNV, libgl), Cvoid, (GLuint, GLenum), buffer, access)
+    ccall(getprocaddress_e("glMakeNamedBufferResidentNV"), Cvoid, (GLuint, GLenum), buffer, access)
 end
 
 function glMakeNamedBufferNonResidentNV(buffer)
-    ccall((:glMakeNamedBufferNonResidentNV, libgl), Cvoid, (GLuint,), buffer)
+    ccall(getprocaddress_e("glMakeNamedBufferNonResidentNV"), Cvoid, (GLuint,), buffer)
 end
 
 function glIsNamedBufferResidentNV(buffer)
-    ccall((:glIsNamedBufferResidentNV, libgl), GLboolean, (GLuint,), buffer)
+    ccall(getprocaddress_e("glIsNamedBufferResidentNV"), GLboolean, (GLuint,), buffer)
 end
 
 function glGetBufferParameterui64vNV(target, pname, params)
-    ccall((:glGetBufferParameterui64vNV, libgl), Cvoid, (GLenum, GLenum, Ptr{GLuint64EXT}), target, pname, params)
+    ccall(getprocaddress_e("glGetBufferParameterui64vNV"), Cvoid, (GLenum, GLenum, Ptr{GLuint64EXT}), target, pname, params)
 end
 
 function glGetNamedBufferParameterui64vNV(buffer, pname, params)
-    ccall((:glGetNamedBufferParameterui64vNV, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint64EXT}), buffer, pname, params)
+    ccall(getprocaddress_e("glGetNamedBufferParameterui64vNV"), Cvoid, (GLuint, GLenum, Ptr{GLuint64EXT}), buffer, pname, params)
 end
 
 function glGetIntegerui64vNV(value, result)
-    ccall((:glGetIntegerui64vNV, libgl), Cvoid, (GLenum, Ptr{GLuint64EXT}), value, result)
+    ccall(getprocaddress_e("glGetIntegerui64vNV"), Cvoid, (GLenum, Ptr{GLuint64EXT}), value, result)
 end
 
 function glUniformui64NV(location, value)
-    ccall((:glUniformui64NV, libgl), Cvoid, (GLint, GLuint64EXT), location, value)
+    ccall(getprocaddress_e("glUniformui64NV"), Cvoid, (GLint, GLuint64EXT), location, value)
 end
 
 function glUniformui64vNV(location, count, value)
-    ccall((:glUniformui64vNV, libgl), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
+    ccall(getprocaddress_e("glUniformui64vNV"), Cvoid, (GLint, GLsizei, Ptr{GLuint64EXT}), location, count, value)
 end
 
 function glGetUniformui64vNV(program, location, params)
-    ccall((:glGetUniformui64vNV, libgl), Cvoid, (GLuint, GLint, Ptr{GLuint64EXT}), program, location, params)
+    ccall(getprocaddress_e("glGetUniformui64vNV"), Cvoid, (GLuint, GLint, Ptr{GLuint64EXT}), program, location, params)
 end
 
 function glProgramUniformui64NV(program, location, value)
-    ccall((:glProgramUniformui64NV, libgl), Cvoid, (GLuint, GLint, GLuint64EXT), program, location, value)
+    ccall(getprocaddress_e("glProgramUniformui64NV"), Cvoid, (GLuint, GLint, GLuint64EXT), program, location, value)
 end
 
 function glProgramUniformui64vNV(program, location, count, value)
-    ccall((:glProgramUniformui64vNV, libgl), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
+    ccall(getprocaddress_e("glProgramUniformui64vNV"), Cvoid, (GLuint, GLint, GLsizei, Ptr{GLuint64EXT}), program, location, count, value)
 end
 
 # typedef void ( APIENTRYP PFNGLBINDSHADINGRATEIMAGENVPROC ) ( GLuint texture )
@@ -8782,38 +8782,38 @@ const PFNGLSHADINGRATESAMPLEORDERNVPROC = Ptr{Cvoid}
 const PFNGLSHADINGRATESAMPLEORDERCUSTOMNVPROC = Ptr{Cvoid}
 
 function glBindShadingRateImageNV(texture)
-    ccall((:glBindShadingRateImageNV, libgl), Cvoid, (GLuint,), texture)
+    ccall(getprocaddress_e("glBindShadingRateImageNV"), Cvoid, (GLuint,), texture)
 end
 
 function glGetShadingRateImagePaletteNV(viewport, entry, rate)
-    ccall((:glGetShadingRateImagePaletteNV, libgl), Cvoid, (GLuint, GLuint, Ptr{GLenum}), viewport, entry, rate)
+    ccall(getprocaddress_e("glGetShadingRateImagePaletteNV"), Cvoid, (GLuint, GLuint, Ptr{GLenum}), viewport, entry, rate)
 end
 
 function glGetShadingRateSampleLocationivNV(rate, samples, index, location)
-    ccall((:glGetShadingRateSampleLocationivNV, libgl), Cvoid, (GLenum, GLuint, GLuint, Ptr{GLint}), rate, samples, index, location)
+    ccall(getprocaddress_e("glGetShadingRateSampleLocationivNV"), Cvoid, (GLenum, GLuint, GLuint, Ptr{GLint}), rate, samples, index, location)
 end
 
 function glShadingRateImageBarrierNV(synchronize)
-    ccall((:glShadingRateImageBarrierNV, libgl), Cvoid, (GLboolean,), synchronize)
+    ccall(getprocaddress_e("glShadingRateImageBarrierNV"), Cvoid, (GLboolean,), synchronize)
 end
 
 function glShadingRateImagePaletteNV(viewport, first, count, rates)
-    ccall((:glShadingRateImagePaletteNV, libgl), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLenum}), viewport, first, count, rates)
+    ccall(getprocaddress_e("glShadingRateImagePaletteNV"), Cvoid, (GLuint, GLuint, GLsizei, Ptr{GLenum}), viewport, first, count, rates)
 end
 
 function glShadingRateSampleOrderNV(order)
-    ccall((:glShadingRateSampleOrderNV, libgl), Cvoid, (GLenum,), order)
+    ccall(getprocaddress_e("glShadingRateSampleOrderNV"), Cvoid, (GLenum,), order)
 end
 
 function glShadingRateSampleOrderCustomNV(rate, samples, locations)
-    ccall((:glShadingRateSampleOrderCustomNV, libgl), Cvoid, (GLenum, GLuint, Ptr{GLint}), rate, samples, locations)
+    ccall(getprocaddress_e("glShadingRateSampleOrderCustomNV"), Cvoid, (GLenum, GLuint, Ptr{GLint}), rate, samples, locations)
 end
 
 # typedef void ( APIENTRYP PFNGLTEXTUREBARRIERNVPROC ) ( void )
 const PFNGLTEXTUREBARRIERNVPROC = Ptr{Cvoid}
 
 function glTextureBarrierNV()
-    ccall((:glTextureBarrierNV, libgl), Cvoid, ())
+    ccall(getprocaddress_e("glTextureBarrierNV"), Cvoid, ())
 end
 
 # typedef void ( APIENTRYP PFNGLVERTEXATTRIBL1I64NVPROC ) ( GLuint index , GLint64EXT x )
@@ -8874,79 +8874,79 @@ const PFNGLGETVERTEXATTRIBLUI64VNVPROC = Ptr{Cvoid}
 const PFNGLVERTEXATTRIBLFORMATNVPROC = Ptr{Cvoid}
 
 function glVertexAttribL1i64NV(index, x)
-    ccall((:glVertexAttribL1i64NV, libgl), Cvoid, (GLuint, GLint64EXT), index, x)
+    ccall(getprocaddress_e("glVertexAttribL1i64NV"), Cvoid, (GLuint, GLint64EXT), index, x)
 end
 
 function glVertexAttribL2i64NV(index, x, y)
-    ccall((:glVertexAttribL2i64NV, libgl), Cvoid, (GLuint, GLint64EXT, GLint64EXT), index, x, y)
+    ccall(getprocaddress_e("glVertexAttribL2i64NV"), Cvoid, (GLuint, GLint64EXT, GLint64EXT), index, x, y)
 end
 
 function glVertexAttribL3i64NV(index, x, y, z)
-    ccall((:glVertexAttribL3i64NV, libgl), Cvoid, (GLuint, GLint64EXT, GLint64EXT, GLint64EXT), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttribL3i64NV"), Cvoid, (GLuint, GLint64EXT, GLint64EXT, GLint64EXT), index, x, y, z)
 end
 
 function glVertexAttribL4i64NV(index, x, y, z, w)
-    ccall((:glVertexAttribL4i64NV, libgl), Cvoid, (GLuint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttribL4i64NV"), Cvoid, (GLuint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT), index, x, y, z, w)
 end
 
 function glVertexAttribL1i64vNV(index, v)
-    ccall((:glVertexAttribL1i64vNV, libgl), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL1i64vNV"), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
 end
 
 function glVertexAttribL2i64vNV(index, v)
-    ccall((:glVertexAttribL2i64vNV, libgl), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL2i64vNV"), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
 end
 
 function glVertexAttribL3i64vNV(index, v)
-    ccall((:glVertexAttribL3i64vNV, libgl), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL3i64vNV"), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
 end
 
 function glVertexAttribL4i64vNV(index, v)
-    ccall((:glVertexAttribL4i64vNV, libgl), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL4i64vNV"), Cvoid, (GLuint, Ptr{GLint64EXT}), index, v)
 end
 
 function glVertexAttribL1ui64NV(index, x)
-    ccall((:glVertexAttribL1ui64NV, libgl), Cvoid, (GLuint, GLuint64EXT), index, x)
+    ccall(getprocaddress_e("glVertexAttribL1ui64NV"), Cvoid, (GLuint, GLuint64EXT), index, x)
 end
 
 function glVertexAttribL2ui64NV(index, x, y)
-    ccall((:glVertexAttribL2ui64NV, libgl), Cvoid, (GLuint, GLuint64EXT, GLuint64EXT), index, x, y)
+    ccall(getprocaddress_e("glVertexAttribL2ui64NV"), Cvoid, (GLuint, GLuint64EXT, GLuint64EXT), index, x, y)
 end
 
 function glVertexAttribL3ui64NV(index, x, y, z)
-    ccall((:glVertexAttribL3ui64NV, libgl), Cvoid, (GLuint, GLuint64EXT, GLuint64EXT, GLuint64EXT), index, x, y, z)
+    ccall(getprocaddress_e("glVertexAttribL3ui64NV"), Cvoid, (GLuint, GLuint64EXT, GLuint64EXT, GLuint64EXT), index, x, y, z)
 end
 
 function glVertexAttribL4ui64NV(index, x, y, z, w)
-    ccall((:glVertexAttribL4ui64NV, libgl), Cvoid, (GLuint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT), index, x, y, z, w)
+    ccall(getprocaddress_e("glVertexAttribL4ui64NV"), Cvoid, (GLuint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT), index, x, y, z, w)
 end
 
 function glVertexAttribL1ui64vNV(index, v)
-    ccall((:glVertexAttribL1ui64vNV, libgl), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL1ui64vNV"), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
 end
 
 function glVertexAttribL2ui64vNV(index, v)
-    ccall((:glVertexAttribL2ui64vNV, libgl), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL2ui64vNV"), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
 end
 
 function glVertexAttribL3ui64vNV(index, v)
-    ccall((:glVertexAttribL3ui64vNV, libgl), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL3ui64vNV"), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
 end
 
 function glVertexAttribL4ui64vNV(index, v)
-    ccall((:glVertexAttribL4ui64vNV, libgl), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
+    ccall(getprocaddress_e("glVertexAttribL4ui64vNV"), Cvoid, (GLuint, Ptr{GLuint64EXT}), index, v)
 end
 
 function glGetVertexAttribLi64vNV(index, pname, params)
-    ccall((:glGetVertexAttribLi64vNV, libgl), Cvoid, (GLuint, GLenum, Ptr{GLint64EXT}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribLi64vNV"), Cvoid, (GLuint, GLenum, Ptr{GLint64EXT}), index, pname, params)
 end
 
 function glGetVertexAttribLui64vNV(index, pname, params)
-    ccall((:glGetVertexAttribLui64vNV, libgl), Cvoid, (GLuint, GLenum, Ptr{GLuint64EXT}), index, pname, params)
+    ccall(getprocaddress_e("glGetVertexAttribLui64vNV"), Cvoid, (GLuint, GLenum, Ptr{GLuint64EXT}), index, pname, params)
 end
 
 function glVertexAttribLFormatNV(index, size, type, stride)
-    ccall((:glVertexAttribLFormatNV, libgl), Cvoid, (GLuint, GLint, GLenum, GLsizei), index, size, type, stride)
+    ccall(getprocaddress_e("glVertexAttribLFormatNV"), Cvoid, (GLuint, GLint, GLenum, GLsizei), index, size, type, stride)
 end
 
 # typedef void ( APIENTRYP PFNGLBUFFERADDRESSRANGENVPROC ) ( GLenum pname , GLuint index , GLuint64EXT address , GLsizeiptr length )
@@ -8986,65 +8986,65 @@ const PFNGLVERTEXATTRIBIFORMATNVPROC = Ptr{Cvoid}
 const PFNGLGETINTEGERUI64I_VNVPROC = Ptr{Cvoid}
 
 function glBufferAddressRangeNV(pname, index, address, length)
-    ccall((:glBufferAddressRangeNV, libgl), Cvoid, (GLenum, GLuint, GLuint64EXT, GLsizeiptr), pname, index, address, length)
+    ccall(getprocaddress_e("glBufferAddressRangeNV"), Cvoid, (GLenum, GLuint, GLuint64EXT, GLsizeiptr), pname, index, address, length)
 end
 
 function glVertexFormatNV(size, type, stride)
-    ccall((:glVertexFormatNV, libgl), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
+    ccall(getprocaddress_e("glVertexFormatNV"), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
 end
 
 function glNormalFormatNV(type, stride)
-    ccall((:glNormalFormatNV, libgl), Cvoid, (GLenum, GLsizei), type, stride)
+    ccall(getprocaddress_e("glNormalFormatNV"), Cvoid, (GLenum, GLsizei), type, stride)
 end
 
 function glColorFormatNV(size, type, stride)
-    ccall((:glColorFormatNV, libgl), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
+    ccall(getprocaddress_e("glColorFormatNV"), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
 end
 
 function glIndexFormatNV(type, stride)
-    ccall((:glIndexFormatNV, libgl), Cvoid, (GLenum, GLsizei), type, stride)
+    ccall(getprocaddress_e("glIndexFormatNV"), Cvoid, (GLenum, GLsizei), type, stride)
 end
 
 function glTexCoordFormatNV(size, type, stride)
-    ccall((:glTexCoordFormatNV, libgl), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
+    ccall(getprocaddress_e("glTexCoordFormatNV"), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
 end
 
 function glEdgeFlagFormatNV(stride)
-    ccall((:glEdgeFlagFormatNV, libgl), Cvoid, (GLsizei,), stride)
+    ccall(getprocaddress_e("glEdgeFlagFormatNV"), Cvoid, (GLsizei,), stride)
 end
 
 function glSecondaryColorFormatNV(size, type, stride)
-    ccall((:glSecondaryColorFormatNV, libgl), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
+    ccall(getprocaddress_e("glSecondaryColorFormatNV"), Cvoid, (GLint, GLenum, GLsizei), size, type, stride)
 end
 
 function glFogCoordFormatNV(type, stride)
-    ccall((:glFogCoordFormatNV, libgl), Cvoid, (GLenum, GLsizei), type, stride)
+    ccall(getprocaddress_e("glFogCoordFormatNV"), Cvoid, (GLenum, GLsizei), type, stride)
 end
 
 function glVertexAttribFormatNV(index, size, type, normalized, stride)
-    ccall((:glVertexAttribFormatNV, libgl), Cvoid, (GLuint, GLint, GLenum, GLboolean, GLsizei), index, size, type, normalized, stride)
+    ccall(getprocaddress_e("glVertexAttribFormatNV"), Cvoid, (GLuint, GLint, GLenum, GLboolean, GLsizei), index, size, type, normalized, stride)
 end
 
 function glVertexAttribIFormatNV(index, size, type, stride)
-    ccall((:glVertexAttribIFormatNV, libgl), Cvoid, (GLuint, GLint, GLenum, GLsizei), index, size, type, stride)
+    ccall(getprocaddress_e("glVertexAttribIFormatNV"), Cvoid, (GLuint, GLint, GLenum, GLsizei), index, size, type, stride)
 end
 
 function glGetIntegerui64i_vNV(value, index, result)
-    ccall((:glGetIntegerui64i_vNV, libgl), Cvoid, (GLenum, GLuint, Ptr{GLuint64EXT}), value, index, result)
+    ccall(getprocaddress_e("glGetIntegerui64i_vNV"), Cvoid, (GLenum, GLuint, Ptr{GLuint64EXT}), value, index, result)
 end
 
 # typedef void ( APIENTRYP PFNGLVIEWPORTSWIZZLENVPROC ) ( GLuint index , GLenum swizzlex , GLenum swizzley , GLenum swizzlez , GLenum swizzlew )
 const PFNGLVIEWPORTSWIZZLENVPROC = Ptr{Cvoid}
 
 function glViewportSwizzleNV(index, swizzlex, swizzley, swizzlez, swizzlew)
-    ccall((:glViewportSwizzleNV, libgl), Cvoid, (GLuint, GLenum, GLenum, GLenum, GLenum), index, swizzlex, swizzley, swizzlez, swizzlew)
+    ccall(getprocaddress_e("glViewportSwizzleNV"), Cvoid, (GLuint, GLenum, GLenum, GLenum, GLenum), index, swizzlex, swizzley, swizzlez, swizzlew)
 end
 
 # typedef void ( APIENTRYP PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC ) ( GLenum target , GLenum attachment , GLuint texture , GLint level , GLint baseViewIndex , GLsizei numViews )
 const PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC = Ptr{Cvoid}
 
 function glFramebufferTextureMultiviewOVR(target, attachment, texture, level, baseViewIndex, numViews)
-    ccall((:glFramebufferTextureMultiviewOVR, libgl), Cvoid, (GLenum, GLenum, GLuint, GLint, GLint, GLsizei), target, attachment, texture, level, baseViewIndex, numViews)
+    ccall(getprocaddress_e("glFramebufferTextureMultiviewOVR"), Cvoid, (GLenum, GLenum, GLuint, GLint, GLint, GLsizei), target, attachment, texture, level, baseViewIndex, numViews)
 end
 
 const __gl_glcorearb_h_ = 1
@@ -13820,3 +13820,12 @@ const GL_MAX_VIEWS_OVR = 0x9631
 const GL_FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR = 0x9633
 
 const GL_OVR_multiview2 = 1
+
+# exports
+const PREFIXES = ["GL", "gl"]
+for name in names(@__MODULE__; all=true), prefix in PREFIXES
+    if startswith(string(name), prefix)
+        @eval export $name
+    end
+end
+

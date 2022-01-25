@@ -1,6 +1,7 @@
 module ModernGL
 
 using Libdl
+using CEnum
 
 function glXGetProcAddress(glFuncName)
     ccall((:glXGetProcAddress, "libGL.so.1"), Ptr{Cvoid}, (Ptr{UInt8},), glFuncName)
@@ -93,5 +94,6 @@ end
 include("glTypes.jl")
 include("functionloading.jl")
 include("glConstants.jl")
+include("gl.jl")
 
 end # module

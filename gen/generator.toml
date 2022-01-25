@@ -5,6 +5,8 @@ output_ignorelist = [
     "APIENTRYP",
 ]
 
+export_symbol_prefixes = ["GL", "gl"]
+
 use_deterministic_symbol = true
 
 [codegen.macro]
