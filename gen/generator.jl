@@ -21,16 +21,20 @@ build!(ctx, BUILDSTAGE_NO_PRINTING)
 function rewrite!(dag::ExprDAG)
     for node in get_nodes(dag)
         node.type isa Generators.AbstractFunctionNodeType || continue
+        func_name = string(node.id)
+        handle = Symbol(func_name*"_handle")
         for expr in node.exprs
             Meta.isexpr(expr, :function) || continue
             for block_expr in expr.args
                 Meta.isexpr(block_expr, :block) || continue
                 for ccall_expr in block_expr.args
                     Meta.isexpr(ccall_expr, :call) || continue
-                    ccall_expr.args[2] = :(getprocaddress_e($(string(node.id))))
+                    ccall_expr.args[2] = :($handle[])
                 end
+                pushfirst!(block_expr.args, :($handle[] == C_NULL && ($handle[] = getprocaddress_e($func_name))))
             end
         end
+        pushfirst!(node.exprs, :(const $handle = Ref{Ptr{Cvoid}}()))
     end
 end
 
