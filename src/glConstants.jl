@@ -219,6 +219,7 @@ const GL_DRAW_BUFFER6                                                 = convert(
 const GL_TEXTURE_2D_MULTISAMPLE_ARRAY                                 = convert(GLenum, 0x9102)
 const GL_DEBUG_TYPE_PERFORMANCE                                       = convert(GLenum, 0x8250)
 const GL_LOCATION_INDEX                                               = convert(GLenum, 0x930F)
+const GL_CLEAR_TEXTURE                                                = convert(GLenum, 0x9365)
 const GL_TEXTURE_GEN_R                                                = convert(GLenum, 0x0C62)
 const GL_FLOAT_MAT2                                                   = convert(GLenum, 0x8B5A)
 const GL_UNSIGNED_NORMALIZED                                          = convert(GLenum, 0x8C17)
@@ -1716,7 +1717,7 @@ const GL_TEXTURE_TARGET                                               = convert(
 const GL_QUERY_TARGET                                                 = convert(GLenum, 0x82EA)
 const GL_GUILTY_CONTEXT_RESET                                         = convert(GLenum, 0x8253)
 const GL_INNOCENT_CONTEXT_RESET                                       = convert(GLenum, 0x8254)
-const GL_UNKNOWN_CONTEXT_RESET                                       = convert(GLenum, 0x8255)
+const GL_UNKNOWN_CONTEXT_RESET                                        = convert(GLenum, 0x8255)
 const GL_CONTEXT_ROBUST_ACCESS                                        = convert(GLenum, 0x90F3)
 const GL_RESET_NOTIFICATION_STRATEGY                                  = convert(GLenum, 0x8256)
 const GL_LOSE_CONTEXT_ON_RESET                                        = convert(GLenum, 0x8252)
@@ -1729,6 +1730,35 @@ const GL_CLIENT_STORAGE_BIT                                           = convert(
 const GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT                             = convert(GLbitfield, 0x000004000)
 const GL_BUFFER_IMMUTABLE_STORAGE                                     = convert(GLenum, 0x821F)
 const GL_BUFFER_STORAGE_FLAGS                                         = convert(GLenum, 0x8220)
+const GL_QUERY_BUFFER                                                 = convert(GLenum, 0x9192)
+const GL_LOCATION_COMPONENT                                           = convert(GLenum, 0x934A)
+const GL_TRANSFORM_FEEDBACK_BUFFER_INDEX                              = convert(GLenum, 0x934B)
+const GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE                             = convert(GLenum, 0x934C)
+const GL_QUERY_RESULT_NO_WAIT                                         = convert(GLenum, 0x9194)
+const GL_QUERY_BUFFER_BINDING                                         = convert(GLenum, 0x9193)
+const GL_QUERY_BUFFER_BARRIER_BIT                                     = convert(GLbitfield, 0x00080000)
+const GL_MIRROR_CLAMP_TO_EDGE                                         = convert(GLenum, 0x8743)
+const GL_SPIR_V_BINARY                                                = convert(GLenum, 0x9552)
+const GL_SPIR_V_EXTENSIONS                                            = convert(GLenum, 0x9553)
+const GL_NUM_SPIR_V_EXTENSIONS                                        = convert(GLenum, 0x9554)
+const GL_PARAMETER_BUFFER                                             = convert(GLenum, 0x80EE)
+const GL_PARAMETER_BUFFER_BINDING                                     = convert(GLenum, 0x80EF)
+const GL_VERTICES_SUBMITTED                                           = convert(GLenum, 0x82EE)
+const GL_PRIMITIVES_SUBMITTED                                         = convert(GLenum, 0x82EF)
+const GL_VERTEX_SHADER_INVOCATIONS                                    = convert(GLenum, 0x82F0)
+const GL_TESS_CONTROL_SHADER_PATCHES                                  = convert(GLenum, 0x82F1)
+const GL_TESS_EVALUATION_SHADER_INVOCATIONS                           = convert(GLenum, 0x82F2)
+const GL_GEOMETRY_SHADER_PRIMITIVES_EMITTED                           = convert(GLenum, 0x82F3)
+const GL_FRAGMENT_SHADER_INVOCATIONS                                  = convert(GLenum, 0x82F4)
+const GL_COMPUTE_SHADER_INVOCATIONS                                   = convert(GLenum, 0x82F5)
+const GL_CLIPPING_INPUT_PRIMITIVES                                    = convert(GLenum, 0x82F6)
+const GL_CLIPPING_OUTPUT_PRIMITIVES                                   = convert(GLenum, 0x82F7)
+const GL_TRANSFORM_FEEDBACK_OVERFLOW                                  = convert(GLenum, 0x82EC)
+const GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW                           = convert(GLenum, 0x82ED)
+const GL_TEXTURE_MAX_ANISOTROPY                                       = convert(GLenum, 0x84FE)
+const GL_MAX_TEXTURE_MAX_ANISOTROPY                                   = convert(GLenum, 0x84FF)
+const GL_POLYGON_OFFSET_CLAMP                                         = convert(GLenum, 0x8E1B)
+const GL_CONTEXT_FLAG_NO_ERROR_BIT                                    = convert(GLbitfield, 0x00000008)
 end #Enum macro end
 
 export GL_MAP1_GRID_SEGMENTS
@@ -3433,6 +3463,12 @@ export GL_MIN
 export GL_MAX
 export GL_FUNC_SUBTRACT
 export GL_FUNC_REVERSE_SUBTRACT
+export GL_QUERY_BUFFER
+export GL_CLEAR_TEXTURE
+export GL_LOCATION_COMPONENT,
+       GL_TRANSFORM_FEEDBACK_BUFFER_INDEX, GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE
+export GL_QUERY_RESULT_NO_WAIT, GL_QUERY_BUFFER_BINDING, GL_QUERY_BARRIER_BIT
+export GL_MIRROR_CLAMP_TO_EDGE
 export GL_NEGATIVE_ONE_TO_ONE, GL_ZERO_TO_ONE,
        GL_CLIP_ORIGIN, GL_CLIP_DEPTH_MODE
 export GL_MAX_CULL_DISTANCES, GL_MAX_COMBINED_CLIP_AND_CULL_DISTANCES
@@ -3446,3 +3482,12 @@ export GL_GUILTY_CONTEXT_RESET, GL_INNOCENT_CONTEXT_RESET, GL_UNKNOWN_CONTEXT_RE
 export GL_MAP_PERSISTENT_BIT, GL_MAP_COHERENT_BIT, GL_DYNAMIC_STORAGE_BIT,
        GL_CLIENT_STORAGE_BIT, GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT,
        GL_BUFFER_IMMUTABLE_STORAGE, GL_BUFFER_STORAGE_FLAGS
+export GL_SPIR_V_BINARY, GL_SPIR_V_EXTENSIONS, GL_NUM_SPIR_V_EXTENSIONS
+export GL_VERTICES_SUBMITTED, GL_PRIMITIVES_SUBMITTED, GL_VERTEX_SHADER_INVOCATIONS,
+       GL_TESS_CONTROL_SHADER_PATCHES, GL_TESS_EVALUATION_SHADER_INVOCATIONS,
+       GL_GEOMETRY_SHADER_PRIMITIVES_EMITTED, GL_FRAGMENT_SHADER_INVOCATIONS,
+       GL_COMPUTE_SHADER_INVOCATIONS, GL_CLIPPING_INPUT_PRIMITIVES, GL_CLIPPING_OUTPUT_PRIMITIVES
+export GL_TRANSFORM_FEEDBACK_OVERFLOW, GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW
+export GL_TEXTURE_MAX_ANISOTROPY, GL_MAX_TEXTURE_MAX_ANISOTROPY
+export GL_POLYGON_OFFSET_CLAMP
+export GL_CONTEXT_FLAG_NO_ERROR_BIT

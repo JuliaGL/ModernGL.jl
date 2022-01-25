@@ -112,6 +112,7 @@
 @glfunc glReadPixels(x::GLint, y::GLint, width::GLsizei, height::GLsizei, format::GLenum, type_::GLenum, pixels::Ptr{Cvoid})::Cvoid
 @glfunc glCreateShaderProgramv(type_::GLenum, count::GLsizei, strings::Ptr{GLchar})::GLuint
 @glfunc glBufferData(target::GLenum, size::GLsizeiptr, data::Ptr{Cvoid}, usage::GLenum)::Cvoid
+@glfunc glBufferStorage(target::GLenum, size::GLsizeiptr, data::Ptr{Cvoid}, flags::GLbitfield)::Cvoid
 @glfunc glPointParameteriv(pname::GLenum, params::Ptr{GLint})::Cvoid
 @glfunc glUniform2fv(location::GLint, count::GLsizei, value::Ptr{GLfloat})::Cvoid
 @glfunc glDrawTransformFeedbackStream(mode::GLenum, id::GLuint, stream::GLuint)::Cvoid
@@ -413,6 +414,8 @@
 @glfunc glDebugMessageControl(source::GLenum, type_::GLenum, severity::GLenum, count::GLsizei, ids::Ptr{GLuint}, enabled::GLboolean)::Cvoid
 @glfunc glVertexAttribFormat(attribindex::GLuint, size::GLint, type_::GLenum, normalized::GLboolean, relativeoffset::GLuint)::Cvoid
 @glfunc glClearColor(red::GLfloat, green::GLfloat, blue::GLfloat, alpha::GLfloat)::Cvoid
+@glfunc glClearTexImage(texture::GLuint, level::GLint, format::GLenum, type::GLenum, data::Ptr{Cvoid})::Cvoid
+@glfunc glClearTexSubImage(texture::GLuint, level::GLint, xoffset::GLint, yoffset::GLint, zoffset::GLint, width::GLsizei, height::GLsizei, depth::GLsizei, format::GLenum, type::GLenum, data::Ptr{Cvoid})::Cvoid
 @glfunc glIsFramebuffer(framebuffer::GLuint)::Bool
 @glfunc glVertexAttribP1uiv(index::GLuint, type_::GLenum, normalized::GLboolean, value::Ptr{GLuint})::Cvoid
 @glfunc glUniform3i(location::GLint, v0::GLint, v1::GLint, v2::GLint)::Cvoid
@@ -654,3 +657,7 @@ fixedsamplelocations::GLboolean)::Cvoid
 @glfunc glGetnUniformiv(program::GLuint, location::GLint, bufSize::GLsizei, params::Ptr{GLint})::Cvoid
 @glfunc glGetnUniformuiv(program::GLuint, location::GLint, bufSize::GLsizei, params::Ptr{GLuint})::Cvoid
 @glfunc glTextureBarrier()::Cvoid
+@glfunc glSpecializeShader(shader::GLuint, pEntryPoint::Ptr{GLchar}, numSpecializationConstants::GLuint, pConstantIndex::Ptr{GLuint}, pConstantValue::Ptr{GLuint})::Cvoid
+@glfunc glMultiDrawArraysIndirectCount(mode::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
+@glfunc glMultiDrawElementsIndirectCount(mode::GLenum, type::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
+@glfunc glPolygonOffsetClamp(factor::GLfloat, units::GLfloat, clamp::GLfloat)::Cvoid
