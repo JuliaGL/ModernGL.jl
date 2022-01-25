@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/JuliaGL/ModernGL.jl/workflows/CI/badge.svg?branch=master)](https://github.com/JuliaGL/ModernGL.jl/actions)
 
-OpenGL bindings for OpenGL 3.0 and upwards. As OpenGL 3.0 has a lot of overlaps with OpenGL 2.1, OpenGL 2.1 is partly supported as well.
+OpenGL bindings for OpenGL 3.0 through 4.6. As OpenGL 3.0 has a lot of overlaps with OpenGL 2.1, OpenGL 2.1 is partly supported as well.
 
 The philosophy is to keep this library strictly a low-level wrapper, so you won't find any error handling (besides for the function loading itself) or abstractions in this package.
 
