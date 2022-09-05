@@ -661,3 +661,18 @@ fixedsamplelocations::GLboolean)::Cvoid
 @glfunc glMultiDrawArraysIndirectCount(mode::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
 @glfunc glMultiDrawElementsIndirectCount(mode::GLenum, type::GLenum, indirect::Ptr{Cvoid}, drawcount::GLsizei, maxdrawcount::GLsizei, stride::GLsizei)::Cvoid
 @glfunc glPolygonOffsetClamp(factor::GLfloat, units::GLfloat, clamp::GLfloat)::Cvoid
+@glfunc glGetTexEnviv(target::GLenum, pname::GLenum, params::Ptr{GLint})::Cvoid
+@glfunc glTexEnvi(target::GLenum, pname::GLenum, param::GLint)::Cvoid
+@glfunc glPushAttrib(mask::GLbitfield)::Cvoid
+@glfunc glPopAttrib()::Cvoid
+@glfunc glEnableClientState(cap::GLenum)::Cvoid
+@glfunc glDisableClientState(cap::GLenum)::Cvoid
+@glfunc glShadeModel(mode::GLenum)::Cvoid
+@glfunc glMatrixMode(mode::GLenum)::Cvoid
+@glfunc glPushMatrix()::Cvoid
+@glfunc glPopMatrix()::Cvoid
+@glfunc glLoadIdentity()::Cvoid
+@glfunc glOrtho(left::GLdouble, right::GLdouble, bottom::GLdouble, top::GLdouble, nearVal::GLdouble, farVal::GLdouble)::Cvoid
+@glfunc glVertexPointer(size::GLint, type::GLenum, stride::GLsizei, pointer::Ptr{Cvoid})::Cvoid
+@glfunc glTexCoordPointer(size::GLint, type::GLenum, stride::GLsizei, pointer::Ptr{Cvoid})::Cvoid
+@glfunc glColorPointer(size::GLint, type::GLenum, stride::GLsizei, pointer::Ptr{Cvoid})::Cvoid
