@@ -1,4 +1,4 @@
-const depsfile = joinpath("..", "deps", "deps.jl")
+const depsfile = normpath(joinpath(@__DIR__, "..", "deps", "deps.jl"))
 
 if isfile(depsfile)
     include(depsfile)
