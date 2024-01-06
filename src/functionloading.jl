@@ -1,6 +1,8 @@
 const depsfile = normpath(joinpath(@__DIR__, "..", "deps", "deps.jl"))
 
 if isfile(depsfile)
+    # to change create this file with
+    # const enable_opengl_debugging = true/false
     include(depsfile)
 else
     const enable_opengl_debugging = get(ENV, "MODERNGL_DEBUGGING", "false") == "true"
