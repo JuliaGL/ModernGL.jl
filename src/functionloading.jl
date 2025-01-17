@@ -1,16 +1,25 @@
-const depsfile = normpath(joinpath(@__DIR__, "..", "deps", "deps.jl"))
+function should_enable_opengl_debugging()
+    v = get(ENV, "MODERNGL_DEBUGGING", "false")
+    if v in ("true", "false")
+        return v == "true"
+    else
+        error("MODERNGL_DEBUGGING must be either 'true' or 'false'.")
+    end
+end
 
-if isfile(depsfile)
-    include(depsfile)
-else
-    const enable_opengl_debugging = get(ENV, "MODERNGL_DEBUGGING", "false") == "true"
+# decide this early here to debug any workload precompilation *in this package* before __init__ is run
+const enable_opengl_debugging = Ref{Bool}(should_enable_opengl_debugging())
+
+function __init__()
+    # the env var may have changed since precompilation
+    enable_opengl_debugging[] = should_enable_opengl_debugging()
 end
 
 gl_represent(x::GLenum) = GLENUM(x).name
 gl_represent(x) = repr(x)
 
 function debug_opengl_expr(func_name, args)
-    if enable_opengl_debugging && func_name != :glGetError
+    if enable_opengl_debugging[] && func_name != :glGetError
         quote
             err = glGetError()
             if err != GL_NO_ERROR
