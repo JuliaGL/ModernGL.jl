@@ -8,7 +8,7 @@ function should_enable_opengl_debugging()
 end
 
 # decide this early here to debug any workload precompilation *in this package* before __init__ is run
-enable_opengl_debugging = Ref{Bool}(should_enable_opengl_debugging())
+const enable_opengl_debugging = Ref{Bool}(should_enable_opengl_debugging())
 
 function __init__()
     # the env var may have changed since precompilation
